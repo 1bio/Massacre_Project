@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Project\\Massacre_Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|c:\\project\\massacre_project\\assets\\infinitypbr\\__bundle details\\monster bundle #6.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\infinitypbr\\__bundle details\\monster bundle #6.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\infinitypbr\\---game modules\\audio clip combiner\\readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\infinitypbr\\---game modules\\audio clip combiner\\readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Monster Bundle #6.txt",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\InfinityPBR\\__Bundle Details\\Monster Bundle #6.txt",
+              "RelativeDocumentMoniker": "Assets\\InfinityPBR\\__Bundle Details\\Monster Bundle #6.txt",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\InfinityPBR\\__Bundle Details\\Monster Bundle #6.txt",
+              "RelativeToolTip": "Assets\\InfinityPBR\\__Bundle Details\\Monster Bundle #6.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwYAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-09-30T08:20:59.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReadMe.txt",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\InfinityPBR\\---Game Modules\\Audio Clip Combiner\\ReadMe.txt",
+              "RelativeDocumentMoniker": "Assets\\InfinityPBR\\---Game Modules\\Audio Clip Combiner\\ReadMe.txt",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\InfinityPBR\\---Game Modules\\Audio Clip Combiner\\ReadMe.txt",
+              "RelativeToolTip": "Assets\\InfinityPBR\\---Game Modules\\Audio Clip Combiner\\ReadMe.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-09-30T07:50:42.183Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

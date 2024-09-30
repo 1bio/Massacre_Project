@@ -60,21 +60,27 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Assets\Monster\Equipment System\Editor\BlendShapesManagerEditor.cs" />
-    <Compile Include="Assets\Assets\Monster\Equipment System\Editor\EquipmentObjectEditor.cs" />
-    <Compile Include="Assets\Assets\Monster\Equipment System\Editor\EquipmentSystemStatic.cs" />
-    <Compile Include="Assets\Assets\Monster\Editor\InfinityEditorScriptableObject.cs" />
-    <Compile Include="Assets\Assets\Monster\Low Poly Support Files\Editor\ColorShifter.cs" />
-    <Compile Include="Assets\Assets\Monster\Equipment System\Editor\BlendShapesPresetManagerEditor.cs" />
-    <Compile Include="Assets\Assets\Monster\Equipment System\Editor\WardrobePrefabManagerEditor.cs" />
-    <Compile Include="Assets\Assets\Monster\Low Poly Support Files\Editor\ColorShiftRuntimeEditor.cs" />
-    <Compile Include="Assets\Assets\Monster\Editor\InfinitySoEditor.cs" />
-    <Compile Include="Assets\Assets\Monster\Editor\InfinityEditor.cs" />
-    <Compile Include="Assets\Assets\Monster\Equipment System\Editor\EquipObjectMenu.cs" />
-    <Compile Include="Assets\Assets\Monster\Low Poly Support Files\Editor\ColorShifterObjectEditor.cs" />
-    <Compile Include="Assets\Assets\Monster\Editor\AnimationEventCopier.cs" />
-    <Compile Include="Assets\Assets\Monster\Equipment System\Editor\PrefabAndObjectManagerEditor.cs" />
-    <Compile Include="Assets\Assets\Monster\Editor\SFB_LoadWelcome.cs" />
+    <Compile Include="Assets\InfinityPBR\Human Pack\Editor\SFB_SaveObjectAsMesh.cs" />
+    <Compile Include="Assets\InfinityPBR\---Game Modules\Audio Clip Combiner\Editor\AudioClipCombiner.cs" />
+    <Compile Include="Assets\InfinityPBR\Equipment System\Editor\EquipmentSystemStatic.cs" />
+    <Compile Include="Assets\InfinityPBR\Human Pack\Editor\AnimationEventCopier.cs" />
+    <Compile Include="Assets\InfinityPBR\Human Pack\Editor\SFB_DisplayPolycount.cs" />
+    <Compile Include="Assets\InfinityPBR\Weapon &amp; Armor\Editor\UpdateRootBoneAndBounds.cs" />
+    <Compile Include="Assets\InfinityPBR\Weapon &amp; Armor\Editor\InfinityEditorScriptableObject.cs" />
+    <Compile Include="Assets\InfinityPBR\Human Pack\Editor\ObjExporterScript.cs" />
+    <Compile Include="Assets\InfinityPBR\Equipment System\Editor\PrefabAndObjectManagerEditor.cs" />
+    <Compile Include="Assets\InfinityPBR\Weapon &amp; Armor\Editor\InfinityEditor.cs" />
+    <Compile Include="Assets\InfinityPBR\Equipment System\Editor\EquipmentObjectEditor.cs" />
+    <Compile Include="Assets\InfinityPBR\Weapon &amp; Armor\Editor\InfinitySoEditor.cs" />
+    <Compile Include="Assets\InfinityPBR\Equipment System\Editor\EquipObjectMenu.cs" />
+    <Compile Include="Assets\InfinityPBR\Weapon &amp; Armor\Editor\InfinityPBRManager.cs" />
+    <Compile Include="Assets\InfinityPBR\Equipment System\Editor\BlendShapesPresetManagerEditor.cs" />
+    <Compile Include="Assets\InfinityPBR\Equipment System\Editor\BlendShapesManagerEditor.cs" />
+    <Compile Include="Assets\InfinityPBR\Human Pack\Editor\SFB_BlendShapesManagerEditor.cs" />
+    <Compile Include="Assets\InfinityPBR\Human Pack\Editor\SFB_AudioSnapshotExporterEditor.cs" />
+    <Compile Include="Assets\InfinityPBR\---Game Modules\Audio Clip Combiner\Editor\AudioClipCombinerEditor.cs" />
+    <Compile Include="Assets\InfinityPBR\Equipment System\Editor\WardrobePrefabManagerEditor.cs" />
+    <Compile Include="Assets\InfinityPBR\Human Pack\Editor\SFB_LoadWelcome.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Lib\Editor\PlasticSCM\Localization\plastic-gui.zh-Hans.txt" />

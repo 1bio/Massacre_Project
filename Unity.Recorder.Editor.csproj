@@ -161,8 +161,8 @@
     <Compile Include="Library\PackageCache\com.unity.recorder@4.0.3\Editor\Sources\RecorderOptions.cs" />
     <Compile Include="Library\PackageCache\com.unity.recorder@4.0.3\Editor\Sources\Recorders\_Inputs\RenderTexture\RenderTextureInput.cs" />
     <Compile Include="Library\PackageCache\com.unity.recorder@4.0.3\Editor\Sources\ImageInputSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.recorder@4.0.3\Editor\Sources\EXRCompressionTypeDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.recorder@4.0.3\Editor\Sources\RecorderBindingsEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.recorder@4.0.3\Editor\Sources\EXRCompressionTypeDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.recorder@4.0.3\Editor\Sources\InputSettings.cs" />
     <Compile Include="Library\PackageCache\com.unity.recorder@4.0.3\Editor\Sources\Recorders\_Inputs\Camera360\Camera360InputSettings.cs" />
     <Compile Include="Library\PackageCache\com.unity.recorder@4.0.3\Editor\Sources\Recorders\_Legacy\WEBM\WEBMRecorderSettings.cs" />
