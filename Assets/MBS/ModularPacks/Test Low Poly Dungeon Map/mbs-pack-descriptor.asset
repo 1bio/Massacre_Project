@@ -1,0 +1,220 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!49 &4900000
+TextAsset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mbs-pack-descriptor
+  m_Script: "{\n    \"guid\": \"ff62a5a2762d42de8fa1a0afc73cda94\",\n    \"_name\":
+    \"Test Low Poly Dungeon Map\",\n    \"_wallGroups\": [\n        {\n           
+    \"guid\": \"7e8aed3930b34037952afab5fd9bcdd0\",\n            \"name\": \"Wall\",\n           
+    \"_modules\": [\n                {\n                    \"guid\": \"bd67728236f2453a93e104585943cb92\",\n                   
+    \"name\": \"Wall 1\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 9104321445825918880,\n                           
+    \"guid\": \"166b92b7222fe8344a671615701d3657\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    },\n                {\n                    \"guid\": \"e472613a69ff4024958cf6b8ffb50d1a\",\n                   
+    \"name\": \"Wall 2\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 2087999599100656279,\n                           
+    \"guid\": \"89d6816f524b88b4c9968fd91bc3322b\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    },\n                {\n                    \"guid\": \"bab52cc5cbda47b680851a4732467571\",\n                   
+    \"name\": \"Jail Wall\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 8271837103749127074,\n                           
+    \"guid\": \"b9661431615f91b4db8782055335b4d5\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    },\n                {\n                    \"guid\": \"e32f8ec8074d4c0d905c2b5beeb9b966\",\n                   
+    \"name\": \"Jail Wall 2\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 2000719113221279303,\n                           
+    \"guid\": \"f5a42311009a9674fbc37df24a9a3d0c\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    },\n                {\n                    \"guid\": \"5cabcd50926b4827ae006f14af5dd482\",\n                   
+    \"name\": \"Door Wall\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 5902516603717596668,\n                           
+    \"guid\": \"7a756a1138b5901419953d835ddb6483\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    },\n                {\n                    \"guid\": \"e0d28bc07b9346248ccbb2cb39cdf69c\",\n                   
+    \"name\": \"Door 1\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 8062180683348865409,\n                           
+    \"guid\": \"c7893fc5ac313814999e5d23026eecd3\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    },\n                {\n                    \"guid\": \"db4d4e2123944fd58e030b3dc7883152\",\n                   
+    \"name\": \"Door 2\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 5222212056441733332,\n                           
+    \"guid\": \"6d7a739afa8840e47b2269073a4ea42e\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    },\n                {\n                    \"guid\": \"6c6d9a8dcb7e47268515e60384bef0aa\",\n                   
+    \"name\": \"Stone Wall Corner\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 3897701265539021859,\n                           
+    \"guid\": \"b65176b0dc5ebba409ed474e8f9b4fe4\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    }\n            ]\n        },\n        {\n            \"guid\": \"171ba893958e4460a479169edbab377a\",\n           
+    \"name\": \"Empty Door Wall\",\n            \"_modules\": [\n               
+    {\n                    \"guid\": \"61fcefe875e745eeb71f2de35cd219fe\",\n                   
+    \"name\": \"Empty Door Wall\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 5902516603717596668,\n                           
+    \"guid\": \"7a756a1138b5901419953d835ddb6483\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    }\n            ]\n        },\n        {\n            \"guid\": \"d1eb65928acc4a568c18a068490d84e6\",\n           
+    \"name\": \"Corner\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"1c86e40f32a94d3cbaf7d5c207f12bf3\",\n                    \"name\":
+    \"Corner\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 1833118334673712040,\n                            \"guid\": \"a5b211f73859b9842965c4130fcf7664\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    }\n            ]\n        },\n        {\n            \"guid\": \"3ec7f59bae824225a17b0eeaf41f4753\",\n           
+    \"name\": \"Jail Wall\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"0b9ef195b5c547019e834dea23c143f7\",\n                    \"name\":
+    \"Jail Wall\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 8062180683348865409,\n                            \"guid\": \"c7893fc5ac313814999e5d23026eecd3\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    }\n            ]\n        }\n    ],\n    \"_floorGroups\": [\n        {\n           
+    \"guid\": \"397328527bce4da4a630bafa9a123b1f\",\n            \"name\": \"Tiles\",\n           
+    \"_modules\": [\n                {\n                    \"guid\": \"155a9af574504ed1a251f46b063466da\",\n                   
+    \"name\": \"Tile1\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 647765265510742994,\n                           
+    \"guid\": \"3b7501cf91abe9c48958e7862c1799ef\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    },\n                {\n                    \"guid\": \"2eb88d618ce2423aa8fcda262e959bdd\",\n                   
+    \"name\": \"Tile2\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 7248246126081036691,\n                           
+    \"guid\": \"ddc99359067b1b54d859ed8102cd291d\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    },\n                {\n                    \"guid\": \"38342f2fdc36499f8a1340fde17dd1d6\",\n                   
+    \"name\": \"Big Tile1\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 1803340176568896145,\n                           
+    \"guid\": \"d5f9d31939f283e4088c7d5e529827b3\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    },\n                {\n                    \"guid\": \"2466bc42a7024b3c950388a7d0164e12\",\n                   
+    \"name\": \"Big Tile2\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 8605813895099198548,\n                           
+    \"guid\": \"c907ba55ba1d21e4d9c71f554aa7b08e\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    }\n            ]\n        },\n        {\n            \"guid\": \"55f5ede1ed0643bd80075d1c07916477\",\n           
+    \"name\": \"Tile 2\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"4358756327f3426daa8b1b6a0a4024ee\",\n                    \"name\":
+    \"New Floor Module\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 7248246126081036691,\n                           
+    \"guid\": \"ddc99359067b1b54d859ed8102cd291d\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    }\n            ]\n        },\n        {\n            \"guid\": \"f79752e2ad084fe88ae9a946eb1143ca\",\n           
+    \"name\": \"Grid\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"3c5b874b33944acf8ab4a7a7b9830048\",\n                    \"name\":
+    \"Grid\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 1008247441236938766,\n                            \"guid\": \"64e4684e0a0381242b39e8a624dd0dff\",\n                           
+    \"type\": 3\n                        },\n                        {\n                           
+    \"instanceID\": 0\n                        }\n                    ]\n               
+    }\n            ]\n        }\n    ],\n    \"_decoratorGroups\": [\n        {\n           
+    \"guid\": \"1e317ad0075243b89e6258177649772f\",\n            \"name\": \"Banner\",\n           
+    \"_modules\": [\n                {\n                    \"guid\": \"b640ecc475ae402e8d675910de8548f9\",\n                   
+    \"name\": \"Banner\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 922610929520514105,\n                           
+    \"guid\": \"dc97d376464a0e04fb6721fd53a1845d\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"48e1050c7abe4db986a3d82a5cd939d1\",\n           
+    \"name\": \"Box\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"f75a20cdcd6f46f78d739643b7715ee9\",\n                    \"name\":
+    \"Box\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 3568391801337621977,\n                            \"guid\": \"127f5a695db102f41b2838ae11ef1956\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"dd162f4b58f44205b92615d373e61ff6\",\n           
+    \"name\": \"Barrel\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"205405db7d634ad0b836385eed16cea3\",\n                    \"name\":
+    \"Barrel\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 1155280187058725895,\n                            \"guid\": \"1ae76920876edf240894170a199c43a8\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"d495355e8cc940a4957b58e3934748c0\",\n           
+    \"name\": \"Shelf\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"918c1ff679e34441a9d664ac4e803161\",\n                    \"name\":
+    \"Shelf\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 7829176878323340649,\n                            \"guid\": \"091c881174643614797574d898211858\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"4bdd6433d0e24fda85ea0159c65b3a34\",\n           
+    \"name\": \"Red Carpet\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"72a68711f4ea47ad9ed355655911ce52\",\n                    \"name\":
+    \"Red Carpet\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 8132901675038357228,\n                           
+    \"guid\": \"f76f399288bbefe439666ddda11ee6b0\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"5532bd3a5c9d4775956105df47e9e04c\",\n           
+    \"name\": \"Hatch\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"9840f51afb7d4e0692a0bd62d26a6d26\",\n                    \"name\":
+    \"Hatch\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 9043517068126870341,\n                            \"guid\": \"f7696d4836fcf314685b88b3b5b1ff71\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"80bcebefd298410aaf36d45b766dd8c1\",\n           
+    \"name\": \"Plank pile\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"a9fb9940fd474563af90db3dbe23e8cf\",\n                    \"name\":
+    \"Plank pile\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 721470097319938361,\n                           
+    \"guid\": \"53cf2977223bdb84ea16363a63b2e880\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"6b52b81381ee427f9642ec08ac736ddb\",\n           
+    \"name\": \"Pouch\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"694638204b724ee9a54df2f9f4f0d634\",\n                    \"name\":
+    \"Pouch\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 5389136639606099505,\n                            \"guid\": \"c8993664480799b4c9e369050d21a760\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"0d1ab41f5d0841da908fd8ee698f8604\",\n           
+    \"name\": \"Stand\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"c334eada5f0d4f34ab3f166aad74aedc\",\n                    \"name\":
+    \"Stand\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 7539041863184137377,\n                            \"guid\": \"a9ec0f4b21b97684fb65831a7f851c9f\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"85939cac712645ebaae6ae2c014d3c77\",\n           
+    \"name\": \"Column\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"531e177e5e16443481bc6f813608071d\",\n                    \"name\":
+    \"Column\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 7224865976793940045,\n                            \"guid\": \"5f694b26b76ac6e4f84df4df4cc4cefb\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"11b4bd06885b4b4191659abc07ca488f\",\n           
+    \"name\": \"Table\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"474077fbeaf74f64ab489f1adb1e104c\",\n                    \"name\":
+    \"Table\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 6181557527149447476,\n                            \"guid\": \"73032dbf050ee924aa5c20d5b14c8dd2\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"2ce64a654892402f9886f3dff4565009\",\n           
+    \"name\": \"Vase\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"c347418c2b2e45448444d3f2e20194ef\",\n                    \"name\":
+    \"Vase\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 977396546765601249,\n                            \"guid\": \"ab344ad7b85518445b9ebe13a27da5bf\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    },\n        {\n            \"guid\": \"e6f3cf14189b414f93debac34bb8cb15\",\n           
+    \"name\": \"Obstacle\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"0d32f2d2cdff4e388cdf91365ad109a8\",\n                    \"name\":
+    \"Obstacle\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 6810034782887055379,\n                            \"guid\": \"dc6f71c1a065e8048a258aa7c2c63a73\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"ca325bfbd1ae478c88c4b78e4c41082d\"\n       
+    }\n    ],\n    \"_decoratorCategories\": [\n        {\n            \"guid\":
+    \"ca325bfbd1ae478c88c4b78e4c41082d\",\n            \"_name\": \"All\"\n       
+    }\n    ]\n}"
