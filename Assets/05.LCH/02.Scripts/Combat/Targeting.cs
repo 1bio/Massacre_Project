@@ -10,7 +10,6 @@ public class Targeting : MonoBehaviour
 
     [field: SerializeField] public Target CurrentTarget { get; private set; }
 
-
     public void Awake()
     {
         Targets.Clear();
@@ -19,6 +18,12 @@ public class Targeting : MonoBehaviour
     private void Update()
     {
         SelectNearMonster();
+    }
+
+    // 감지 범위 설정(원거리 및 근거리)
+    public void SetRadius(float radius)
+    {
+        this.Collider.radius = radius; 
     }
 
 

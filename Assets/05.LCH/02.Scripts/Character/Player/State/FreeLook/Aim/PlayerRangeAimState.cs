@@ -4,19 +4,35 @@ using UnityEngine;
 
 public class PlayerRangeAimState : PlayerBaseState
 {
+    public readonly int AimAnimationHash = Animator.StringToHash("Aim@Range"); // 조준 애니메이션 해쉬
+
+    public readonly float CrossFadeDuration = 0.1f;
+
+    public readonly float DampTime = 0.1f;
+
+
     public PlayerRangeAimState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
 
     public override void Enter()
     {
-        Debug.Log("Aim!");
+        stateMachine.Animator.CrossFadeInFixedTime(AimAnimationHash, CrossFadeDuration);
     }
 
     public override void Tick(float deltaTime)
     {
-        // 공격 상태로 전이 가능
-        // 우클릭 해제 시 FreeLookState로
+        Move(deltaTime);
+
+        Aiming();
+        
+        AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
+
+        if(!stateMachine.InputReader.IsAiming || currentInfo.normalizedTime >= 1.0f)
+        {
+            stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
+            return;
+        }
     }
 
     public override void Exit()

@@ -11,7 +11,7 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
 
-    [field: SerializeField] public WeaponComponent WeaponComponent { get; private set; }
+    [field: SerializeField] public MeleeWeaponComponent WeaponComponent { get; private set; }
 
     [field: SerializeField] public Health Health { get; private set; }
 
@@ -35,9 +35,9 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public float RollingCoolTime { get; private set; } = 3f;
 
-    [field: SerializeField] public float MeleeWeaponDetectionRange { get; private set; }
-   
-    [field: SerializeField] public float RangeWeaponDetectionRange { get; private set; }
+    [field: SerializeField] public float MeleeWeaponDetectionRange { get; private set; } = 5f;
+
+    [field: SerializeField] public float RangeWeaponDetectionRange { get; private set; } = 15f;
 
     private void Start()
     {

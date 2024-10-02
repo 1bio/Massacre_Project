@@ -21,20 +21,17 @@ public class PlayerFreeLookState : PlayerBaseState
     {
     }
 
+
     #region abstarct Methods
     public override void Enter()
     {
         if (IsChanged)
         {
             stateMachine.Animator.CrossFadeInFixedTime(FreeLookWithMelee, CrossFadeDuration);
-
-            stateMachine.Targeting.Collider.radius = stateMachine.MeleeWeaponDetectionRange;
         }
         else
         {
             stateMachine.Animator.CrossFadeInFixedTime(FreeLookWithRange, CrossFadeDuration);
-
-            stateMachine.Targeting.Collider.radius = stateMachine.RangeWeaponDetectionRange;
         }
 
         stateMachine.InputReader.RollEvent += OnRolling; // Rolling 
@@ -49,7 +46,7 @@ public class PlayerFreeLookState : PlayerBaseState
             Swap();
         }
 
-        IsChanged = stateMachine.WeaponPrefabs[1].activeSelf; // 원거리 무기가 활성화면 IsChanged = true
+        IsChanged = stateMachine.WeaponPrefabs[1].activeSelf; // 원거리 무기 활성화 => IsChanged = true
 
         Vector3 movement = CalculatorMovement();
 
@@ -57,8 +54,18 @@ public class PlayerFreeLookState : PlayerBaseState
 
         Rotate(movement, deltaTime); // 회전
 
-        /*  Aiming(); // 조준
-          AutoRotate(deltaTime); // 자동 회전*/
+        /*Aiming(); // 조준
+        AutoRotate(deltaTime); // 자동 회전(아마 제거할 것 같음)*/
+
+        // Target Detection
+        if (IsChanged)
+        {
+            stateMachine.Targeting.SetRadius(stateMachine.RangeWeaponDetectionRange);
+        }
+        else
+        {
+            stateMachine.Targeting.SetRadius(stateMachine.MeleeWeaponDetectionRange);
+        }
 
         // Attacking
         if (stateMachine.InputReader.IsAttacking)
