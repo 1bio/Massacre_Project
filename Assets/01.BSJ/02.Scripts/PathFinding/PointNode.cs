@@ -9,38 +9,42 @@ using UnityEngine.UIElements;
 [System.Serializable]
 public class PointNode
 {
-    public Vector3 Position { get => position; }
-    public PointNode Parent { get => parent; set => parent = value; }
-    public float GCost { get => gCost; set => gCost = value; }
-    public float HCost { get => hCost; set => hCost = value; }
-    public float FCost { get => fCost; set => fCost = value; }
-    public bool IsObstacle { get => isObstacle; }
-    public bool IsGround { get => isGround; }
+    public Vector3 Position { get => _position; }
+    public PointNode Parent { get => _parent; set => _parent = value; }
+    public float GCost { get => _gCost; set => _gCost = value; }
+    public float HCost { get => _hCost; set => _hCost = value; }
+    public float FCost { get => _fCost; set => _fCost = value; }
+    public bool IsObstacle
+    { 
+        get => _isObstacle;
+        set => _isObstacle = value;
+    }
+    public bool IsGround { get => _isGround; }
 
-    [SerializeField] private Vector3 position;
-    private PointNode parent;
-    private float gCost, hCost;
-    private float fCost;
-    private bool isObstacle;
-    private bool isGround;
+    [SerializeField] private Vector3 _position;
+    private PointNode _parent;
+    private float _gCost, _hCost;
+    private float _fCost;
+    private bool _isObstacle;
+    private bool _isGround;
 
     public PointNode(Vector3 positions, bool isObstacle, bool isGround)
     {
-        this.position = positions;
-        this.isObstacle = isObstacle;
-        this.isGround = isGround;
+        _position = positions;
+        _isObstacle = isObstacle;
+        _isGround = isGround;
 
-        gCost = 0;
-        hCost = 0;
-        fCost = 0;
+        _gCost = 0;
+        _hCost = 0;
+        _fCost = 0;
     }
 
     public void Initialize()
     {
-        gCost = 0;
-        hCost = 0;
-        fCost = 0;
+        _gCost = 0;
+        _hCost = 0;
+        _fCost = 0;
 
-        parent = null;
+        _parent = null;
     }
 }

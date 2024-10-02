@@ -2,27 +2,27 @@ using System;
 
 public class MonsterBehaviourState : State
 {
-    protected Monster monster;
-    protected MonsterBehaviour behaviour;
+    protected Monster _monster;
+    protected MonsterBehaviour _behaviour;
 
     public MonsterBehaviourState(Monster monster, MonsterBehaviour behaviour)
     {
-        this.monster = monster;
-        this.behaviour = behaviour;
+        this._monster = monster;
+        this._behaviour = behaviour;
     }
 
     public override void Enter()
     {
-        behaviour.OnBehaviourStart(monster);
+        _behaviour.OnBehaviourStart(_monster);
     }
 
     public override void Tick(float deltaTime)
     {
-        behaviour.OnBehaviourUpdate(monster);
+        _behaviour.OnBehaviourUpdate(_monster);
     }
 
     public override void Exit()
     {
-        behaviour.OnBehaviourEnd(monster);
+        _behaviour.OnBehaviourEnd(_monster);
     }
 }

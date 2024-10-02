@@ -5,47 +5,52 @@ using UnityEngine;
 
 public class PointGrid : MonoBehaviour
 {
-    public float NodeRadius { get => nodeRadius; }
+    public float NodeRadius { get => _nodeRadius; }
+    public PointNode[,,] Grid
+    {
+        get => _grid;
+        set => _grid = value;
+    }
 
 
-    [SerializeField] private Vector3 gridWorldSize; // (x, y, z)
-    [SerializeField] private float nodeRadius;
-    private PointNode[,,] grid;
+    [SerializeField] private Vector3 _gridWorldSize; // (x, y, z)
+    [SerializeField] private float _nodeRadius;
+    private PointNode[,,] _grid;
 
-    private float nodeDiameter;
-    private int gridSizeX, gridSizeY, gridSizeZ;
+    private float _nodeDiameter;
+    private int _gridSizeX, _gridSizeY, _gridSizeZ;
 
     private void Awake()
     {
-        nodeDiameter = nodeRadius * 2;
-        gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
-        gridSizeY = 1;
-        gridSizeZ = Mathf.RoundToInt(gridWorldSize.z / nodeDiameter);
+        _nodeDiameter = _nodeRadius * 2;
+        _gridSizeX = Mathf.RoundToInt(_gridWorldSize.x / _nodeDiameter);
+        _gridSizeY = 1;
+        _gridSizeZ = Mathf.RoundToInt(_gridWorldSize.z / _nodeDiameter);
 
         CreateGrid();
     }
 
     void CreateGrid()
     {
-        grid = new PointNode[gridSizeX, gridSizeY, gridSizeZ];
+        _grid = new PointNode[_gridSizeX, _gridSizeY, _gridSizeZ];
 
-        Vector3 worldBottomLeft = this.transform.position - Vector3.right * gridWorldSize.x / 2
-                                                          - Vector3.forward * gridWorldSize.z / 2;
+        Vector3 worldBottomLeft = this.transform.position - Vector3.right * _gridWorldSize.x / 2
+                                                          - Vector3.forward * _gridWorldSize.z / 2;
 
 
-        for (int x = 0; x < gridSizeX; x++)
+        for (int x = 0; x < _gridSizeX; x++)
         {
-            for (int y = 0; y < gridSizeY; y++)
+            for (int y = 0; y < _gridSizeY; y++)
             {
-                for (int z = 0; z < gridSizeZ; z++)
+                for (int z = 0; z < _gridSizeZ; z++)
                 {
-                    Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius)
-                                                    + Vector3.forward * (z * nodeDiameter + nodeRadius);
+                    Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * _nodeDiameter + _nodeRadius)
+                                                    + Vector3.forward * (z * _nodeDiameter + _nodeRadius);
 
                     bool isObstacle = false;
                     bool isGround = false;
 
-                    Collider[] hitColliders = Physics.OverlapSphere(worldPoint, nodeRadius);
+                    Collider[] hitColliders = Physics.OverlapSphere(worldPoint, _nodeRadius);
 
                     foreach (var hitCollider in hitColliders)
                     {
@@ -62,7 +67,7 @@ public class PointGrid : MonoBehaviour
                         }
                     }
 
-                    grid[x, y, z] = new PointNode(worldPoint, isObstacle, isGround);
+                    _grid[x, y, z] = new PointNode(worldPoint, isObstacle, isGround);
                 }
             }
         }
@@ -82,11 +87,11 @@ public class PointGrid : MonoBehaviour
                 int checkX = Mathf.FloorToInt(node.Position.x + x);
                 int checkZ = Mathf.FloorToInt(node.Position.z + z);
 
-                if (checkX >= 0 && checkX < gridSizeX && checkZ >= 0 && checkZ < gridSizeZ
-                    && grid[checkX, 0, checkZ].IsGround && !grid[checkX, 0, checkZ].IsObstacle)
+                if (checkX >= 0 && checkX < _gridSizeX && checkZ >= 0 && checkZ < _gridSizeZ
+                    && _grid[checkX, 0, checkZ].IsGround && !_grid[checkX, 0, checkZ].IsObstacle)
                 {
-                    neighbors.Add(grid[checkX, 0, checkZ]);
-                }   
+                    neighbors.Add(_grid[checkX, 0, checkZ]);
+                }
             }
         }
 
@@ -95,7 +100,7 @@ public class PointGrid : MonoBehaviour
 
     public void InitializeNodeValues()
     {
-        foreach (PointNode node in grid)
+        foreach (PointNode node in _grid)
         {
             node.Initialize();
         }
@@ -103,24 +108,24 @@ public class PointGrid : MonoBehaviour
 
     public PointNode GetPointNodeFromGridByPosition(Vector3 position)
     {
-        foreach (PointNode node in grid)
+        foreach (PointNode node in _grid)
         {
-            if (node.Position.x - nodeRadius <= position.x && node.Position.x + nodeRadius > position.x
-                && node.Position.z - nodeRadius <= position.z && node.Position.z + nodeRadius > position.z)
+            if (node.Position.x - _nodeRadius <= position.x && node.Position.x + _nodeRadius > position.x
+                && node.Position.z - _nodeRadius <= position.z && node.Position.z + _nodeRadius > position.z)
                 return node;
         }
 
-        return null; 
+        return null;
     }
 
     // 만든 grid 큐브로 시각화
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, gridWorldSize.z));
+        Gizmos.DrawWireCube(transform.position, new Vector3(_gridWorldSize.x, _gridWorldSize.y, _gridWorldSize.z));
 
-        if (grid != null)
+        if (_grid != null)
         {
-            foreach (PointNode node in grid)
+            foreach (PointNode node in _grid)
             {
                 if (node.IsObstacle || !node.IsGround)
                 {
@@ -130,7 +135,7 @@ public class PointGrid : MonoBehaviour
                 {
                     Gizmos.color = Color.white;
                 }
-                Gizmos.DrawCube(node.Position, Vector3.one * (nodeDiameter - .1f));
+                Gizmos.DrawCube(node.Position, Vector3.one * (_nodeDiameter - .1f));
             }
         }
     }
