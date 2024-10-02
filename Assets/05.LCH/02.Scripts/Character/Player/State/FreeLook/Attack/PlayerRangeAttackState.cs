@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerRangeAttackState : PlayerBaseState
 {
-    public readonly int AttackAnimationHash = Animator.StringToHash("Attack@Bow"); // 근거리 블렌드 트리
+    public readonly int AttackAnimationHash = Animator.StringToHash("Attack@Range"); // 근거리 블렌드 트리
 
     public readonly float CrossFadeDuration = 0.1f;
 

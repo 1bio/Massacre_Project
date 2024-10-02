@@ -83,8 +83,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\UI\UnityStyles.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Views\PendingChanges\Dialogs\DependenciesDialog.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\UI\CloseWindowIfOpened.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\AssetsUtils\GetSelectedPaths.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Help\TestingHelpData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\AssetsUtils\GetSelectedPaths.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Views\CreateWorkspace\DrawCreateWorkspaceView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\AssetMenu\Dialogs\CheckinDialog.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Views\Diff\DiffSelection.cs" />
@@ -282,8 +282,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\UI\HandleMenuItem.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Views\Diff\DiffPanel.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\PlasticMenuItem.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\SwitchModeConfirmationDialog.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Developer\UpdateReport\UpdateReportLineListViewItem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\SwitchModeConfirmationDialog.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\AssetsUtils\RefreshAsset.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\UI\ResponseType.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Views\ConfirmContinueWithPendingChangesDialog.cs" />
@@ -306,8 +306,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\AssetMenu\AssetMenuOperations.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\UI\TabButton.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Help\ExternalLink.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\UI\Progress\OperationProgressData.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\UI\Tree\DrawTreeViewItem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\UI\Progress\OperationProgressData.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Views\IncomingChanges\Gluon\Errors\ErrorListViewItem.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\CollabMigration\MigrationDialog.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@2.4.4\Editor\PlasticSCM\Views\Changesets\ChangesetsTab.cs" />

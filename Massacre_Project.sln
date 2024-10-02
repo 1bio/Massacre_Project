@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingularityGroup.HotReload.Runtime", "SingularityGroup.HotReload.Runtime.csproj", "{F515E0FA-4AAB-AB3B-002C-290AE45DF7F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.PlasticSCM.Editor", "Unity.PlasticSCM.Editor.csproj", "{1FF2D779-3143-48ED-6A94-C22C74C33126}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{04AE7B71-E375-D9D1-6A27-ADB6A02C7D7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Mathematics", "Unity.Mathematics.csproj", "{31081E24-A038-F46C-B25A-24232598EA92}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBS", "MBS.csproj", "{725C28C2-FB86-2A1E-9DA4-09C175E4022C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingularityGroup.HotReload.Editor", "SingularityGroup.HotReload.Editor.csproj", "{436A7DFC-1EFA-4472-DE3F-B3F7C489FCFC}"
@@ -21,6 +27,18 @@ Global
 		{F515E0FA-4AAB-AB3B-002C-290AE45DF7F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F515E0FA-4AAB-AB3B-002C-290AE45DF7F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F515E0FA-4AAB-AB3B-002C-290AE45DF7F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FF2D779-3143-48ED-6A94-C22C74C33126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FF2D779-3143-48ED-6A94-C22C74C33126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FF2D779-3143-48ED-6A94-C22C74C33126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FF2D779-3143-48ED-6A94-C22C74C33126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04AE7B71-E375-D9D1-6A27-ADB6A02C7D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04AE7B71-E375-D9D1-6A27-ADB6A02C7D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04AE7B71-E375-D9D1-6A27-ADB6A02C7D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04AE7B71-E375-D9D1-6A27-ADB6A02C7D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31081E24-A038-F46C-B25A-24232598EA92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31081E24-A038-F46C-B25A-24232598EA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31081E24-A038-F46C-B25A-24232598EA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31081E24-A038-F46C-B25A-24232598EA92}.Release|Any CPU.Build.0 = Release|Any CPU
 		{725C28C2-FB86-2A1E-9DA4-09C175E4022C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{725C28C2-FB86-2A1E-9DA4-09C175E4022C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{725C28C2-FB86-2A1E-9DA4-09C175E4022C}.Release|Any CPU.ActiveCfg = Release|Any CPU
