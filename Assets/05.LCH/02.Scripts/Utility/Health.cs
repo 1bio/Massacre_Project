@@ -3,67 +3,74 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
-    private int currentHealth;
-
-    public int hitCount = 0;
-        
+    // <==== 체력 필드 ====>
+    private float currentHealth;
+    
     private bool isDead => currentHealth <= 0;
 
-    private float coolTime = 1f;
+    // <==== 피격 필드 ====>
+    public int hitCount = 0;
+
+    private float currentTime;
     private float lastImpactTime;
 
+    private float coolDown = 1f;
+
+    // <==== 피격 이벤트 ====>
     public event Action ImpactEvent;
 
 
     private void Awake()
     {
-        currentHealth = maxHealth;
-        lastImpactTime = coolTime; 
+        currentHealth = DataManager.instance.playerData.statusData.maxHealth;
+
+        lastImpactTime = coolDown;
     }
 
     private void Update()
     {
-        if (!isDead)
-            return;
+        if (isDead)
+        {
+            Dead();
+        }
 
-        Debug.Log($"현재 체력: {currentHealth}");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage();
+        }
 
-        Dead();
-
-        CountSetting();
+        CheckCoolDown(); // 카운트 체크
     }
 
 
     #region Main Methods
-    public void TakeDamage()
+    // 쿨타임 지날 시 카운트 초기화
+    public void CheckCoolDown()
     {
-        float currentTime = Time.time;
-
-        hitCount++; // hitCount 증가
-
-        ImpactEvent?.Invoke();
-
-        lastImpactTime = currentTime;
-    }
-
-    public void CountSetting()
-    {
-        float currentTime = Time.time;
-
-        // 쿨타임이 지나면 카운트를 초기화
-        if (currentTime - lastImpactTime >= coolTime)
+        currentTime = Time.time;
+        
+        if (currentTime - lastImpactTime >= coolDown)
         {
             hitCount = 0;
         }
     }
 
+    // 피격 당한 순간 lastImpactTime 업데이트 및 이벤트 호출
+    public void TakeDamage() 
+    {
+        float currentImpactTime = Time.time;
+        
+        lastImpactTime = currentImpactTime;
+
+        hitCount++; // hitCount 증가
+
+        ImpactEvent?.Invoke();
+    }
+
     public void Dead()
     {
-        if (isDead)
-        {
-            Debug.Log("Die!");
-        }
+        Debug.Log("Die!");
+        // GameManager에서 이벤트 실행
     }
     #endregion
 }

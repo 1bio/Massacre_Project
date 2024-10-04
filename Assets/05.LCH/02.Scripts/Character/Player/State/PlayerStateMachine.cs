@@ -5,17 +5,15 @@ public class PlayerStateMachine : StateMachine
     [field: Header("클래스")]
     [field: SerializeField] public InputReader InputReader { get; private set; }
 
-    [field: SerializeField] public Attack[] Attack { get; private set; }
-
     [field: SerializeField] public Targeting Targeting { get; private set; }
 
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
 
-    [field: SerializeField] public MeleeWeaponComponent WeaponComponent { get; private set; }
-
     [field: SerializeField] public Health Health { get; private set; }
 
-    [field: SerializeField] public RangeWeaponComponent Projectile { get; private set; }
+    [field: SerializeField] public MeleeWeaponComponent MeleeComponent { get; private set; }
+
+    [field: SerializeField] public RangeWeaponComponent RangeComponent { get; private set; }
 
 
     [field: Header("컴포넌트")]
@@ -33,15 +31,21 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public float RotationSpeed { get; private set; }
 
-    [field: SerializeField] public float RollingCoolTime { get; private set; } = 3f;
+    [field: SerializeField] public float currentHealth { get; private set; }
 
     [field: SerializeField] public float MeleeWeaponDetectionRange { get; private set; } = 5f;
 
     [field: SerializeField] public float RangeWeaponDetectionRange { get; private set; } = 15f;
 
+
+    // 초기화
     private void Start()
     {
+        MoveSpeed = DataManager.instance.playerData.statusData.moveSpeed; // 이동 속도 
+        currentHealth = DataManager.instance.playerData.statusData.maxHealth; // 체력
+
+        DataManager.instance.SaveData();
+
         ChangeState(new PlayerFreeLookState(this));
     }
-
 }

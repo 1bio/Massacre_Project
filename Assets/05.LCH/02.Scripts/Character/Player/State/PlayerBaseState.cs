@@ -10,7 +10,6 @@ public abstract class PlayerBaseState : State
         this.stateMachine = stateMachine;
     }
 
-
     #region Main Methods
     // 입력 처리
     public Vector3 CalculatorMovement()
@@ -34,7 +33,7 @@ public abstract class PlayerBaseState : State
         stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.movement) * stateMachine.MoveSpeed * deltaTime);
     }
 
-    // 이동(넉백과 같은 물리적인 힘)
+    // 이동(넉백과 같은 물리적인 힘의 이동)
     protected void Move(float deltaTime)
     {
         Move(Vector3.zero, deltaTime);
@@ -47,7 +46,7 @@ public abstract class PlayerBaseState : State
             return;
             
         movement.y = 0f;
-
+        
         stateMachine.transform.rotation = Quaternion.Lerp(
             stateMachine.transform.rotation,
             Quaternion.LookRotation(movement),

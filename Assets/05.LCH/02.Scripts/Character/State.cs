@@ -8,7 +8,7 @@ public abstract class State
     public abstract void Tick(float deltaTime); // 매 프레임마다 수행
     public abstract void Exit(); // 상태 종료 시
 
-    // 애니메이션 normalizedTime 값 리턴
+    // 공격 애니메이션 normalizedTime 값 리턴
     protected float GetNormalizedTime(Animator animator)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);

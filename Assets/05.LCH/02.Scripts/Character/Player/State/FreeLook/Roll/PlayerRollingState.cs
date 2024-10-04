@@ -20,15 +20,11 @@ public class PlayerRollingState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.Animator.CrossFadeInFixedTime(RollAnimationHash, CrossFadeDuration);
-
-        lastTime = stateMachine.RollingCoolTime;
     }
 
 
     public override void Tick(float deltaTime)
     {
-        /*CheckCoolTime(); // ÄðÅ¸ÀÓ Ã¼Å©*/
-
         stateMachine.ForceReceiver.RollingForce(deltaTime);
 
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
@@ -48,24 +44,4 @@ public class PlayerRollingState : PlayerBaseState
     {
     }
     #endregion
-
-
-    #region Main Methods
-    public void CheckCoolTime()
-    {
-        currentTime = Time.time;
-
-        if (currentTime - lastTime >= stateMachine.RollingCoolTime)
-        {
-            stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-            return;
-        }
-
-        lastTime = currentTime;
-
-        stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
-        return;
-    }
-    #endregion
-
 }

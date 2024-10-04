@@ -1,21 +1,24 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
+    // BlendTree 애니메이션 변수
     public readonly int FreeLookWithMelee = Animator.StringToHash("FreeLookWithMelee"); // 근거리 블렌드 트리
 
     public readonly int FreeLookWithRange = Animator.StringToHash("FreeLookWithRange"); // 원거리 블렌드 트리
 
-    private readonly int Change = Animator.StringToHash("Change");
-
     public readonly int Velocity = Animator.StringToHash("Velocity"); // 애니메이션 파라미터
+
+    private readonly int Change = Animator.StringToHash("Change"); // 무기 스왑 파라미터
 
     public readonly float CrossFadeDuration = 0.1f;
 
     public readonly float DampTime = 0.1f;
 
-    private bool IsChanged;
+    private bool IsChanged; // false = Melee Weapon, true = Range Weapon
+
 
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -57,15 +60,7 @@ public class PlayerFreeLookState : PlayerBaseState
         /*Aiming(); // 조준
         AutoRotate(deltaTime); // 자동 회전(아마 제거할 것 같음)*/
 
-        // Target Detection
-        if (IsChanged)
-        {
-            stateMachine.Targeting.SetRadius(stateMachine.RangeWeaponDetectionRange);
-        }
-        else
-        {
-            stateMachine.Targeting.SetRadius(stateMachine.MeleeWeaponDetectionRange);
-        }
+        GetWeaponRange();
 
         // Attacking
         if (stateMachine.InputReader.IsAttacking)
@@ -75,7 +70,7 @@ public class PlayerFreeLookState : PlayerBaseState
                 stateMachine.ChangeState(new PlayerMeleeAttackState(stateMachine, 0));
                 return;
             }
-            else if(IsChanged && stateMachine.WeaponPrefabs[1].activeSelf) // Range
+            else if (IsChanged && stateMachine.WeaponPrefabs[1].activeSelf) // Range
             {
                 stateMachine.ChangeState(new PlayerRangeAttackState(stateMachine));
                 return;
@@ -89,6 +84,8 @@ public class PlayerFreeLookState : PlayerBaseState
             return;
         }
 
+
+        // <=====  Locomotion State =====>
         // Idling
         if (stateMachine.InputReader.MoveValue == Vector2.zero)
         {
@@ -109,6 +106,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
 
     #region Main Methods
+    // 무기 스왑
     private void Swap()
     {
         if (stateMachine.WeaponPrefabs[0].activeSelf) 
@@ -130,6 +128,19 @@ public class PlayerFreeLookState : PlayerBaseState
             IsChanged = false;                         
         }
     }
+
+    // 무기 감지 범위 설정
+    private void GetWeaponRange()
+    {
+        if (IsChanged)
+        {
+            stateMachine.Targeting.SetRadius(stateMachine.RangeWeaponDetectionRange);
+        }
+        else
+        {
+            stateMachine.Targeting.SetRadius(stateMachine.MeleeWeaponDetectionRange);
+        }
+    }
     #endregion
 
 
@@ -145,7 +156,7 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         if(stateMachine.Health.hitCount == 1)
         {
-            stateMachine.ChangeState(new PlayerLightImpactState(stateMachine));
+            stateMachine.ChangeState(new PlayerImpactState(stateMachine));
             return;
         }
     }
