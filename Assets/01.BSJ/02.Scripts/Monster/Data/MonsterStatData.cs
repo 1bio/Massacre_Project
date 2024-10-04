@@ -13,6 +13,7 @@ public class MonsterStatData : ScriptableObject, IMonsterCombat
     public int MoveSpeed => _moveSpeed;
     public int TurnSpeed => _turnSpeed;
 
+    public bool IsTurning { get; set; }
     public bool IsDead { get; set; }
 
     public MonsterHealth MonsterHealth { get => _monsterHealth; }

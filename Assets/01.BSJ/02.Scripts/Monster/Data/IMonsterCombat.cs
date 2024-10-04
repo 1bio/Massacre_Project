@@ -7,6 +7,7 @@ public interface IMonsterCombat
     int MoveSpeed { get; }
     int TurnSpeed { get; }
 
+    bool IsTurning { get; set; }
     bool IsDead { get; set; }    // 생사 여부
 }
 

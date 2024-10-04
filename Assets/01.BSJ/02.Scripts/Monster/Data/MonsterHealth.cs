@@ -5,13 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class MonsterHealth
 {
-    [SerializeField] private int _health;
-    [SerializeField] private int _maxHealth;
+    [SerializeField] private int _currentHealth;
+    [SerializeField] private int _lastHealth;
 
-    public int Health
+    public int CurrentHealth
     {
-        get => _health;
-        set => _health = value;
+        get => _currentHealth;
+        set => _currentHealth = value;
     }
-    public int MaxHealth => _maxHealth;
+    public int LastHealth
+    {
+        get => _lastHealth;
+        set => _lastHealth = value;
+    }
 }

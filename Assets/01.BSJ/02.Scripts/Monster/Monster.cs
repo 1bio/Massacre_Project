@@ -11,13 +11,8 @@ public enum MonsterStateType
     Attack,
     Dead,
     Movement,
+    GotHit,
     Null
-}
-
-public enum MonsterMovementControlType
-{
-    PlayerControlled,
-    AnimationDriven
 }
 
 public class Monster : MonoBehaviour
@@ -41,6 +36,7 @@ public class Monster : MonoBehaviour
     public List<PointNode> Path => _path;
     public Astar Astar => _astar;
     public PointGrid PointGrid => _pointGrid;
+    public Vector3 Direction => _direction;
 
     // 애니메이션
     public Animator Animator => _animator;
@@ -50,9 +46,9 @@ public class Monster : MonoBehaviour
         get => _isLockedInAnimation;
         set => _isLockedInAnimation = value;
     }
+    public float LocomotionBlendValue => _locomotionBlendValue;
 
     // 몬스터 상태
-    private MonsterMovementControlType _movementType = MonsterMovementControlType.PlayerControlled;
     [SerializeField] private MonsterStateType _monsterStateType = MonsterStateType.Spawn;
 
     // 몬스터 능력치
@@ -64,6 +60,7 @@ public class Monster : MonoBehaviour
     private Astar _astar;
     private PointGrid _pointGrid;
     private List<PointNode> _path;
+    private Vector3 _direction;
 
     // 애니메이션
     private Animator _animator;
@@ -71,10 +68,10 @@ public class Monster : MonoBehaviour
     private bool _isLockedInAnimation = false;
     private string _currentAnimationName = string.Empty;    // 현재 애니메이션 이름
     private float _animationElapsedTime; // 애니메이션 경과 시간
-
-    private float _locomotionSpeed = 0f;
-    private float _previousLocomotionSpeed = 0f;
-    [SerializeField] private float _locomotionSpeedChangeRate = 10f;
+    [SerializeField] private float _animatorSpeed = 1.5f;
+    private float _locomotionBlendValue = 0f;
+    [SerializeField] private float _blendTransitionSpeed = 10f;
+    
 
 
     private void Awake()
@@ -103,29 +100,28 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public float GetDistanceToTarget()
+    // look at target
+    public void LookAtTarget(Monster monster)
     {
-        // target 여부 확인 및 거리 체크
-        return 0;
+        StartCoroutine(SmoothLookAtCoroutine(monster));
     }
 
-    public void SetMovementControl(MonsterMovementControlType moveType)
+    private IEnumerator SmoothLookAtCoroutine(Monster monster)
     {
-        this._movementType = moveType;
+        Vector3 targetPos = monster.Astar.TargetTransform.position;
+        _direction = (targetPos - monster.transform.position).normalized;
 
-        if (_movementType == MonsterMovementControlType.AnimationDriven)
-        {
-            _animator.applyRootMotion = true;
-        }
-        else
-        {
-            _animator.applyRootMotion = false;
-        }
+        Quaternion lookRotation = Quaternion.LookRotation(_direction);
+
+        monster.transform.rotation = Quaternion.Slerp(monster.transform.rotation, lookRotation, monster.MonsterAbility.TurnSpeed * Time.deltaTime);
+
+        yield return null;
     }
-    
+
+
     public void UnLockAnimation(string animationName)
     {
-        _animationElapsedTime += Time.deltaTime;
+        _animationElapsedTime += Time.deltaTime * _animatorSpeed;
 
         if (MonsterAbility.MonsterAttack.IsAttack)
         {
@@ -134,7 +130,7 @@ public class Monster : MonoBehaviour
                 _nextClipInfo = _animator.GetNextAnimatorClipInfo(0);
             }
 
-            if (_nextClipInfo.Length > 0)
+            if (_nextClipInfo != null && _nextClipInfo.Length > 0)
             {
                 StartCoroutine(CheckAndUnlockAnimation(animationName));
             }
@@ -146,80 +142,79 @@ public class Monster : MonoBehaviour
         foreach (AnimatorClipInfo clipInfo in _nextClipInfo)
         {
             float clipLength = clipInfo.clip.length;
+            float actualClipLength = clipLength / _animatorSpeed;
 
             Debug.Log(clipInfo.clip.name);
 
             if (clipInfo.clip.name == animationName)
             {
-                if (clipLength * 0.8f <= _animationElapsedTime)
+                if (actualClipLength * 0.85f <= _animationElapsedTime)
                 {
                     _isLockedInAnimation = false;
                     MonsterAbility.MonsterAttack.IsAttack = false;
+                    MonsterAbility.MonsterAttack.IsEnableWeapon = false;
                     _nextClipInfo = null;
                     break;
                 }
             }
         }
-
-        yield return null;
+        yield return new WaitForEndOfFrame();
     }
+
 
     // Move
     public void SetWalkAnimation()
     {
-        _animator.SetFloat("Locomotion", 1);
-        /*SetLocomotionAnimation(1);*/
+        SmoothLocomotionTransition(1);
     }
 
     public void SetIdleAnimation()
     {
-        _animator.SetFloat("Locomotion", 0);
-        /*SetLocomotionAnimation(0);*/
+        SmoothLocomotionTransition(0);
     }
 
-    private void SetLocomotionAnimation(int targetSpeed)
+    private void SmoothLocomotionTransition(int targetBlendValue)
     {
-        if (_locomotionSpeed < targetSpeed)
+        _locomotionBlendValue = Mathf.Lerp(_locomotionBlendValue, targetBlendValue, _blendTransitionSpeed * Time.deltaTime);
+
+        if (Mathf.Abs(_locomotionBlendValue - targetBlendValue) <= 0.1f)
         {
-            _locomotionSpeed += Time.deltaTime * _locomotionSpeedChangeRate;
-            if (_locomotionSpeed > targetSpeed)
-                _locomotionSpeed = targetSpeed;
-        }
-        else if (_locomotionSpeed > targetSpeed)
-        {
-            _locomotionSpeed -= Time.deltaTime * _locomotionSpeedChangeRate;
-            if (_locomotionSpeed < targetSpeed)
-                _locomotionSpeed = targetSpeed;
+            _locomotionBlendValue = targetBlendValue;
         }
 
-        if (_locomotionSpeed != _previousLocomotionSpeed)
-        {
-            _animator.SetFloat("Locomotion", _locomotionSpeed);
-            _previousLocomotionSpeed = _locomotionSpeed;
-        }
-
-        _currentAnimationName = "Locomotion";
+        _animator.SetFloat("Locomotion", _locomotionBlendValue);
     }
+
 
     // Attack
-    public void SetRandomAttackAnimation(int totalAttackCount)
+    public void SetRandomAttackAnimation()
     {
+        SmoothLocomotionTransition(0);
+
         _animationElapsedTime = 0;
         MonsterAbility.MonsterAttack.IsAttack = true;
 
-        int randNum = Random.Range(0, totalAttackCount) + 1;
+        int randNum = Random.Range(0, MonsterAbility.MonsterAttack.AttackTotalCount) + 1;
         _currentAnimationName = $"Attack {randNum}";
         _animator.SetTrigger(_currentAnimationName);
+
+        _isLockedInAnimation = true;
+    }
+
+
+    // Got Hit
+    public void SetGotHitAnimation()
+    {
+        _currentAnimationName = "Got Hit";
+        _animator.SetTrigger(_currentAnimationName);
+
+        _isLockedInAnimation = true;
     }
 
 
     // Animation Event
-    public void SetAttack()
+    public void EnableWeapon()
     {
-        _monsterAbility.MonsterAttack.IsAttack = true;
-        if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-        {
-            _monsterAbility.MonsterAttack.IsAttack = false;
-        }
+        _monsterAbility.MonsterAttack.IsEnableWeapon = true;
     }
 }

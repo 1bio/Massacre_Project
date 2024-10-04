@@ -1,39 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class MonsterBehaviourAttack : MonsterBehaviour
 {
-    private bool _isTurning = false;
-
+    private bool _hasAttacked;
 
     public override void OnBehaviourStart(Monster monster)
     {
-        monster.IsLockedInAnimation = true;
-        LookAtTarget(monster);
-        monster.SetRandomAttackAnimation(3);
+        _hasAttacked = false;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        monster.UnLockAnimation(monster.CurrentAniamtionName);
-    }   
+        if (monster.IsLockedInAnimation)
+        {
+            monster.UnLockAnimation(monster.CurrentAniamtionName);
+        }
+        else
+        {
+            monster.LookAtTarget(monster);
+        }
+
+        if (Vector3.Angle(monster.transform.forward, monster.Direction) <= 10f && !_hasAttacked)
+        {
+            monster.SetRandomAttackAnimation();
+            _hasAttacked = true;
+        }
+    }
 
     public override void OnBehaviourEnd(Monster monster)
     {
         monster.Astar.StartPathCalculation();
-    }
-
-    private void LookAtTarget(Monster monster)
-    {
-        _isTurning = true;
-        Vector3 targetPos = monster.Astar.TargetTransform.position;
-        Vector3 direction = (targetPos - monster.transform.position).normalized;
-
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-
-        monster.transform.rotation = Quaternion.Slerp(monster.transform.rotation, lookRotation, monster.MonsterAbility.TurnSpeed * Time.deltaTime);
-        _isTurning = false;
     }
 }

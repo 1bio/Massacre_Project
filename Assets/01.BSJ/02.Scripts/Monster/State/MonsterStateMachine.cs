@@ -14,6 +14,7 @@ public class MonsterStateMachine : StateMachine
     protected MonsterBehaviourAttack _attackBehaviour;
     protected MonsterBehaviourMovement _moveBehaviour;
     protected MonsterBehaviourDead _deadBehaviour;
+    protected MonsterBehaviourGotHit _gotHitBehaviour;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class MonsterStateMachine : StateMachine
         _attackBehaviour = new MonsterBehaviourAttack();
         _moveBehaviour = new MonsterBehaviourMovement();
         _deadBehaviour = new MonsterBehaviourDead();
+        _gotHitBehaviour = new MonsterBehaviourGotHit();
     }
 
     private new void Update()
@@ -61,5 +63,11 @@ public class MonsterStateMachine : StateMachine
     {
         _monster.MonsterStateType = MonsterStateType.Dead;
         ChangeBehaviour(_deadBehaviour);
+    }
+
+    protected void OnGotHit() 
+    {
+        _monster.MonsterStateType = MonsterStateType.GotHit;
+        ChangeBehaviour(_gotHitBehaviour);
     }
 }

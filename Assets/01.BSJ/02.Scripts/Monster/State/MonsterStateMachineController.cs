@@ -30,6 +30,12 @@ public class MonsterStateMachineController : MonsterStateMachine
                 }
                 else
                 {
+                    if (_monster.MonsterAbility.MonsterHealth.CurrentHealth != _monster.MonsterAbility.MonsterHealth.LastHealth)
+                    {
+                        OnGotHit();
+                        _monster.MonsterAbility.MonsterHealth.LastHealth = _monster.MonsterAbility.MonsterHealth.CurrentHealth;
+                    }
+
                     if (_monster.MonsterStateType != MonsterStateType.Movement)
                         OnMove();
                 }
@@ -44,8 +50,7 @@ public class MonsterStateMachineController : MonsterStateMachine
             _monster.MonsterAbility = new MonsterCombatAbility(_monster.MonsterStatData);
         }
 
-
-        if (_monster.MonsterAbility.MonsterHealth.Health > 0)
+        if (_monster.MonsterAbility.MonsterHealth.CurrentHealth > 0)
         {
             return true;
         }

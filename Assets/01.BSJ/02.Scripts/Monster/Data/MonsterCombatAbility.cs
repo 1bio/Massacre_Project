@@ -9,8 +9,8 @@ public class MonsterCombatAbility : IMonsterCombat
     [SerializeField] private int _moveSpeed;
     [SerializeField] private int _turnSpeed;
 
+    [SerializeField] private bool _isTurning = false;
     [SerializeField] private bool _isDead = false;
-    [SerializeField] private bool _isAttack = false;
 
     [SerializeField] private MonsterHealth _monsterHealth;
     [SerializeField] private MonsterAttack _monsterAttack;
@@ -31,6 +31,11 @@ public class MonsterCombatAbility : IMonsterCombat
     public int MoveSpeed => _moveSpeed;
     public int TurnSpeed => _turnSpeed;
 
+    public bool IsTurning
+    {
+        get => _isTurning;
+        set => _isTurning = value;
+    }
     public bool IsDead
     {
         get => _isDead;

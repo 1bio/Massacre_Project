@@ -7,7 +7,7 @@ public class MonsterBehaviourSpawn : MonsterBehaviour
 {
     private Animator _animator;
     private float _currentTime;
-    private float _spawnDuration = 2f;
+    private float _spawnDuration = 1f;
 
     public override void OnBehaviourStart(Monster monster)
     {
