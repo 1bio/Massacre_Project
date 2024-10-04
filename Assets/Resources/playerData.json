@@ -1,0 +1,60 @@
+{
+    "statusData": {
+        "moveSpeed": 7.0,
+        "currentHealth": 0.0,
+        "maxHealth": 100.0,
+        "defense": 0.0
+    },
+    "skillData": [
+        {
+            "skillName": "차징샷",
+            "level": 1,
+            "damage": 15.0,
+            "coolDown": 2.0
+        },
+        {
+            "skillName": "연발사격",
+            "level": 1,
+            "damage": 7.0,
+            "coolDown": 5.0
+        },
+        {
+            "skillName": "폭탄화살",
+            "level": 1,
+            "damage": 20.0,
+            "coolDown": 4.0
+        }
+    ],
+    "attackData": [
+        {
+            "AnimationName": "Attack1@Melee",
+            "ComboAttackIndex": 1,
+            "ComboAttackTime": 0.6000000238418579,
+            "TransitionDuration": 0.10000000149011612,
+            "Force": 0.75,
+            "ForceTime": 0.3499999940395355,
+            "Damage": 10.0,
+            "KnockBack": 0.5
+        },
+        {
+            "AnimationName": "Attack2@Melee",
+            "ComboAttackIndex": 2,
+            "ComboAttackTime": 0.5,
+            "TransitionDuration": 0.10000000149011612,
+            "Force": 0.5,
+            "ForceTime": 0.3499999940395355,
+            "Damage": 15.0,
+            "KnockBack": 0.5
+        },
+        {
+            "AnimationName": "Attack3@Melee",
+            "ComboAttackIndex": -1,
+            "ComboAttackTime": 0.0,
+            "TransitionDuration": 0.10000000149011612,
+            "Force": 0.75,
+            "ForceTime": 0.3499999940395355,
+            "Damage": 20.0,
+            "KnockBack": 0.699999988079071
+        }
+    ]
+}

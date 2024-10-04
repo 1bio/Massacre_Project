@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MeleeWeaponComponent : MonoBehaviour
 {
@@ -20,7 +17,7 @@ public class MeleeWeaponComponent : MonoBehaviour
 
 
     #region Collision Methods
-    private void OnTriggerEnter(Collider other) // 몬스터 피격 시 처리
+    private void OnTriggerEnter(Collider other) // 몬스터 피격 처리
     {
         if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
         {
