@@ -15,11 +15,13 @@ MonoBehaviour:
   _moveSpeed: 3
   _turnSpeed: 4
   _monsterHealth:
-    _health: 100
+    _currentHealth: 100
+    _lastHealth: 100
     _maxHealth: 100
   _monsterAttack:
     _attackPower: 0
     _attackCooldown: 0
+    _attackTotalCount: 0
   _monsterTargetDistance:
     _minTargetDistance: 0
     _maxTargetDistance: 2

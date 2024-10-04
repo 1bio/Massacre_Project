@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class MonsterBehaviourDead : MonsterBehaviour
 {
-    public override void OnBehaviourEnd(Monster monster)
-    {
-        throw new System.NotImplementedException();
-    }
+    private float _currentTime;
+    private float _deathDuration = 2f;
+
+    private GameObject _monsterObj;
 
     public override void OnBehaviourStart(Monster monster)
     {
-        throw new System.NotImplementedException();
+        monster.SetDeadAnimation();
+        _monsterObj = monster.gameObject;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        throw new System.NotImplementedException();
+        _currentTime += Time.deltaTime;
+
+        if (_currentTime > _deathDuration)
+        {
+            monster.IsLockedInAnimation = false;
+            _monsterObj.SetActive(false);
+        }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public override void OnBehaviourEnd(Monster monster)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

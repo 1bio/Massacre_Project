@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MonsterBehaviourGotHit : MonsterBehaviour
 {
-    public override void OnBehaviourEnd(Monster monster)
+    public override void OnBehaviourStart(Monster monster)
     {
         monster.SetGotHitAnimation();
     }
 
-    public override void OnBehaviourStart(Monster monster)
+    public override void OnBehaviourUpdate(Monster monster)
     {
         if (monster.IsLockedInAnimation)
         {
@@ -17,8 +17,8 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
         }
     }
 
-    public override void OnBehaviourUpdate(Monster monster)
+    public override void OnBehaviourEnd(Monster monster)
     {
-        
+
     }
 }

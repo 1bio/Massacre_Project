@@ -17,28 +17,30 @@ public class MonsterStateMachineController : MonsterStateMachine
         // 살아있는지 확인
         if (!IsAlive())
         {
-            OnDead();
+            if (_monster.MonsterStateType != MonsterStateType.Dead)
+                OnDead();
         }
         else
         {
-            // 다른 애니메이션이 실행되고 있는지 확인
-            if (!_monster.IsLockedInAnimation)
-            {
-                if (Vector3.Distance(_monster.Astar.TargetTransform.position, this.transform.position) <= _monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance)
-                {
-                    OnAttack();
-                }
-                else
-                {
-                    if (_monster.MonsterAbility.MonsterHealth.CurrentHealth != _monster.MonsterAbility.MonsterHealth.LastHealth)
-                    {
-                        OnGotHit();
-                        _monster.MonsterAbility.MonsterHealth.LastHealth = _monster.MonsterAbility.MonsterHealth.CurrentHealth;
-                    }
+            HandleLivingState();
+        }
+    }
 
-                    if (_monster.MonsterStateType != MonsterStateType.Movement)
-                        OnMove();
-                }
+    private void HandleLivingState()
+    {
+        // 다른 애니메이션이 실행되고 있는지 확인
+        if (!_monster.IsLockedInAnimation)
+        {
+            if (Vector3.Distance(_monster.Astar.TargetTransform.position, this.transform.position) <= _monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance)
+            {
+                OnAttack();
+            }
+            else
+            {
+                if (_monster.MonsterAbility.MonsterHealth.IsHit)
+                    OnGotHit();
+                else if (_monster.MonsterStateType != MonsterStateType.Movement)
+                    OnMove();
             }
         }
     }
