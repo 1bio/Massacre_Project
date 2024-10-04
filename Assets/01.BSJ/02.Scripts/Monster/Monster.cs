@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -68,10 +69,8 @@ public class Monster : MonoBehaviour
     private bool _isLockedInAnimation = false;
     private string _currentAnimationName = string.Empty;    // 현재 애니메이션 이름
     private float _animationElapsedTime; // 애니메이션 경과 시간
-    private float _locomotionBlendValue = 0f;
+    private float _locomotionBlendValue = 0f; // 0 = Idle, 1 = Walk
     [SerializeField] private float _blendTransitionSpeed = 10f;
-    
-
 
     private void Awake()
     {
@@ -133,6 +132,15 @@ public class Monster : MonoBehaviour
             if (_animator.IsInTransition(0))
             {
                 _nextClipInfo = _animator.GetNextAnimatorClipInfo(0);
+
+                if (_animator.GetNextAnimatorStateInfo(0).IsTag("Attack") || _animator.GetNextAnimatorStateInfo(0).IsTag("Got Hit"))
+                {
+                    _nextClipInfo = _animator.GetNextAnimatorClipInfo(0);
+                }
+                else
+                {
+                    _nextClipInfo = null;
+                }
             }
 
             if (_nextClipInfo != null && _nextClipInfo.Length > 0)
@@ -144,6 +152,9 @@ public class Monster : MonoBehaviour
 
     private IEnumerator CheckAndUnlockAnimation(string animationName)
     {
+        if (!_isLockedInAnimation)
+            yield break;
+
         foreach (AnimatorClipInfo clipInfo in _nextClipInfo)
         {
             float clipLength = clipInfo.clip.length;
@@ -152,13 +163,12 @@ public class Monster : MonoBehaviour
 
             if (clipInfo.clip.name == animationName)
             {
-                if (clipLength * 0.85f <= _animationElapsedTime)
+                if (clipLength * 0.8f <= _animationElapsedTime)
                 {
                     _isLockedInAnimation = false;
                     MonsterAbility.MonsterAttack.IsAttack = false;
                     MonsterAbility.MonsterHealth.IsHit = false;
                     MonsterAbility.MonsterAttack.IsEnableWeapon = false;
-                    _nextClipInfo = null;
                     break;
                 }
             }
@@ -198,36 +208,37 @@ public class Monster : MonoBehaviour
 
         _animationElapsedTime = 0;
         MonsterAbility.MonsterAttack.IsAttack = true;
+        _isLockedInAnimation = true;
 
         int randNum = Random.Range(0, MonsterAbility.MonsterAttack.AttackTotalCount) + 1;
         _currentAnimationName = $"Attack {randNum}";
         _animator.SetTrigger(_currentAnimationName);
-
-        _isLockedInAnimation = true;
     }
 
 
     // Got Hit
     public void SetGotHitAnimation()
     {
+        SmoothLocomotionTransition(0);
+
         _animationElapsedTime = 0;
+        _isLockedInAnimation = true;
 
         _currentAnimationName = "Got Hit";
         _animator.SetTrigger(_currentAnimationName);
-
-        _isLockedInAnimation = true;
     }
 
 
     // Dead
     public void SetDeadAnimation()
     {
+        SmoothLocomotionTransition(0);
+
         _animationElapsedTime = 0;
+        _isLockedInAnimation = true;
 
         _currentAnimationName = "Death";
         _animator.SetTrigger(_currentAnimationName);
-
-        _isLockedInAnimation = true;
     }
 
     public void TakeDamage(int damge)

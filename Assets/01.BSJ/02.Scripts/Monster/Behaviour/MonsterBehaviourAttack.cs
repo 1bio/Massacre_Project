@@ -23,7 +23,7 @@ public class MonsterBehaviourAttack : MonsterBehaviour
             monster.LookAtTarget(monster);
         }
 
-        if (Vector3.Angle(monster.transform.forward, monster.Direction) <= 10f && !_hasAttacked)
+        if (Vector3.Angle(monster.transform.forward, monster.Direction) <= 20f && !_hasAttacked)
         {
             monster.SetRandomAttackAnimation();
             _hasAttacked = true;

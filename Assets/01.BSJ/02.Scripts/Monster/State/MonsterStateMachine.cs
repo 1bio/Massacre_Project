@@ -10,21 +10,9 @@ public class MonsterStateMachine : StateMachine
 
     [SerializeField] protected MonsterBehaviour _currentBehaviour;
 
-    protected MonsterBehaviourSpawn _spawnBehaviour;
-    protected MonsterBehaviourAttack _attackBehaviour;
-    protected MonsterBehaviourMovement _moveBehaviour;
-    protected MonsterBehaviourDead _deadBehaviour;
-    protected MonsterBehaviourGotHit _gotHitBehaviour;
-
     private void Awake()
     {
         _monster = GetComponent<Monster>();
-
-        _spawnBehaviour = new MonsterBehaviourSpawn();
-        _attackBehaviour = new MonsterBehaviourAttack();
-        _moveBehaviour = new MonsterBehaviourMovement();
-        _deadBehaviour = new MonsterBehaviourDead();
-        _gotHitBehaviour = new MonsterBehaviourGotHit();
     }
 
     private new void Update()
@@ -44,30 +32,30 @@ public class MonsterStateMachine : StateMachine
     protected void OnAttack()
     {
         _monster.MonsterStateType = MonsterStateType.Attack;
-        ChangeBehaviour(_attackBehaviour);
+        ChangeBehaviour(new MonsterBehaviourAttack());
     }
 
     protected void OnIdle()
     {
         _monster.MonsterStateType = MonsterStateType.Spawn;
-        ChangeBehaviour(_spawnBehaviour);
+        ChangeBehaviour(new MonsterBehaviourSpawn());
     }
 
     protected void OnMove()
     {
         _monster.MonsterStateType = MonsterStateType.Movement;
-        ChangeBehaviour(_moveBehaviour);
+        ChangeBehaviour(new MonsterBehaviourMovement());
     }
 
     protected void OnDead()
     {
         _monster.MonsterStateType = MonsterStateType.Dead;
-        ChangeBehaviour(_deadBehaviour);
+        ChangeBehaviour(new MonsterBehaviourDead());
     }
 
     protected void OnGotHit() 
     {
         _monster.MonsterStateType = MonsterStateType.GotHit;
-        ChangeBehaviour(_gotHitBehaviour);
+        ChangeBehaviour(new MonsterBehaviourGotHit());
     }
 }

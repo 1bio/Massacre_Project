@@ -11,6 +11,14 @@ public class MonsterHealth
 
     private bool _isHit = false;
 
+    public MonsterHealth(int currentHealth, int lastHealth, int maxHealth, bool isHit)
+    {
+        _currentHealth = currentHealth;
+        _lastHealth = lastHealth;
+        _maxHealth = maxHealth;
+        _isHit = isHit;
+    }
+
     public int CurrentHealth
     {
         get => _currentHealth;
@@ -21,7 +29,11 @@ public class MonsterHealth
         get => _lastHealth;
         set => _lastHealth = value;
     }
-    public int MaxHealth => _maxHealth;
+    public int MaxHealth
+    {
+        get => _maxHealth;
+        set => _maxHealth = value;
+    }
 
     public bool IsHit
     {

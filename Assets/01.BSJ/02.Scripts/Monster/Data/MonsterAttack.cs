@@ -12,9 +12,30 @@ public class MonsterAttack
     private bool _isAttack = false;
     private bool _isEnableWeapon = false;
 
-    public int AttackPower => _attackPower;
-    public float AttackCooldown => _attackCooldown;
-    public int AttackTotalCount => _attackTotalCount;
+    public MonsterAttack(int attackPower, float attackCooldown, int attackTotalCount, bool isAttack, bool isEnableWeapon)
+    {
+        _attackPower = attackPower;
+        _attackCooldown = attackCooldown;
+        _attackTotalCount = attackTotalCount;
+        _isAttack = isAttack;
+        _isEnableWeapon = isEnableWeapon;
+    }
+
+    public int AttackPower
+    {
+        get => _attackPower;
+        set => _attackPower = value;
+    }
+    public float AttackCooldown 
+    {
+        get => _attackCooldown;
+        set => _attackCooldown = value;
+    } 
+    public int AttackTotalCount
+    {
+        get => _attackTotalCount;
+        set => _attackTotalCount = value;
+    }
 
     public bool IsAttack
     {
