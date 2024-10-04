@@ -5,75 +5,64 @@ using UnityEngine;
 public class MonsterSpawnManager : MonoBehaviour
 {
     // Monster Spawn
-    private float currentTime;
-    [SerializeField] private int spawnLimit;
-    [SerializeField] private int spawnCooldown;
-    
+    private float _currentTime;
+    [SerializeField] private int _spawnLimit;
+    [SerializeField] private float _spawnCooldown; // `int`에서 `float`로 변경하여 더 세밀한 조정 가능
 
     // Total Monster Count
-    [SerializeField] private int monsterCount;
-
+    [SerializeField] private int _monsterCount;
 
     // Monster Wave
-    private int currentWave;
-    [SerializeField] private GameObject[] firstWaveMonsters;
-    [SerializeField] private GameObject[] secondWaveMonsters;
-    [SerializeField] private GameObject[] thirdWaveMonsters;
-    private Dictionary<int, GameObject[]> monsterWaves;
-
+    private int _currentWave;
+    [SerializeField] private GameObject[] _firstWaveMonsters;
+    [SerializeField] private GameObject[] _secondWaveMonsters;
+    [SerializeField] private GameObject[] _thirdWaveMonsters;
+    private Dictionary<int, GameObject[]> _monsterWaves;
 
     private void Awake()
     {
-        currentTime = 0;
-        currentWave = 1;
+        _currentTime = 0;
+        _currentWave = 1;
 
-        monsterWaves = new Dictionary<int, GameObject[]>()
+        _monsterWaves = new Dictionary<int, GameObject[]>()
         {
-            { 1, firstWaveMonsters },
-            { 2, secondWaveMonsters },
-            { 3, thirdWaveMonsters }
+            { 1, _firstWaveMonsters },
+            { 2, _secondWaveMonsters },
+            { 3, _thirdWaveMonsters }
         };
     }
 
     private void Update()
     {
-        currentTime += Time.deltaTime;
+        _currentTime += Time.deltaTime;
 
-        if (currentTime >= spawnCooldown && IsMonsterCountWithinSpawnLimit())
+        if (_currentTime >= _spawnCooldown && IsMonsterCountWithinSpawnLimit())
         {
             SpawnMonsterWave();
-            currentTime = 0f;
+            _currentTime = 0f;
         }
     }
 
     private void SpawnMonsterWave()
     {
-        if (monsterWaves.ContainsKey(currentWave) && monsterWaves[currentWave].Length > 0)
+        if (_monsterWaves.ContainsKey(_currentWave) && _monsterWaves[_currentWave].Length > 0)
         {
             OnSetActiveMonsters();
         }
-        currentWave++;
+        _currentWave++;
     }
 
     private void OnSetActiveMonsters()
     {
-        foreach (GameObject monster in monsterWaves[currentWave])
+        foreach (GameObject monster in _monsterWaves[_currentWave])
         {
             if (monster != null)
             {
                 monster.SetActive(true);
-                monsterCount++;
+                _monsterCount++;
             }
         }
     }
 
-    private bool IsMonsterCountWithinSpawnLimit()
-    {
-        if (monsterCount <= spawnLimit)
-        {
-            return true;
-        }
-
-        return false;
-    }
+    private bool IsMonsterCountWithinSpawnLimit() => _monsterCount <= _spawnLimit;
 }

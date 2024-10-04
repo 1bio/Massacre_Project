@@ -5,27 +5,35 @@ using UnityEngine.TextCore.Text;
 
 public class MonsterBehaviourAttack : MonsterBehaviour
 {
+    private bool _isTurning = false;
 
-    [SerializeField] private float turnSpeed = 2.75f;
 
     public override void OnBehaviourStart(Monster monster)
     {
-
+        monster.IsLockedInAnimation = true;
+        LookAtTarget(monster);
+        monster.SetRandomAttackAnimation(3);
     }
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        LookAtTarget(monster);
+        monster.UnLockAnimation(monster.CurrentAniamtionName);
     }   
 
     public override void OnBehaviourEnd(Monster monster)
     {
-        
+        monster.Astar.StartPathCalculation();
     }
 
     private void LookAtTarget(Monster monster)
     {
-        //monster.transform.rotation = Quaternion.Lerp(monster.transform.rotation, Quaternion.LookRotation(monster.GetDirectionToTarget(), Vector3.up), turnSpeed * Time.deltaTime);
-    }
+        _isTurning = true;
+        Vector3 targetPos = monster.Astar.TargetTransform.position;
+        Vector3 direction = (targetPos - monster.transform.position).normalized;
 
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+        monster.transform.rotation = Quaternion.Slerp(monster.transform.rotation, lookRotation, monster.MonsterAbility.TurnSpeed * Time.deltaTime);
+        _isTurning = false;
+    }
 }

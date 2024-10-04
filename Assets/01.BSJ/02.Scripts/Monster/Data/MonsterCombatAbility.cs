@@ -4,83 +4,53 @@ using UnityEngine;
 
 public class MonsterCombatAbility : IMonsterCombat
 {
-    private MonsterStatData statData;
+    private MonsterStatData _statData;
 
-    [SerializeField] private int health;
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int moveSpeed;
-    [SerializeField] private int turnSpeed;
+    [SerializeField] private int _moveSpeed;
+    [SerializeField] private int _turnSpeed;
 
-    [SerializeField] private int attackPower;
-    [SerializeField] private float attackCooldown;
+    [SerializeField] private bool _isDead = false;
+    [SerializeField] private bool _isAttack = false;
 
-    [SerializeField] private float minTargetDistance;
-    [SerializeField] private float maxTargetDistance;
-    [SerializeField] private float idealTargetDistance;
-    [SerializeField] private float idealTargetDistanceThreshold;
-
-    [SerializeField] private bool isDead = false;
-    [SerializeField] private bool isAttacking = false;
-    [SerializeField] private bool isStaggered = false;
-    [SerializeField] private bool isMoving = false;
-
+    [SerializeField] private MonsterHealth _monsterHealth;
+    [SerializeField] private MonsterAttack _monsterAttack;
+    [SerializeField] private MonsterTargetDistance _monsterTargetDistance;
 
     public MonsterCombatAbility(MonsterStatData statData)
     {
-        this.statData = statData;
+        _statData = statData;
 
-        health = statData.maxHealth;
-        maxHealth = statData.maxHealth;
-        moveSpeed = statData.moveSpeed;
-        turnSpeed = statData.turnSpeed;
+        _moveSpeed = statData.MoveSpeed;
+        _turnSpeed = statData.TurnSpeed;
 
-        attackPower = statData.attackPower;
-        attackCooldown = statData.attackCooldown;
-
-        minTargetDistance = statData.minTargetDistance;
-        maxTargetDistance = statData.maxTargetDistance;
-        idealTargetDistance = statData.idealTargetDistance;
-        idealTargetDistanceThreshold = statData.idealTargetDistanceThreshold;
+        _monsterHealth = statData.MonsterHealth;
+        _monsterAttack = statData.MonsterAttack;
+        _monsterTargetDistance = statData.MonsterTargetDistance;
     }
 
-
-    public int Health
-    {
-        get => health;
-        set => health = value;
-    }
-    public int MaxHealth => maxHealth;
-    public int MoveSpeed => moveSpeed;
-    public int TurnSpeed => turnSpeed;
-    public int AttackPower => attackPower;
-    public float AttackCooldown => attackCooldown;
-
-    public float MinTargetDistance => minTargetDistance;
-    public float MaxTargetDistance => maxTargetDistance;
-    public float IdealTargetDistance => idealTargetDistance;
-    public float IdealTargetDistanceThreshold => idealTargetDistanceThreshold;
+    public int MoveSpeed => _moveSpeed;
+    public int TurnSpeed => _turnSpeed;
 
     public bool IsDead
     {
-        get => isDead;
-        set => isDead = value;
+        get => _isDead;
+        set => _isDead = value;
     }
 
-    public bool IsAttacking
+    public MonsterHealth MonsterHealth
     {
-        get => isAttacking;
-        set => isAttacking = value;
+        get => _monsterHealth;
+        set => _monsterHealth = value;
     }
 
-    public bool IsStaggered
-    {
-        get => isStaggered;
-        set => isStaggered = value;
+    public MonsterAttack MonsterAttack {
+        get => _monsterAttack;
+        set => MonsterAttack = value; 
     }
 
-    public bool IsMoving
+    public MonsterTargetDistance MonsterTargetDistance
     {
-        get => isMoving;
-        set => isMoving = value;
+        get => _monsterTargetDistance;
+        set => _monsterTargetDistance = value;
     }
 }

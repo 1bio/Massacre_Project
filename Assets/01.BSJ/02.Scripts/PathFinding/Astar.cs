@@ -7,63 +7,68 @@ using UnityEngine.UIElements;
 
 public class Astar : MonoBehaviour
 {
-    public List<PointNode> Path => path;
-    public bool HasTargetMoved => hasTargetMoved;
+    public Transform TargetTransform => _targetTransform;
+    public List<PointNode> Path => _path;
+    public bool HasTargetMoved => _hasTargetMoved;
 
-    private Monster monster;
-    private PointGrid grid;
+    private Monster _monster;
+    private PointGrid _grid;
 
-    private Transform startTransform;
-    private Transform targetTransform;
-    private Vector3 lastTargetPos;
+    private Transform _targetTransform;
+    private Vector3 _lastTargetPos;
 
-    [SerializeField] private List<PointNode> path;
-    private bool hasTargetMoved;
-    private bool isCalculating = false;
+    [SerializeField] private List<PointNode> _path;
+    private bool _hasTargetMoved;
+    private bool _isCalculating = false;
 
     // FindPath 호출할 거리
 
     private void Awake()
     {
-        grid = FindObjectOfType<PointGrid>();
-        targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        monster = GetComponent<Monster>();
-        lastTargetPos = targetTransform.position;
+        _grid = FindObjectOfType<PointGrid>();
+        _targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        _monster = GetComponent<Monster>();
+        _lastTargetPos = _targetTransform.position;
     }
 
     private void Start()
     {
-        StartCoroutine(CalculatePathCoroutine());
+        StartPathCalculation();
     }
 
     private void Update()
     {
-        if (targetTransform != null)
+        if (_targetTransform != null)
         {
             OnHasTargetMoved();
         }
 
-        if (hasTargetMoved && !isCalculating)
+        if (_hasTargetMoved && !_isCalculating)
         {
-            StartCoroutine(CalculatePathCoroutine());
+            StartPathCalculation();
         }
+    }
+
+    public void StartPathCalculation()
+    {
+        StartCoroutine(CalculatePathCoroutine());
     }
 
     private IEnumerator CalculatePathCoroutine()
     {
-        isCalculating = true;
-        grid.InitializeNodeValues();
-        path = FindPath(this.transform.position, targetTransform.position);
-        lastTargetPos = targetTransform.position;
-        isCalculating = false;
+        _isCalculating = true;
+        _grid.InitializeNodeValues();
+        _path = FindPath(this.transform.position, _targetTransform.position);
+        _lastTargetPos = _targetTransform.position;
+        _isCalculating = false;
 
         yield return null; // 다음 프레임으로 이동
     }
 
-    public List<PointNode> FindPath(Vector3 startPos, Vector3 targetPos)
+    private List<PointNode> FindPath(Vector3 startPos, Vector3 targetPos)
     {
-        PointNode startNode = grid.GetPointNodeFromGridByPosition(startPos);
-        PointNode targetNode = grid.GetPointNodeFromGridByPosition(targetPos);
+        PointNode startNode = _grid.GetPointNodeFromGridByPosition(startPos);
+        PointNode targetNode = _grid.GetPointNodeFromGridByPosition(targetPos);
 
         if (startNode == null || targetNode == null)
         {
@@ -104,7 +109,7 @@ public class Astar : MonoBehaviour
             }
 
             // 주변 노드 생성
-            List<PointNode> neighborNodes = grid.GetNeighborNodes(currentNode);
+            List<PointNode> neighborNodes = _grid.GetNeighborNodes(currentNode);
 
             foreach (PointNode neighborNode in neighborNodes)
             {
@@ -132,25 +137,25 @@ public class Astar : MonoBehaviour
 
     private void OnHasTargetMoved()
     {
-        if (lastTargetPos.x + monster.MonsterAbility.MaxTargetDistance < targetTransform.position.x
-            || lastTargetPos.x - monster.MonsterAbility.MaxTargetDistance > targetTransform.position.x
-            || lastTargetPos.z + monster.MonsterAbility.MaxTargetDistance < targetTransform.position.z
-            || lastTargetPos.z - monster.MonsterAbility.MaxTargetDistance > targetTransform.position.z)
-            hasTargetMoved = true;
+        if (_lastTargetPos.x + _monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance < _targetTransform.position.x
+            || _lastTargetPos.x - _monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance > _targetTransform.position.x
+            || _lastTargetPos.z + _monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance < _targetTransform.position.z
+            || _lastTargetPos.z - _monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance > _targetTransform.position.z)
+            _hasTargetMoved = true;
         else
-            hasTargetMoved = false;
+            _hasTargetMoved = false;
     }
 
     // OnDrawGizmos 메서드 추가하여 path 시각화
     private void OnDrawGizmos()
     {
-        if (path != null)
+        if (_path != null)
         {
             Gizmos.color = Color.yellow; // 경로를 노란색으로 표시
 
-            for (int i = 0; i < path.Count - 1; i++)
+            for (int i = 0; i < _path.Count - 1; i++)
             {
-                Gizmos.DrawLine(path[i].Position, path[i + 1].Position); // 노드 사이에 선 그리기
+                Gizmos.DrawLine(_path[i].Position, _path[i + 1].Position); // 노드 사이에 선 그리기
             }
         }
     }

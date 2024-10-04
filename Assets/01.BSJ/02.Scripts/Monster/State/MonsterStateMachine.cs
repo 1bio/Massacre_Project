@@ -6,14 +6,23 @@ using UnityEngine;
 [System.Serializable]
 public class MonsterStateMachine : StateMachine
 {
-    private Monster monster;
+    protected Monster _monster;
 
-    private void Start()
+    [SerializeField] protected MonsterBehaviour _currentBehaviour;
+
+    protected MonsterBehaviourSpawn _spawnBehaviour;
+    protected MonsterBehaviourAttack _attackBehaviour;
+    protected MonsterBehaviourMovement _moveBehaviour;
+    protected MonsterBehaviourDead _deadBehaviour;
+
+    private void Awake()
     {
-        monster = GetComponent<Monster>();
+        _monster = GetComponent<Monster>();
 
-        var currentBehaviour = new MonsterBehaviourMovement();
-        ChangeState(ChangeBehaviour(currentBehaviour));
+        _spawnBehaviour = new MonsterBehaviourSpawn();
+        _attackBehaviour = new MonsterBehaviourAttack();
+        _moveBehaviour = new MonsterBehaviourMovement();
+        _deadBehaviour = new MonsterBehaviourDead();
     }
 
     private new void Update()
@@ -21,10 +30,36 @@ public class MonsterStateMachine : StateMachine
         base.Update();
     }
 
-    protected State ChangeBehaviour(MonsterBehaviour monsterBehaviour)
+    protected void ChangeBehaviour(MonsterBehaviour monsterBehaviour)
     {
-        var currentBehaviour = monsterBehaviour;
-        var currentState = new MonsterBehaviourState(monster, currentBehaviour);
-        return currentState;
+        _currentBehaviour = monsterBehaviour;
+
+        var currentState = new MonsterBehaviourState(_monster, _currentBehaviour);
+        Debug.Log($"{_currentBehaviour.GetType()}");
+        ChangeState(currentState);
+    }
+
+    protected void OnAttack()
+    {
+        _monster.MonsterStateType = MonsterStateType.Attack;
+        ChangeBehaviour(_attackBehaviour);
+    }
+
+    protected void OnIdle()
+    {
+        _monster.MonsterStateType = MonsterStateType.Spawn;
+        ChangeBehaviour(_spawnBehaviour);
+    }
+
+    protected void OnMove()
+    {
+        _monster.MonsterStateType = MonsterStateType.Movement;
+        ChangeBehaviour(_moveBehaviour);
+    }
+
+    protected void OnDead()
+    {
+        _monster.MonsterStateType = MonsterStateType.Dead;
+        ChangeBehaviour(_deadBehaviour);
     }
 }
