@@ -86,8 +86,11 @@
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\Health.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Range\PlayerRangeAttackState.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Data\MonsterTargetDistance.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Minotaur.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Monster.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Snake.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\StatusData.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourSkill.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Combat\MeleeWeaponComponent.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\PathFinding\PointGrid.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\PoolManager.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Enemy\State\FreeLook\EnemyFreeLookState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Enemy\Target.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Data\MonsterCombatAbility.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourIdle.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\PlayerFreeLookState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Enemy\State\EnemyBaseState.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\PathFinding\PointNode.cs" />

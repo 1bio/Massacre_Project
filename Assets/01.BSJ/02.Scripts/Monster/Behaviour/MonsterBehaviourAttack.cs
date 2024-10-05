@@ -16,7 +16,7 @@ public class MonsterBehaviourAttack : MonsterBehaviour
     {
         if (monster.IsLockedInAnimation)
         {
-            monster.UnLockAnimation(monster.CurrentAniamtionName);
+            /*monster.UnLockAnimation(monster.CurrentAniamtionName);*/
         }
         else
         {

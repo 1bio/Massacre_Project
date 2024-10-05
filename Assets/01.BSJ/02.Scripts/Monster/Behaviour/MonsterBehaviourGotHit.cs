@@ -11,10 +11,10 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        if (monster.IsLockedInAnimation)
+        /*if (monster.IsLockedInAnimation)
         {
             monster.UnLockAnimation(monster.CurrentAniamtionName);
-        }
+        }*/
     }
 
     public override void OnBehaviourEnd(Monster monster)

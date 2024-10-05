@@ -1,23 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MonsterStateMachineController : MonsterStateMachine
 {
     private void Start()
     {
-        OnIdle();
+        OnSpawn();
     }
 
     private new void Update()
     {
         base.Update();
-        
+
+
+        p_monster.BasicAttackCoolTimeCheck += Time.deltaTime;
+        p_monster.SkillAttackCoolTimeCheck += Time.deltaTime;
+
         // 살아있는지 확인
         if (!IsAlive())
         {
-            if (_monster.MonsterStateType != MonsterStateType.Dead)
+            if (p_monster.MonsterStateType != MonsterStateType.Dead)
                 OnDead();
         }
         else
@@ -29,17 +34,24 @@ public class MonsterStateMachineController : MonsterStateMachine
     private void HandleLivingState()
     {
         // 다른 애니메이션이 실행되고 있는지 확인
-        if (!_monster.IsLockedInAnimation)
+        if (!p_monster.IsLockedInAnimation)
         {
-            if (Vector3.Distance(_monster.Astar.TargetTransform.position, this.transform.position) <= _monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance)
+            if (Vector3.Distance(p_monster.Astar.TargetTransform.position, this.transform.position) <= p_monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance)
             {
-                OnAttack();
+                if (p_monster.BasicAttackCoolTimeCheck <= p_monster.MonsterAbility.MonsterAttack.AttackCooldown)
+                    OnIdle();
+                else
+                {
+                    OnAttack();
+                    p_monster.BasicAttackCoolTimeCheck = 0;
+                }
             }
             else
             {
-                if (_monster.MonsterAbility.MonsterHealth.IsHit)
+                if (p_monster.MonsterAbility.MonsterHealth.IsHit)
                     OnGotHit();
-                else if (_monster.MonsterStateType != MonsterStateType.Movement)
+                else if (p_monster.MonsterStateType != MonsterStateType.Movement
+                    && Vector3.Distance(p_monster.Astar.TargetTransform.position, this.transform.position) <= p_monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance)
                     OnMove();
             }
         }
@@ -47,18 +59,18 @@ public class MonsterStateMachineController : MonsterStateMachine
 
     private bool IsAlive()
     {
-        if (_monster.MonsterAbility == null)
+        if (p_monster.MonsterAbility == null)
         {
-            _monster.MonsterAbility = new MonsterCombatAbility(_monster.MonsterStatData);
+            p_monster.MonsterAbility = new MonsterCombatAbility(p_monster.MonsterStatData);
         }
 
-        if (_monster.MonsterAbility.MonsterHealth.CurrentHealth > 0)
+        if (p_monster.MonsterAbility.MonsterHealth.CurrentHealth > 0)
         {
             return true;
         }
         else
         {
-            _monster.MonsterAbility.IsDead = true;
+            p_monster.MonsterAbility.IsDead = true;
             return false;
         }
     }

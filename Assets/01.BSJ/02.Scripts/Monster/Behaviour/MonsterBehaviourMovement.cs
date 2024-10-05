@@ -10,7 +10,7 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 {
     private Rigidbody _rigidbody;
     private PointGrid _pointGrid;
-    private PointNode _currentNode;
+    private List<PointNode> _neighborNodes;
     private List<PointNode> _path;
     private int _pathIndex;
     private bool _isMoving;
@@ -44,6 +44,12 @@ public class MonsterBehaviourMovement : MonsterBehaviour
         {
             monster.LookAtTarget(monster);
 
+            _neighborNodes = _pointGrid.GetNeighborNodes(_pointGrid.GetPointNodeFromGridByPosition(monster.transform.position));
+            foreach (PointNode node in _neighborNodes)
+            {
+                node.IsObstacle = true;
+            }
+
             StepToNode(_path[_pathIndex], monster, _pathIndex);
 
             if (_pointGrid.GetPointNodeFromGridByPosition(monster.transform.position) == _path[_pathIndex])
@@ -68,12 +74,13 @@ public class MonsterBehaviourMovement : MonsterBehaviour
         float speed = monster.MonsterAbility.MoveSpeed * monster.LocomotionBlendValue;
         Vector3 newPosition = startNode + direction * speed * Time.deltaTime;
 
-        //_currentNode = _pointGrid.GetPointNodeFromGridByPosition(startNode);
-        //_currentNode.IsObstacle = true;   // 길을 못 찾음
-
         _rigidbody.MovePosition(newPosition);
 
-        //_currentNode.IsObstacle = false;
+        foreach (PointNode node in _neighborNodes)
+        {
+            node.IsObstacle = false;
+        }
+        _neighborNodes.Clear();
 
         _isMoving = false;
     }

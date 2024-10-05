@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 public enum MonsterStateType
 {
     Spawn,
+    Idle,
     Attack,
     Dead,
     Movement,
@@ -49,6 +50,19 @@ public class Monster : MonoBehaviour
     }
     public float LocomotionBlendValue => _locomotionBlendValue;
 
+    // 쿨타임
+    public float BasicAttackCoolTimeCheck
+    {
+        get => _basicAttackCoolTimeCheck;
+        set => _basicAttackCoolTimeCheck = value;
+    }
+    public float SkillAttackCoolTimeCheck 
+    {
+        get => _skillAttackCoolTimeCheck;
+        set => _skillAttackCoolTimeCheck = value;
+    }
+
+
     // 몬스터 상태
     [SerializeField] private MonsterStateType _monsterStateType = MonsterStateType.Spawn;
 
@@ -70,7 +84,11 @@ public class Monster : MonoBehaviour
     private string _currentAnimationName = string.Empty;    // 현재 애니메이션 이름
     private float _animationElapsedTime; // 애니메이션 경과 시간
     private float _locomotionBlendValue = 0f; // 0 = Idle, 1 = Walk
-    [SerializeField] private float _blendTransitionSpeed = 10f;
+    [SerializeField] private float _blendTransitionSpeed = 100f;
+
+    // 쿨타임
+    [SerializeField] private float _basicAttackCoolTimeCheck;
+    private float _skillAttackCoolTimeCheck;
 
     private void Awake()
     {
@@ -118,65 +136,6 @@ public class Monster : MonoBehaviour
     }
 
 
-    private bool UnlockCondition()
-    {
-        return MonsterAbility.MonsterAttack.IsAttack || MonsterAbility.MonsterHealth.IsHit;
-    }
-
-    public void UnLockAnimation(string animationName)
-    {
-        _animationElapsedTime += Time.deltaTime;
-
-        if (UnlockCondition())
-        {
-            if (_animator.IsInTransition(0))
-            {
-                _nextClipInfo = _animator.GetNextAnimatorClipInfo(0);
-
-                if (_animator.GetNextAnimatorStateInfo(0).IsTag("Attack") || _animator.GetNextAnimatorStateInfo(0).IsTag("Got Hit"))
-                {
-                    _nextClipInfo = _animator.GetNextAnimatorClipInfo(0);
-                }
-                else
-                {
-                    _nextClipInfo = null;
-                }
-            }
-
-            if (_nextClipInfo != null && _nextClipInfo.Length > 0)
-            {
-                StartCoroutine(CheckAndUnlockAnimation(animationName));
-            }
-        }
-    }
-
-    private IEnumerator CheckAndUnlockAnimation(string animationName)
-    {
-        if (!_isLockedInAnimation)
-            yield break;
-
-        foreach (AnimatorClipInfo clipInfo in _nextClipInfo)
-        {
-            float clipLength = clipInfo.clip.length;
-
-            Debug.Log(clipInfo.clip.name);
-
-            if (clipInfo.clip.name == animationName)
-            {
-                if (clipLength * 0.8f <= _animationElapsedTime)
-                {
-                    _isLockedInAnimation = false;
-                    MonsterAbility.MonsterAttack.IsAttack = false;
-                    MonsterAbility.MonsterHealth.IsHit = false;
-                    MonsterAbility.MonsterAttack.IsEnableWeapon = false;
-                    break;
-                }
-            }
-        }
-        yield return new WaitForEndOfFrame();
-    }
-
-
     // Move
     public void SetWalkAnimation()
     {
@@ -211,7 +170,7 @@ public class Monster : MonoBehaviour
         _isLockedInAnimation = true;
 
         int randNum = Random.Range(0, MonsterAbility.MonsterAttack.AttackTotalCount) + 1;
-        _currentAnimationName = $"Attack {randNum}";
+        _currentAnimationName = $"Attack{randNum}";
         _animator.SetTrigger(_currentAnimationName);
     }
 
@@ -224,7 +183,7 @@ public class Monster : MonoBehaviour
         _animationElapsedTime = 0;
         _isLockedInAnimation = true;
 
-        _currentAnimationName = "Got Hit";
+        _currentAnimationName = "GotHit";
         _animator.SetTrigger(_currentAnimationName);
     }
 
@@ -255,5 +214,15 @@ public class Monster : MonoBehaviour
     public void EnableWeapon()
     {
         _monsterAbility.MonsterAttack.IsEnableWeapon = true;
+    }
+
+    public void DisableWeapon()
+    {
+        _monsterAbility.MonsterAttack.IsEnableWeapon = false;
+    }
+
+    public void UnLockedInAnimation()
+    {
+        _isLockedInAnimation = false;
     }
 }

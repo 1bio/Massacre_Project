@@ -44,10 +44,9 @@ public class MonsterCombatAbility : IMonsterCombat
 {
     private MonsterStatData _statData;
 
-    [SerializeField] private int _moveSpeed;
-    [SerializeField] private int _turnSpeed;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _turnSpeed;
 
-    [SerializeField] private bool _isTurning = false;
     [SerializeField] private bool _isDead = false;
 
     [SerializeField] private MonsterHealth _monsterHealth;
@@ -79,14 +78,8 @@ public class MonsterCombatAbility : IMonsterCombat
                                                             statData.MonsterTargetDistance.IdealTargetDistanceThreshold);
     }
 
-    public int MoveSpeed => _moveSpeed;
-    public int TurnSpeed => _turnSpeed;
-
-    public bool IsTurning
-    {
-        get => _isTurning;
-        set => _isTurning = value;
-    }
+    public float MoveSpeed => _moveSpeed;
+    public float TurnSpeed => _turnSpeed;
     public bool IsDead
     {
         get => _isDead;
