@@ -26,7 +26,7 @@ public class Astar : MonoBehaviour
     [SerializeField] private float _separationRadius = 2f;
 
 
-    private void Awake()
+    private void Start()
     {
         _grid = FindObjectOfType<PointGrid>();
         _targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -34,10 +34,7 @@ public class Astar : MonoBehaviour
         _lastTargetPos = _targetTransform.position;
 
         _monsters = FindObjectsOfType<Monster>().ToList();
-    }
 
-    private void Start()
-    {
         StartPathCalculation();
     }
 

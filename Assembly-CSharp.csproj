@@ -65,6 +65,7 @@
     <Compile Include="Assets\05.LCH\02.Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Combat\Targeting.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourDead.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Troll.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\PlayerBaseState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Input\InputReader.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\SkillData.cs" />

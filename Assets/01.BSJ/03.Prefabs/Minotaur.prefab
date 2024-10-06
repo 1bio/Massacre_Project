@@ -2808,8 +2808,8 @@ GameObject:
   - component: {fileID: 4161727131790888}
   - component: {fileID: 95874224296932438}
   - component: {fileID: 1056973229593847366}
-  - component: {fileID: 6880193089338975862}
   - component: {fileID: 2460240865232118236}
+  - component: {fileID: 9105625399047069436}
   - component: {fileID: 3974662687902122018}
   - component: {fileID: 7495521599916731507}
   m_Layer: 0
@@ -2818,7 +2818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4161727131790888
 Transform:
   m_ObjectHideFlags: 0
@@ -2829,8 +2829,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4343003645779922}
   - {fileID: 4593179384027178}
@@ -2870,22 +2870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0acef4d6c42e274d9f86b09651d99e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6880193089338975862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486057119601104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d274fe6182178545a1de8bfda43ab53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _monsterStateType: 0
-  _monsterData: {fileID: 11400000, guid: 5676367b2035ba749a3e1f15c5c16148, type: 2}
-  _blendTransitionSpeed: 80
-  _basicAttackCoolTimeCheck: 0
 --- !u!114 &2460240865232118236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2898,7 +2882,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b243045ccba65458c09fc5a51a781b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _path: []
+  _separationRadius: 0
+--- !u!114 &9105625399047069436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486057119601104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e430d477a1217a40bd8d2f32e3b1090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterStateType: 0
+  _monsterData: {fileID: 11400000, guid: 5676367b2035ba749a3e1f15c5c16148, type: 2}
+  _blendTransitionSpeed: 100
+  _basicAttackCoolTimeCheck: 0
 --- !u!54 &3974662687902122018
 Rigidbody:
   m_ObjectHideFlags: 0

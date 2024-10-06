@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 8719698218993415613}
   - component: {fileID: 1354559982961185318}
   - component: {fileID: 6776170513832166863}
-  - component: {fileID: 5630689738902510844}
+  - component: {fileID: 5511597446874238752}
   - component: {fileID: 1150797929885407123}
   - component: {fileID: 6092012772886778950}
   m_Layer: 0
@@ -918,7 +918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &264376996179616867
 Transform:
   m_ObjectHideFlags: 0
@@ -982,8 +982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b243045ccba65458c09fc5a51a781b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _path: []
---- !u!114 &5630689738902510844
+  _separationRadius: 0
+--- !u!114 &5511597446874238752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -992,13 +992,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1511982802961232049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d274fe6182178545a1de8bfda43ab53, type: 3}
+  m_Script: {fileID: 11500000, guid: c062a784f137ca94abafe4fe27c61d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _monsterStateType: 0
   _monsterData: {fileID: 11400000, guid: 0c342749c5380844087ebe438b25f52e, type: 2}
-  _animatorSpeed: 1.5
   _blendTransitionSpeed: 100
+  _basicAttackCoolTimeCheck: 0
 --- !u!54 &1150797929885407123
 Rigidbody:
   m_ObjectHideFlags: 0

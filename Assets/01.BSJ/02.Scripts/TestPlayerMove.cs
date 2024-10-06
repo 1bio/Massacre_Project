@@ -6,7 +6,7 @@ public class TestPlayerMove : MonoBehaviour
 {
     public float speed = 5f; // 속도 설정
     public int damage = 1;
-    public Monster monster;
+    public List<Monster> monsters;
 
     void Update()
     {
@@ -36,7 +36,7 @@ public class TestPlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (monster != null)
+            foreach (Monster monster in monsters)
             {
                 monster.TakeDamage(damage);
                 Debug.Log(monster.MonsterAbility.MonsterHealth.CurrentHealth);

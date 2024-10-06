@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MonsterStateMachineController : MonsterStateMachine
 {
-    private void Start()
+    private void OnEnable()
     {
         OnSpawn();
     }
