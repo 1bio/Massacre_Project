@@ -31,7 +31,7 @@ public class PlayerRangeAttackState : PlayerBaseState
 
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        if (!stateMachine.InputReader.IsAttacking && currentInfo.normalizedTime >= 0.8f)
+        if (!stateMachine.InputReader.IsAttacking && currentInfo.normalizedTime > 0.8f)
         {
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
             return;

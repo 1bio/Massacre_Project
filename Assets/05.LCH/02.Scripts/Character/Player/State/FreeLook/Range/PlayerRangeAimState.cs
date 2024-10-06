@@ -1,10 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerRangeAimState : PlayerBaseState
 {
-    public readonly int AimAnimationHash = Animator.StringToHash("Aim@Range"); // Á¶ÁØ ¾Ö´Ï¸ÞÀÌ¼Ç ÇØ½¬
+    public readonly int AimAnimationHash = Animator.StringToHash("Aim@Range"); // ì¡°ì¤€ ì• ë‹ˆë©”ì´ì…˜ í•´ì‰¬
 
     public readonly float CrossFadeDuration = 0.1f;
 
@@ -19,6 +20,9 @@ public class PlayerRangeAimState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.Animator.CrossFadeInFixedTime(AimAnimationHash, CrossFadeDuration);
+     
+        stateMachine.InputReader.RollEvent += OnRolling;
+        stateMachine.Health.ImpactEvent += OnImpact;
     }
 
     public override void Tick(float deltaTime)
@@ -29,7 +33,7 @@ public class PlayerRangeAimState : PlayerBaseState
         
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        if(!stateMachine.InputReader.IsAiming || currentInfo.normalizedTime >= 1.0f)
+        if (!stateMachine.InputReader.IsAiming && currentInfo.normalizedTime > 0.8f)
         {
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
             return;
@@ -38,9 +42,24 @@ public class PlayerRangeAimState : PlayerBaseState
 
     public override void Exit()
     {
-
+        stateMachine.InputReader.RollEvent -= OnRolling;
+        stateMachine.Health.ImpactEvent -= OnImpact;
     }
     #endregion
 
+
+    #region Event Methods
+    private void OnRolling()
+    {
+        stateMachine.ChangeState(new PlayerRollingState(stateMachine));
+        return;
+    }
+
+    private void OnImpact()
+    {
+        stateMachine.ChangeState(new PlayerImpactState(stateMachine));
+        return;
+    }
+    #endregion
 }
 

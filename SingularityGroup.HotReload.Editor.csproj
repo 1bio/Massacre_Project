@@ -1034,14 +1034,6 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.TestRunner">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="SingularityGroup.HotReload.Runtime.Public.csproj">
@@ -1051,6 +1043,14 @@
     <ProjectReference Include="SingularityGroup.HotReload.Runtime.csproj">
       <Project>{F515E0FA-4AAB-AB3B-002C-290AE45DF7F5}</Project>
       <Name>SingularityGroup.HotReload.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.TestRunner.csproj">
+      <Project>{EFA2A98B-2FB6-C20C-3413-E3AF214BC0B9}</Project>
+      <Name>UnityEngine.TestRunner</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.TestRunner.csproj">
+      <Project>{C40955CA-E5AF-899F-CE3F-5BD2CC6815C0}</Project>
+      <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

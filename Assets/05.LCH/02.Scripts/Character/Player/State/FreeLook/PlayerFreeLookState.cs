@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
@@ -20,10 +22,12 @@ public class PlayerFreeLookState : PlayerBaseState
     private bool IsChanged; // false = Melee Weapon, true = Range Weapon
 
 
+    private CoolDownManager coolDownManager; 
+
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
+        coolDownManager = stateMachine.GetComponent<CoolDownManager>();
     }
-
 
     #region abstarct Methods
     public override void Enter()
@@ -44,23 +48,15 @@ public class PlayerFreeLookState : PlayerBaseState
    
     public override void Tick(float deltaTime)
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Swap();
-        }
-
-        IsChanged = stateMachine.WeaponPrefabs[1].activeSelf; // 원거리 무기 활성화 => IsChanged = true
-
         Vector3 movement = CalculatorMovement();
 
         Move(movement, deltaTime); // 이동
 
         Rotate(movement, deltaTime); // 회전
 
-        /*Aiming(); // 조준
-        AutoRotate(deltaTime); // 자동 회전(아마 제거할 것 같음)*/
+        WeaponSetting();
 
-        GetWeaponRange();
+        /*AutoRotate(deltaTime); // 자동 회전(제거 예정)*/
 
         // Attacking
         if (stateMachine.InputReader.IsAttacking)
@@ -72,18 +68,37 @@ public class PlayerFreeLookState : PlayerBaseState
             }
             else if (IsChanged && stateMachine.WeaponPrefabs[1].activeSelf) // Range
             {
+                // RapidShot
+                if (!coolDownManager.IsSkillOnCooldown("RapidShot")) // 쿨타임이 아니면
+                {
+                    coolDownManager.StartCooldown("RapidShot", DataManager.instance.playerData.skillData[1].coolDown);
+                 
+                    stateMachine.ChangeState(new PlayerRangeRapidShotState(stateMachine));
+                    return;
+                }
+
+                // 쿨타임일 경우 기본 공격 
                 stateMachine.ChangeState(new PlayerRangeAttackState(stateMachine));
                 return;
             }
         }
 
-        // Aiming(Range)
+        // Aiming 
         if (stateMachine.InputReader.IsAiming && IsChanged)
         {
-            stateMachine.ChangeState(new PlayerRangeAimState(stateMachine));
+            if (!coolDownManager.IsSkillOnCooldown("Aiming")) // 쿨타임이 아닐 경우
+            {
+                coolDownManager.StartCooldown("Aiming", DataManager.instance.playerData.skillData[0].coolDown); // 쿨타임 시작
+                stateMachine.ChangeState(new PlayerRangeAimState(stateMachine));
+            }
+            else if (coolDownManager.IsSkillOnCooldown("Aiming")) // 쿨타임일 경우
+            {
+                Debug.Log("쿨타임 입니다!");
+            }
             return;
         }
 
+        
 
         // <=====  Locomotion State =====>
         // Idling
@@ -97,6 +112,7 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.Animator.SetFloat(Velocity, 1f, DampTime, deltaTime);
     }
 
+
     public override void Exit()
     {
         stateMachine.InputReader.RollEvent -= OnRolling;
@@ -104,7 +120,7 @@ public class PlayerFreeLookState : PlayerBaseState
     }
     #endregion
 
-
+   
     #region Main Methods
     // 무기 스왑
     private void Swap()
@@ -141,8 +157,16 @@ public class PlayerFreeLookState : PlayerBaseState
             stateMachine.Targeting.SetRadius(stateMachine.MeleeWeaponDetectionRange);
         }
     }
-    #endregion
 
+    private void WeaponSetting()
+    {
+        if (Input.GetKeyDown(KeyCode.E)) { Swap(); }
+
+        IsChanged = stateMachine.WeaponPrefabs[1].activeSelf; // 원거리 무기 활성화 => IsChanged = true
+
+        GetWeaponRange();
+    }
+    #endregion
 
 
     #region Event Methods

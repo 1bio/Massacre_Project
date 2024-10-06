@@ -19,13 +19,17 @@ public class PlayerRangeRapidShotState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.Animator.CrossFadeInFixedTime(RapidShotAnimationHash, CrossFadeDuration);
+
+        stateMachine.Health.ImpactEvent += OnImpact;
     }
 
     public override void Tick(float deltaTime)
     {
+        FaceTarget();
+
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        if(currentInfo.normalizedTime >= 0.8f)
+        if(currentInfo.normalizedTime > 0.8f)
         {
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
             return;
@@ -34,8 +38,16 @@ public class PlayerRangeRapidShotState : PlayerBaseState
 
     public override void Exit()
     {
-
+        stateMachine.Health.ImpactEvent -= OnImpact;
     }
     #endregion
 
+
+    #region Event Methods
+    private void OnImpact()
+    {
+        stateMachine.ChangeState(new PlayerImpactState(stateMachine));
+        return;
+    }
+    #endregion
 }
