@@ -5,6 +5,8 @@ using UnityEngine;
 public class TestPlayerMove : MonoBehaviour
 {
     public float speed = 5f; // 속도 설정
+    public int damage = 1;
+    public Monster monster;
 
     void Update()
     {
@@ -30,6 +32,15 @@ public class TestPlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             transform.position += Vector3.back * speed * Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (monster != null)
+            {
+                monster.TakeDamage(damage);
+                Debug.Log(monster.MonsterAbility.MonsterHealth.CurrentHealth);
+            }
         }
     }
 }

@@ -3,15 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MonsterStatData", menuName = "Data/MonsterStatData")]
 public class MonsterStatData : ScriptableObject, IMonsterCombat
 {
-    [SerializeField] private int _moveSpeed;
-    [SerializeField] private int _turnSpeed;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _turnSpeed;
 
     [SerializeField] private MonsterHealth _monsterHealth;
     [SerializeField] private MonsterAttack _monsterAttack;
     [SerializeField] private MonsterTargetDistance _monsterTargetDistance;
 
-    public int MoveSpeed => _moveSpeed;
-    public int TurnSpeed => _turnSpeed;
+    public float MoveSpeed => _moveSpeed;
+    public float TurnSpeed => _turnSpeed;
 
     public bool IsDead { get; set; }
 

@@ -11,17 +11,20 @@ public class Astar : MonoBehaviour
     public List<PointNode> Path => _path;
     public bool HasTargetMoved => _hasTargetMoved;
 
+
     private Monster _monster;
+    private List<Monster> _monsters;
     private PointGrid _grid;
 
     private Transform _targetTransform;
     private Vector3 _lastTargetPos;
 
-    [SerializeField] private List<PointNode> _path;
+    private List<PointNode> _path;
     private bool _hasTargetMoved;
     private bool _isCalculating = false;
 
-    // FindPath 호출할 거리
+    [SerializeField] private float _separationRadius = 2f;
+
 
     private void Awake()
     {
@@ -29,6 +32,8 @@ public class Astar : MonoBehaviour
         _targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
         _monster = GetComponent<Monster>();
         _lastTargetPos = _targetTransform.position;
+
+        _monsters = FindObjectsOfType<Monster>().ToList();
     }
 
     private void Start()
@@ -48,6 +53,7 @@ public class Astar : MonoBehaviour
             StartPathCalculation();
         }
     }
+
 
     public void StartPathCalculation()
     {
@@ -116,31 +122,58 @@ public class Astar : MonoBehaviour
                 if (!neighborNode.IsGround || neighborNode.IsObstacle || closedList.Contains(neighborNode))
                     continue;
 
-                if (openList.Contains(neighborNode) && neighborNode.GCost > currentNode.GCost)
-                    continue;
+                float newMovementCost = currentNode.GCost + Vector3.Distance(neighborNode.Position, currentNode.Position);
 
-                neighborNode.GCost = currentNode.GCost + Vector3.Distance(neighborNode.Position, currentNode.Position);
-                neighborNode.HCost = Vector3.Distance(neighborNode.Position, targetNode.Position);
-                neighborNode.FCost = neighborNode.GCost + neighborNode.HCost;
-                neighborNode.Parent = currentNode;
-
-                if (!openList.Contains(neighborNode))
+                if (newMovementCost < neighborNode.GCost || !openList.Contains(neighborNode))
                 {
-                    openList.Add(neighborNode);
+                    neighborNode.GCost = newMovementCost;
+                    neighborNode.HCost = Vector3.Distance(neighborNode.Position, targetNode.Position);
+
+                    // 밀집도 계산
+                    int nearbyMonsters = CalculateNearbyMonsters(neighborNode);
+                    float congestionCost = nearbyMonsters * 2f;
+
+                    // F = G + H + 밀집도
+                    neighborNode.FCost = neighborNode.GCost + neighborNode.HCost + congestionCost;
+                    neighborNode.Parent = currentNode;
+
+                    if (!openList.Contains(neighborNode))
+                    {
+                        openList.Add(neighborNode);
+                    }
                 }
             }
         }
 
-        // 만약, 찾지 못했으면 null을 반환함
         return null;
     }
 
+    private int CalculateNearbyMonsters(PointNode node)
+    {
+        int nearbyMonsters = 0;
+        float totalDistanceFactor = 0f;
+
+        foreach (Monster monster in _monsters)
+        {
+            float distance = Vector3.Distance(monster.transform.position, node.Position);
+            if (distance < _separationRadius)
+            {
+                nearbyMonsters++;
+
+                totalDistanceFactor += (_separationRadius - distance) / _separationRadius;
+            }
+        }
+
+        return nearbyMonsters + Mathf.RoundToInt(totalDistanceFactor);
+    }
+
+
     private void OnHasTargetMoved()
     {
-        if (_lastTargetPos.x + _monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance < _targetTransform.position.x
-            || _lastTargetPos.x - _monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance > _targetTransform.position.x
-            || _lastTargetPos.z + _monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance < _targetTransform.position.z
-            || _lastTargetPos.z - _monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance > _targetTransform.position.z)
+        if (_lastTargetPos.x + _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance < _targetTransform.position.x
+            || _lastTargetPos.x - _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance > _targetTransform.position.x
+            || _lastTargetPos.z + _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance < _targetTransform.position.z
+            || _lastTargetPos.z - _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance > _targetTransform.position.z)
             _hasTargetMoved = true;
         else
             _hasTargetMoved = false;

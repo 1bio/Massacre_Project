@@ -14,6 +14,7 @@ public class PointNode
     public float GCost { get => _gCost; set => _gCost = value; }
     public float HCost { get => _hCost; set => _hCost = value; }
     public float FCost { get => _fCost; set => _fCost = value; }
+    public int Congestion { get => _congestion; set => _congestion = value; }
     public bool IsObstacle
     { 
         get => _isObstacle;
@@ -21,10 +22,12 @@ public class PointNode
     }
     public bool IsGround { get => _isGround; }
 
+
     [SerializeField] private Vector3 _position;
     private PointNode _parent;
     private float _gCost, _hCost;
     private float _fCost;
+    private int _congestion; // ¹ÐÁýµµ
     private bool _isObstacle;
     private bool _isGround;
 

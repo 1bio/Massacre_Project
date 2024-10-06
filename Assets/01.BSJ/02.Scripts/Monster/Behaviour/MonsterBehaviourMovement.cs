@@ -10,7 +10,7 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 {
     private Rigidbody _rigidbody;
     private PointGrid _pointGrid;
-    private PointNode _currentNode;
+    private List<PointNode> _neighborNodes;
     private List<PointNode> _path;
     private int _pathIndex;
     private bool _isMoving;
@@ -42,9 +42,15 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
         if (_pathIndex < _path.Count && !_isMoving)
         {
-            LookAtTarget(monster);
+            monster.LookAtTarget(monster);
+
+            _neighborNodes = _pointGrid.GetNeighborNodes(_pointGrid.GetPointNodeFromGridByPosition(monster.transform.position));
+            foreach (PointNode node in _neighborNodes)
+            {
+                node.IsObstacle = true;
+            }
+
             StepToNode(_path[_pathIndex], monster, _pathIndex);
-            
 
             if (_pointGrid.GetPointNodeFromGridByPosition(monster.transform.position) == _path[_pathIndex])
             {
@@ -64,24 +70,18 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
         Vector3 startNode = monster.transform.position;
         Vector3 targetNode = _path[pathIndex].Position;
+        Vector3 direction = (targetNode - startNode).normalized;
+        float speed = monster.MonsterAbility.MoveSpeed * monster.LocomotionBlendValue;
+        Vector3 newPosition = startNode + direction * speed * Time.deltaTime;
 
-        _currentNode = _pointGrid.GetPointNodeFromGridByPosition(startNode);
-        //_currentNode.IsObstacle = true;   // 길을 못 찾음
+        _rigidbody.MovePosition(newPosition);
 
-        _rigidbody.MovePosition(Vector3.MoveTowards(startNode, targetNode, /*monster.MonsterAbility.MoveSpeed **/ Time.deltaTime));
-        
-        //_currentNode.IsObstacle = false;
+        foreach (PointNode node in _neighborNodes)
+        {
+            node.IsObstacle = false;
+        }
+        _neighborNodes.Clear();
 
         _isMoving = false;
-    }
-
-    private void LookAtTarget(Monster monster)
-    {
-        Vector3 targetPos = monster.Astar.TargetTransform.position;
-        Vector3 direction = (targetPos - monster.transform.position).normalized;
-
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-
-        monster.transform.rotation = Quaternion.Slerp(monster.transform.rotation, lookRotation, monster.MonsterAbility.TurnSpeed * Time.deltaTime);
     }
 }

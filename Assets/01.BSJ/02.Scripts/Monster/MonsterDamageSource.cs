@@ -17,7 +17,7 @@ public class MonsterDamageSource : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_monster.MonsterAbility.MonsterAttack.IsAttack)
+        if (_monster.MonsterAbility.MonsterAttack.IsEnableWeapon)
         {
             if (other.CompareTag("Player"))
             {

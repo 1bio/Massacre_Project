@@ -2,8 +2,8 @@ using System;
 
 public class MonsterBehaviourState : State
 {
-    protected Monster _monster;
-    protected MonsterBehaviour _behaviour;
+    private Monster _monster;
+    private MonsterBehaviour _behaviour;
 
     public MonsterBehaviourState(Monster monster, MonsterBehaviour behaviour)
     {

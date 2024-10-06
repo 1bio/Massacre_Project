@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class MonsterBehaviourGotHit : MonsterBehaviour
 {
-    public override void OnBehaviourEnd(Monster monster)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void OnBehaviourStart(Monster monster)
     {
-        throw new System.NotImplementedException();
+        monster.SetGotHitAnimation();
     }
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        throw new System.NotImplementedException();
+        /*if (monster.IsLockedInAnimation)
+        {
+            monster.UnLockAnimation(monster.CurrentAniamtionName);
+        }*/
+    }
+
+    public override void OnBehaviourEnd(Monster monster)
+    {
+
     }
 }
