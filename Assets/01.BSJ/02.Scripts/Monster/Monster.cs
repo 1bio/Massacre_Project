@@ -183,6 +183,15 @@ public class Monster : MonoBehaviour
 
 
     // Got Hit
+    public void TakeDamage(int damge)
+    {
+        MonsterAbility.MonsterHealth.CurrentHealth -= damge;
+        if (!_isLockedInAnimation)
+        {
+            MonsterAbility.MonsterHealth.IsHit = true;
+        }
+    }
+
     public void SetGotHitAnimation()
     {
         SmoothLocomotionTransition(0);
@@ -207,15 +216,6 @@ public class Monster : MonoBehaviour
         _animator.SetTrigger(_currentAnimationName);
     }
 
-    public void TakeDamage(int damge)
-    {
-        MonsterAbility.MonsterHealth.CurrentHealth -= damge;
-        MonsterAbility.MonsterHealth.LastHealth = MonsterAbility.MonsterHealth.CurrentHealth;
-        if (!_isLockedInAnimation)
-        {
-            MonsterAbility.MonsterHealth.IsHit = true;
-        }
-    }
 
     // Animation Event
     public void EnableWeapon()

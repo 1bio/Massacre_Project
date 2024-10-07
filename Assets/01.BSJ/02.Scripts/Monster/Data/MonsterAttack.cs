@@ -21,30 +21,9 @@ public class MonsterAttack
         _isEnableWeapon = isEnableWeapon;
     }
 
-    public int AttackPower
-    {
-        get => _attackPower;
-        set => _attackPower = value;
-    }
-    public float AttackCooldown 
-    {
-        get => _attackCooldown;
-        set => _attackCooldown = value;
-    } 
-    public int AttackTotalCount
-    {
-        get => _attackTotalCount;
-        set => _attackTotalCount = value;
-    }
-
-    public bool IsAttack
-    {
-        get => _isAttack;
-        set => _isAttack = value;
-    }
-    public bool IsEnableWeapon
-    {
-        get => _isEnableWeapon;
-        set => _isEnableWeapon = value;
-    }
+    public int AttackPower { get => _attackPower; set => _attackPower = value; }
+    public float AttackCooldown { get => _attackCooldown; set => _attackCooldown = value; }
+    public int AttackTotalCount { get => _attackTotalCount; set => _attackTotalCount = value; }
+    public bool IsAttack { get => _isAttack; set => _isAttack = value; }
+    public bool IsEnableWeapon { get => _isEnableWeapon; set => _isEnableWeapon = value; }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -18,24 +16,8 @@ public class MonsterTargetDistance
         _idealTargetDistanceThreshold = idealTargetDistanceThreshold;
     }
 
-    public float MinTargetDistance
-    {
-        get => _minTargetDistance;
-        set => _minTargetDistance = value;
-    }
-    public float MaxTargetDistance
-    {
-        get => _maxTargetDistance;
-        set => _maxTargetDistance = value;
-    }
-    public float IdealTargetDistance
-    {
-        get => _idealTargetDistance;
-        set => _idealTargetDistance = value;
-    }
-    public float IdealTargetDistanceThreshold
-    {
-        get => _idealTargetDistanceThreshold;
-        set => _idealTargetDistanceThreshold = value;
-    }
+    public float MinTargetDistance { get => _minTargetDistance; set => _minTargetDistance = value; }
+    public float MaxTargetDistance { get => _maxTargetDistance; set => _maxTargetDistance = value; }
+    public float IdealTargetDistance { get => _idealTargetDistance; set => _idealTargetDistance = value; }
+    public float IdealTargetDistanceThreshold { get => _idealTargetDistanceThreshold; set => _idealTargetDistanceThreshold = value; }
 }
