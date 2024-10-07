@@ -7,14 +7,12 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
     public override void OnBehaviourStart(Monster monster)
     {
         monster.SetGotHitAnimation();
+        monster.MonsterAbility.MonsterHealth.IsHit = false;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        /*if (monster.IsLockedInAnimation)
-        {
-            monster.UnLockAnimation(monster.CurrentAniamtionName);
-        }*/
+        
     }
 
     public override void OnBehaviourEnd(Monster monster)

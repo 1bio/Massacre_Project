@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MonsterStateMachineController : MonsterStateMachine
 {
-    private void Start()
+    private void OnEnable()
     {
         OnSpawn();
     }
@@ -36,7 +36,7 @@ public class MonsterStateMachineController : MonsterStateMachine
         // 다른 애니메이션이 실행되고 있는지 확인
         if (!p_monster.IsLockedInAnimation)
         {
-            if (Vector3.Distance(p_monster.Astar.TargetTransform.position, this.transform.position) <= p_monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance)
+            if (p_monster.IsTargetInRange)
             {
                 if (p_monster.BasicAttackCoolTimeCheck <= p_monster.MonsterAbility.MonsterAttack.AttackCooldown)
                     OnIdle();

@@ -50,7 +50,12 @@ public class Monster : MonoBehaviour
     }
     public float LocomotionBlendValue => _locomotionBlendValue;
 
-    // 쿨타임
+    // 전투
+    public bool IsTargetInRange
+    {
+        get => _isTargetInRange;
+        set => _isTargetInRange = value;
+    }
     public float BasicAttackCoolTimeCheck
     {
         get => _basicAttackCoolTimeCheck;
@@ -78,7 +83,7 @@ public class Monster : MonoBehaviour
     private Vector3 _direction;
 
     // 애니메이션
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
     private AnimatorClipInfo[] _nextClipInfo = null;   // 애니메이션 clip
     private bool _isLockedInAnimation = false;
     private string _currentAnimationName = string.Empty;    // 현재 애니메이션 이름
@@ -86,14 +91,14 @@ public class Monster : MonoBehaviour
     private float _locomotionBlendValue = 0f; // 0 = Idle, 1 = Walk
     [SerializeField] private float _blendTransitionSpeed = 100f;
 
-    // 쿨타임
+    // 전투
+    private bool _isTargetInRange = false;
     [SerializeField] private float _basicAttackCoolTimeCheck;
     private float _skillAttackCoolTimeCheck;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _animator = GetComponent<Animator>();
         _astar = GetComponent<Astar>();
         _pointGrid = FindObjectOfType<PointGrid>();
 
@@ -117,6 +122,7 @@ public class Monster : MonoBehaviour
         }
     }
 
+
     // look at target
     public void LookAtTarget(Monster monster)
     {
@@ -126,8 +132,9 @@ public class Monster : MonoBehaviour
     private IEnumerator SmoothLookAtCoroutine(Monster monster)
     {
         Vector3 targetPos = monster.Astar.TargetTransform.position;
+        targetPos.y = monster.transform.position.y;
+        
         _direction = (targetPos - monster.transform.position).normalized;
-
         Quaternion lookRotation = Quaternion.LookRotation(_direction);
 
         monster.transform.rotation = Quaternion.Slerp(monster.transform.rotation, lookRotation, monster.MonsterAbility.TurnSpeed * Time.deltaTime);
