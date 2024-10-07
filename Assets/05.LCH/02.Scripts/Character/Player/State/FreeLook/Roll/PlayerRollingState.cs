@@ -22,7 +22,6 @@ public class PlayerRollingState : PlayerBaseState
         stateMachine.Animator.CrossFadeInFixedTime(RollAnimationHash, CrossFadeDuration);
     }
 
-
     public override void Tick(float deltaTime)
     {
         stateMachine.ForceReceiver.RollingForce(deltaTime);
@@ -35,9 +34,6 @@ public class PlayerRollingState : PlayerBaseState
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
             return;
         }
-
-        // 피격 당할 시에 맞는 상태로 전이
-
     }
 
     public override void Exit()

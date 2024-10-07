@@ -22,7 +22,7 @@ public class PlayerMeleeAttackState : PlayerBaseState
     {
         stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
 
-        stateMachine.MeleeComponent.SetAttack(attack.Damage, attack.KnockBack);
+        stateMachine.MeleeComponenet.SetAttack(attack.Damage, attack.KnockBack);
 
         stateMachine.Health.ImpactEvent += OnImpact;
     }
@@ -68,6 +68,29 @@ public class PlayerMeleeAttackState : PlayerBaseState
 
 
     #region Main Methods
+    protected float GetNormalizedTime(Animator animator) // 공격 애니메이션 normalizedTime 값 리턴
+    {
+        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
+
+        if (animator.IsInTransition(0) && nextInfo.IsTag("Attack"))
+        {
+            // 전환 중 일때 실행되는 부분
+            return nextInfo.normalizedTime;
+        }
+        else if (!animator.IsInTransition(0) && currentInfo.IsTag("Attack"))
+        {
+            // 애니메이션 재생 중 실행되는 부분
+            return currentInfo.normalizedTime;
+        }
+        else
+        {
+            // 애니메이션 재생 종료 후 실행되는 부분
+            return 0f;
+        }
+    }
+
+    // 콤보 공격 인덱스 확인 및 생성
     private void TryComboAttack(float normalizedTime)
     {
         if (attack.ComboAttackIndex == -1)
@@ -82,6 +105,7 @@ public class PlayerMeleeAttackState : PlayerBaseState
         stateMachine.ChangeState(new PlayerMeleeAttackState(stateMachine, attack.ComboAttackIndex));
     }
 
+    // 공격 시 추가 힘
     private void TryApplyForce()
     {
         if (alreadyApplyForce)

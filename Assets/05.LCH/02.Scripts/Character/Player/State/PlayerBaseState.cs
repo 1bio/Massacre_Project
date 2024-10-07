@@ -1,4 +1,6 @@
-﻿using Unity.Mathematics;
+﻿using System.Collections;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class PlayerBaseState : State
@@ -82,9 +84,7 @@ public abstract class PlayerBaseState : State
             stateMachine.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         }
     }
-
-
-    // 자동 회전
+    /*// 자동 회전
     protected void AutoRotate(float deltaTime)
     {
         if (stateMachine.Targeting.CurrentTarget == null)
@@ -100,6 +100,6 @@ public abstract class PlayerBaseState : State
                     stateMachine.transform.rotation,
                     Quaternion.LookRotation(direction),
                     deltaTime * 25);
-    }
+    }*/
     #endregion
 }

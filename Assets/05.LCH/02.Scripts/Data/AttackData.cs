@@ -1,7 +1,7 @@
 ﻿[System.Serializable]
 public class AttackData
 {
-    public string AnimationName;  // 애니메이션 이름
+    public string AnimationName { get; set; }  // 애니메이션 이름
 
     public int ComboAttackIndex = -1; // 콤보 애니메이션 인덱스
 
@@ -17,6 +17,7 @@ public class AttackData
 
     public float KnockBack; // 넉백 속도
 
+
     public AttackData(
         string animationName,
         int comboAttackIndex,
@@ -26,6 +27,7 @@ public class AttackData
         float forceTime,
         float damage,
         float knockBack
+
     )
     {
         AnimationName = animationName;

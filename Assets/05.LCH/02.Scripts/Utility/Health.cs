@@ -5,7 +5,6 @@ public class Health : MonoBehaviour
 {
     // <==== 체력 필드 ====>
     private float currentHealth;
-    
     private bool isDead => currentHealth <= 0;
 
     // <==== 피격 필드 ====>
@@ -20,7 +19,7 @@ public class Health : MonoBehaviour
     public event Action ImpactEvent;
 
 
-    private void Awake()
+    private void Start()
     {
         currentHealth = DataManager.instance.playerData.statusData.maxHealth;
 

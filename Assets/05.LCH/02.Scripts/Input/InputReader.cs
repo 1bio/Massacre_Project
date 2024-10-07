@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using System.Collections;
 
 [Serializable]
 public class InputReader : MonoBehaviour,InputActions.IPlayerActions

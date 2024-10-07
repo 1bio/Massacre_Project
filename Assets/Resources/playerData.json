@@ -10,7 +10,7 @@
             "skillName": "차징샷",
             "level": 1,
             "damage": 15.0,
-            "coolDown": 2.0
+            "coolDown": 5.0
         },
         {
             "skillName": "연발사격",
@@ -27,7 +27,6 @@
     ],
     "attackData": [
         {
-            "AnimationName": "Attack1@Melee",
             "ComboAttackIndex": 1,
             "ComboAttackTime": 0.6000000238418579,
             "TransitionDuration": 0.10000000149011612,
@@ -37,7 +36,6 @@
             "KnockBack": 0.5
         },
         {
-            "AnimationName": "Attack2@Melee",
             "ComboAttackIndex": 2,
             "ComboAttackTime": 0.5,
             "TransitionDuration": 0.10000000149011612,
@@ -47,7 +45,6 @@
             "KnockBack": 0.5
         },
         {
-            "AnimationName": "Attack3@Melee",
             "ComboAttackIndex": -1,
             "ComboAttackTime": 0.0,
             "TransitionDuration": 0.10000000149011612,
@@ -56,5 +53,14 @@
             "Damage": 20.0,
             "KnockBack": 0.699999988079071
         }
-    ]
+    ],
+    "rangeAttackData": {
+        "ComboAttackIndex": 0,
+        "ComboAttackTime": 0.0,
+        "TransitionDuration": 0.0,
+        "Force": 0.0,
+        "ForceTime": 0.0,
+        "Damage": 10.0,
+        "KnockBack": 0.30000001192092898
+    }
 }
