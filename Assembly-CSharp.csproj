@@ -72,6 +72,7 @@
     <Compile Include="Assets\MRF\Scripts\DynamicTrailGenerator.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourDead.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\SFB_StayWithTarget.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Troll.cs" />
     <Compile Include="Assets\MRF\Scripts\Splines.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\PlayerBaseState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\UIManager.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Window\NationPickController.cs" />
     <Compile Include="Assets\InfinityPBR\_InfinityPBR - Cobra Snake\Scripts\SFB_CobraSnakeDemo.cs" />
     <Compile Include="Assets\MRF\Scripts\MSFEffectGroupExample.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\MonsterAttackRange.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\CoolDownManager.cs" />
     <Compile Include="Assets\MRF\Scripts\TrailController.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Roll\PlayerRollingState.cs" />

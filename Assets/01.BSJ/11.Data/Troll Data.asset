@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01027fa622f7dde4dad3d6d34f9f8fd6, type: 3}
   m_Name: Troll Data
   m_EditorClassIdentifier: 
-  _moveSpeed: 7
+  _moveSpeed: 12
   _turnSpeed: 5
   _monsterHealth:
     _currentHealth: 100
