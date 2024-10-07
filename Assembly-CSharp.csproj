@@ -71,6 +71,7 @@
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\UIManager.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Input\InputReader.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\SkillData.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\MonsterAttackRange.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\CoolDownManager.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Roll\PlayerRollingState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Enemy\State\EnemyStateMachine.cs" />

@@ -1,5 +1,4 @@
-﻿using MasterRealisticFX;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {

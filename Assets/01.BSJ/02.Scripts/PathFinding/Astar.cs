@@ -25,7 +25,6 @@ public class Astar : MonoBehaviour
 
     [SerializeField] private float _separationRadius = 2f;
 
-
     private void Start()
     {
         _grid = FindObjectOfType<PointGrid>();
@@ -34,8 +33,6 @@ public class Astar : MonoBehaviour
         _lastTargetPos = _targetTransform.position;
 
         _monsters = FindObjectsOfType<Monster>().ToList();
-
-        StartPathCalculation();
     }
 
     private void Update()
@@ -127,11 +124,11 @@ public class Astar : MonoBehaviour
                     neighborNode.HCost = Vector3.Distance(neighborNode.Position, targetNode.Position);
 
                     // 밀집도 계산
-                    int nearbyMonsters = CalculateNearbyMonsters(neighborNode);
-                    float congestionCost = nearbyMonsters * 2f;
+                    /*int nearbyMonsters = CalculateNearbyMonsters(neighborNode);
+                    float congestionCost = nearbyMonsters * 2f;*/
 
                     // F = G + H + 밀집도
-                    neighborNode.FCost = neighborNode.GCost + neighborNode.HCost + congestionCost;
+                    neighborNode.FCost = neighborNode.GCost + neighborNode.HCost/* + congestionCost*/;
                     neighborNode.Parent = currentNode;
 
                     if (!openList.Contains(neighborNode))

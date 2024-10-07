@@ -14,11 +14,7 @@ public class MonsterBehaviourAttack : MonsterBehaviour
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        if (monster.IsLockedInAnimation)
-        {
-            /*monster.UnLockAnimation(monster.CurrentAniamtionName);*/
-        }
-        else
+        if (!monster.IsLockedInAnimation)
         {
             monster.LookAtTarget(monster);
         }

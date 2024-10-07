@@ -19,10 +19,8 @@ public class MonsterBehaviourMovement : MonsterBehaviour
     {
         monster.SetWalkAnimation();
 
-        if (_rigidbody == null)
-            _rigidbody = monster.Rigidbody;
-        if (_pointGrid == null)
-            _pointGrid = monster.PointGrid;
+        _rigidbody = monster.Rigidbody;
+        _pointGrid = monster.PointGrid;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
