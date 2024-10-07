@@ -1,13 +1,13 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    // <==== Ã¼·Â ÇÊµå ====>
+    // <==== ì²´ë ¥ í•„ë“œ ====>
     private float currentHealth;
     private bool isDead => currentHealth <= 0;
 
-    // <==== ÇÇ°İ ÇÊµå ====>
+    // <==== í”¼ê²© í•„ë“œ ====>
     public int hitCount = 0;
 
     private float currentTime;
@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
 
     private float coolDown = 1f;
 
-    // <==== ÇÇ°İ ÀÌº¥Æ® ====>
+    // <==== í”¼ê²© ì´ë²¤íŠ¸ ====>
     public event Action ImpactEvent;
 
 
@@ -38,12 +38,17 @@ public class Health : MonoBehaviour
             TakeDamage();
         }
 
-        CheckCoolDown(); // Ä«¿îÆ® Ã¼Å©
+        CheckCoolDown(); // ì¹´ìš´íŠ¸ ì²´í¬
     }
 
 
     #region Main Methods
-    // ÄğÅ¸ÀÓ Áö³¯ ½Ã Ä«¿îÆ® ÃÊ±âÈ­
+    public void SetHealth(float health)
+    {
+        currentHealth = health;
+    }
+
+    // ì¿¨íƒ€ì„ ì§€ë‚  ì‹œ ì¹´ìš´íŠ¸ ì´ˆê¸°í™”
     public void CheckCoolDown()
     {
         currentTime = Time.time;
@@ -54,22 +59,23 @@ public class Health : MonoBehaviour
         }
     }
 
-    // ÇÇ°İ ´çÇÑ ¼ø°£ lastImpactTime ¾÷µ¥ÀÌÆ® ¹× ÀÌº¥Æ® È£Ãâ
+    // í”¼ê²© ë‹¹í•œ ìˆœê°„ lastImpactTime ì—…ë°ì´íŠ¸ ë° ì´ë²¤íŠ¸ í˜¸ì¶œ
     public void TakeDamage() 
     {
         float currentImpactTime = Time.time;
         
         lastImpactTime = currentImpactTime;
 
-        hitCount++; // hitCount Áõ°¡
+        hitCount++; // hitCount ì¦ê°€
 
+        // ì²´ë ¥ ê°ì†Œ ë¡œì§
         ImpactEvent?.Invoke();
     }
 
     public void Dead()
     {
         Debug.Log("Die!");
-        // GameManager¿¡¼­ ÀÌº¥Æ® ½ÇÇà
+        // GameManagerì—ì„œ ì´ë²¤íŠ¸ ì‹¤í–‰
     }
     #endregion
 }
