@@ -23,7 +23,7 @@ public class Astar : MonoBehaviour
     private bool _hasTargetMoved;
     private bool _isCalculating = false;
 
-    [SerializeField] private float _separationRadius = 2f;
+    private float _separationRadius = 2f;
 
     private void Start()
     {
@@ -108,10 +108,6 @@ public class Astar : MonoBehaviour
                 return path;
             }
 
-            if (currentNode == null)
-            {
-                Debug.LogError("currentNode == null");
-            }
             // 주변 노드 생성
             List<PointNode> neighborNodes = _grid.GetNeighborNodes(currentNode);
 
@@ -168,10 +164,10 @@ public class Astar : MonoBehaviour
 
     private void OnHasTargetMoved()
     {
-        if (_lastTargetPos.x + _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance < _targetTransform.position.x
-            || _lastTargetPos.x - _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance > _targetTransform.position.x
-            || _lastTargetPos.z + _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance < _targetTransform.position.z
-            || _lastTargetPos.z - _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance > _targetTransform.position.z)
+        if (_lastTargetPos.x + _monster.MonsterCombatController.MonsterCombatAbility.MonsterTargetDistance.IdealTargetDistance < _targetTransform.position.x
+            || _lastTargetPos.x - _monster.MonsterCombatController.MonsterCombatAbility.MonsterTargetDistance.IdealTargetDistance > _targetTransform.position.x
+            || _lastTargetPos.z + _monster.MonsterCombatController.MonsterCombatAbility.MonsterTargetDistance.IdealTargetDistance < _targetTransform.position.z
+            || _lastTargetPos.z - _monster.MonsterCombatController.MonsterCombatAbility.MonsterTargetDistance.IdealTargetDistance > _targetTransform.position.z)
             _hasTargetMoved = true;
         else
             _hasTargetMoved = false;

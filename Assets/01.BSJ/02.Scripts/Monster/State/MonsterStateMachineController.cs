@@ -15,9 +15,8 @@ public class MonsterStateMachineController : MonsterStateMachine
     {
         base.Update();
 
-
-        p_monster.BasicAttackCoolTimeCheck += Time.deltaTime;
-        p_monster.SkillAttackCoolTimeCheck += Time.deltaTime;
+        p_monster.MonsterCombatController.BasicAttackCoolTimeCheck += Time.deltaTime;
+        p_monster.MonsterCombatController.SkillAttackCoolTimeCheck += Time.deltaTime;
 
         // 살아있는지 확인
         if (!IsAlive())
@@ -34,43 +33,36 @@ public class MonsterStateMachineController : MonsterStateMachine
     private void HandleLivingState()
     {
         // 다른 애니메이션이 실행되고 있는지 확인
-        if (!p_monster.IsLockedInAnimation)
+        if (!p_monster.AnimationController.IsLockedInAnimation)
         {
-            if (p_monster.IsTargetInRange)
+            if (p_monster.MonsterCombatController.IsTargetInRange)
             {
-                if (p_monster.BasicAttackCoolTimeCheck <= p_monster.MonsterAbility.MonsterAttack.AttackCooldown)
+                if (p_monster.MonsterCombatController.BasicAttackCoolTimeCheck <= p_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.AttackCooldown)
                     OnIdle();
                 else
                 {
                     OnAttack();
-                    p_monster.BasicAttackCoolTimeCheck = 0;
+                    p_monster.MonsterCombatController.BasicAttackCoolTimeCheck = 0;
                 }
             }
-            else
+            else if (p_monster.MonsterStateType != MonsterStateType.Movement
+                    && Vector3.Distance(p_monster.MovementController.Astar.TargetTransform.position, this.transform.position)
+                    <= p_monster.MonsterCombatController.MonsterCombatAbility.MonsterTargetDistance.MaxTargetDistance)
             {
-                if (p_monster.MonsterAbility.MonsterHealth.IsHit)
-                    OnGotHit();
-                else if (p_monster.MonsterStateType != MonsterStateType.Movement
-                    && Vector3.Distance(p_monster.Astar.TargetTransform.position, this.transform.position) <= p_monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance)
-                    OnMove();
+                OnMove();
             }
         }
     }
 
     private bool IsAlive()
     {
-        if (p_monster.MonsterAbility == null)
-        {
-            p_monster.MonsterAbility = new MonsterCombatAbility(p_monster.MonsterStatData);
-        }
-
-        if (p_monster.MonsterAbility.MonsterHealth.CurrentHealth > 0)
+        if (p_monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth > 0)
         {
             return true;
         }
         else
         {
-            p_monster.MonsterAbility.IsDead = true;
+            p_monster.MonsterCombatController.MonsterCombatAbility.IsDead = true;
             return false;
         }
     }

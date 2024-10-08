@@ -29,37 +29,37 @@ public class MonsterStateMachine : StateMachine
         ChangeState(currentState);
     }
 
-    protected void OnSpawn()
+    public void OnSpawn()
     {
         p_monster.MonsterStateType = MonsterStateType.Spawn;
         ChangeBehaviour(new MonsterBehaviourSpawn());
     }
 
-    protected void OnAttack()
+    public void OnAttack()
     {
         p_monster.MonsterStateType = MonsterStateType.Attack;
         ChangeBehaviour(new MonsterBehaviourAttack());
     }
 
-    protected void OnIdle()
+    public void OnIdle()
     {
         p_monster.MonsterStateType = MonsterStateType.Idle;
         ChangeBehaviour(new MonsterBehaviourIdle());
     }
 
-    protected void OnMove()
+    public void OnMove()
     {
         p_monster.MonsterStateType = MonsterStateType.Movement;
         ChangeBehaviour(new MonsterBehaviourMovement());
     }
 
-    protected void OnDead()
+    public void OnDead()
     {
         p_monster.MonsterStateType = MonsterStateType.Dead;
         ChangeBehaviour(new MonsterBehaviourDead());
     }
 
-    protected void OnGotHit() 
+    public void OnGotHit() 
     {
         p_monster.MonsterStateType = MonsterStateType.GotHit;
         ChangeBehaviour(new MonsterBehaviourGotHit());

@@ -11,7 +11,7 @@ public class MonsterBehaviourDead : MonsterBehaviour
 
     public override void OnBehaviourStart(Monster monster)
     {
-        monster.SetDeadAnimation();
+        monster.AnimationController.PlayDeathAnimation();
         _monsterObj = monster.gameObject;
     }
 
@@ -21,13 +21,13 @@ public class MonsterBehaviourDead : MonsterBehaviour
 
         if (_currentTime > _deathDuration)
         {
-            monster.IsLockedInAnimation = false;
+            monster.AnimationController.IsLockedInAnimation = false;
             _monsterObj.SetActive(false);
         }
     }
 
     public override void OnBehaviourEnd(Monster monster)
     {
-
+        
     }
 }

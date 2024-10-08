@@ -21,7 +21,7 @@ public class MonsterCombatAbility : IMonsterCombat
 
     private void InitializeStats()
     {
-        MonsterHealth = new MonsterHealth(0, 0, _statData.MonsterHealth.MaxHealth, false);
+        MonsterHealth = new MonsterHealth(0, 0, _statData.MonsterHealth.MaxHealth);
         MonsterHealth.InitializeHealth();
 
         // MonsterAttack 생성 시 필요한 모든 매개변수를 전달

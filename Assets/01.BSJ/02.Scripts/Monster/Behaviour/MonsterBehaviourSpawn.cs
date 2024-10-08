@@ -10,10 +10,10 @@ public class MonsterBehaviourSpawn : MonsterBehaviour
 
     public override void OnBehaviourStart(Monster monster)
     {
-        monster.IsLockedInAnimation = true;
+        monster.AnimationController.IsLockedInAnimation = true;
         _currentTime = 0f;
 
-        monster.SetIdleAnimation();
+        monster.AnimationController.PlayIdleAnimation();
     }
 
     public override void OnBehaviourUpdate(Monster monster)
@@ -21,7 +21,7 @@ public class MonsterBehaviourSpawn : MonsterBehaviour
         _currentTime += Time.deltaTime;
 
         if (_currentTime > _spawnDuration)
-            monster.IsLockedInAnimation = false;
+            monster.AnimationController.IsLockedInAnimation = false;
     }
 
     public override void OnBehaviourEnd(Monster monster)

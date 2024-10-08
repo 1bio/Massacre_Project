@@ -15,7 +15,7 @@ public class MonsterAttackRange : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _monster.IsTargetInRange = true;
+            _monster.MonsterCombatController.IsTargetInRange = true;
         }
     }
 
@@ -23,7 +23,7 @@ public class MonsterAttackRange : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _monster.IsTargetInRange = false;
+            _monster.MonsterCombatController.IsTargetInRange = false;
         }
     }
 }
