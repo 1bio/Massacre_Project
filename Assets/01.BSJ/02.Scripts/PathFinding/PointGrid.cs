@@ -75,6 +75,12 @@ public class PointGrid : MonoBehaviour
 
     public List<PointNode> GetNeighborNodes(PointNode node)
     {
+        if (node == null)
+        {
+            Debug.LogError($"GetNighborNodes의 매개변수 node : {node} 가 null");
+            return null;
+        }
+
         List<PointNode> neighbors = new List<PointNode>();
 
         for (int x = -1; x <= 1; x++)

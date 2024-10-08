@@ -108,6 +108,10 @@ public class Astar : MonoBehaviour
                 return path;
             }
 
+            if (currentNode == null)
+            {
+                Debug.LogError("currentNode == null");
+            }
             // 주변 노드 생성
             List<PointNode> neighborNodes = _grid.GetNeighborNodes(currentNode);
 

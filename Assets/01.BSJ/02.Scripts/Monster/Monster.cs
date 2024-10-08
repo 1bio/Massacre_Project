@@ -19,22 +19,14 @@ public enum MonsterStateType
 
 public class Monster : MonoBehaviour
 {
-    public MonsterStateType MonsterStateType
-    {
-        get => _monsterStateType;
-        set => _monsterStateType = value;
-    }
+    public MonsterStateType MonsterStateType { get => _monsterStateType; set => _monsterStateType = value; }
 
     // 몬스터 능력치
-    public MonsterCombatAbility MonsterAbility
-    {
-        get => _monsterAbility;
-        set => _monsterAbility = value;
-    }
+    public MonsterCombatAbility MonsterAbility { get => _monsterAbility; set => _monsterAbility = value; }
     public MonsterStatData MonsterStatData => _monsterData;
 
     // 길찾기 및 이동
-    public Rigidbody Rigidbody => _rigidbody;
+    public CharacterController CharacterController => _characterController;
     public List<PointNode> Path => _path;
     public Astar Astar => _astar;
     public PointGrid PointGrid => _pointGrid;
@@ -51,32 +43,21 @@ public class Monster : MonoBehaviour
     public float LocomotionBlendValue => _locomotionBlendValue;
 
     // 전투
-    public bool IsTargetInRange
-    {
-        get => _isTargetInRange;
-        set => _isTargetInRange = value;
-    }
-    public float BasicAttackCoolTimeCheck
-    {
-        get => _basicAttackCoolTimeCheck;
-        set => _basicAttackCoolTimeCheck = value;
-    }
-    public float SkillAttackCoolTimeCheck 
-    {
-        get => _skillAttackCoolTimeCheck;
-        set => _skillAttackCoolTimeCheck = value;
-    }
+    public bool IsTargetInRange { get => _isTargetInRange; set => _isTargetInRange = value; }
+    public float BasicAttackCoolTimeCheck { get => _basicAttackCoolTimeCheck; set => _basicAttackCoolTimeCheck = value; }
+    public float SkillAttackCoolTimeCheck  { get => _skillAttackCoolTimeCheck; set => _skillAttackCoolTimeCheck = value; }
+
 
 
     // 몬스터 상태
-    [SerializeField] private MonsterStateType _monsterStateType = MonsterStateType.Spawn;
+    private MonsterStateType _monsterStateType = MonsterStateType.Spawn;
 
     // 몬스터 능력치
     private MonsterCombatAbility _monsterAbility;
     [SerializeField] private MonsterStatData _monsterData;
 
     // 길찾기 및 이동
-    private Rigidbody _rigidbody;
+    private CharacterController _characterController;
     private Astar _astar;
     private PointGrid _pointGrid;
     private List<PointNode> _path;
@@ -98,7 +79,7 @@ public class Monster : MonoBehaviour
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        _characterController = GetComponent<CharacterController>();
         _astar = GetComponent<Astar>();
         _pointGrid = FindObjectOfType<PointGrid>();
 
