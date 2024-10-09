@@ -62,6 +62,8 @@
   <ItemGroup>
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\DemoKeyCommands.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\PathFinding\Astar.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterAttack.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterAttackRange.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\_InfinityPBR - Minotaur\Scripts\MinotaurDemo.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\RangeAttackData.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourGotHit.cs" />
@@ -78,7 +80,6 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Data\MonsterSkillData.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\SkillData.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\FollowTarget.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\MonsterAttackRange.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\CoolDownManager.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\InfinityDemoAutomateStyles.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Roll\PlayerRollingState.cs" />
@@ -87,7 +88,6 @@
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Enemy\State\EnemyStateMachine.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\InfinityDemoCharacter.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Input\InputActions.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Data\MonsterHealth.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Data\MonsterStatData.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Gethit\PlayerGroggyState.cs" />
     <Compile Include="Assets\Assets\AssetFiles\MRF\Scripts\DynamicTrailGenerator.cs" />
@@ -96,6 +96,7 @@
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\GameManager.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\WardrobePrefabManager.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\AttackData.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterHealth.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\Shape.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\PoolManager.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Melee\PlayerMeleeAttackState.cs" />
@@ -114,7 +115,7 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourAttack.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\Health.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Range\PlayerRangeAttackState.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Data\MonsterTargetDistance.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterCombatAbility.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\MatchValue.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\Projectile.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\_InfinityPBR - Minotaur\Scripts\SFB_MinotaurDemo.cs" />
@@ -122,21 +123,22 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Monster.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\_InfinityPBR - Troll\Scripts\SFB_TrollDemo.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\EquipObject.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Controller\MonsterMovementController.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\EquipmentObject.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\SFB_BlendShapesManager.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\SFB_HumanDemoModel.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\SFB_StayWithTarget.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\SFB_CameraFocus.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Snake.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Manager\MonsterMovementController.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\BlendShapePresetValue.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Combat\RangeComponent.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterTargetDistance.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\StatusData.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourSkill.cs" />
     <Compile Include="Assets\Assets\AssetFiles\MRF\Scripts\ShatterHandler.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Manager\MonsterCombatController.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\DataManager.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\InfinityDemoFloatSlider.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Controller\MonsterCombatController.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\InfinityDemoAnimationButton.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\PathFinding\PointGrid.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\BlendShapeValue.cs" />
@@ -147,13 +149,12 @@
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\ForceReceiver.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\SFB_ToggleOpposite.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\photoController.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\MonsterDamageSource.cs" />
     <Compile Include="Assets\Assets\AssetFiles\MRF\Scripts\Splines.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\MatchList.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Combat\MeleeComponenet.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\BlendShapeGameObject.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Enemy\State\FreeLook\EnemyFreeLookState.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Data\MonsterCombatAbility.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Controller\MonsterAnimationController.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourIdle.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\SFB_TurnOffIfOn.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Scripts - Jason Storey\EnumerableExtensions.cs" />
@@ -167,11 +168,11 @@
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\_InfinityPBR Human - Humans\Scripts\MaterialColorChanger.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\BlendShapesManager.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\MonsterSpawnManager.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\ObjectFadeInOut.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\SFB_HumanDemoControl.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\_InfinityPBR - Medusa\Scripts\medusaTypeControl.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\State\MonsterBehaviourState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Range\PlayerRangeRapidShotState.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Manager\MonsterAnimationController.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Gethit\PlayerImpactState.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviour.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\State\MonsterStateMachineController.cs" />
@@ -185,7 +186,7 @@
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Range\PlayerRangeAimState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Combat\Target.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Scripts Static\InfinityStatic.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Data\MonsterAttack.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterDamageSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\AssetFiles\InfinityPBR\Shaders\AV\Hair\AV HDRP 2020.3.4.f1 Hair.shader" />

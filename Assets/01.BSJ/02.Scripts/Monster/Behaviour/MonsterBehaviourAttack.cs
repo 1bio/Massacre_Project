@@ -6,24 +6,27 @@ using UnityEngine;
 public class MonsterBehaviourAttack : MonsterBehaviour
 {
     private Monster _monster;
-    private bool _hasAttacked;
+    private bool _hasAttacked = false;
+    private float _currentTime = 0;
+    private float _attackAngleThreshold = 20f;
 
     public override void OnBehaviourStart(Monster monster)
     {
         _monster = monster;
-        _hasAttacked = false;
 
         monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
     {
+        _currentTime += Time.deltaTime;
+
         if (!monster.AnimationController.IsLockedInAnimation)
         {
-            monster.MovementController.LookAtTarget(monster.MovementController.Astar.TargetTransform);
+            monster.MovementController.LookAtTarget(monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
         }
 
-        if (Vector3.Angle(monster.transform.forward, monster.MovementController.Direction) <= 30f && !_hasAttacked)
+        if (Vector3.Angle(monster.transform.forward, monster.MovementController.Direction) <= _attackAngleThreshold && !_hasAttacked)
         {
             monster.AnimationController.PlayAttackAnimation(3);
             _hasAttacked = true;
@@ -39,6 +42,9 @@ public class MonsterBehaviourAttack : MonsterBehaviour
 
     private void OnImpact()
     {
-        // 체력 감소
+        if (Vector3.Angle(_monster.transform.forward, _monster.MovementController.Direction) > _attackAngleThreshold)
+        {
+            _monster.MonsterStateMachineController.OnGotHit();
+        }
     }
 }

@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
 public enum MonsterStateType
 {
     Spawn,
@@ -35,7 +34,7 @@ public class Monster : MonoBehaviour
         MonsterStateMachineController = GetComponent<MonsterStateMachineController>();
 
         MovementController = new MonsterMovementController(GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
-        AnimationController = new MonsterAnimationController(GetComponent<Animator>(), 100f);
+        AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),100f);
         MonsterCombatController = new MonsterCombatController(_monsterData, GetComponent<Health>());
 
         MonsterCombatController.MonsterCombatAbility.MonsterHealth.InitializeHealth();

@@ -44,7 +44,7 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
         if (_pathIndex < _path.Count && !_isMoving)
         {
-            monster.MovementController.LookAtTarget(monster.MovementController.Astar.TargetTransform);
+            monster.MovementController.LookAtTarget(monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
 
             StepToNode(_path[_pathIndex], monster, _pathIndex);
 

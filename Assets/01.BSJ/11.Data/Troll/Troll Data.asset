@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: Troll Data
   m_EditorClassIdentifier: 
   _moveSpeed: 12
-  _turnSpeed: 5
+  _turnSpeed: 300
   _monsterHealth:
     _currentHealth: 100
-    _lastHealth: 100
     _maxHealth: 100
   _monsterAttack:
     _attackPower: 0
-    _attackCooldown: 1
+    _attackCooldown: 0
     _attackTotalCount: 0
   _monsterTargetDistance:
     _minTargetDistance: 0
