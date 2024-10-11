@@ -29,6 +29,8 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
     public override void OnBehaviourUpdate(Monster monster)
     {
+        monster.AnimationController.AnimatorStateInfo = monster.AnimationController.Animator.GetCurrentAnimatorStateInfo(0);
+
         if (monster == null || monster.MovementController.Path == null)
         {
             monster.AnimationController.PlayIdleAnimation();

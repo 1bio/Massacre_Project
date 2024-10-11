@@ -11,7 +11,6 @@ public class MonsterSpawnManager : MonoBehaviour
     [SerializeField] private GameObject[] _secondWaveMonsters;
     [SerializeField] private GameObject[] _thirdWaveMonsters;
     private GameObject[][] _monsterWaves;
-    private int _waveCount = 3;
 
     // Spawn Point
     [SerializeField] private GameObject _player;

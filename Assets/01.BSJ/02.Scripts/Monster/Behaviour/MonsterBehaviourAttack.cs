@@ -29,6 +29,7 @@ public class MonsterBehaviourAttack : MonsterBehaviour
         if (Vector3.Angle(monster.transform.forward, monster.MovementController.Direction) <= _attackAngleThreshold && !_hasAttacked)
         {
             monster.AnimationController.PlayAttackAnimation(3);
+            
             _hasAttacked = true;
         }
     }
@@ -36,6 +37,7 @@ public class MonsterBehaviourAttack : MonsterBehaviour
     public override void OnBehaviourEnd(Monster monster)
     {
         monster.MovementController.Astar.StartPathCalculation();
+        monster.MonsterStateMachineController.CurrentBasicAttackCooldownTime = 0;
 
         monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
     }

@@ -11,9 +11,11 @@ public class MonsterAnimationController
         CurrentAnimationName = string.Empty;
     }
 
-    private Animator Animator { get; }
+    public Animator Animator { get; private set; }
     private string CurrentAnimationName { get; set; }
     public ObjectFadeInOut ObjectFadeInOut { get; }
+    public AnimatorStateInfo AnimatorStateInfo { get; set; }
+
     public bool IsLockedInAnimation { get; set; }
     public float LocomotionBlendValue { get; private set; }
     public float BlendTransitionSpeed { get; private set; }
@@ -67,5 +69,18 @@ public class MonsterAnimationController
         IsLockedInAnimation = true;
         CurrentAnimationName = "Death";
         Animator.SetTrigger(CurrentAnimationName);
+    }
+
+    public void PlaySkillAnimation(string skillAnimationName)
+    {
+        IsLockedInAnimation = true;
+        CurrentAnimationName = skillAnimationName;
+        Animator.SetTrigger(CurrentAnimationName);
+    }
+
+    public void ResetTriggerAnimation(string animationName)
+    {
+        CurrentAnimationName = animationName;
+        Animator.ResetTrigger(CurrentAnimationName);
     }
 }

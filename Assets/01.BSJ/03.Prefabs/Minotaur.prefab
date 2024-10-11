@@ -1463,13 +1463,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.8
-  m_Radius: 0.4
+  m_Height: 1.7
+  m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!114 &2651963025600488487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,7 +1506,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e430d477a1217a40bd8d2f32e3b1090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterData: {fileID: 11400000, guid: 5676367b2035ba749a3e1f15c5c16148, type: 2}
+  p_monsterStatData: {fileID: 0}
+  _skillData: {fileID: 0}
 --- !u!114 &3607153516507840390
 MonoBehaviour:
   m_ObjectHideFlags: 0

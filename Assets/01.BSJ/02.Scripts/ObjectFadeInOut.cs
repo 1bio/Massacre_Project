@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class ObjectFadeInOut : MonoBehaviour
 {
-    public Material _blackMaterial;
     private Renderer[] _renderers;
-    private Material[] _originalMaterials;
 
     private void Awake()
     {
         _renderers = GetComponentsInChildren<Renderer>();
-        _originalMaterials = new Material[_renderers.Length];
-
-        /*for (int i = 0; i < _renderers.Length; i++)
-        {
-            _originalMaterials[i] = _renderers[i].material;
-            _renderers[i].material = _blackMaterial;
-        }*/
     }
 
     public void StartFadeIn(float duration)
@@ -32,24 +23,32 @@ public class ObjectFadeInOut : MonoBehaviour
 
     private IEnumerator FadeInOut(float duration, float startAlpha, float endAlpha)
     {
-        for (int i = 0; i < _renderers.Length; i++)
+        Color[] colors = new Color[_renderers.Length];
+        
+        for (int i = 0; i < colors.Length; i++)
         {
-            _renderers[i].material = _blackMaterial;
+            colors[i] = _renderers[i].material.color;
+            colors[i].a = startAlpha;
+            _renderers[i].material.color = colors[i];
+        }
 
-            Color color = _renderers[i].material.color;
-            color.a = startAlpha;
+        for (int t = 0; t <= duration; t++)
+        {
+            float alpha = Mathf.Lerp(startAlpha, endAlpha, t / duration);
 
-            for (float t = 0; t <= duration; t += Time.deltaTime)
+            for (int i = 0; i < colors.Length; i++)
             {
-                color.a = Mathf.Lerp(startAlpha, endAlpha, t / duration);
-                _renderers[i].material.color = color;
-                yield return null;
+                colors[i].a = alpha;
+                _renderers[i].material.color = colors[i];
             }
 
-            color.a = endAlpha;
-            _renderers[i].material.color = color;
+            yield return null;
+        }
 
-            _renderers[i].material = _originalMaterials[i];
+        for (int i = 0; i < _renderers.Length; i++)
+        {
+            colors[i].a = endAlpha;
+            _renderers[i].material.color = colors[i];
         }
     }
 }

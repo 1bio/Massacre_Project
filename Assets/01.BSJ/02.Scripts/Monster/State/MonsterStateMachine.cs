@@ -49,13 +49,13 @@ public class MonsterStateMachine : StateMachine
 
     public void OnMove()
     {
-        p_monster.MonsterStateType = MonsterStateType.Movement;
+        p_monster.MonsterStateType = MonsterStateType.Walk;
         ChangeBehaviour(new MonsterBehaviourMovement());
     }
 
     public void OnDead()
     {
-        p_monster.MonsterStateType = MonsterStateType.Dead;
+        p_monster.MonsterStateType = MonsterStateType.Death;
         ChangeBehaviour(new MonsterBehaviourDead());
     }
 
@@ -63,5 +63,11 @@ public class MonsterStateMachine : StateMachine
     {
         p_monster.MonsterStateType = MonsterStateType.GotHit;
         ChangeBehaviour(new MonsterBehaviourGotHit());
+    }
+
+    public void OnSkill()
+    {
+        p_monster.MonsterStateType = MonsterStateType.Skill;
+        ChangeBehaviour(new MonsterBehaviourSkill());
     }
 }

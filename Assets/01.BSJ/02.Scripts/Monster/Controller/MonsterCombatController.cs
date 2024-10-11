@@ -4,14 +4,23 @@ public class MonsterCombatController
     {
         MonsterCombatAbility = new MonsterCombatAbility(statData);
         Health = health;
+        Health.SetHealth(MonsterCombatAbility.MonsterHealth.MaxHealth);
         IsTargetInRange = false;
-        BasicAttackCoolTimeCheck = 0f;
-        SkillAttackCoolTimeCheck = 0f;
+
+        MonsterCombatAbility.MonsterHealth.InitializeHealth();
+    }
+
+    public MonsterCombatController(MonsterStatData statData, MonsterSkillData skillData, Health health)
+    {
+        MonsterCombatAbility = new MonsterCombatAbility(statData, skillData);
+        Health = health;
+        Health.SetHealth(MonsterCombatAbility.MonsterHealth.MaxHealth);
+        IsTargetInRange = false;
+
+        MonsterCombatAbility.MonsterHealth.InitializeHealth();
     }
 
     public MonsterCombatAbility MonsterCombatAbility { get; private set; }
     public Health Health { get; private set; }
     public bool IsTargetInRange { get; set; }
-    public float BasicAttackCoolTimeCheck { get; set; }
-    public float SkillAttackCoolTimeCheck { get; set; }
 }

@@ -13,7 +13,6 @@ public class MonsterBehaviourSpawn : MonsterBehaviour
         monster.AnimationController.IsLockedInAnimation = true;
         _currentTime = 0f;
 
-        //monster.AnimationController.PlaySpawnAnimation();
         //monster.AnimationController.ObjectFadeInOut.StartFadeOut(0);
         monster.AnimationController.PlayIdleAnimation();
         //monster.AnimationController.ObjectFadeInOut.StartFadeIn(_spawnDuration);

@@ -10,9 +10,10 @@ public enum MonsterStateType
     Spawn,
     Idle,
     Attack,
-    Dead,
-    Movement,
+    Death,
+    Walk,
     GotHit,
+    Skill,
     Null
 }
 
@@ -22,22 +23,20 @@ public class Monster : MonoBehaviour
     public MonsterStateMachineController MonsterStateMachineController { get; private set; }
 
     // 몬스터 능력치
-    [Header(" # 몬스터 데이터")]
-    [SerializeField] private MonsterStatData _monsterData;
+    [Header(" # Stat Data")]
+    [SerializeField] protected MonsterStatData p_monsterStatData;
 
-    public MonsterMovementController MovementController { get; private set; }
-    public MonsterAnimationController AnimationController { get; private set; }
-    public MonsterCombatController MonsterCombatController { get; private set; }
+    public MonsterMovementController MovementController { get; protected set; }
+    public MonsterAnimationController AnimationController { get; protected set; }
+    public MonsterCombatController MonsterCombatController { get; protected set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         MonsterStateMachineController = GetComponent<MonsterStateMachineController>();
 
         MovementController = new MonsterMovementController(GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
         AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),100f);
-        MonsterCombatController = new MonsterCombatController(_monsterData, GetComponent<Health>());
-
-        MonsterCombatController.MonsterCombatAbility.MonsterHealth.InitializeHealth();
+        MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<Health>());
     }
 
     // Animation Event
@@ -51,7 +50,7 @@ public class Monster : MonoBehaviour
         MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon = false;
     }
 
-    public void UnLockedInAnimation()
+    public void UnlockAnimationTransition()
     {
         AnimationController.IsLockedInAnimation = false;
     }

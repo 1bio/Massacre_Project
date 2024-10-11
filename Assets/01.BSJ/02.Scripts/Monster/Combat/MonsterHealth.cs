@@ -6,7 +6,7 @@ public class MonsterHealth
     [SerializeField] private int _currentHealth;
     [SerializeField] private int _maxHealth;
 
-    public MonsterHealth(int currentHealth, int lastHealth, int maxHealth)
+    public MonsterHealth(int currentHealth, int maxHealth)
     {
         _currentHealth = currentHealth;
         _maxHealth = maxHealth;

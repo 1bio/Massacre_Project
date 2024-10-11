@@ -5,25 +5,25 @@ using UnityEngine;
 [System.Serializable]
 public class MonsterAttack
 {
-    [SerializeField] private int _attackPower;
-    [SerializeField] private float _attackCooldown;
-    [SerializeField] private int _attackTotalCount;
+    [SerializeField] private int _damage;
+    [SerializeField] private float _cooldownThreshold;
+    [SerializeField] private int _totalCount;
 
     private bool _isAttack = false;
     private bool _isEnableWeapon = false;
 
-    public MonsterAttack(int attackPower, float attackCooldown, int attackTotalCount, bool isAttack, bool isEnableWeapon)
+    public MonsterAttack(int damage, float cooldownThreshold, int totalCount, bool isAttack, bool isEnableWeapon)
     {
-        _attackPower = attackPower;
-        _attackCooldown = attackCooldown;
-        _attackTotalCount = attackTotalCount;
+        _damage = damage;
+        _cooldownThreshold = cooldownThreshold;
+        _totalCount = totalCount;
         _isAttack = isAttack;
         _isEnableWeapon = isEnableWeapon;
     }
 
-    public int AttackPower { get => _attackPower; set => _attackPower = value; }
-    public float AttackCooldown { get => _attackCooldown; set => _attackCooldown = value; }
-    public int AttackTotalCount { get => _attackTotalCount; set => _attackTotalCount = value; }
+    public int Damage { get => _damage; set => _damage = value; }
+    public float CooldownThreshold { get => _cooldownThreshold; set => _cooldownThreshold = value; }
+    public int TotalCount { get => _totalCount; set => _totalCount = value; }
     public bool IsAttack { get => _isAttack; set => _isAttack = value; }
     public bool IsEnableWeapon { get => _isEnableWeapon; set => _isEnableWeapon = value; }
 }

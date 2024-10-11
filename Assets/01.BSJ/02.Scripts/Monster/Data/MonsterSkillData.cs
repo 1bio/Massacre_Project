@@ -2,20 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MonsterSkillData", menuName = "Data/MonsterSKillData")]
-public class MonsterSkillData : ScriptableObject
+public abstract class MonsterSkillData : ScriptableObject
 {
-    public GameObject[] vfx;
+    [Header(" # VFX")]
+    public GameObject[] VFX;
 
-    public float coolTime;
+    [Header(" # Cooltime")]
+    public float CooldownThreshold;
 
-    public float damage;
+    [Header(" # Damage")]
+    public float Damage;
 
-    public string animationName;
+    [Header(" # Range")]
+    public float Range;
 
-    public float range;
+    [Header(" # Duration")]
+    public float Duration;
 
-    public float duration;
+    [Header(" # Cast Time")]
+    public float CastTime;
 
-    public float castTime;
+    public abstract void ActiveSkillEnter(Monster monster);
+    public abstract void ActiveSkillTick(Monster monster);
+    public abstract void ActiveSkillExit(Monster monster);
+
+    public MonsterSkillData CreateInstance()
+    {
+        return Instantiate(this);
+    }
 }
