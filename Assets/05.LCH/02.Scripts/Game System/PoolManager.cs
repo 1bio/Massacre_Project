@@ -62,6 +62,10 @@ public class PoolManager : MonoBehaviour
     IEnumerator Deactivate(GameObject select, float delay) 
     {
         yield return new WaitForSeconds(delay);
+
+        Rigidbody rb = select.GetComponent<Rigidbody>();
+        rb.isKinematic = true;  
+
         select.SetActive(false);
     }
 }

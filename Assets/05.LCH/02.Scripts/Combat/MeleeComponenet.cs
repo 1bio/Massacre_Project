@@ -2,6 +2,8 @@
 
 public class MeleeComponenet : MonoBehaviour
 {
+    [SerializeField] private CameraShake cameraShake;
+
     private float damage;
     private float knockBack;
 
@@ -29,6 +31,8 @@ public class MeleeComponenet : MonoBehaviour
                 return;
 
             Debug.Log("Hit!");
+
+            cameraShake.ShakeCamera(1f, 0.2f);
 
             health?.TakeDamage(); // 공용 
         }

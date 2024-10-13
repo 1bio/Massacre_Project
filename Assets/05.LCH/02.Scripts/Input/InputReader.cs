@@ -19,6 +19,8 @@ public class InputReader : MonoBehaviour,InputActions.IPlayerActions
 
     public event Action RollEvent;
 
+    public event Action SkillEvent;
+
 
     private void Awake()
     {
@@ -35,7 +37,6 @@ public class InputReader : MonoBehaviour,InputActions.IPlayerActions
     }
 
 
-
     #region Input Method
     // Moving
     void InputActions.IPlayerActions.OnMove(InputAction.CallbackContext context)
@@ -49,10 +50,12 @@ public class InputReader : MonoBehaviour,InputActions.IPlayerActions
         if (context.performed)
         {
             IsAttacking = true;
+            IsAiming = true;
         }
         else if(context.canceled)
         {
             IsAttacking = false;
+            IsAiming = false;
         }
     }
 
@@ -78,6 +81,15 @@ public class InputReader : MonoBehaviour,InputActions.IPlayerActions
             return;
 
         RollEvent?.Invoke();
+    }
+
+    // Q Skill
+    public void OnSkill(InputAction.CallbackContext context)
+    {
+        if (!context.started)
+            return;
+
+        SkillEvent?.Invoke();
     }
     #endregion
 }
