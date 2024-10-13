@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MasterRealisticFX;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -19,24 +20,56 @@ public enum MonsterStateType
 
 public class Monster : MonoBehaviour
 {
-    public MonsterStateType MonsterStateType { get; set; }
-    public MonsterStateMachineController MonsterStateMachineController { get; private set; }
-
-    // 몬스터 능력치
     [Header(" # Stat Data")]
     [SerializeField] protected MonsterStatData p_monsterStatData;
 
+    [Header(" # Skill Data")]
+    [SerializeField] protected MonsterSkillData p_monsterSkillData;
+
+    private Transform _vfxContainerTransform;
+    private TrailRenderer _objectTrail;
+
+    public MonsterStateType MonsterStateType { get; set; }
+    public MonsterStateMachineController MonsterStateMachineController { get; private set; }
     public MonsterMovementController MovementController { get; protected set; }
     public MonsterAnimationController AnimationController { get; protected set; }
     public MonsterCombatController MonsterCombatController { get; protected set; }
+    public MonsterParticleController MonsterParticleController { get; protected set; }
+    public TrailRenderer ObjectTrail { get => _objectTrail; }
 
     protected virtual void Awake()
     {
+        _vfxContainerTransform = transform.Find("VFXContainer");
+        if (_vfxContainerTransform == null)
+        {
+            GameObject vfxContainer = new GameObject("VFXContainer");
+            _vfxContainerTransform = vfxContainer.transform;
+
+            _vfxContainerTransform.SetParent(transform);
+
+            _vfxContainerTransform.localPosition = Vector3.zero;
+        }
+
+        _objectTrail = GetComponentInChildren<TrailRenderer>();
+        if (_objectTrail != null)
+        {
+            _objectTrail.gameObject.SetActive(false);
+        }
+
         MonsterStateMachineController = GetComponent<MonsterStateMachineController>();
 
         MovementController = new MonsterMovementController(GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
         AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),100f);
-        MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<Health>());
+
+        if (p_monsterSkillData != null)
+        {
+            MonsterCombatController = new MonsterCombatController(p_monsterStatData, p_monsterSkillData, GetComponent<Health>());
+            MonsterParticleController = new MonsterParticleController(MonsterCombatController.MonsterCombatAbility.MonsterSkillData, _vfxContainerTransform);
+        }
+        else
+        {
+            MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<Health>());
+        }
     }
 
     // Animation Event

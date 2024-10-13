@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class MonsterAnimationController
@@ -71,16 +72,16 @@ public class MonsterAnimationController
         Animator.SetTrigger(CurrentAnimationName);
     }
 
-    public void PlaySkillAnimation(string skillAnimationName)
+    public void PlaySkillAnimation(string animationName)
     {
         IsLockedInAnimation = true;
-        CurrentAnimationName = skillAnimationName;
+        CurrentAnimationName = animationName;
         Animator.SetTrigger(CurrentAnimationName);
     }
 
-    public void ResetTriggerAnimation(string animationName)
+    public bool IsAnimationPlaying(string animationName)
     {
-        CurrentAnimationName = animationName;
-        Animator.ResetTrigger(CurrentAnimationName);
+        AnimatorStateInfo = Animator.GetCurrentAnimatorStateInfo(0);
+        return AnimatorStateInfo.IsName(animationName);
     }
 }

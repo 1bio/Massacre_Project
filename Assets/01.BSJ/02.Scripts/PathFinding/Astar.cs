@@ -23,6 +23,7 @@ public class Astar : MonoBehaviour
     private bool _hasTargetMoved;
     private bool _isCalculating = false;
 
+    private float _distanceToDetectMovement = 1;
     private float _separationRadius = 2f;
 
     private void Start()
@@ -164,10 +165,10 @@ public class Astar : MonoBehaviour
 
     private void OnHasTargetMoved()
     {
-        if (_lastTargetPos.x + _monster.MonsterCombatController.MonsterCombatAbility.MonsterTargetDistance.IdealTargetDistance < _targetTransform.position.x
-            || _lastTargetPos.x - _monster.MonsterCombatController.MonsterCombatAbility.MonsterTargetDistance.IdealTargetDistance > _targetTransform.position.x
-            || _lastTargetPos.z + _monster.MonsterCombatController.MonsterCombatAbility.MonsterTargetDistance.IdealTargetDistance < _targetTransform.position.z
-            || _lastTargetPos.z - _monster.MonsterCombatController.MonsterCombatAbility.MonsterTargetDistance.IdealTargetDistance > _targetTransform.position.z)
+        if (_lastTargetPos.x + _distanceToDetectMovement < _targetTransform.position.x
+            || _lastTargetPos.x - _distanceToDetectMovement > _targetTransform.position.x
+            || _lastTargetPos.z + _distanceToDetectMovement < _targetTransform.position.z
+            || _lastTargetPos.z - _distanceToDetectMovement > _targetTransform.position.z)
             _hasTargetMoved = true;
         else
             _hasTargetMoved = false;

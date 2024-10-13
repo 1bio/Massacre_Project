@@ -25,7 +25,7 @@ public class MonsterCombatAbility : IMonsterCombat
         _statData = statData;
         InitializeStats();
 
-        MonsterSkillData = skillData;
+        MonsterSkillData = skillData.CreateInstance();
     }
 
     private void InitializeStats()

@@ -65,6 +65,7 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterAttackRange.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\RangeAttackData.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourGotHit.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Indicator\LineAttackIndicator.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Minotaur\MinotaurRamAttack.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Combat\Targeting.cs" />
@@ -97,6 +98,8 @@
     <Compile Include="Assets\05.LCH\02.Scripts\Input\InputActions.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Data\MonsterStatData.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Gethit\PlayerGroggyState.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Indicator\Indicator.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Controller\MonsterParticleController.cs" />
     <Compile Include="Assets\Assets\InfinityPBR\Demo Scripts\SFB_AudioManager.cs" />
     <Compile Include="Assets\Assets\InfinityPBR\Demo Scripts\SFB_HumanDemoModel.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\GameManager.cs" />
@@ -104,6 +107,7 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterHealth.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\PoolManager.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Melee\PlayerMeleeAttackState.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Enum\GameVFX.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Combat\WeaponToggle.cs" />
     <Compile Include="Assets\Assets\InfinityPBR\Demo Scripts\SFB_TurnOffIfOn.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourMovement.cs" />
@@ -175,6 +179,7 @@
     <Compile Include="Assets\Assets\InfinityPBR\_InfinityPBR - Medusa\Scripts\medusaTextureControl.cs" />
     <Compile Include="Assets\Assets\InfinityPBR\Demo Scripts\SFB_AnubisDemo.cs" />
     <Compile Include="Assets\Assets\InfinityPBR\Equipment System\Scripts\BlendShapePresetFile.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Enum\GameLayers.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Range\PlayerRangeRapidShotState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\State\FreeLook\Gethit\PlayerImpactState.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviour.cs" />

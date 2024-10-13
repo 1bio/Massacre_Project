@@ -5766,7 +5766,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c062a784f137ca94abafe4fe27c61d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterData: {fileID: 11400000, guid: 0c342749c5380844087ebe438b25f52e, type: 2}
+  p_monsterStatData: {fileID: 0}
+  p_monsterSkillData: {fileID: 0}
 --- !u!114 &6449116757535947445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5820,7 +5821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPoint: {fileID: 3900586308007637272}
   EndPoint: {fileID: 3273559416383993013}
-  TrailMat: {fileID: 2100000, guid: 71da4ca46f22d6e48bf58cd84757d1fe, type: 2}
+  TrailMat: {fileID: 2100000, guid: dca83e2924daf3044a0fc344149da5d2, type: 2}
   MaxFrame: 64
   TrailSubs: 3
   StopMultiplier: 2
