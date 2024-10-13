@@ -8,7 +8,8 @@ using UnityEngine.UIElements;
 
 public class MonsterBehaviourMovement : MonsterBehaviour
 {
-    private Rigidbody _rigidbody;
+    private CharacterController _characterController;
+    private Monster _monster;
     private PointGrid _pointGrid;
     private List<PointNode> _neighborNodes;
     private List<PointNode> _path;
@@ -17,36 +18,35 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
     public override void OnBehaviourStart(Monster monster)
     {
-        monster.SetWalkAnimation();
+        _monster = monster;
+        _pointGrid = monster.MovementController.PointGrid;
+        _characterController = monster.MovementController.CharacterController;
 
-        _rigidbody = monster.Rigidbody;
-        _pointGrid = monster.PointGrid;
+        monster.AnimationController.PlayWalkAnimation();
+
+        monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        if (monster == null || monster.Path == null)
+        monster.AnimationController.AnimatorStateInfo = monster.AnimationController.Animator.GetCurrentAnimatorStateInfo(0);
+
+        if (monster == null || monster.MovementController.Path == null)
         {
-            monster.SetIdleAnimation();
+            monster.AnimationController.PlayIdleAnimation();
             return;
         }
 
-        if (_path != monster.Path && monster.Path.Count >= 1)
+        if (_path != monster.MovementController.Path && monster.MovementController.Path.Count >= 1)
         {
-            monster.SetWalkAnimation();
-            _path = monster.Path;
+            monster.AnimationController.PlayWalkAnimation();
+            _path = monster.MovementController.Path;
             _pathIndex = 1;
         }
 
         if (_pathIndex < _path.Count && !_isMoving)
         {
-            monster.LookAtTarget(monster);
-
-            _neighborNodes = _pointGrid.GetNeighborNodes(_pointGrid.GetPointNodeFromGridByPosition(monster.transform.position));
-            foreach (PointNode node in _neighborNodes)
-            {
-                node.IsObstacle = true;
-            }
+            monster.MovementController.LookAtTarget(monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
 
             StepToNode(_path[_pathIndex], monster, _pathIndex);
 
@@ -59,7 +59,13 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
     public override void OnBehaviourEnd(Monster monster)
     {
-        monster.SetIdleAnimation();
+        monster.AnimationController.PlayIdleAnimation();
+        monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
+    }
+
+    private void OnImpact()
+    {
+        _monster.MonsterStateMachineController.OnGotHit();
     }
 
     private void StepToNode(PointNode nextNode, Monster monster, int pathIndex)
@@ -69,16 +75,10 @@ public class MonsterBehaviourMovement : MonsterBehaviour
         Vector3 startNode = monster.transform.position;
         Vector3 targetNode = _path[pathIndex].Position;
         Vector3 direction = (targetNode - startNode).normalized;
-        float speed = monster.MonsterAbility.MoveSpeed * monster.LocomotionBlendValue;
-        Vector3 newPosition = startNode + direction * speed * Time.deltaTime;
+        float speed = monster.MonsterCombatController.MonsterCombatAbility.MoveSpeed * monster.AnimationController.LocomotionBlendValue;
+        Vector3 newPosition = direction * speed;
 
-        _rigidbody.MovePosition(newPosition);
-
-        foreach (PointNode node in _neighborNodes)
-        {
-            node.IsObstacle = false;
-        }
-        _neighborNodes.Clear();
+        _characterController.SimpleMove(newPosition);
 
         _isMoving = false;
     }

@@ -5,29 +5,48 @@ using UnityEngine;
 
 public class MonsterBehaviourAttack : MonsterBehaviour
 {
-    private bool _hasAttacked;
+    private Monster _monster;
+    private bool _hasAttacked = false;
+    private float _currentTime = 0;
+    private float _attackAngleThreshold = 20f;
 
     public override void OnBehaviourStart(Monster monster)
     {
-        _hasAttacked = false;
+        _monster = monster;
+
+        monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        if (!monster.IsLockedInAnimation)
+        _currentTime += Time.deltaTime;
+
+        if (!monster.AnimationController.IsLockedInAnimation)
         {
-            monster.LookAtTarget(monster);
+            monster.MovementController.LookAtTarget(monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
         }
 
-        if (Vector3.Angle(monster.transform.forward, monster.Direction) <= 20f && !_hasAttacked)
+        if (Vector3.Angle(monster.transform.forward, monster.MovementController.Direction) <= _attackAngleThreshold && !_hasAttacked)
         {
-            monster.SetRandomAttackAnimation();
+            monster.AnimationController.PlayAttackAnimation(3);
+            
             _hasAttacked = true;
         }
     }
 
     public override void OnBehaviourEnd(Monster monster)
     {
-        monster.Astar.StartPathCalculation();
+        monster.MovementController.Astar.StartPathCalculation();
+        monster.MonsterStateMachineController.CurrentBasicAttackCooldownTime = 0;
+
+        monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
+    }
+
+    private void OnImpact()
+    {
+        if (Vector3.Angle(_monster.transform.forward, _monster.MovementController.Direction) > _attackAngleThreshold)
+        {
+            _monster.MonsterStateMachineController.OnGotHit();
+        }
     }
 }

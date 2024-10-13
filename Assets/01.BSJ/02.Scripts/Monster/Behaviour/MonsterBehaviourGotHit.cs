@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class MonsterBehaviourGotHit : MonsterBehaviour
 {
+    private Monster _monster;
+
     public override void OnBehaviourStart(Monster monster)
     {
-        monster.SetGotHitAnimation();
-        monster.MonsterAbility.MonsterHealth.IsHit = false;
+        _monster = monster;
+        _monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
+
+        monster.AnimationController.PlayGotHitAnimation();
     }
 
     public override void OnBehaviourUpdate(Monster monster)
@@ -17,6 +21,11 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
 
     public override void OnBehaviourEnd(Monster monster)
     {
+        _monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
+    }
 
+    private void OnImpact()
+    {
+        //체력 감소
     }
 }

@@ -13,7 +13,7 @@ public class Astar : MonoBehaviour
 
 
     private Monster _monster;
-    private List<Monster> _monsters;
+    private List<Monster> _allMonsters;
     private PointGrid _grid;
 
     private Transform _targetTransform;
@@ -23,7 +23,8 @@ public class Astar : MonoBehaviour
     private bool _hasTargetMoved;
     private bool _isCalculating = false;
 
-    [SerializeField] private float _separationRadius = 2f;
+    private float _distanceToDetectMovement = 1;
+    private float _separationRadius = 2f;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class Astar : MonoBehaviour
         _monster = GetComponent<Monster>();
         _lastTargetPos = _targetTransform.position;
 
-        _monsters = FindObjectsOfType<Monster>().ToList();
+        _allMonsters = FindObjectsOfType<Monster>().ToList();
     }
 
     private void Update()
@@ -147,7 +148,7 @@ public class Astar : MonoBehaviour
         int nearbyMonsters = 0;
         float totalDistanceFactor = 0f;
 
-        foreach (Monster monster in _monsters)
+        foreach (Monster monster in _allMonsters)
         {
             float distance = Vector3.Distance(monster.transform.position, node.Position);
             if (distance < _separationRadius)
@@ -164,10 +165,10 @@ public class Astar : MonoBehaviour
 
     private void OnHasTargetMoved()
     {
-        if (_lastTargetPos.x + _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance < _targetTransform.position.x
-            || _lastTargetPos.x - _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance > _targetTransform.position.x
-            || _lastTargetPos.z + _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance < _targetTransform.position.z
-            || _lastTargetPos.z - _monster.MonsterAbility.MonsterTargetDistance.IdealTargetDistance > _targetTransform.position.z)
+        if (_lastTargetPos.x + _distanceToDetectMovement < _targetTransform.position.x
+            || _lastTargetPos.x - _distanceToDetectMovement > _targetTransform.position.x
+            || _lastTargetPos.z + _distanceToDetectMovement < _targetTransform.position.z
+            || _lastTargetPos.z - _distanceToDetectMovement > _targetTransform.position.z)
             _hasTargetMoved = true;
         else
             _hasTargetMoved = false;

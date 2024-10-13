@@ -11,7 +11,6 @@ public class MonsterSpawnManager : MonoBehaviour
     [SerializeField] private GameObject[] _secondWaveMonsters;
     [SerializeField] private GameObject[] _thirdWaveMonsters;
     private GameObject[][] _monsterWaves;
-    private int _waveCount = 3;
 
     // Spawn Point
     [SerializeField] private GameObject _player;
@@ -36,7 +35,8 @@ public class MonsterSpawnManager : MonoBehaviour
         {
             foreach (GameObject monster in wave)
             {
-                monster.SetActive(false);
+                if (monster != null)
+                    monster.SetActive(false);
             }
         }
     }
@@ -44,7 +44,7 @@ public class MonsterSpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (!_isFirstSpawn && IsWaveCleared(_monsterWaves[_currentWave]))
+        if (!_isFirstSpawn && _currentWave < _monsterWaves.Length && IsWaveCleared(_monsterWaves[_currentWave]))
             _currentWave++;
 
         SpawnMonsterWave();
@@ -54,7 +54,7 @@ public class MonsterSpawnManager : MonoBehaviour
 
     private void SpawnMonsterWave()
     {
-        if (_monsterWaves[_currentWave].Length > 0 && IsWaveCleared(_monsterWaves[_currentWave]))
+        if (_currentWave < _monsterWaves.Length && _monsterWaves[_currentWave].Length > 0 && IsWaveCleared(_monsterWaves[_currentWave]))
         {
             OnSetActiveMonsters();
         }
@@ -95,24 +95,26 @@ public class MonsterSpawnManager : MonoBehaviour
 
         nodes.AddRange(_pointGrid.GetNeighborNodes(currentNode));
 
-        foreach (PointNode node in nodes)
+        Queue<PointNode> nodesToCheck = new Queue<PointNode>();
+        nodesToCheck.Enqueue(currentNode);
+
+        int depth = 3;
+        while (nodesToCheck.Count > 0 && depth > 0)
         {
-            _neighborNodes.Add(node);
+            int count = nodesToCheck.Count;
+            depth--;
 
-            foreach (PointNode neighborNode in _pointGrid.GetNeighborNodes(node))
+            for (int i = 0; i < count; i++)
             {
-                _neighborNodes.Add(neighborNode);
-
-                foreach (PointNode neighborNodeOfNeighbor in _pointGrid.GetNeighborNodes(neighborNode))
+                PointNode node = nodesToCheck.Dequeue();
+                if (_neighborNodes.Add(node))
                 {
-                    _neighborNodes.Add(neighborNodeOfNeighbor);
+                    foreach (PointNode neighbor in _pointGrid.GetNeighborNodes(node))
+                    {
+                        nodesToCheck.Enqueue(neighbor);
+                    }
                 }
             }
-        }
-
-        foreach (PointNode node in nodes)
-        {
-            _neighborNodes.Remove(node);
         }
 
         int randNum = Random.Range(0, _neighborNodes.Count);

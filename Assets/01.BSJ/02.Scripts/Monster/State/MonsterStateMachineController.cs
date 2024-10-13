@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class MonsterStateMachineController : MonsterStateMachine
 {
+    public float CurrentBasicAttackCooldownTime { get; set; }
+    public float CurrentSkillCooldownTime { get; set; }
+
     private void OnEnable()
     {
         OnSpawn();
@@ -15,14 +18,13 @@ public class MonsterStateMachineController : MonsterStateMachine
     {
         base.Update();
 
-
-        p_monster.BasicAttackCoolTimeCheck += Time.deltaTime;
-        p_monster.SkillAttackCoolTimeCheck += Time.deltaTime;
+        CurrentBasicAttackCooldownTime += Time.deltaTime;
+        CurrentSkillCooldownTime += Time.deltaTime;
 
         // 살아있는지 확인
         if (!IsAlive())
         {
-            if (p_monster.MonsterStateType != MonsterStateType.Dead)
+            if (p_monster.MonsterStateType != MonsterStateType.Death)
                 OnDead();
         }
         else
@@ -34,43 +36,43 @@ public class MonsterStateMachineController : MonsterStateMachine
     private void HandleLivingState()
     {
         // 다른 애니메이션이 실행되고 있는지 확인
-        if (!p_monster.IsLockedInAnimation)
+        if (!p_monster.AnimationController.IsLockedInAnimation)
         {
-            if (p_monster.IsTargetInRange)
+            if (p_monster.MonsterStateType != MonsterStateType.Skill
+                && p_monster.MonsterCombatController.MonsterCombatAbility.MonsterSkillData != null
+                && Vector3.Distance(p_monster.MovementController.Astar.TargetTransform.position, this.transform.position) <= p_monster.MonsterCombatController.MonsterCombatAbility.MonsterSkillData.Range 
+                && p_monster.MonsterCombatController.MonsterCombatAbility.MonsterSkillData.CooldownThreshold <= CurrentSkillCooldownTime)
             {
-                if (p_monster.BasicAttackCoolTimeCheck <= p_monster.MonsterAbility.MonsterAttack.AttackCooldown)
+                OnSkill();
+            }
+            else if (p_monster.MonsterCombatController.IsTargetInRange)
+            {
+                if (p_monster.MonsterStateType != MonsterStateType.Idle
+                    && p_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.CooldownThreshold > CurrentBasicAttackCooldownTime)
                     OnIdle();
                 else
                 {
                     OnAttack();
-                    p_monster.BasicAttackCoolTimeCheck = 0;
                 }
             }
-            else
+            else if (p_monster.MonsterStateType != MonsterStateType.Walk
+                    && Vector3.Distance(p_monster.MovementController.Astar.TargetTransform.position, this.transform.position)
+                    <= p_monster.MonsterCombatController.MonsterCombatAbility.MonsterTargetDistance.MaxTargetDistance)
             {
-                if (p_monster.MonsterAbility.MonsterHealth.IsHit)
-                    OnGotHit();
-                else if (p_monster.MonsterStateType != MonsterStateType.Movement
-                    && Vector3.Distance(p_monster.Astar.TargetTransform.position, this.transform.position) <= p_monster.MonsterAbility.MonsterTargetDistance.MaxTargetDistance)
-                    OnMove();
+                OnMove();
             }
         }
     }
 
     private bool IsAlive()
     {
-        if (p_monster.MonsterAbility == null)
-        {
-            p_monster.MonsterAbility = new MonsterCombatAbility(p_monster.MonsterStatData);
-        }
-
-        if (p_monster.MonsterAbility.MonsterHealth.CurrentHealth > 0)
+        if (p_monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth > 0)
         {
             return true;
         }
         else
         {
-            p_monster.MonsterAbility.IsDead = true;
+            p_monster.MonsterCombatController.MonsterCombatAbility.IsDead = true;
             return false;
         }
     }

@@ -1,235 +1,90 @@
-﻿using System.Collections;
+﻿//using MasterRealisticFX;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
 public enum MonsterStateType
 {
     Spawn,
     Idle,
     Attack,
-    Dead,
-    Movement,
+    Death,
+    Walk,
     GotHit,
+    Skill,
     Null
 }
 
 public class Monster : MonoBehaviour
 {
-    public MonsterStateType MonsterStateType
+    [Header(" # Stat Data")]
+    [SerializeField] protected MonsterStatData p_monsterStatData;
+
+    [Header(" # Skill Data")]
+    [SerializeField] protected MonsterSkillData p_monsterSkillData;
+
+    private Transform _vfxContainerTransform;
+    private TrailRenderer _objectTrail;
+
+    public MonsterStateType MonsterStateType { get; set; }
+    public MonsterStateMachineController MonsterStateMachineController { get; private set; }
+    public MonsterMovementController MovementController { get; protected set; }
+    public MonsterAnimationController AnimationController { get; protected set; }
+    public MonsterCombatController MonsterCombatController { get; protected set; }
+    public MonsterParticleController MonsterParticleController { get; protected set; }
+    public TrailRenderer ObjectTrail { get => _objectTrail; }
+
+    protected virtual void Awake()
     {
-        get => _monsterStateType;
-        set => _monsterStateType = value;
-    }
-
-    // 몬스터 능력치
-    public MonsterCombatAbility MonsterAbility
-    {
-        get => _monsterAbility;
-        set => _monsterAbility = value;
-    }
-    public MonsterStatData MonsterStatData => _monsterData;
-
-    // 길찾기 및 이동
-    public Rigidbody Rigidbody => _rigidbody;
-    public List<PointNode> Path => _path;
-    public Astar Astar => _astar;
-    public PointGrid PointGrid => _pointGrid;
-    public Vector3 Direction => _direction;
-
-    // 애니메이션
-    public Animator Animator => _animator;
-    public string CurrentAniamtionName => _currentAnimationName;
-    public bool IsLockedInAnimation
-    {
-        get => _isLockedInAnimation;
-        set => _isLockedInAnimation = value;
-    }
-    public float LocomotionBlendValue => _locomotionBlendValue;
-
-    // 전투
-    public bool IsTargetInRange
-    {
-        get => _isTargetInRange;
-        set => _isTargetInRange = value;
-    }
-    public float BasicAttackCoolTimeCheck
-    {
-        get => _basicAttackCoolTimeCheck;
-        set => _basicAttackCoolTimeCheck = value;
-    }
-    public float SkillAttackCoolTimeCheck 
-    {
-        get => _skillAttackCoolTimeCheck;
-        set => _skillAttackCoolTimeCheck = value;
-    }
-
-
-    // 몬스터 상태
-    [SerializeField] private MonsterStateType _monsterStateType = MonsterStateType.Spawn;
-
-    // 몬스터 능력치
-    private MonsterCombatAbility _monsterAbility;
-    [SerializeField] private MonsterStatData _monsterData;
-
-    // 길찾기 및 이동
-    private Rigidbody _rigidbody;
-    private Astar _astar;
-    private PointGrid _pointGrid;
-    private List<PointNode> _path;
-    private Vector3 _direction;
-
-    // 애니메이션
-    [SerializeField] private Animator _animator;
-    private AnimatorClipInfo[] _nextClipInfo = null;   // 애니메이션 clip
-    private bool _isLockedInAnimation = false;
-    private string _currentAnimationName = string.Empty;    // 현재 애니메이션 이름
-    private float _animationElapsedTime; // 애니메이션 경과 시간
-    private float _locomotionBlendValue = 0f; // 0 = Idle, 1 = Walk
-    [SerializeField] private float _blendTransitionSpeed = 100f;
-
-    // 전투
-    private bool _isTargetInRange = false;
-    [SerializeField] private float _basicAttackCoolTimeCheck;
-    private float _skillAttackCoolTimeCheck;
-
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-        _astar = GetComponent<Astar>();
-        _pointGrid = FindObjectOfType<PointGrid>();
-
-        _monsterAbility = new MonsterCombatAbility(_monsterData);
-        _monsterAbility.MonsterHealth.InitializeHealth();
-    }
-
-    private void Start()
-    {
-        if (_astar.Path != null)
+        _vfxContainerTransform = transform.Find("VFXContainer");
+        if (_vfxContainerTransform == null)
         {
-            _path = _astar.Path;
-        }
-    }
+            GameObject vfxContainer = new GameObject("VFXContainer");
+            _vfxContainerTransform = vfxContainer.transform;
 
-    private void Update()
-    {
-        if (_path != _astar.Path)
-        {
-            _path = _astar.Path;
-        }
-    }
+            _vfxContainerTransform.SetParent(transform);
 
-
-    // look at target
-    public void LookAtTarget(Monster monster)
-    {
-        StartCoroutine(SmoothLookAtCoroutine(monster));
-    }
-
-    private IEnumerator SmoothLookAtCoroutine(Monster monster)
-    {
-        Vector3 targetPos = monster.Astar.TargetTransform.position;
-        targetPos.y = monster.transform.position.y;
-        
-        _direction = (targetPos - monster.transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(_direction);
-
-        monster.transform.rotation = Quaternion.Slerp(monster.transform.rotation, lookRotation, monster.MonsterAbility.TurnSpeed * Time.deltaTime);
-
-        yield return null;
-    }
-
-
-    // Move
-    public void SetWalkAnimation()
-    {
-        SmoothLocomotionTransition(1);
-    }
-
-    public void SetIdleAnimation()
-    {
-        SmoothLocomotionTransition(0);
-    }
-
-    private void SmoothLocomotionTransition(int targetBlendValue)
-    {
-        _locomotionBlendValue = Mathf.Lerp(_locomotionBlendValue, targetBlendValue, _blendTransitionSpeed * Time.deltaTime);
-
-        if (Mathf.Abs(_locomotionBlendValue - targetBlendValue) <= 0.1f)
-        {
-            _locomotionBlendValue = targetBlendValue;
+            _vfxContainerTransform.localPosition = Vector3.zero;
         }
 
-        _animator.SetFloat("Locomotion", _locomotionBlendValue);
-    }
-
-
-    // Attack
-    public void SetRandomAttackAnimation()
-    {
-        SmoothLocomotionTransition(0);
-
-        _animationElapsedTime = 0;
-        MonsterAbility.MonsterAttack.IsAttack = true;
-        _isLockedInAnimation = true;
-
-        int randNum = Random.Range(0, MonsterAbility.MonsterAttack.AttackTotalCount) + 1;
-        _currentAnimationName = $"Attack{randNum}";
-        _animator.SetTrigger(_currentAnimationName);
-    }
-
-
-    // Got Hit
-    public void SetGotHitAnimation()
-    {
-        SmoothLocomotionTransition(0);
-
-        _animationElapsedTime = 0;
-        _isLockedInAnimation = true;
-
-        _currentAnimationName = "GotHit";
-        _animator.SetTrigger(_currentAnimationName);
-    }
-
-
-    // Dead
-    public void SetDeadAnimation()
-    {
-        SmoothLocomotionTransition(0);
-
-        _animationElapsedTime = 0;
-        _isLockedInAnimation = true;
-
-        _currentAnimationName = "Death";
-        _animator.SetTrigger(_currentAnimationName);
-    }
-
-    public void TakeDamage(int damge)
-    {
-        MonsterAbility.MonsterHealth.CurrentHealth -= damge;
-        MonsterAbility.MonsterHealth.LastHealth = MonsterAbility.MonsterHealth.CurrentHealth;
-        if (!_isLockedInAnimation)
+        _objectTrail = GetComponentInChildren<TrailRenderer>();
+        if (_objectTrail != null)
         {
-            MonsterAbility.MonsterHealth.IsHit = true;
+            _objectTrail.gameObject.SetActive(false);
+        }
+
+        MonsterStateMachineController = GetComponent<MonsterStateMachineController>();
+
+        MovementController = new MonsterMovementController(GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
+        AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),100f);
+
+        if (p_monsterSkillData != null)
+        {
+            MonsterCombatController = new MonsterCombatController(p_monsterStatData, p_monsterSkillData, GetComponent<Health>());
+            MonsterParticleController = new MonsterParticleController(MonsterCombatController.MonsterCombatAbility.MonsterSkillData, _vfxContainerTransform);
+        }
+        else
+        {
+            MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<Health>());
         }
     }
 
     // Animation Event
     public void EnableWeapon()
     {
-        _monsterAbility.MonsterAttack.IsEnableWeapon = true;
+        MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon = true;
     }
 
     public void DisableWeapon()
     {
-        _monsterAbility.MonsterAttack.IsEnableWeapon = false;
+        MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon = false;
     }
 
-    public void UnLockedInAnimation()
+    public void UnlockAnimationTransition()
     {
-        _isLockedInAnimation = false;
+        AnimationController.IsLockedInAnimation = false;
     }
 }
