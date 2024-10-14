@@ -26,6 +26,8 @@ public class Astar : MonoBehaviour
     private float _distanceToDetectMovement = 1;
     private float _separationRadius = 2f;
 
+    private TargetDetector _targetDetector;
+
     private void Start()
     {
         _grid = FindObjectOfType<PointGrid>();

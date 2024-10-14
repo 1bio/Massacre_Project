@@ -58,7 +58,7 @@ public class Monster : MonoBehaviour
 
         MonsterStateMachineController = GetComponent<MonsterStateMachineController>();
 
-        MovementController = new MonsterMovementController(GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
+        MovementController = new MonsterMovementController(GetComponent<TargetDetector>(), GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
         AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),100f);
 
         if (p_monsterSkillData != null)

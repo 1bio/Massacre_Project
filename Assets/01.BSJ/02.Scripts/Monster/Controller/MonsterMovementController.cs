@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class MonsterMovementController
 {
-    public MonsterMovementController(Astar astar, PointGrid pointGrid, CharacterController characterController)
+    public MonsterMovementController(TargetDetector targetDetector, Astar astar, PointGrid pointGrid, CharacterController characterController)
     {
+        TargetDetector = targetDetector;
         Astar = astar;
         PointGrid = pointGrid;
         CharacterController = characterController;
     }
 
+    public TargetDetector TargetDetector { get; private set; }
     public Astar Astar { get; private set; }
     public PointGrid PointGrid { get; private set; }
     public List<PointNode> Path { get => Astar.Path; }

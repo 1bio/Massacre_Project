@@ -27,7 +27,7 @@ public class MonsterStateMachineController : MonsterStateMachine
             if (p_monster.MonsterStateType != MonsterStateType.Death)
                 OnDead();
         }
-        else
+        else if (p_monster.MovementController.TargetDetector.IsTargetDetected)
         {
             HandleLivingState();
         }

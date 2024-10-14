@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RamAttack
   m_EditorClassIdentifier: 
   _vfx:
-  - {fileID: 99785806984778513, guid: 80240e567d8b8814893ed63ea9afe0b1, type: 3}
-  _cooldownThreshold: 5
+  - {fileID: 99785806984778513, guid: 9c7a989689a63b34eb00cbd22d7a2375, type: 3}
+  _cooldownThreshold: 30
   _damage: 0
   _range: 8
   _castTime: 0
