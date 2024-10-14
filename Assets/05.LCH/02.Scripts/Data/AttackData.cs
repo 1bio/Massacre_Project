@@ -18,25 +18,15 @@ public class AttackData
     public float KnockBack; // 넉백 속도
 
 
-    public AttackData(
-        string animationName,
-        int comboAttackIndex,
-        float comboAttackTime,
-        float transitionDuration,
-        float force,
-        float forceTime,
-        float damage,
-        float knockBack
-
-    )
+    public AttackData(string animationName, int comboAttackIndex, float comboAttackTime, float transitionDuration, float force, float forceTime, float damage, float knockBack)
     {
-        AnimationName = animationName;
-        ComboAttackIndex = comboAttackIndex;
-        ComboAttackTime = comboAttackTime;
-        TransitionDuration = transitionDuration;
-        Force = force;
-        ForceTime = forceTime;
-        Damage = damage;
-        KnockBack = knockBack;
+        this.AnimationName = animationName;
+        this.ComboAttackIndex = comboAttackIndex;
+        this.ComboAttackTime = comboAttackTime;
+        this.TransitionDuration = transitionDuration;
+        this.Force = force;
+        this.ForceTime = forceTime;
+        this.Damage = damage;
+        this.KnockBack = knockBack;
     }
 }

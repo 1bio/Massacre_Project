@@ -1,28 +1,24 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rigidbody;
+    private Rigidbody arrow_rigid;
 
     private float damage;
     private float knockBack;
 
     private void OnEnable()
     {
-        rigidbody.isKinematic = false;
-
         damage = DataManager.instance.playerData.rangeAttackData.Damage;
+
+        arrow_rigid = GetComponent<Rigidbody>();
+        arrow_rigid.isKinematic = false;
     }
 
-    private void OnDisable()
-    {
-        rigidbody.isKinematic = false;
-    }
 
     #region Collision Methods
-   
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<Health>(out Health health))
@@ -36,21 +32,29 @@ public class Projectile : MonoBehaviour
         }
 
         // Arrow Stick
-        if (collision.gameObject.CompareTag("Projectile"))
+        if (collision.gameObject.CompareTag("Monster"))
+        {
+            if (collision.gameObject.CompareTag("Projectile"))
+                return;
+
+            arrow_rigid.isKinematic = true; // ë¬¼ë¦¬ ì—°ì‚° ì¤‘ì§€
+
+            ContactPoint contact = collision.contacts[0]; // ì²« ë²ˆì§¸ ì¶©ëŒ ì§€ì 
+
+            Vector3 hitPoint = contact.point; // ì¶©ëŒ ìœ„ì¹˜
+            Vector3 hitNormal = contact.normal; // ì¶©ëŒ í‘œë©´ ë²•ì„ 
+
+            // í™”ì‚´ ìœ„ì¹˜ ë° íšŒì „ ì¡°ì •
+            transform.position = hitPoint;
+            transform.rotation = Quaternion.LookRotation(-hitNormal);
+
+            transform.SetParent(collision.transform);
             return;
-     
-        ContactPoint contact = collision.contacts[0]; // Ã¹ ¹øÂ° Ãæµ¹ ÁöÁ¡
+        }
 
-        Vector3 hitPoint = contact.point; // Ãæµ¹ À§Ä¡
-        Vector3 hitNormal = contact.normal; // Ãæµ¹ Ç¥¸é ¹ı¼±
-
-        // È­»ì À§Ä¡ ¹× È¸Àü Á¶Á¤
-        transform.position = hitPoint;
-        transform.rotation = Quaternion.LookRotation(hitNormal);
-
-        transform.SetParent(collision.transform);
-
-        rigidbody.isKinematic = true; // ¹°¸® ¿¬»ê ÁßÁö
+        // ì•ˆë§ì„ ê²½ìš° ë¬¼ë¦¬ ì—°ì‚° ë„ê¸°(ì„ì‹œ)
+        arrow_rigid.isKinematic = true; // ë¬¼ë¦¬ ì—°ì‚° ì¤‘ì§€
     }
     #endregion
 }
+

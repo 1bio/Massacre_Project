@@ -1,28 +1,54 @@
-using TMPro;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    private CoolDownManager coolDownManager;
+    public static UIManager instance;
 
-    public TextMeshProUGUI skill1;
-    public TextMeshProUGUI skill2;
+    public GameObject uiCamera;
 
-    private float skill1_Time;
-    private float skill2_Time;
+    [Header("스킬 선택 UI 필드")]
+    public GameObject selectWindow;
+    public GameObject[] selectPosition = new GameObject[2];
+    public List<GameObject> skillPrefabs;
 
-    private void Start()
+    private void Awake()
     {
-        coolDownManager = GetComponent<CoolDownManager>();
+        instance = this;
     }
 
-    public void Update()
+    private void Update()
     {
-        skill1_Time = Mathf.Ceil(coolDownManager.GetRemainingCooldown("Aiming"));
-        skill2_Time = Mathf.Ceil(coolDownManager.GetRemainingCooldown("RapidShot"));
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            selectWindow.SetActive(true);
+            uiCamera.SetActive(true);
 
-        skill1.text = skill1_Time.ToString();
-        skill1.text = skill2_Time.ToString();
+            GetRandomSkill();
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            SceneController.instance.LoadScene("Level");
+        }
     }
 
+    // 스킬 선택 UI 생성
+    public void SelectWindow(bool openWindow)
+    {
+        selectWindow.SetActive(openWindow);
+        uiCamera.SetActive(openWindow);
+    }
+
+    // 랜덤 스킬 생성
+    public void GetRandomSkill()
+    {
+        int[] randomValues = RandomNumberGenerator.GenerateRandomIndex(skillPrefabs.Count, selectPosition.Length); 
+
+        for (int i = 0; i < randomValues.Length; i++)
+        {
+            int randomValue = randomValues[i];
+
+            Instantiate(skillPrefabs[randomValue], selectPosition[i].transform);
+        }
+    }
 }
