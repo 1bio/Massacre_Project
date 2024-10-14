@@ -16,9 +16,8 @@ public class MinotaurRamAttack : MonsterSkillData
 
     // Raycast 관련
     private RaycastHit _hit;
-    private float _detectionRadius = 1f; // 오브젝트 인식 범위
-    private float _fanAngle = 45f; // 전방 부채꼴 각도
-    private int _rayCount = 9;   // 부채꼴 내에 발사할 Ray의 개수
+    private float _maxDistance = 0.5f;
+    private float _detectionRadius = 0.4f;
 
     //private Indicator _indicator;
 
@@ -86,21 +85,17 @@ public class MinotaurRamAttack : MonsterSkillData
 
     private bool IsInFanShapeDetection(Monster monster)
     {
-        for (int i = 0; i < _rayCount; i++)
+        Vector3 direction = monster.transform.forward;
+
+        int layerMask = (1 << LayerMask.NameToLayer(GameLayers.Player.ToString())) |
+                        (1 << LayerMask.NameToLayer(GameLayers.Obstacle.ToString()));
+
+        if (Physics.SphereCast(monster.transform.position, _detectionRadius, direction, out _hit, _maxDistance, layerMask))
         {
-            float currentAngle = -_fanAngle / 2 + _fanAngle / (_rayCount - 1) * i;
-            Vector3 direction = Quaternion.Euler(0, currentAngle, 0) * monster.transform.forward;
-
-            int layerMask = (1 << LayerMask.NameToLayer(GameLayers.Player.ToString())) |
-                            (1 << LayerMask.NameToLayer(GameLayers.Obstacle.ToString()));
-
-            if (Physics.Raycast(monster.transform.position, direction, out _hit, _detectionRadius, layerMask))
+            if (_hit.collider.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()) ||
+                _hit.collider.gameObject.layer == LayerMask.NameToLayer(GameLayers.Obstacle.ToString()))
             {
-                if (_hit.collider.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()) ||
-                    _hit.collider.gameObject.layer == LayerMask.NameToLayer(GameLayers.Obstacle.ToString()))
-                {
-                    return true;
-                }
+                return true;
             }
         }
         return false;
