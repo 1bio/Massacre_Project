@@ -7,8 +7,8 @@ public class MonsterDamageSource : MonoBehaviour
     private Health _playerHealth;
     private Monster _monster;
 
+    private bool _canTakeDamage = true;
     [SerializeField] private float _damageInterval = 1.0f;
-    private bool _isPlayerInZone = false;
 
     private void Awake()
     {
@@ -32,33 +32,29 @@ public class MonsterDamageSource : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && _canTakeDamage)
         {
             if (_playerHealth != null)
             {
-                _isPlayerInZone = true;
                 StartCoroutine(DealDamageOverTime());
             }
         }
     }
 
-    private void OnParticleExit(GameObject other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _isPlayerInZone = false;
-        }
-    }
-
     private IEnumerator DealDamageOverTime()
     {
-        while (_isPlayerInZone)
+        _canTakeDamage = false;
+
+        if (_playerHealth != null)
         {
-            if (_playerHealth != null)
-            {
-                _playerHealth.TakeDamage();
-            }
-            yield return new WaitForSeconds(_damageInterval);
+            _playerHealth.TakeDamage();
+            //Debug.Log("Player Hit");
+            Debug.Log($"Monster Position: {_monster.transform.position}");
+            Debug.Log($"Player Position: {_playerHealth.transform.position}");
         }
+
+        yield return new WaitForSeconds(_damageInterval);
+
+        _canTakeDamage = true;
     }
 }

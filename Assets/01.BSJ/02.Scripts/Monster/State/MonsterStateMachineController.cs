@@ -7,7 +7,6 @@ using UnityEngine;
 public class MonsterStateMachineController : MonsterStateMachine
 {
     public float CurrentBasicAttackCooldownTime { get; set; }
-    public float CurrentSkillCooldownTime { get; set; }
 
     private void OnEnable()
     {
@@ -19,7 +18,7 @@ public class MonsterStateMachineController : MonsterStateMachine
         base.Update();
 
         CurrentBasicAttackCooldownTime += Time.deltaTime;
-        CurrentSkillCooldownTime += Time.deltaTime;
+        p_monster.MonsterSkillController.UpdateCooldowns();
 
         // 살아있는지 확인
         if (!IsAlive())
@@ -39,10 +38,10 @@ public class MonsterStateMachineController : MonsterStateMachine
         if (!p_monster.AnimationController.IsLockedInAnimation)
         {
             if (p_monster.MonsterStateType != MonsterStateType.Skill
-                && p_monster.MonsterCombatController.MonsterCombatAbility.MonsterSkillData != null
-                && Vector3.Distance(p_monster.MovementController.Astar.TargetTransform.position, this.transform.position) <= p_monster.MonsterCombatController.MonsterCombatAbility.MonsterSkillData.Range 
-                && p_monster.MonsterCombatController.MonsterCombatAbility.MonsterSkillData.CooldownThreshold <= CurrentSkillCooldownTime)
+                && p_monster.MonsterSkillController.GetAvailableSkills().Count > 0
+                && p_monster.MonsterSkillController.UpdateCurrentSkillData().Range >= Vector3.Distance(p_monster.MovementController.Astar.TargetTransform.position, this.transform.position))
             {
+
                 OnSkill();
             }
             else if (p_monster.MonsterCombatController.IsTargetInRange)

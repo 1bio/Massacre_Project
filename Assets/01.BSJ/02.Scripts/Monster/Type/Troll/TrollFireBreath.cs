@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "MonsterSkillData", menuName = "Data/MonsterSKillData/Troll/FireBreath")]
 public class TrollFireBreath : MonsterSkillData
@@ -19,6 +20,7 @@ public class TrollFireBreath : MonsterSkillData
     public override void ActiveSkillEnter(Monster monster)
     {
         FindAndManipulateChild(monster);
+        _hasAttacked = false;
     }
 
     public override void ActiveSkillTick(Monster monster)
@@ -44,16 +46,12 @@ public class TrollFireBreath : MonsterSkillData
     public void FindAndManipulateChild(Monster monster)
     {
         _vfxTransform = monster.transform.Find("VFX Container/" + _vfxNameToFind);
-        if (_vfxTransform != null)
-        {
-            _firePositionTransform = monster.transform.Find("Ogre_root/Hips/Spine/Spine1/Spine2/Neck/Head/lip_top_m/" + _firePositionNameToFind);
+        if (_vfxTransform == null) return;
 
-            if (_firePositionTransform != null)
-            {
-                _vfxTransform.gameObject.transform.SetParent(_firePositionTransform);
-                _vfxTransform.transform.localPosition = Vector3.zero;
-                _vfxTransform.transform.localRotation = Quaternion.identity;
-            }
-        }
+        _firePositionTransform = monster.transform.Find("Ogre_root/Hips/Spine/Spine1/Spine2/Neck/Head/lip_top_m/" + _firePositionNameToFind);
+        if (_firePositionTransform == null) return;
+
+        _vfxTransform.position = _firePositionTransform.position;
+        _vfxTransform.rotation = _firePositionTransform.rotation;
     }
 }

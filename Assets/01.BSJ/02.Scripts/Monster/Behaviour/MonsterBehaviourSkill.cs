@@ -13,8 +13,7 @@ public class MonsterBehaviourSkill : MonsterBehaviour
 
         _monster = monster;
         monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
-        _skillData = monster.MonsterCombatController.MonsterCombatAbility.MonsterSkillData.CreateInstance();
-
+        _skillData = monster.MonsterSkillController.CurrentSkillData;
         _skillData.ActiveSkillEnter(monster);
     }
 
@@ -27,7 +26,7 @@ public class MonsterBehaviourSkill : MonsterBehaviour
     public override void OnBehaviourEnd(Monster monster)
     {
         _skillData.ActiveSkillExit(monster);
-        monster.MonsterStateMachineController.CurrentSkillCooldownTime = 0;
+        monster.MonsterSkillController.CurrentSkillData.CooldownTimer = 0f;
 
         monster.MovementController.Astar.StartPathCalculation();
 
