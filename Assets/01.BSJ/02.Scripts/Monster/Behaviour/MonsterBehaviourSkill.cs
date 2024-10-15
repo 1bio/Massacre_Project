@@ -9,6 +9,8 @@ public class MonsterBehaviourSkill : MonsterBehaviour
 
     public override void OnBehaviourStart(Monster monster)
     {
+        monster.AnimationController.IsLockedInAnimation = true;
+
         _monster = monster;
         monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
         _skillData = monster.MonsterCombatController.MonsterCombatAbility.MonsterSkillData.CreateInstance();
@@ -18,6 +20,7 @@ public class MonsterBehaviourSkill : MonsterBehaviour
 
     public override void OnBehaviourUpdate(Monster monster)
     {
+        monster.AnimationController.AnimatorStateInfo = monster.AnimationController.Animator.GetCurrentAnimatorStateInfo(0);
         _skillData.ActiveSkillTick(monster);
     }
 

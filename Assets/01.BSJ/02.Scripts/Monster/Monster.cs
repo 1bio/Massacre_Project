@@ -1,6 +1,7 @@
 ﻿//using MasterRealisticFX;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -29,6 +30,7 @@ public class Monster : MonoBehaviour
     private Transform _vfxContainerTransform;
     private TrailRenderer _objectTrail;
 
+    public string VFXContainerName { get; } = "VFX Container";
     public MonsterStateType MonsterStateType { get; set; }
     public MonsterStateMachineController MonsterStateMachineController { get; private set; }
     public MonsterMovementController MovementController { get; protected set; }
@@ -39,10 +41,10 @@ public class Monster : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _vfxContainerTransform = transform.Find("VFXContainer");
+        _vfxContainerTransform = transform.Find(VFXContainerName);
         if (_vfxContainerTransform == null)
         {
-            GameObject vfxContainer = new GameObject("VFXContainer");
+            GameObject vfxContainer = new GameObject(VFXContainerName);
             _vfxContainerTransform = vfxContainer.transform;
 
             _vfxContainerTransform.SetParent(transform);
@@ -86,5 +88,21 @@ public class Monster : MonoBehaviour
     public void UnlockAnimationTransition()
     {
         AnimationController.IsLockedInAnimation = false;
+    }
+
+    public void RePlayVFX(string vfxNameWithScale)
+    {
+        if (vfxNameWithScale.Contains('_'))
+        {
+            string[] parts = vfxNameWithScale.Split('_');
+            string vfxName = parts[0];
+            float scaleFactor = float.Parse(parts[1]);
+
+            MonsterParticleController.RePlayVFX(vfxName, scaleFactor);
+        }
+        else
+        {
+            MonsterParticleController.RePlayVFX(vfxNameWithScale);
+        }
     }
 }

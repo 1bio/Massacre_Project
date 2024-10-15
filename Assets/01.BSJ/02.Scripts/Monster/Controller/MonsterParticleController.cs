@@ -34,6 +34,16 @@ public class MonsterParticleController
         }
     }
 
+    public void RePlayVFX(string vfxName)
+    {
+        if (VFX.ContainsKey(vfxName))
+        {
+            VFX[vfxName].Stop();
+            VFX[vfxName].Clear();
+            VFX[vfxName].Play();
+        }
+    }
+
     public void RePlayVFX(string vfxName, float scaleFactor)
     {
         if (VFX.ContainsKey(vfxName))

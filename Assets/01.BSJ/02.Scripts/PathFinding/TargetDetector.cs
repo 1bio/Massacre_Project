@@ -6,7 +6,7 @@ public class TargetDetector : MonoBehaviour
 {
     // Raycast ฐüทร
     private RaycastHit _hit;
-    private float _maxDistance = 20f;
+    [SerializeField] private float _maxDistance = 20f;
     private float _fanAngle = 48f;
     private float _fanCount = 5f;
     private float _detectionRadius = 0.4f;

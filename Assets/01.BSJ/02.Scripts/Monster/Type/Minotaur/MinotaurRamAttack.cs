@@ -31,8 +31,6 @@ public class MinotaurRamAttack : MonsterSkillData
 
     public override void ActiveSkillTick(Monster monster)
     {
-        monster.AnimationController.AnimatorStateInfo = monster.AnimationController.Animator.GetCurrentAnimatorStateInfo(0);
-
         if (!_hasRamStarted)
         {
             StartRamAttack(monster);
