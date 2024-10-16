@@ -27,6 +27,9 @@ public class Monster : MonoBehaviour
     [Header(" # Skill Data")]
     [SerializeField] protected MonsterSkillData[] p_monsterSkillDatas;
 
+    [Header(" # Loot Item Data")]
+    [SerializeField] protected MonsterLootItemData p_monsterLootItemData;
+
     private Transform _vfxContainerTransform;
     private TrailRenderer _objectTrail;
 
@@ -34,6 +37,7 @@ public class Monster : MonoBehaviour
     public MonsterStateType MonsterStateType { get; set; }
     public MonsterStateMachineController MonsterStateMachineController { get; private set; }
     public MonsterSkillController MonsterSkillController { get; private set; }
+    public MonsterLootItemController MonsterLootItemController { get; private set; }
     public MonsterMovementController MovementController { get; protected set; }
     public MonsterAnimationController AnimationController { get; protected set; }
     public MonsterCombatController MonsterCombatController { get; protected set; }
@@ -43,15 +47,6 @@ public class Monster : MonoBehaviour
     protected virtual void Awake()
     {
         _vfxContainerTransform = transform.Find(VFXContainerName);
-        /*if (_vfxContainerTransform == null)
-        {
-            GameObject vfxContainer = new GameObject(VFXContainerName);
-            _vfxContainerTransform = vfxContainer.transform;
-
-            _vfxContainerTransform.SetParent(transform);
-
-            _vfxContainerTransform.localPosition = Vector3.zero;
-        }*/
 
         _objectTrail = GetComponentInChildren<TrailRenderer>();
         if (_objectTrail != null)
@@ -61,6 +56,7 @@ public class Monster : MonoBehaviour
 
         MonsterStateMachineController = GetComponent<MonsterStateMachineController>();
         MonsterSkillController = new MonsterSkillController(p_monsterSkillDatas);
+        MonsterLootItemController = new MonsterLootItemController(p_monsterLootItemData);
         MovementController = new MonsterMovementController(GetComponent<TargetDetector>(), GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
         AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),100f);
         MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<Health>());

@@ -44,6 +44,13 @@ public class MonsterParticleController
 
     public void RePlayVFX(string vfxName)
     {
+        int index = vfxName.IndexOf('(');
+
+        if (index != -1)
+        {
+            vfxName = vfxName.Substring(0, index);
+        }
+
         if (VFX.ContainsKey(vfxName))
         {
             VFX[vfxName].Stop();

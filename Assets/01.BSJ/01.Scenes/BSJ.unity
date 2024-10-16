@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -420,6 +420,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Minotaur
       objectReference: {fileID: 0}
+    - target: {fileID: 2711017880585719510, guid: a73f56e7dba53b94abddd893018b4bc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926910396179835079, guid: a73f56e7dba53b94abddd893018b4bc8, type: 3}
+      propertyPath: p_monsterLootItemData
+      value: 
+      objectReference: {fileID: 11400000, guid: fab7c1ddcaa51ac44aa2d494d082e35c, type: 2}
     - target: {fileID: 5547537652646370968, guid: a73f56e7dba53b94abddd893018b4bc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.09
@@ -1351,6 +1359,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -29.67237
       objectReference: {fileID: 0}
+    - target: {fileID: 6232515372858526173, guid: 62de20ab23a73984e8ca32f4819296fe, type: 3}
+      propertyPath: p_monsterLootItemData
+      value: 
+      objectReference: {fileID: 11400000, guid: fab7c1ddcaa51ac44aa2d494d082e35c, type: 2}
+    - target: {fileID: 6232515372858526173, guid: 62de20ab23a73984e8ca32f4819296fe, type: 3}
+      propertyPath: p_monsterSkillDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232515372858526173, guid: 62de20ab23a73984e8ca32f4819296fe, type: 3}
+      propertyPath: p_monsterSkillDatas.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 980837fdd71aa5247806bb555b245486, type: 2}
     - target: {fileID: 6403403244672043875, guid: 62de20ab23a73984e8ca32f4819296fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 26.57504
@@ -3208,6 +3228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_monsterStatData: {fileID: 11400000, guid: 0d6011f2742455e48b938d7c2ba6766f, type: 2}
   p_monsterSkillDatas: []
+  p_monsterLootItemData: {fileID: 0}
 --- !u!114 &1306861807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3244,7 +3265,7 @@ GameObject:
   - component: {fileID: 1389451472}
   - component: {fileID: 1389451471}
   - component: {fileID: 1389451470}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3499,7 +3520,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 23
+    m_Bits: 10263
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

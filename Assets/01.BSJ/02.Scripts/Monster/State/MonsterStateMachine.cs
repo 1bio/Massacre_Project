@@ -24,7 +24,7 @@ public class MonsterStateMachine : StateMachine
     {
         p_currentBehaviour = monsterBehaviour;
 
-        Debug.Log($"Current State: {p_currentBehaviour}");
+        //Debug.Log($"Current State: {p_currentBehaviour}");
         var currentState = new MonsterBehaviourState(p_monster, p_currentBehaviour);
         ChangeState(currentState);
     }

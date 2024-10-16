@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MonsterSkillData", menuName = "Data/MonsterSKillData/Troll/ChargeAttack")]
@@ -51,10 +52,7 @@ public class TrollChargeAttack : MonsterSkillData
     public void FindVFXAndSwordTransform(Monster monster)
     {
         _vfxTransform = monster.transform.Find("VFX Container/" + _vfxNameToFind);
-        if (_vfxTransform == null) return;
-
         _swordObjectTransform = monster.transform.Find(_swordHierarchyPath);
-        if (_swordObjectTransform == null) return;
     }
 
     private void ActivateVFXIfHitGround(Monster monster)
@@ -62,12 +60,12 @@ public class TrollChargeAttack : MonsterSkillData
         Vector3 rayOrigin = _swordObjectTransform.position + new Vector3(0, 0, 0.66f);
         Vector3 rayDirection = Vector3.down;
 
-        float rayLength = 2f;
+        float rayLength = 0.7f;
 
         int layerMask = (1 << LayerMask.NameToLayer(GameLayers.Ground.ToString()));
-        if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hitInfo, rayLength, layerMask))
+        if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, rayLength, layerMask))
         {
-            ActivateVFX(hitInfo.point, monster);
+            ActivateVFX(hit.point, monster);
         }
 
         Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red, 2f);
