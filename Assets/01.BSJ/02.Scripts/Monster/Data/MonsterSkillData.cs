@@ -4,9 +4,6 @@ using UnityEngine;
 
 public abstract class MonsterSkillData : ScriptableObject
 {
-    [Header("Animation Name")]
-    [SerializeField] private string _animationName;
-
     [Header(" # VFX")]
     [SerializeField] private GameObject[] _vfx;
 
@@ -22,7 +19,6 @@ public abstract class MonsterSkillData : ScriptableObject
     [Header(" # Cast Time")]
     [SerializeField] private float _castTime;
 
-    public string AnimationName { get => _animationName; }
     public GameObject[] VFX { get => _vfx; }
     public float CooldownThreshold { get => _cooldownThreshold; }
     public float CooldownTimer { get; set; } = 0f;

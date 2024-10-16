@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7124bff4a2de40458d47691f5e00957, type: 3}
   m_Name: RamAttack
   m_EditorClassIdentifier: 
+  _animationName: 
   _vfx:
   - {fileID: 99785806984778513, guid: 9c7a989689a63b34eb00cbd22d7a2375, type: 3}
-  _cooldownThreshold: 30
+  _cooldownThreshold: 3
   _damage: 0
   _range: 8
   _castTime: 0

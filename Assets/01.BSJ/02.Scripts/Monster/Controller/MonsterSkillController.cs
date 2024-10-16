@@ -9,7 +9,7 @@ public class MonsterSkillController
         MonsterSkillDatas = new MonsterSkillData[monsterSkillDatas.Length];
         for (int i = 0; i < monsterSkillDatas.Length; i++)
         {
-            MonsterSkillDatas[i] = monsterSkillDatas[i];
+            MonsterSkillDatas[i] = monsterSkillDatas[i].CreateInstance();
         }
     }
 

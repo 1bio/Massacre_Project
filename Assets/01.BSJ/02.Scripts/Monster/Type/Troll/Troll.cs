@@ -8,4 +8,9 @@ public class Troll : Monster
     {
         FireBreath
     }
+
+    public enum ChargeAttackAnimationName
+    {
+        ChargeAttack
+    }
 }

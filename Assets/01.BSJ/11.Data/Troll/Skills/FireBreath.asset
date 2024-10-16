@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: FireBreath
   m_EditorClassIdentifier: 
   _vfx:
-  - {fileID: 5629863535950133263, guid: 37a29953c8d7ed949ae87fbfea258b7b, type: 3}
-  _cooldownThreshold: 4
+  - {fileID: 5629863535950133263, guid: 530e25074242d474aa36ce275ca86098, type: 3}
+  _cooldownThreshold: 30
   _damage: 0
-  _range: 5
+  _range: 4
   _castTime: 0
   _vfxNameToFind: RedFlameThrower(Clone)
-  _firePositionNameToFind: FirePos

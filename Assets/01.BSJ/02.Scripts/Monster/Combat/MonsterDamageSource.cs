@@ -49,8 +49,6 @@ public class MonsterDamageSource : MonoBehaviour
         {
             _playerHealth.TakeDamage();
             //Debug.Log("Player Hit");
-            Debug.Log($"Monster Position: {_monster.transform.position}");
-            Debug.Log($"Player Position: {_playerHealth.transform.position}");
         }
 
         yield return new WaitForSeconds(_damageInterval);
