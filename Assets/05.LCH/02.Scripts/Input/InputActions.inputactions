@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Roll",
+                    "type": "Button",
+                    "id": "477f1a7d-8422-44f2-ae90-6e4d5c547ee3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Attack",
                     "type": "Button",
                     "id": "4746648c-719e-4e0c-8c6c-bc42215c6799",
@@ -27,15 +36,6 @@
                     "name": "Aim",
                     "type": "Button",
                     "id": "ee7c8097-8840-4f24-8820-8876fe11f654",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Roll",
-                    "type": "Button",
-                    "id": "477f1a7d-8422-44f2-ae90-6e4d5c547ee3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -111,7 +111,7 @@
                     "name": "",
                     "id": "b5dc5a88-0d76-494e-a45d-34a8a91dbb45",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
@@ -131,23 +131,23 @@
                 },
                 {
                     "name": "",
-                    "id": "09f2fc31-a875-4bb7-b0a0-f8459cbda62f",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "c4db616c-3052-45f4-b7ea-cbf6f0a8d90f",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Skill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09f2fc31-a875-4bb7-b0a0-f8459cbda62f",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

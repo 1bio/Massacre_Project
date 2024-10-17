@@ -63,9 +63,6 @@ public class PoolManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        Rigidbody rb = select.GetComponent<Rigidbody>();
-        rb.isKinematic = true;  
-
         select.SetActive(false);
     }
 }
