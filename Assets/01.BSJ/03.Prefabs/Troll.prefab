@@ -5717,10 +5717,8 @@ GameObject:
   - component: {fileID: 6232515372858526173}
   - component: {fileID: 6449116757535947445}
   - component: {fileID: 222314660471359903}
-  - component: {fileID: 6518292332996124414}
   - component: {fileID: 3763785049477709137}
   - component: {fileID: 8487367234996065460}
-  - component: {fileID: 7777900001698327615}
   m_Layer: 0
   m_Name: Troll
   m_TagString: Monster
@@ -5846,6 +5844,8 @@ MonoBehaviour:
   p_monsterStatData: {fileID: 11400000, guid: 0c342749c5380844087ebe438b25f52e, type: 2}
   p_monsterSkillDatas:
   - {fileID: 11400000, guid: 41ac401697beedd4cae721a9421b9b4d, type: 2}
+  - {fileID: 11400000, guid: 980837fdd71aa5247806bb555b245486, type: 2}
+  p_monsterLootItemData: {fileID: 11400000, guid: fab7c1ddcaa51ac44aa2d494d082e35c, type: 2}
 --- !u!114 &6449116757535947445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5873,18 +5873,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitCount: 0
---- !u!114 &6518292332996124414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8870097054709720909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd540d5ecfc8f85488684915acb7142f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3763785049477709137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5899,9 +5887,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPoint: {fileID: 3900586308007637272}
   EndPoint: {fileID: 3273559416383993013}
-  TrailMat: {fileID: 2100000, guid: 28a8c492c82406141b78c899ef3be377, type: 2}
-  MaxFrame: 64
-  TrailSubs: 3
+  TrailMat: {fileID: 2100000, guid: 71da4ca46f22d6e48bf58cd84757d1fe, type: 2}
+  MaxFrame: 5
+  TrailSubs: 6
   StopMultiplier: 2
 --- !u!114 &8487367234996065460
 MonoBehaviour:
@@ -5915,19 +5903,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b393e7224866ff440bb4d3ac99e3dae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7777900001698327615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8870097054709720909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70b2542539b8279429f0e8506bd2f550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetParticleSystem: {fileID: 0}
 --- !u!1 &8929799592324859312
 GameObject:
   m_ObjectHideFlags: 0

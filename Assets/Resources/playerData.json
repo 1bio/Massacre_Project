@@ -59,7 +59,7 @@
             "level": 0,
             "damage": 20.0,
             "coolDown": 7.0,
-            "force": 5.0,
+            "force": 10.0,
             "forceTime": 0.3499999940395355,
             "isUnlock": true,
             "description": "스킬 설명을 입력하세요.",

@@ -75,9 +75,9 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourGotHit.cs" />
     <Compile Include="Assets\04.KMH\02.Scripts\Player\Player.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Indicator\LineAttackIndicator.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Minotaur\MinotaurRamAttack.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Window\AnimatedWindowController.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\FadeInOut\ObjectFadeInOut.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\UI\ChargingShot.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Combat\Targeting.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Enemy\EnemyBaseState.cs" />
@@ -85,7 +85,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourDead.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\SFB_StayWithTarget.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Troll.cs" />
     <Compile Include="Assets\MRF\Scripts\Splines.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\UIManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
@@ -153,6 +152,8 @@
     <Compile Include="Assets\InfinityPBR\Demo Scripts\DemoWardrobe.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Controls\SliderStepController.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\Projectile.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Troll\Troll.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Minotaur\Skills\MinotaurRamAttack.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Domain\NationProperties.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\PlayerBaseState.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Monster.cs" />
@@ -167,7 +168,6 @@
     <Compile Include="Assets\InfinityPBR\Demo Scripts\SFB_BlendShapesManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Snake.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Controls\SliderValueController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\IPBR_EnvironmentWarning.cs" />
@@ -181,7 +181,9 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourSkill.cs" />
     <Compile Include="Assets\MRF\Scripts\BillBoardParticle.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Controls\HighlightToggle.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Controller\MonsterLootItemController.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\SFB_AnubisDemo.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Troll\Skills\TrollFireBreath.cs" />
     <Compile Include="Assets\InfinityPBR\_InfinityPBR - Medusa\Scripts\SFB_MedusaDemoCameras.cs" />
     <Compile Include="Assets\InfinityPBR\Equipment System\Scripts\Shape.cs" />
     <Compile Include="Assets\04.KMH\02.Scripts\Item\DefaultObject.cs" />
@@ -192,10 +194,12 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\SceneController.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\CobraSnake\CobraSnake.cs" />
     <Compile Include="Assets\InfinityPBR\Equipment System\Scripts\BlendShapePresetValue.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Game System\CoolDownController.cs" />
     <Compile Include="Assets\MRF\Scripts\ParticleEventHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Controller\MonsterSkillController.cs" />
     <Compile Include="Assets\InfinityPBR\Equipment System\Scripts\MatchList.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\ForceReceiver.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\RandomNumberGenerator.cs" />
@@ -211,6 +215,7 @@
     <Compile Include="Assets\InfinityPBR\Demo Scripts\InfinityDemoCharacter.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Controller\MonsterAnimationController.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\FreeLook\Melee\PlayerMeleeAttackState.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Troll\Skills\TrollChargeAttack.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\FollowTarget.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\SFB_HumanDemoControl.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Controls\ResourceBarController.cs" />
@@ -234,7 +239,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\MonsterSpawnManager.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\UI\SlideWindow.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\ObjectFadeInOut.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Controls\ScrollController.cs" />
     <Compile Include="Assets\InfinityPBR\_InfinityPBR - Medusa\Scripts\medusaDemo.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\SFB_CameraFocus.cs" />
@@ -243,6 +247,7 @@
     <Compile Include="Assets\InfinityPBR\Demo Scripts\SFB_ShotFollowTarget.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\State\MonsterBehaviourState.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\SFB_ToggleOpposite.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Data\MonsterLootItemData.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Enum\GameLayers.cs" />
     <Compile Include="Assets\04.KMH\02.Scripts\Item\EquipmentObject.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviour.cs" />
@@ -262,6 +267,7 @@
     <Compile Include="Assets\04.KMH\02.Scripts\Inventory\DisplayInventory.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Controls\Transform\TransformInRect.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\StateMachine.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\PathFinding\TargetDetector.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Combat\Target.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Controls\BinarySliderController.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterDamageSource.cs" />
