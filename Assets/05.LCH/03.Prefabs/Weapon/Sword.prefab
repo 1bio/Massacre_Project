@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1471475405284920109
 Transform:
   m_ObjectHideFlags: 0
@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132770301110071699}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.21514109, z: -0, w: 0.97658294}
-  m_LocalPosition: {x: -2.489524, y: 2.7867584, z: -4.243062}
-  m_LocalScale: {x: 3.3235996, y: 0.0072, z: 0.8415999}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 4047472964712784836}
-  m_LocalEulerAnglesHint: {x: 0, y: 24.848, z: 0}
+  m_Father: {fileID: 3766585980767377270}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!198 &7930109163593165759
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4902,9 +4902,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3766585980767377270}
   - component: {fileID: 5763997654846790663}
-  - component: {fileID: 2968167976046271846}
-  - component: {fileID: 3514954915483009952}
-  - component: {fileID: 7476292566791404371}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -4925,7 +4922,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4047472964712784836}
+  - {fileID: 1471475405284920109}
   - {fileID: 5269856396686749435}
   - {fileID: 835377598213757731}
   m_Father: {fileID: 0}
@@ -4991,246 +4988,3 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000001937151, y: -0.0000003874302, z: 4.724411}
     m_Extent: {x: 0.25253797, y: 0.81714594, z: 7.348399}
   m_DirtyAABB: 0
---- !u!114 &2968167976046271846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4992720614695347749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a687386869ce92f40bc36d1341dac3d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartPoint: {fileID: 5269856396686749435}
-  EndPoint: {fileID: 835377598213757731}
-  TrailMat: {fileID: 2100000, guid: 71da4ca46f22d6e48bf58cd84757d1fe, type: 2}
-  MaxFrame: 64
-  TrailSubs: 6
-  StopMultiplier: 4
---- !u!114 &3514954915483009952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4992720614695347749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70b2542539b8279429f0e8506bd2f550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetParticleSystem: {fileID: 7930109163593165759}
---- !u!114 &7476292566791404371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4992720614695347749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cf52f11bf2ee4abba5fc0133d75f3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blendShapeGameObjects:
-  - gameObjectName: Sword005
-    gameObject: {fileID: 4992720614695347749}
-    smr: {fileID: 5763997654846790663}
-    displayableValues: 7
-    blendShapeValues:
-    - objectIndex: 0
-      index: 0
-      display: 1
-      fullName: Morpher.SFB_BS_BladeThickness
-      triggerName: BladeThickness
-      isMinus: 0
-      value: 0
-      min: 0
-      max: 100
-      limitMin: 0
-      limitMax: 100
-      lastValue: 0
-      showValueOptions: 0
-      isOpen: 0
-      matchThisObjectIndex: 0
-      matchThisValueIndex: 0
-      matchAnotherValue: 0
-      otherValuesMatchThis: []
-    - objectIndex: 0
-      index: 1
-      display: 1
-      fullName: blendShape2.SFB_BS_BladeWidth
-      triggerName: BladeWidth
-      isMinus: 0
-      value: 0
-      min: 0
-      max: 100
-      limitMin: 0
-      limitMax: 100
-      lastValue: 0
-      showValueOptions: 0
-      isOpen: 0
-      matchThisObjectIndex: 0
-      matchThisValueIndex: 0
-      matchAnotherValue: 0
-      otherValuesMatchThis: []
-    - objectIndex: 0
-      index: 2
-      display: 0
-      fullName: blendShape2.SFB_BS_BladeLengthMinus
-      triggerName: BladeLength
-      isMinus: 1
-      value: -0
-      min: -100
-      max: 100
-      limitMin: -100
-      limitMax: 100
-      lastValue: 0
-      showValueOptions: 0
-      isOpen: 0
-      matchThisObjectIndex: 0
-      matchThisValueIndex: 0
-      matchAnotherValue: 0
-      otherValuesMatchThis: []
-    - objectIndex: 0
-      index: 3
-      display: 1
-      fullName: blendShape2.SFB_BS_BladeLengthPlus
-      triggerName: BladeLength
-      isMinus: 0
-      value: 0
-      min: -100
-      max: 100
-      limitMin: -100
-      limitMax: 100
-      lastValue: 0
-      showValueOptions: 0
-      isOpen: 0
-      matchThisObjectIndex: 0
-      matchThisValueIndex: 0
-      matchAnotherValue: 0
-      otherValuesMatchThis: []
-    - objectIndex: 0
-      index: 4
-      display: 1
-      fullName: blendShape2.SFB_BS_BladeTipLength
-      triggerName: BladeTipLength
-      isMinus: 0
-      value: 0
-      min: 0
-      max: 100
-      limitMin: 0
-      limitMax: 100
-      lastValue: 0
-      showValueOptions: 0
-      isOpen: 0
-      matchThisObjectIndex: 0
-      matchThisValueIndex: 0
-      matchAnotherValue: 0
-      otherValuesMatchThis: []
-    - objectIndex: 0
-      index: 5
-      display: 1
-      fullName: blendShape2.SFB_BS_PommelSize
-      triggerName: PommelSize
-      isMinus: 0
-      value: 0
-      min: 0
-      max: 100
-      limitMin: 0
-      limitMax: 100
-      lastValue: 0
-      showValueOptions: 0
-      isOpen: 0
-      matchThisObjectIndex: 0
-      matchThisValueIndex: 0
-      matchAnotherValue: 0
-      otherValuesMatchThis: []
-    - objectIndex: 0
-      index: 6
-      display: 1
-      fullName: blendShape2.SFB_BS_PommelLength
-      triggerName: PommelLength
-      isMinus: 0
-      value: 0
-      min: 0
-      max: 100
-      limitMin: 0
-      limitMax: 100
-      lastValue: 0
-      showValueOptions: 0
-      isOpen: 0
-      matchThisObjectIndex: 0
-      matchThisValueIndex: 0
-      matchAnotherValue: 0
-      otherValuesMatchThis: []
-    - objectIndex: 0
-      index: 7
-      display: 1
-      fullName: blendShape2.SFB_BS_BladeThickness
-      triggerName: BladeThickness
-      isMinus: 0
-      value: 0
-      min: 0
-      max: 100
-      limitMin: 0
-      limitMax: 100
-      lastValue: 0
-      showValueOptions: 0
-      isOpen: 0
-      matchThisObjectIndex: 0
-      matchThisValueIndex: 0
-      matchAnotherValue: 0
-      otherValuesMatchThis: []
-    showValues: 0
-  userMatchRespectsLimits: 1
-  globalModifier: 1
-  rangeFiles: []
-  presetFiles: []
-  blendShapePrimaryPrefix: SFB_BS_
-  blendShapeMatchPrefix: SFB_BSM_
-  matchList: []
-  matchListNames: []
-  matchListIndex: 0
-  exportPath: 
-  showHelpBoxes: 1
-  showSetup: 1
-  showPresets: 1
-  showFullInspector: 0
-  showBlendShapeObjects: 1
-  showRangeFiles: 1
-  showPresetFiles: 1
---- !u!1 &8662154023886732840
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4047472964712784836}
-  m_Layer: 0
-  m_Name: Effect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4047472964712784836
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8662154023886732840}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1471475405284920109}
-  m_Father: {fileID: 3766585980767377270}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

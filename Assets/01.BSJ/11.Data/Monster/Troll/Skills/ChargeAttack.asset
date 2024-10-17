@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChargeAttack
   m_EditorClassIdentifier: 
   _vfx:
-  - {fileID: 99785806984778513, guid: 9c7a989689a63b34eb00cbd22d7a2375, type: 3}
+  - {fileID: 99785806984778513, guid: 459a72c585d0e094ea6297cfc5c42760, type: 3}
   _cooldownThreshold: 2
   _damage: 0
   _range: 2

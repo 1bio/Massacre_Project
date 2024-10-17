@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class PlayerBaseState : State
 {
@@ -58,8 +55,8 @@ public abstract class PlayerBaseState : State
     // 회전(마우스 공격 방향)
     protected void Aiming()
     {
-        if (stateMachine.InputReader.IsAiming == false)
-            return;
+        /*if (stateMachine.InputReader.IsAiming == false)
+            return;*/
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -71,6 +68,7 @@ public abstract class PlayerBaseState : State
             stateMachine.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         }
     }
+
 
     /*    // 공격 시 회전 보정
         protected void FaceTarget()

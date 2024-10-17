@@ -1571,6 +1571,7 @@ MonoBehaviour:
   p_monsterStatData: {fileID: 11400000, guid: 5676367b2035ba749a3e1f15c5c16148, type: 2}
   p_monsterSkillDatas:
   - {fileID: 11400000, guid: f7355d5c05ada5c4bac3b05eb22daa8e, type: 2}
+  p_monsterLootItemData: {fileID: 11400000, guid: fab7c1ddcaa51ac44aa2d494d082e35c, type: 2}
 --- !u!114 &3607153516507840390
 MonoBehaviour:
   m_ObjectHideFlags: 0

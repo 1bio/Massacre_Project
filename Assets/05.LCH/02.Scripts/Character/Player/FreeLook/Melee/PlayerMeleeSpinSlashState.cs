@@ -3,13 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMeleeSpinSlashState : PlayerBaseState
+public class PlayerMeleeSpinSlashState : PlayerFreeLookState
 {
     public readonly int SpinSlashAnimationHash = Animator.StringToHash("SpinSlash@Melee"); // 스핀 공격 애니메이션 해쉬
-
-    public readonly float CrossFadeDuration = 0.1f;
-
-    public readonly float DampTime = 0.1f;
 
     private float Force;
 

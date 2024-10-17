@@ -1,15 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerRangeAimState : PlayerBaseState
+public class PlayerRangeAimState : PlayerRangeState
 {
     public readonly int AimAnimationHash = Animator.StringToHash("Aim@Range"); // 조준 애니메이션 해쉬
-
-    public readonly float CrossFadeDuration = 0.1f;
-
-    public readonly float DampTime = 0.1f;
 
 
     public PlayerRangeAimState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -33,9 +26,9 @@ public class PlayerRangeAimState : PlayerBaseState
         
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        if (!stateMachine.InputReader.IsAiming && currentInfo.normalizedTime > 0.8f)
+        if (currentInfo.normalizedTime > 0.8f)
         {
-            stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
             return;
         }
     }

@@ -99640,21 +99640,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
-    functionName: StartParticleSystem
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.8666667
+  - time: 0.76666665
     functionName: EnableWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.1333333
+  - time: 1.1
     functionName: DisableWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -99663,13 +99656,6 @@ AnimationClip:
     messageOptions: 0
   - time: 1.2333333
     functionName: DestroyTrail
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.2666667
-    functionName: StopParticleSystem
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

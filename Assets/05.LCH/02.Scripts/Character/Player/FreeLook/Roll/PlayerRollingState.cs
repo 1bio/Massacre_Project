@@ -29,9 +29,14 @@ public class PlayerRollingState : PlayerBaseState
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
         // FreeLook
-        if (currentInfo.normalizedTime >= 0.8f)
+        if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[0].activeSelf)
         {
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
+            return;
+        }
+        else if(currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[1].activeSelf)
+        {
+            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
             return;
         }
     }
