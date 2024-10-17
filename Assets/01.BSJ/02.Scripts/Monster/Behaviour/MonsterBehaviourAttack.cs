@@ -28,7 +28,7 @@ public class MonsterBehaviourAttack : MonsterBehaviour
 
         if (Vector3.Angle(monster.transform.forward, monster.MovementController.Direction) <= _attackAngleThreshold && !_hasAttacked)
         {
-            monster.AnimationController.PlayAttackAnimation(3);
+            monster.AnimationController.PlayAttackAnimation(monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.TotalCount);
             
             _hasAttacked = true;
         }

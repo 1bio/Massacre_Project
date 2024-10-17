@@ -1,6 +1,7 @@
 ﻿//using MasterRealisticFX;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -24,13 +25,19 @@ public class Monster : MonoBehaviour
     [SerializeField] protected MonsterStatData p_monsterStatData;
 
     [Header(" # Skill Data")]
-    [SerializeField] protected MonsterSkillData p_monsterSkillData;
+    [SerializeField] protected MonsterSkillData[] p_monsterSkillDatas;
+
+    [Header(" # Loot Item Data")]
+    [SerializeField] protected MonsterLootItemData p_monsterLootItemData;
 
     private Transform _vfxContainerTransform;
     private TrailRenderer _objectTrail;
 
+    public string VFXContainerName { get; } = "VFX Container";
     public MonsterStateType MonsterStateType { get; set; }
     public MonsterStateMachineController MonsterStateMachineController { get; private set; }
+    public MonsterSkillController MonsterSkillController { get; private set; }
+    public MonsterLootItemController MonsterLootItemController { get; private set; }
     public MonsterMovementController MovementController { get; protected set; }
     public MonsterAnimationController AnimationController { get; protected set; }
     public MonsterCombatController MonsterCombatController { get; protected set; }
@@ -39,16 +46,7 @@ public class Monster : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _vfxContainerTransform = transform.Find("VFXContainer");
-        if (_vfxContainerTransform == null)
-        {
-            GameObject vfxContainer = new GameObject("VFXContainer");
-            _vfxContainerTransform = vfxContainer.transform;
-
-            _vfxContainerTransform.SetParent(transform);
-
-            _vfxContainerTransform.localPosition = Vector3.zero;
-        }
+        _vfxContainerTransform = transform.Find(VFXContainerName);
 
         _objectTrail = GetComponentInChildren<TrailRenderer>();
         if (_objectTrail != null)
@@ -57,18 +55,15 @@ public class Monster : MonoBehaviour
         }
 
         MonsterStateMachineController = GetComponent<MonsterStateMachineController>();
-
-        MovementController = new MonsterMovementController(GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
+        MonsterSkillController = new MonsterSkillController(p_monsterSkillDatas);
+        MonsterLootItemController = new MonsterLootItemController(p_monsterLootItemData);
+        MovementController = new MonsterMovementController(GetComponent<TargetDetector>(), GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
         AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),100f);
+        MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<Health>());
 
-        if (p_monsterSkillData != null)
+        if (p_monsterSkillDatas.Length > 0)
         {
-            MonsterCombatController = new MonsterCombatController(p_monsterStatData, p_monsterSkillData, GetComponent<Health>());
-            MonsterParticleController = new MonsterParticleController(MonsterCombatController.MonsterCombatAbility.MonsterSkillData, _vfxContainerTransform);
-        }
-        else
-        {
-            MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<Health>());
+            MonsterParticleController = new MonsterParticleController(p_monsterSkillDatas, _vfxContainerTransform);
         }
     }
 
@@ -86,5 +81,21 @@ public class Monster : MonoBehaviour
     public void UnlockAnimationTransition()
     {
         AnimationController.IsLockedInAnimation = false;
+    }
+
+    public void RePlayVFX(string vfxNameWithScale)
+    {
+        if (vfxNameWithScale.Contains('_'))
+        {
+            string[] parts = vfxNameWithScale.Split('_');
+            string vfxName = parts[0];
+            float scaleFactor = float.Parse(parts[1]);
+
+            MonsterParticleController.RePlayVFX(vfxName, scaleFactor);
+        }
+        else
+        {
+            MonsterParticleController.RePlayVFX(vfxNameWithScale);
+        }
     }
 }

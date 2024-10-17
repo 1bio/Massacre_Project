@@ -17,7 +17,7 @@ public class MonsterAnimationController
     public ObjectFadeInOut ObjectFadeInOut { get; }
     public AnimatorStateInfo AnimatorStateInfo { get; set; }
 
-    public bool IsLockedInAnimation { get; set; }
+    public bool IsLockedInAnimation { get; set; } = false;
     public float LocomotionBlendValue { get; private set; }
     public float BlendTransitionSpeed { get; private set; }
 
