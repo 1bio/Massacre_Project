@@ -68,8 +68,8 @@
     <Compile Include="Assets\04.KMH\02.Scripts\UI\CharacterUI.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\RangeAttackData.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourGotHit.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Indicator\LineAttackIndicator.cs" />
     <Compile Include="Assets\04.KMH\02.Scripts\Player\Player.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Indicator\LineAttackIndicator.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Minotaur\MinotaurRamAttack.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Combat\Targeting.cs" />
