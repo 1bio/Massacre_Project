@@ -6,9 +6,9 @@ public class TargetDetector : MonoBehaviour
 {
     // Raycast 관련
     private RaycastHit _hit;
-    [SerializeField] private float _maxDistance = 20f;
+    [SerializeField] private float _detectionDistance = 10f;
     private float _fanAngle = 48f;
-    private float _fanCount = 5f;
+    [SerializeField] private float _fanCount = 5f;
     private float _detectionRadius = 0.4f;
 
     public bool IsTargetDetected { get; set; } = false;
@@ -31,9 +31,9 @@ public class TargetDetector : MonoBehaviour
             float angle = -_fanAngle / 2 + (i * (_fanAngle / (_fanCount - 1)));
             Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
 
-            if (Physics.SphereCast(transform.position, _detectionRadius, direction, out _hit, _maxDistance, layerMask))
+            if (Physics.SphereCast(transform.position, _detectionRadius, direction, out _hit, _detectionDistance, layerMask))
             {
-                Debug.DrawRay(transform.position, direction * _maxDistance, Color.red, 0.1f); // Ray 시각화
+                Debug.DrawRay(transform.position, direction * _detectionDistance, Color.red, 0.1f);
                 if (_hit.collider.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()))
                 {
                     return true;
@@ -41,8 +41,7 @@ public class TargetDetector : MonoBehaviour
             }
             else
             {
-                // Ray가 발견되지 않았을 때
-                Debug.DrawRay(transform.position, direction * _maxDistance, Color.yellow, 0.1f); // 다른 색상으로 표시
+                Debug.DrawRay(transform.position, direction * _detectionDistance, Color.yellow, 0.1f);
             }
         }
         return false;

@@ -78,28 +78,4 @@ public class MonsterParticleController
             VFX[vfxName].Stop();
         }
     }
-
-    public bool IsVFXProgressAt(string vfxName, float percentage)
-    {
-        if (VFX.ContainsKey(vfxName))
-        {
-            ParticleSystem vfx = VFX[vfxName];
-
-            if (vfx.isPlaying)
-            {
-                float currentTime = vfx.time;
-                float duration = vfx.main.duration;
-
-                float targetTime = duration * (percentage / 100f);
-
-                return currentTime >= targetTime;
-            }
-            else
-            {
-                vfx.Play();
-            }
-        }
-
-        return false;
-    }
 }
