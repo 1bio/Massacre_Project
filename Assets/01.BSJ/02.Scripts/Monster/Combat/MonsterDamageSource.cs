@@ -5,8 +5,10 @@ using UnityEngine;
 public class MonsterDamageSource : MonoBehaviour
 {
     private Health _playerHealth;
-
     private Monster _monster;
+
+    private bool _canTakeDamage = true;
+    [SerializeField] private float _damageInterval = 1.0f;
 
     private void Awake()
     {
@@ -26,5 +28,31 @@ public class MonsterDamageSource : MonoBehaviour
                 _playerHealth.TakeDamage();
             }
         }
+    }
+
+    void OnParticleCollision(GameObject other)
+    {
+        if (other.CompareTag("Player") && _canTakeDamage)
+        {
+            if (_playerHealth != null)
+            {
+                StartCoroutine(DealDamageOverTime());
+            }
+        }
+    }
+
+    private IEnumerator DealDamageOverTime()
+    {
+        _canTakeDamage = false;
+
+        if (_playerHealth != null)
+        {
+            _playerHealth.TakeDamage();
+            //Debug.Log("Player Hit");
+        }
+
+        yield return new WaitForSeconds(_damageInterval);
+
+        _canTakeDamage = true;
     }
 }

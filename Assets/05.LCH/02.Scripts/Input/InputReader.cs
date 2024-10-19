@@ -1,23 +1,23 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
-using System.Collections;
+using UnityEngine.InputSystem.Interactions;
 
 [Serializable]
-public class InputReader : MonoBehaviour,InputActions.IPlayerActions
+public class InputReader : MonoBehaviour, InputActions.IPlayerActions
 {
     public InputActions InputActions { get; private set; }
 
     public Vector2 MoveValue { get; private set; }
 
-    public bool IsAttacking { get; private set; }
+    public bool IsAttacking { get; private set; } = false;
 
-    public bool IsAiming { get; private set; }
-
-    public bool isAutoRotate { get; private set; } 
-
+    public bool IsAiming { get; private set; } = false;
 
     public event Action RollEvent;
+
+    public event Action AimingEvent;
+    public event Action SkillEvent;
 
 
     private void Awake()
@@ -35,7 +35,6 @@ public class InputReader : MonoBehaviour,InputActions.IPlayerActions
     }
 
 
-
     #region Input Method
     // Moving
     void InputActions.IPlayerActions.OnMove(InputAction.CallbackContext context)
@@ -46,28 +45,15 @@ public class InputReader : MonoBehaviour,InputActions.IPlayerActions
     // Attacking
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
         {
             IsAttacking = true;
-        }
-        else if(context.canceled)
-        {
-            IsAttacking = false;
-        }
-    }
-
-    // Rotating
-    public void OnAim(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
             IsAiming = true;
-            isAutoRotate = false;
         }
         else if (context.canceled)
         {
+            IsAttacking = false;
             IsAiming = false;
-            isAutoRotate = true;
         }
     }
 
@@ -78,6 +64,24 @@ public class InputReader : MonoBehaviour,InputActions.IPlayerActions
             return;
 
         RollEvent?.Invoke();
+    }
+
+    // Rotating
+    public void OnAim(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        AimingEvent?.Invoke();
+    }
+
+    // Q Skill
+    public void OnSkill(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        SkillEvent?.Invoke();
     }
     #endregion
 }

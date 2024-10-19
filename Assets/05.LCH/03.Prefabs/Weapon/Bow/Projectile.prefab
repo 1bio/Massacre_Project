@@ -137,8 +137,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.051650926, y: 0.021862913, z: 0.8106713}
-  m_Center: {x: -0.00014466047, y: -0.0026023933, z: 0.0008122921}
+  m_Size: {x: 0.01697475, y: 0.018356634, z: 0.5973235}
+  m_Center: {x: -0.00022615679, y: -0.00052571204, z: 0.09413866}
 --- !u!54 &6619882542492516339
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -164,8 +164,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
-  m_CollisionDetection: 0
+  m_Constraints: 116
+  m_CollisionDetection: 1
 --- !u!114 &1524003082922004141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,4 +178,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ef0edc10114d54f82916cc5d53021c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 6619882542492516339}
