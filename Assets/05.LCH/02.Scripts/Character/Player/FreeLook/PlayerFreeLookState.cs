@@ -15,6 +15,12 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private int heavyAttackDataIndex = 3;
 
+    private float heavyAttackDurationTime = 10f;
+
+    private float heavyAttackEnterTime;
+
+    private float currentTime;
+
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -41,15 +47,21 @@ public class PlayerFreeLookState : PlayerBaseState
 
         if (Input.GetKeyDown(KeyCode.E)) { Swap(); }
 
+        /*Debug.Log($"회전베기 남은 쿨타임: {stateMachine.CoolDownController.GetRemainingCooldown("회전베기")}");*/
+
+        currentTime += Time.time;
+
         // Attack
         if (stateMachine.InputReader.IsAttacking && stateMachine.WeaponPrefabs[0].activeSelf)
         {
-            if (stateMachine.CoolDownController.GetRemainingCooldown("미정") <= 0) 
+            if (stateMachine.CoolDownController.GetRemainingCooldown("미정") <= 0 && currentTime - heavyAttackDurationTime >= heavyAttackEnterTime)
             {
+                heavyAttackEnterTime = Time.time;
+
                 stateMachine.ChangeState(new PlayerHeavyAttackState(stateMachine, heavyAttackDataIndex));
                 return;
             }
-            else if(stateMachine.CoolDownController.GetRemainingCooldown("미정") > 0)
+            if (stateMachine.CoolDownController.GetRemainingCooldown("미정") > 0)
             {
                 stateMachine.ChangeState(new PlayerMeleeAttackState(stateMachine, basicAttackDataIndex));
                 return;

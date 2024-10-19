@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class MonsterBehaviourSkill : MonsterBehaviour
         monster.AnimationController.IsLockedInAnimation = true;
 
         _monster = monster;
-        monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
+        /*monster.MonsterCombatController.Health.ImpactEvent += OnImpact;*/
         _skillData = monster.MonsterSkillController.CurrentSkillData;
         _skillData.ActiveSkillEnter(monster);
     }
@@ -30,11 +31,10 @@ public class MonsterBehaviourSkill : MonsterBehaviour
 
         monster.MovementController.Astar.StartPathCalculation();
 
-        monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
+        /*monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;*/
     }
 
     private void OnImpact()
     {
-
     }
 }

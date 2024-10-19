@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     [Header("스킬 선택 UI 필드")]
     public GameObject selectWindow;
     public GameObject[] selectPosition = new GameObject[2];
+
+    [Header("스킬 프리팹")]
     public List<GameObject> skillPrefabs;
 
     private void Awake()
