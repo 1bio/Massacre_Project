@@ -1,81 +1,47 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
+// 두 대 이상 연속 피격 당할 시(hitCount = 2) 그로기 상태로 전환
 public class Health : MonoBehaviour
 {
-    // <==== 체력 필드 ====>
-    private float currentHealth;
-    private bool isDead => currentHealth <= 0;
-
-    // <==== 피격 필드 ====>
     public int hitCount = 0;
 
     private float currentTime;
     private float lastImpactTime;
 
-    private float coolDown = 1f;
-
-    // <==== 피격 이벤트 ====>
-    public event Action ImpactEvent;
-
+    private float hitDurationCoolDown = 1f; // 1초 후에 hitCount 초기화
 
     private void Start()
     {
-        currentHealth = DataManager.instance.playerData.statusData.maxHealth;
-
-        lastImpactTime = coolDown;
+        lastImpactTime = hitDurationCoolDown;
     }
 
     private void Update()
     {
-        if (isDead)
-        {
-            Dead();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage();
-        }
-
-        CheckCoolDown(); // 카운트 체크
+        CheckCoolDown(); 
     }
 
 
     #region Main Methods
-    public void SetHealth(float health)
-    {
-        currentHealth = health;
-    }
-
-    // 쿨타임 지날 시 카운트 초기화
+    // 카운트 체크
     public void CheckCoolDown()
     {
         currentTime = Time.time;
         
-        if (currentTime - lastImpactTime >= coolDown)
+        if (currentTime - lastImpactTime >= hitDurationCoolDown)
         {
             hitCount = 0;
         }
     }
 
-    // 피격 당한 순간 lastImpactTime 업데이트 및 이벤트 호출
-    public void TakeDamage() 
+    public virtual void TakeDamage(float damage) 
     {
         float currentImpactTime = Time.time;
-        
         lastImpactTime = currentImpactTime;
-
-        hitCount++; // hitCount 증가
-
-        // 체력 감소 로직
-        ImpactEvent?.Invoke();
+        hitCount++; 
     }
 
-    public void Dead()
+    public virtual void Dead()
     {
-        Debug.Log("Die!");
-        // GameManager에서 이벤트 실행
     }
     #endregion
 }

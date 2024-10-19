@@ -29,7 +29,7 @@ public abstract class PlayerBaseState : State
     // 이동
     protected void Move(Vector3 motion, float deltaTime)
     {
-        stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.movement) * stateMachine.MoveSpeed * deltaTime);
+        stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.movement) * DataManager.instance.playerData.statusData.moveSpeed * deltaTime);
     }
 
     // 이동(넉백과 같은 물리적인 힘의 이동)
@@ -55,8 +55,8 @@ public abstract class PlayerBaseState : State
     // 회전(마우스 공격 방향)
     protected void Aiming()
     {
-        /*if (stateMachine.InputReader.IsAiming == false)
-            return;*/
+        if (stateMachine.InputReader.IsAiming == false)
+            return;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -69,7 +69,7 @@ public abstract class PlayerBaseState : State
         }
     }
 
-
+    // 삭제 예정
     /*    // 공격 시 회전 보정
         protected void FaceTarget()
         {

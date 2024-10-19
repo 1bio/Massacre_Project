@@ -62,7 +62,7 @@ TextAsset:
     \"guid\": \"b8af458f7f524ac89c5cf7778a40444b\",\n            \"name\": \"Floor\",\n           
     \"_modules\": [\n                {\n                    \"guid\": \"f2533d945353472bbfd4e858e9f8b2d0\",\n                   
     \"name\": \"Floor\",\n                    \"prefabs\": [\n                       
-    {\n                            \"fileID\": 5897647125756495584,\n                           
+    {\n                            \"fileID\": 3953627856094836606,\n                           
     \"guid\": \"c38276929baec134b9f361aaffe3b66a\",\n                           
     \"type\": 3\n                        },\n                        {\n                           
     \"instanceID\": 0\n                        }\n                    ]\n               

@@ -24,7 +24,7 @@ public class PlayerRangeAttackState : PlayerRangeState
 
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        if (!stateMachine.InputReader.IsAttacking && currentInfo.normalizedTime > 0.8f)
+        if (!stateMachine.InputReader.IsAttacking && currentInfo.normalizedTime > 1.0f)
         {
             stateMachine.ChangeState(new PlayerRangeState(stateMachine));
             return;

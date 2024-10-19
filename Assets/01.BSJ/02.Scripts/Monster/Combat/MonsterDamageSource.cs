@@ -25,7 +25,7 @@ public class MonsterDamageSource : MonoBehaviour
                 if (_playerHealth == null)
                     return;
 
-                _playerHealth.TakeDamage();
+                _playerHealth.TakeDamage(20); // 데미지 가져와서 넣기
             }
         }
     }
@@ -47,8 +47,8 @@ public class MonsterDamageSource : MonoBehaviour
 
         if (_playerHealth != null)
         {
-            _playerHealth.TakeDamage();
-            //Debug.Log("Player Hit");
+            _playerHealth.TakeDamage(20); // 데미지 가져와서 넣기
+            Debug.Log("Player Hit");
         }
 
         yield return new WaitForSeconds(_damageInterval);

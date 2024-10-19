@@ -10,7 +10,7 @@ public class MonsterBehaviourIdle : MonsterBehaviour
     {
         _monster = monster; 
         monster.AnimationController.PlayIdleAnimation();
-        
+
         monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }
 
