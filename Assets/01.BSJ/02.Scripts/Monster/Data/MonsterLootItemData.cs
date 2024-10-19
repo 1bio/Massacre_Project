@@ -11,6 +11,7 @@ public class MonsterLootItemData : ScriptableObject
 
     public Dictionary<GameObject, float> LootItemDropRates { get; private set; }
 
+
     public MonsterLootItemData CreateInstance()
     {
         MonsterLootItemData newInstance = Instantiate(this);

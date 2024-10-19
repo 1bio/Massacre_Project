@@ -6,26 +6,37 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
 {
     private Monster _monster;
 
+    private float moveSpeed;
+
     public override void OnBehaviourStart(Monster monster)
     {
         _monster = monster;
-        _monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
+
+        moveSpeed = _monster.MonsterCombatController.MonsterCombatAbility.MoveSpeed;
 
         monster.AnimationController.PlayGotHitAnimation();
     }
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        
+        Move(Time.deltaTime);
     }
 
     public override void OnBehaviourEnd(Monster monster)
     {
-        _monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
     }
 
-    private void OnImpact()
+
+    // 이동
+    private void Move(Vector3 motion, float deltaTime)
     {
-        //체력 감소
+        _monster.Controller.Move((motion + _monster.ForceReceiver.movement) * moveSpeed * deltaTime);
     }
+
+    // 이동(넉백과 같은 물리적인 힘의 이동)
+    private void Move(float deltaTime)
+    {
+        Move(Vector3.zero, deltaTime);
+    }
+
 }

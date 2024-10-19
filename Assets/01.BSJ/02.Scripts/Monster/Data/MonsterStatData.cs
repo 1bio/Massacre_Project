@@ -15,4 +15,10 @@ public class MonsterStatData : ScriptableObject, IMonsterCombat
     public MonsterHealth MonsterHealth => _monsterHealth;
     public MonsterAttack MonsterAttack => _monsterAttack;
     public MonsterTargetDistance MonsterTargetDistance => _monsterTargetDistance;
+
+
+    public float ReturnHealth()
+    {
+        return _monsterHealth.CurrentHealth;
+    }
 }

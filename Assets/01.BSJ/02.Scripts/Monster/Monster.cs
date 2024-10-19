@@ -5,6 +5,7 @@ using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.UIElements;
 
 public enum MonsterStateType
@@ -44,6 +45,10 @@ public class Monster : MonoBehaviour
     public MonsterParticleController MonsterParticleController { get; protected set; }
     public TrailRenderer ObjectTrail { get => _objectTrail; }
 
+    // 넉백 처리
+    public CharacterController Controller { get; protected set; }
+    public ForceReceiver ForceReceiver { get; protected set; }
+
     protected virtual void Awake()
     {
         _vfxContainerTransform = transform.Find(VFXContainerName);
@@ -59,7 +64,10 @@ public class Monster : MonoBehaviour
         MonsterLootItemController = new MonsterLootItemController(p_monsterLootItemData);
         MovementController = new MonsterMovementController(GetComponent<TargetDetector>(), GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
         AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),100f);
-        MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<Health>());
+        MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<CreatureHealth>());
+     
+        Controller = GetComponent<CharacterController>();
+        ForceReceiver = GetComponent<ForceReceiver>();
 
         if (p_monsterSkillDatas.Length > 0)
         {

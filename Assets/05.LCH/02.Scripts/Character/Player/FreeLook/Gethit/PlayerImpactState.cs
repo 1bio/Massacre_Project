@@ -12,7 +12,7 @@ public class PlayerImpactState : PlayerBaseState
 
     public readonly float DampTime = 0.1f;
 
-    public readonly int doubleAttack = 2;
+    public readonly int doubleHits = 2;
 
     public PlayerImpactState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -45,7 +45,7 @@ public class PlayerImpactState : PlayerBaseState
         }
 
         // Impact -> Groggy
-        if (stateMachine.Health.hitCount == doubleAttack)
+        if (stateMachine.Health.hitCount == doubleHits)
         {
             stateMachine.ChangeState(new PlayerGroggyState(stateMachine));
             return;

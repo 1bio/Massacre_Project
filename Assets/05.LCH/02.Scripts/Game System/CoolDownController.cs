@@ -6,6 +6,8 @@ public class CoolDownController : MonoBehaviour
 {
     private Dictionary<string, float> skills = new Dictionary<string, float>();
 
+    private bool isPassive = false;
+
     // 스킬 추가
     public void AddSkill(string skillName, float cooldownDuration)
     {
@@ -56,4 +58,20 @@ public class CoolDownController : MonoBehaviour
         return false;
     }
 
+    // 지속 시간 유지
+    public bool IsPassiveOn(string skillName, float passiveTime)
+    {
+        passiveTime -= Time.time;
+
+        if(passiveTime > 0)
+        {
+            isPassive = true;
+        }
+        else if(passiveTime <= 0)
+        {
+            isPassive = false;
+        }
+
+        return isPassive;
+    }
 }

@@ -79,7 +79,7 @@ MonoBehaviour:
       - guid: f2533d945353472bbfd4e858e9f8b2d0
         name: Floor
         prefabs:
-        - {fileID: 5897647125756495584, guid: c38276929baec134b9f361aaffe3b66a, type: 3}
+        - {fileID: 3953627856094836606, guid: c38276929baec134b9f361aaffe3b66a, type: 3}
         - {fileID: 0}
     _decoratorGroups: []
     _decoratorCategories:

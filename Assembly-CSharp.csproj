@@ -114,10 +114,12 @@
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\FreeLook\Melee\PlayerHeavyAttackState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\UI\SpinSlash.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Data\MonsterStatData.cs" />
+    <Compile Include="Assets\05.LCH\02.Scripts\Utility\PlayerHealth.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Indicator\Indicator.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Controller\MonsterParticleController.cs" />
+    <Compile Include="Assets\05.LCH\02.Scripts\Game System\GameManager.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\AttackData.cs" />
     <Compile Include="Assets\InfinityPBR\Equipment System\Scripts\BlendShapePresetFile.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterHealth.cs" />
@@ -220,6 +222,7 @@
     <Compile Include="Assets\InfinityPBR\Demo Scripts\SFB_HumanDemoControl.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Controls\ResourceBarController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+    <Compile Include="Assets\05.LCH\02.Scripts\Utility\CreatureHealth.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourIdle.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\IPBR_SupportAndReview.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Enemy\EnemyStateMachine.cs" />

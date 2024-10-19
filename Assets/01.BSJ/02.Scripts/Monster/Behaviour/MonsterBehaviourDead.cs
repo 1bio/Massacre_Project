@@ -9,10 +9,16 @@ public class MonsterBehaviourDead : MonsterBehaviour
 
     private GameObject _monsterObj;
 
+    private int itemMaxCount = 3;
+
     public override void OnBehaviourStart(Monster monster)
     {
         monster.AnimationController.PlayDeathAnimation();
         _monsterObj = monster.gameObject;
+
+        monster.MonsterLootItemController.LootItems(monster.transform.position, itemMaxCount);
+
+       
     }
 
     public override void OnBehaviourUpdate(Monster monster)

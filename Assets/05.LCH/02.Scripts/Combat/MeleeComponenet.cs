@@ -30,11 +30,9 @@ public class MeleeComponenet : MonoBehaviour
             if (other.CompareTag("Player"))
                 return;
 
-            Debug.Log("Hit!");
-
             cameraShake.ShakeCamera(1f, 0.2f);
 
-            health?.TakeDamage(); // 공용 
+            health?.TakeDamage(damage); // 공용 
         }
     }
     #endregion

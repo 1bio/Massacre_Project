@@ -5716,9 +5716,9 @@ GameObject:
   - component: {fileID: 8860040934350863872}
   - component: {fileID: 6232515372858526173}
   - component: {fileID: 6449116757535947445}
-  - component: {fileID: 222314660471359903}
   - component: {fileID: 3763785049477709137}
   - component: {fileID: 8487367234996065460}
+  - component: {fileID: 4619734278516519540}
   m_Layer: 0
   m_Name: Troll
   m_TagString: Monster
@@ -5860,19 +5860,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 3752151867169735173}
   rollSpeed: 0
---- !u!114 &222314660471359903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8870097054709720909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b066cc1251f0b3840a8f32ea9ef795ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitCount: 0
 --- !u!114 &3763785049477709137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5903,6 +5890,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b393e7224866ff440bb4d3ac99e3dae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4619734278516519540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8870097054709720909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116a6525814f4a44fa0bfe45b521bb50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitCount: 0
 --- !u!1 &8929799592324859312
 GameObject:
   m_ObjectHideFlags: 0

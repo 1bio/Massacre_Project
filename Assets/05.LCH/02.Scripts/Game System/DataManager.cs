@@ -19,12 +19,7 @@ public class DataManager : MonoBehaviour
     #region Initialized Methods
     private void Initialized()
     {
-        statusData = new StatusData()
-        {
-            moveSpeed = 7f,
-            maxHealth = 100f,
-            defense = 0f
-        };
+        statusData = new StatusData(7f, 100f, 50f);
 
         skillData = new List<SkillData>
         {

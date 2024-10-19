@@ -46,7 +46,8 @@ public class PlayerRangeState : PlayerBaseState
             stateMachine.ChangeState(new PlayerRangeRapidShotState(stateMachine));
             return;
         }
-        else if(stateMachine.InputReader.IsAttacking && stateMachine.CoolDownController.GetRemainingCooldown("트리플샷") > 0)
+        
+        if(stateMachine.InputReader.IsAttacking && stateMachine.CoolDownController.GetRemainingCooldown("트리플샷") > 0)
         {
             stateMachine.ChangeState(new PlayerRangeAttackState(stateMachine));
             return;
