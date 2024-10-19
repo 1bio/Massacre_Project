@@ -37,6 +37,8 @@ public class MonsterBehaviourMovement : MonsterBehaviour
             return;
         }
 
+        monster.MovementController.LookAtTarget(monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
+
         if (_path != monster.MovementController.Path && monster.MovementController.Path.Count >= 1)
         {
             monster.AnimationController.PlayWalkAnimation();
@@ -46,8 +48,6 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
         if (_pathIndex < _path.Count && !_isMoving)
         {
-            monster.MovementController.LookAtTarget(monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
-
             StepToNode(_path[_pathIndex], monster, _pathIndex);
 
             if (_pointGrid.GetPointNodeFromGridByPosition(monster.transform.position) == _path[_pathIndex])

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TargetDetector : MonoBehaviour
 {
+    private Monster _monster;
     // Raycast ฐüทร
     private RaycastHit _hit;
     [SerializeField] private float _detectionDistance = 10f;
@@ -13,35 +14,49 @@ public class TargetDetector : MonoBehaviour
 
     public bool IsTargetDetected { get; set; } = false;
 
+    private void Awake()
+    {
+        _monster = GetComponent<Monster>();
+    }
+
     private void FixedUpdate()
     {
         if (!IsTargetDetected)
         {
-            if (IsInFanShapeDetection())
+            if (IsInFanShapeDetection(_detectionDistance))
                 IsTargetDetected = true;
         }
+        _monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsTargetWithinAttackRange =
+            IsInFanShapeDetection(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Range);
     }
 
-    public bool IsInFanShapeDetection()
+    public bool IsInFanShapeDetection(float detectionDistance)
     {
-        int layerMask = (1 << LayerMask.NameToLayer(GameLayers.Player.ToString()));
+        int layerMask = (1 << LayerMask.NameToLayer(GameLayers.Player.ToString())) |
+                        (1 << LayerMask.NameToLayer(GameLayers.Obstacle.ToString()));
+
+        Vector3 startPos = transform.position + new Vector3(0, 0.5f, 0);
 
         for (int i = 0; i < _fanCount; i++)
         {
             float angle = -_fanAngle / 2 + (i * (_fanAngle / (_fanCount - 1)));
             Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
 
-            if (Physics.SphereCast(transform.position, _detectionRadius, direction, out _hit, _detectionDistance, layerMask))
+            if (Physics.SphereCast(startPos, _detectionRadius, direction, out _hit, detectionDistance, layerMask))
             {
-                Debug.DrawRay(transform.position, direction * _detectionDistance, Color.red, 0.1f);
+                Debug.DrawRay(startPos, direction * detectionDistance, Color.red, 0.1f);
                 if (_hit.collider.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()))
                 {
                     return true;
                 }
+                else if (_hit.collider.gameObject.layer == LayerMask.NameToLayer(GameLayers.Obstacle.ToString()))
+                {
+                    return false;
+                }
             }
             else
             {
-                Debug.DrawRay(transform.position, direction * _detectionDistance, Color.yellow, 0.1f);
+                Debug.DrawRay(startPos, direction * detectionDistance, Color.yellow, 0.1f);
             }
         }
         return false;

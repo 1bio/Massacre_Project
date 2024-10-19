@@ -40,7 +40,7 @@ public class MinotaurRamAttack : MonsterSkillData
         monster.ObjectTrail.gameObject.SetActive(true);
 
         //_indicator = monster.GetComponentInChildren<Indicator>(true);
-        Debug.Log($"ActiveSkillEnter called. _hasRamStarted: {_hasRamStarted}");
+        /*Debug.Log($"ActiveSkillEnter called. _hasRamStarted: {_hasRamStarted}");*/
     }
 
     public override void ActiveSkillTick(Monster monster)
@@ -49,7 +49,7 @@ public class MinotaurRamAttack : MonsterSkillData
         {
             StartRamAttack(monster);
         }
-        Debug.Log($"_currentAttackCount: {_currentAttackCount}");
+        /*Debug.Log($"_currentAttackCount: {_currentAttackCount}");*/
         HandleAnimationState(monster);
     }
 

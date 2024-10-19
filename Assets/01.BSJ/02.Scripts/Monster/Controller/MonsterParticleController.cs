@@ -71,11 +71,11 @@ public class MonsterParticleController
         }
     }
 
-    public void StopVFX(string vfxName)
+    public void AllStopVFXs()
     {
-        if (VFX.ContainsKey(vfxName))
+        foreach (var vfx in VFX)
         {
-            VFX[vfxName].Stop();
+            vfx.Value.Stop();
         }
     }
 }
