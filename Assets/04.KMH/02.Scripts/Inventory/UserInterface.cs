@@ -18,7 +18,13 @@ public abstract class UserInterface : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < inventory.Container.Items.Length; i++)
+        {
+            inventory.Container.Items[i].parent = this;
+        }
         CreateSlots();
+        AddEvent(gameObject, EventTriggerType.PointerEnter, delegate { OnEnterInterface(gameObject); });
+        AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
     }
 
     // Update is called once per frame
@@ -68,6 +74,14 @@ public abstract class UserInterface : MonoBehaviour
         player.mouseItem.hoverObj = null;
         player.mouseItem.hoverItem = null;
     }
+    public void OnEnterInterface(GameObject obj)
+    {
+        player.mouseItem.ui = obj.GetComponent<UserInterface>();
+    }
+    public void OnExitInterface(GameObject obj)
+    {
+        player.mouseItem.ui = null;
+    }
     public void OnDragStart(GameObject obj)
     {
         var mouseObject = new GameObject();
@@ -85,16 +99,23 @@ public abstract class UserInterface : MonoBehaviour
     }
     public void OnDragEnd(GameObject obj)
     {
-        if (player.mouseItem.hoverObj)
+        var itemOnMouse = player.mouseItem;
+        var mouseHoverItem = itemOnMouse.hoverItem;
+        var mouseHoverObj = itemOnMouse.hoverObj;
+        var GetItemObject = inventory.database.GetItem;
+
+        if (itemOnMouse.ui != null)
         {
-            inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[player.mouseItem.hoverObj]);
+            if (mouseHoverObj)
+                if (mouseHoverItem.CanPlaceSlot(GetItemObject[itemsDisplayed[obj].ID]) && (mouseHoverItem.item.Id <= -1 || (mouseHoverItem.item.Id >= 0 && itemsDisplayed[obj].CanPlaceSlot(GetItemObject[mouseHoverItem.item.Id]))))
+                    inventory.MoveItem(itemsDisplayed[obj], mouseHoverItem.parent.itemsDisplayed[itemOnMouse.hoverObj]);
         }
         else
         {
             inventory.RemoveItem(itemsDisplayed[obj].item);
         }
-        Destroy(player.mouseItem.obj);
-        player.mouseItem.item = null;
+        Destroy(itemOnMouse.obj);
+        itemOnMouse.item = null;
     }
     public void OnDrag(GameObject obj)
     {
@@ -106,6 +127,7 @@ public abstract class UserInterface : MonoBehaviour
 }
 public class MouseItem
 {
+    public UserInterface ui;
     public GameObject obj;
     public InventorySlot item;
     public InventorySlot hoverItem;

@@ -6,13 +6,10 @@ using UnityEngine;
 
 public class EquipmentObject : ItemObject
 {
-    //public float atkBonus;
-    //public float defenceBonus;
-    ////스탯 추가 가능
 
     private void Reset()
     {
-        type = ItemType.Equipment;
+        type = ItemType.Chest;
     }
 
 }
