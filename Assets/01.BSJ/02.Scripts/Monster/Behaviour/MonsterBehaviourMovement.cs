@@ -37,6 +37,8 @@ public class MonsterBehaviourMovement : MonsterBehaviour
             return;
         }
 
+        monster.MonsterLootItemController.LootItems(monster.transform.position, 2);
+
         if (_path != monster.MovementController.Path && monster.MovementController.Path.Count >= 1)
         {
             monster.AnimationController.PlayWalkAnimation();

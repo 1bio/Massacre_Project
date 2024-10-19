@@ -5,8 +5,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public GameObject uiCamera;
-
     [Header("스킬 선택 UI 필드")]
     public GameObject selectWindow;
     public GameObject[] selectPosition = new GameObject[2];
@@ -22,7 +20,6 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             selectWindow.SetActive(true);
-            uiCamera.SetActive(true);
 
             GetRandomSkill();
         }
@@ -36,7 +33,6 @@ public class UIManager : MonoBehaviour
     public void SelectWindow(bool openWindow)
     {
         selectWindow.SetActive(openWindow);
-        uiCamera.SetActive(openWindow);
     }
 
     // 랜덤 스킬 생성

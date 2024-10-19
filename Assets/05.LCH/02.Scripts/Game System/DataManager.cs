@@ -29,13 +29,13 @@ public class DataManager : MonoBehaviour
         skillData = new List<SkillData>
         {
             // 원거리
-            new SkillData("차징샷", 0, 20f, 6f, 0f, 0f, true, "1초 동안 힘을 모아 \r\n강력한 화살을 발사합니다", 1.15f, 0.9f), // 스킬 1 [0]
+            new SkillData("정조준", 0, 20f, 6f, 0f, 0f, true, "1초 동안 힘을 모아 \r\n강력한 화살을 발사합니다", 1.15f, 0.9f), // 스킬 1 [0]
             new SkillData("트리플샷", 0, 7f, 7f, 0f, 0f, true, "기본 공격 시 3발의 화살을 \r\n연속으로 발사합니다", 1.1f, 0.95f), // 스킬 2 [1]
-            new SkillData("미정", 0, 0f, 0f, 0f, 0f, true, "스킬 설명을 입력하세요.", 1.05f, 0.95f), // 스킬 3 [2]
+            new SkillData("화살비", 0, 0f, 7f, 0f, 0f, true, "스킬 설명을 입력하세요.", 1.05f, 0.95f), // 스킬 3 [2]
 
             // 근거리
             new SkillData("도약베기", 0, 20f, 8f, 0.02f, 0.35f, true, "짧게 도약하며 \r\n근처의 적들을 공격합니다", 1.25f, 0.85f), // 스킬 1 [3]
-            new SkillData("미정", 0, 20f, 7f, 0f, 0.35f, true, "스킬 설명을 입력하세요.", 1.05f, 0.95f), // 스킬 1 [4]
+            new SkillData("미정", 0, 20f, 7f, 10f, 0.35f, true, "스킬 설명을 입력하세요.", 1.05f, 0.95f), // 스킬 1 [4]
             new SkillData("회전베기", 0, 20f, 6f, 0.005f, 0.35f, true, "1초동안 회전하며 \r\n강력한 힘을 방출합니다", 1.05f, 0.9f), // 스킬 3 [5]
         };
         
@@ -43,7 +43,11 @@ public class DataManager : MonoBehaviour
         {
             new AttackData("Attack1@Melee", 1, 0.6f, 0.1f, 0.5f, 0.35f, 10.0f, 0.45f), // 근거리 공격 1
             new AttackData("Attack2@Melee", 2, 0.5f, 0.1f, 0.5f, 0.35f, 15f, 0.45f), // 근거리 공격 2
-            new AttackData("Attack3@Melee", -1, 0, 0.1f, 0.65f, 0.35f, 20.0f, 0.55f) // 근거리 공격 3
+            new AttackData("Attack3@Melee", -1, 0, 0.1f, 0.65f, 0.35f, 20.0f, 0.55f), // 근거리 공격 3
+
+            new AttackData("HeavyAttack1@Melee", 4, 0.6f, 0.1f, 0.5f, 0.35f, 10.0f, 0.45f), // 근거리 패시브 공격 1
+            new AttackData("HeavyAttack2@Melee", 5, 0.5f, 0.1f, 0.5f, 0.35f, 15f, 0.45f), // 근거리 패시브 공격 2
+            new AttackData("HeavyAttack3@Melee", -1, 0, 0.1f, 0.65f, 0.35f, 20.0f, 0.55f) // 근거리 패시브 공격 3
         };
 
         rangeAttackData = new RangeAttackData("None", 0, 0f, 0f, 0f, 0f, 10f, 0.3f); // 원거리 공격

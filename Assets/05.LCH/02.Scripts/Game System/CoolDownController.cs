@@ -6,17 +6,44 @@ public class CoolDownController : MonoBehaviour
 {
     private Dictionary<string, float> skills = new Dictionary<string, float>();
 
+    // 스킬 추가
+    public void AddSkill(string skillName, float cooldownDuration)
+    {
+        skills.Add(skillName, cooldownDuration);
+    }
+
     // 쿨타임 시작
-    public void StartCooldown(string skillName, float cooldownDuration)
+    public void StartCooldown(string skillName)
     {
         if (skills.ContainsKey(skillName))
         {
-            skills[skillName] = Time.time + cooldownDuration;
+            skills[skillName] = Time.time + ReturnCoolDown(skillName);
         }
-        else
+    }
+ 
+    // 남은 스킬 시간 반환
+    public float GetRemainingCooldown(string skillName)
+    {
+        if (skills.ContainsKey(skillName))
         {
-            skills.Add(skillName, Time.time + cooldownDuration);
+            float remainingTime = skills[skillName] - Time.time;
+            return Mathf.Max(remainingTime, 0); 
         }
+        return 0; 
+    }
+
+    // 스킬 쿨타임 반환
+    public float ReturnCoolDown(string skillName)
+    {
+        foreach (SkillData skill in DataManager.instance.playerData.skillData)
+        {
+            if(skill.skillName == skillName)
+            {
+                return skill.coolDown;
+            }
+        }
+
+        return 0;
     }
 
     // 스킬 사용 가능 여부 
@@ -29,14 +56,4 @@ public class CoolDownController : MonoBehaviour
         return false;
     }
 
-    // 남은 스킬 시간 반환
-    public float GetRemainingCooldown(string skillName)
-    {
-        if (skills.ContainsKey(skillName))
-        {
-            float remainingTime = skills[skillName] - Time.time;
-            return Mathf.Max(remainingTime, 0); 
-        }
-        return 0; 
-    }
 }

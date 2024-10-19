@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class MonsterParticleController
 {
-    private MonsterSkillData _skillData;
-    public MonsterParticleController(MonsterSkillData skillData, Transform parentTransform)
+    private MonsterSkillData[] _skillDatas;
+    public MonsterParticleController(MonsterSkillData[] skillDatas, Transform parentTransform)
     {
-        _skillData = skillData;
+        _skillDatas = skillDatas;
         VFX = new Dictionary<string, ParticleSystem>();
         InstantiateVFX(parentTransform);
     }
@@ -17,20 +17,45 @@ public class MonsterParticleController
 
     public void InstantiateVFX(Transform parentTransform)
     {
-        if (_skillData != null && _skillData.VFX.Length > 0)
+        for (int i = 0; i < _skillDatas.Length; i++)
         {
-            foreach (GameObject vfxPrefab in _skillData.VFX)
+            for (int j = 0; j < _skillDatas[i].VFX.Length; j++)
             {
-                GameObject vfxInstance = GameObject.Instantiate(vfxPrefab, parentTransform);
-                vfxInstance.transform.localPosition = Vector3.zero;
+                GameObject vfxPrefab = _skillDatas[i].VFX[j];
 
-                ParticleSystem particleSystem = vfxInstance.GetComponent<ParticleSystem>();
-                if (particleSystem != null)
+                if (!parentTransform.Find(vfxPrefab.name))
                 {
+                    GameObject vfxInstance = GameObject.Instantiate(vfxPrefab, parentTransform);
+                    vfxInstance.transform.localPosition = Vector3.zero;
+
+                    ParticleSystem particleSystem = vfxInstance.GetComponent<ParticleSystem>();
+
                     VFX.Add(vfxPrefab.name, particleSystem);
-                    particleSystem.Stop();
                 }
+                else
+                {
+                    VFX.Add(vfxPrefab.name, vfxPrefab.GetComponent<ParticleSystem>());
+                }
+
+                VFX[vfxPrefab.name].Stop();
             }
+        }
+    }
+
+    public void RePlayVFX(string vfxName)
+    {
+        int index = vfxName.IndexOf('(');
+
+        if (index != -1)
+        {
+            vfxName = vfxName.Substring(0, index);
+        }
+
+        if (VFX.ContainsKey(vfxName))
+        {
+            VFX[vfxName].Stop();
+            VFX[vfxName].Clear();
+            VFX[vfxName].Play();
         }
     }
 

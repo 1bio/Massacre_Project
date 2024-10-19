@@ -3,92 +3,60 @@
   "WorkspaceRootPath": "C:\\Project\\Massacre_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|c:\\project\\massacre_project\\assets\\05.lch\\02.scripts\\game system\\cooldowncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\game system\\cooldowncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|c:\\project\\massacre_project\\assets\\05.lch\\02.scripts\\game system\\scenecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\game system\\scenecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\ui\\stagemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\ui\\stagemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\PlayerFreeLookState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\PlayerFreeLookState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\game system\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\game system\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\utility\\randomnumbergenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\utility\\randomnumbergenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\ui\\dashslash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\ui\\dashslash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\game system\\poolmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\game system\\poolmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\character\\player\\playerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\character\\player\\playerstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\game system\\datamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\game system\\datamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\ui\\tripleshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\ui\\tripleshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|c:\\project\\massacre_project\\assets\\05.lch\\02.scripts\\character\\player\\freelook\\playerfreelookstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\character\\player\\freelook\\playerfreelookstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\ui\\chargingshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\ui\\chargingshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\character\\player\\freelook\\melee\\playermeleeattackstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\character\\player\\freelook\\melee\\playermeleeattackstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\ui\\spinslash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\ui\\spinslash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\character\\player\\freelook\\melee\\playerheavyattackstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\character\\player\\freelook\\melee\\playerheavyattackstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\combat\\meleecomponenet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\combat\\meleecomponenet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\game system\\cooldowncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\game system\\cooldowncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\utility\\camerashake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|c:\\project\\massacre_project\\assets\\05.lch\\02.scripts\\utility\\camerashake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\utility\\camerashake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\utility\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\utility\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\combat\\weapontoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\combat\\weapontoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\input\\inputreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\input\\inputreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\character\\statemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\character\\statemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\combat\\rangecomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\combat\\rangecomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Melee\\PlayerMeleeAttackState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Melee\\PlayerMeleeAttackState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\character\\player\\freelook\\melee\\playermeleespinslashstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\character\\player\\freelook\\melee\\playermeleespinslashstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Roll\\PlayerRollingState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Roll\\PlayerRollingState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\character\\player\\freelook\\melee\\playermeleedashslashstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\character\\player\\freelook\\melee\\playermeleedashslashstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerGroggyState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerGroggyState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\character\\player\\playerbasestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\character\\player\\playerbasestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerImpactState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerImpactState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|C:\\Project\\Massacre_Project\\assets\\05.lch\\02.scripts\\game system\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7826EC8C-265D-778C-73EB-29FBA3068C23}|Assembly-CSharp.csproj|solutionrelative:assets\\05.lch\\02.scripts\\game system\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -98,136 +66,126 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerHeavyAttackState.cs",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerHeavyAttackState.cs",
+              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerHeavyAttackState.cs",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerHeavyAttackState.cs",
+              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerHeavyAttackState.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T19:00:16.594Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PlayerFreeLookState.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\PlayerFreeLookState.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\PlayerFreeLookState.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\PlayerFreeLookState.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\PlayerFreeLookState.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T04:10:27.968Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
               "Title": "PlayerMeleeAttackState.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Melee\\PlayerMeleeAttackState.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Melee\\PlayerMeleeAttackState.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Melee\\PlayerMeleeAttackState.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Melee\\PlayerMeleeAttackState.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAgwCUAAAAuAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeAttackState.cs",
+              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeAttackState.cs",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeAttackState.cs",
+              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeAttackState.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T17:13:33.861Z",
+              "WhenOpened": "2024-10-15T13:50:03.886Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Projectile.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Utility\\Projectile.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Utility\\Projectile.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Utility\\Projectile.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Utility\\Projectile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAA7AAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "PlayerFreeLookState.cs",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\PlayerFreeLookState.cs",
+              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\PlayerFreeLookState.cs",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\PlayerFreeLookState.cs",
+              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\PlayerFreeLookState.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAC4AAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T04:17:42.251Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "RangeComponent.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Combat\\RangeComponent.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Combat\\RangeComponent.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Combat\\RangeComponent.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Combat\\RangeComponent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T04:08:12.994Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "InputReader.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Input\\InputReader.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Input\\InputReader.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Input\\InputReader.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Input\\InputReader.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAF8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T12:16:45.14Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "WeaponToggle.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Combat\\WeaponToggle.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Combat\\WeaponToggle.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Combat\\WeaponToggle.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Combat\\WeaponToggle.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T04:08:38.644Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "PlayerRollingState.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Roll\\PlayerRollingState.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Roll\\PlayerRollingState.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Roll\\PlayerRollingState.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Roll\\PlayerRollingState.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAApwBcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T10:41:02.543Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "PlayerGroggyState.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerGroggyState.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerGroggyState.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerGroggyState.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerGroggyState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T07:24:07.722Z",
+              "WhenOpened": "2024-10-13T15:04:47.72Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "PlayerImpactState.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerImpactState.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerImpactState.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerImpactState.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\State\\FreeLook\\Gethit\\PlayerImpactState.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACkAAAAbAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "DataManager.cs",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\DataManager.cs",
+              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Game System\\DataManager.cs",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\DataManager.cs",
+              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Game System\\DataManager.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABUAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T07:23:49.772Z",
+              "WhenOpened": "2024-10-12T10:08:26.925Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PlayerStateMachine.cs",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\PlayerStateMachine.cs",
+              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\PlayerStateMachine.cs",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\PlayerStateMachine.cs",
+              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\PlayerStateMachine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T13:41:18.146Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PlayerMeleeSpinSlashState.cs",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeSpinSlashState.cs",
+              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeSpinSlashState.cs",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeSpinSlashState.cs",
+              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeSpinSlashState.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAcwEEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T19:28:12.877Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PlayerMeleeDashSlashState.cs",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeDashSlashState.cs",
+              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeDashSlashState.cs",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeDashSlashState.cs",
+              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\FreeLook\\Melee\\PlayerMeleeDashSlashState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T14:40:32.678Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PlayerBaseState.cs",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\PlayerBaseState.cs",
+              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\PlayerBaseState.cs",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\Player\\PlayerBaseState.cs",
+              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\Player\\PlayerBaseState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-15T17:29:53.702Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "CoolDownController.cs",
               "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\CoolDownController.cs",
               "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Game System\\CoolDownController.cs",
               "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\CoolDownController.cs",
               "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Game System\\CoolDownController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAB8AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-06T12:35:08.264Z",
               "IsPinned": true,
@@ -235,152 +193,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 6,
               "Title": "CameraShake.cs",
               "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Utility\\CameraShake.cs",
               "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Utility\\CameraShake.cs",
               "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Utility\\CameraShake.cs",
               "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Utility\\CameraShake.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvxoAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-08T04:30:57.513Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MeleeComponenet.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Combat\\MeleeComponenet.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Combat\\MeleeComponenet.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Combat\\MeleeComponenet.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Combat\\MeleeComponenet.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T07:26:16.272Z",
-              "IsPinned": true
+              "WhenOpened": "2024-10-16T23:54:49.352Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "PoolManager.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\PoolManager.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Game System\\PoolManager.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\PoolManager.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Game System\\PoolManager.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAswBYAAAAKAAAAAAAAAA==",
+              "Title": "InputReader.cs",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Input\\InputReader.cs",
+              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Input\\InputReader.cs",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Input\\InputReader.cs",
+              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Input\\InputReader.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T09:26:00.732Z",
-              "IsPinned": true
+              "WhenOpened": "2024-10-16T19:10:05.175Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DashSlash.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\UI\\DashSlash.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\UI\\DashSlash.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\UI\\DashSlash.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\UI\\DashSlash.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAPAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "StateMachine.cs",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\StateMachine.cs",
+              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Character\\StateMachine.cs",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Character\\StateMachine.cs",
+              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Character\\StateMachine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T18:09:29.571Z",
-              "IsPinned": true
+              "WhenOpened": "2024-10-14T13:23:05.04Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
+              "Title": "RangeComponent.cs",
+              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Combat\\RangeComponent.cs",
+              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Combat\\RangeComponent.cs",
+              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Combat\\RangeComponent.cs",
+              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Combat\\RangeComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T04:08:12.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "UIManager.cs",
               "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\UIManager.cs",
               "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Game System\\UIManager.cs",
               "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\UIManager.cs",
               "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Game System\\UIManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-12T18:22:53.657Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "StageManager.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\UI\\StageManager.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\UI\\StageManager.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\UI\\StageManager.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\UI\\StageManager.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T08:07:37.457Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SceneController.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\SceneController.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Game System\\SceneController.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\SceneController.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Game System\\SceneController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T10:20:42.411Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RandomNumberGenerator.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Utility\\RandomNumberGenerator.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Utility\\RandomNumberGenerator.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Utility\\RandomNumberGenerator.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Utility\\RandomNumberGenerator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T04:55:15.356Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SpinSlash.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\UI\\SpinSlash.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\UI\\SpinSlash.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\UI\\SpinSlash.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\UI\\SpinSlash.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T18:09:53.169Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ChargingShot.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\UI\\ChargingShot.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\UI\\ChargingShot.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\UI\\ChargingShot.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\UI\\ChargingShot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T18:08:15.944Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "TripleShot.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\UI\\TripleShot.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\UI\\TripleShot.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\UI\\TripleShot.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\UI\\TripleShot.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACcAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T18:09:55.244Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DataManager.cs",
-              "DocumentMoniker": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\DataManager.cs",
-              "RelativeDocumentMoniker": "Assets\\05.LCH\\02.Scripts\\Game System\\DataManager.cs",
-              "ToolTip": "C:\\Project\\Massacre_Project\\Assets\\05.LCH\\02.Scripts\\Game System\\DataManager.cs",
-              "RelativeToolTip": "Assets\\05.LCH\\02.Scripts\\Game System\\DataManager.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAswCcAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T10:08:26.925Z"
             }
           ]
         }

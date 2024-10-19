@@ -29,11 +29,16 @@ public class PlayerGroggyState : PlayerBaseState
         stateMachine.Animator.SetFloat(Impact, 3f, DampTime, deltaTime);
 
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
-        
+
         // 애니메이션 재생이 끝난 후
-        if (currentInfo.normalizedTime >= 1f)
+        if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[0].activeSelf && stateMachine.Health.hitCount == 0)
         {
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
+            return;
+        }
+        else if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[1].activeSelf && stateMachine.Health.hitCount == 0)
+        {
+            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
             return;
         }
     }

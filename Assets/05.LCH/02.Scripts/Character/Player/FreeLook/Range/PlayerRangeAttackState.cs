@@ -1,17 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRangeAttackState : PlayerBaseState
+public class PlayerRangeAttackState : PlayerRangeState
 {
     private AttackData attack;
 
     public readonly int AttackAnimationHash = Animator.StringToHash("Attack@Range"); // 원거리 공격 애니메이션 해쉬
-
-    public readonly float CrossFadeDuration = 0.1f;
-
-    public readonly float DampTime = 0.1f;
 
     public PlayerRangeAttackState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -33,7 +26,7 @@ public class PlayerRangeAttackState : PlayerBaseState
 
         if (!stateMachine.InputReader.IsAttacking && currentInfo.normalizedTime > 0.8f)
         {
-            stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
             return;
         }
     }

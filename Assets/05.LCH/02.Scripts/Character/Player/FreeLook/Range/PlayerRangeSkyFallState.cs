@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRangeSkyFallState : PlayerBaseState
+public class PlayerRangeSkyFallState : PlayerRangeState
 {
     public readonly int SkyFallAnimationHash = Animator.StringToHash("SkyFall@Range"); // 연발 애니메이션 해쉬
 
-    public readonly float CrossFadeDuration = 0.1f;
-
-    public readonly float DampTime = 0.1f;
 
     public PlayerRangeSkyFallState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -17,8 +12,6 @@ public class PlayerRangeSkyFallState : PlayerBaseState
     #region abstract Methods
     public override void Enter()
     {
-        Aiming();
-
         stateMachine.Animator.CrossFadeInFixedTime(SkyFallAnimationHash, CrossFadeDuration);
 
         stateMachine.InputReader.RollEvent += OnRolling;
@@ -31,7 +24,7 @@ public class PlayerRangeSkyFallState : PlayerBaseState
 
         if (currentInfo.normalizedTime > 0.8f)
         {
-            stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
             return;
         }
     }
