@@ -28,4 +28,14 @@ public class MonsterMovementController
 
         CharacterController.transform.rotation = Quaternion.RotateTowards(CharacterController.transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
     }
+
+    public void LookAtTarget(Vector3 targetPos, float rotationSpeed)
+    {
+        targetPos.y = CharacterController.transform.position.y;
+
+        Direction = (targetPos - CharacterController.transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(Direction);
+
+        CharacterController.transform.rotation = Quaternion.RotateTowards(CharacterController.transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+    }
 }

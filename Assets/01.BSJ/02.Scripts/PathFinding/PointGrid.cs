@@ -50,20 +50,25 @@ public class PointGrid : MonoBehaviour
                     bool isObstacle = false;
                     bool isGround = false;
 
-                    Collider[] hitColliders = Physics.OverlapSphere(worldPoint, _nodeRadius);
+                    int obstacleLayer = LayerMask.NameToLayer(GameLayers.Obstacle.ToString());
+                    int groundLayer = LayerMask.NameToLayer(GameLayers.Ground.ToString());
 
-                    foreach (var hitCollider in hitColliders)
+
+                    int layerMask = (1 << LayerMask.NameToLayer(GameLayers.Obstacle.ToString())) | (1 << LayerMask.NameToLayer(GameLayers.Ground.ToString()));
+                    
+                    Ray ray = new Ray(worldPoint + Vector3.up * 10, Vector3.down);
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
                     {
-                        if (hitCollider.CompareTag("Obstacle"))
+                        if (hit.collider.gameObject.layer == obstacleLayer)
                         {
                             isObstacle = true;
-                            break;
                         }
 
-                        if (hitCollider.CompareTag("Ground"))
+                        if (hit.collider.gameObject.layer == groundLayer)
                         {
                             isGround = true;
-                            break;
                         }
                     }
 

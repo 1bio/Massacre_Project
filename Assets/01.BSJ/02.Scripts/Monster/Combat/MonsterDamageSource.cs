@@ -8,7 +8,7 @@ public class MonsterDamageSource : MonoBehaviour
     private Monster _monster;
 
     private bool _canTakeDamage = true;
-    [SerializeField] private float _damageInterval = 1.0f;
+    [SerializeField] private float _damageInterval = 1.5f;
 
     private void Awake()
     {
@@ -32,7 +32,7 @@ public class MonsterDamageSource : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
-        if (other.CompareTag("Player") && _canTakeDamage)
+        if (other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()) && _canTakeDamage)
         {
             if (_playerHealth != null)
             {
@@ -45,11 +45,8 @@ public class MonsterDamageSource : MonoBehaviour
     {
         _canTakeDamage = false;
 
-        if (_playerHealth != null)
-        {
-            _playerHealth.TakeDamage(20); // 데미지 가져와서 넣기
-            Debug.Log("Player Hit");
-        }
+        _playerHealth.TakeDamage(_monster.MonsterSkillController.CurrentSkillData.Damage); // 데미지 가져와서 넣기
+        Debug.Log("Player Hit");
 
         yield return new WaitForSeconds(_damageInterval);
 

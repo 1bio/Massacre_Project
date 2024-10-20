@@ -36,5 +36,6 @@ public class MonsterBehaviourSkill : MonsterBehaviour
 
     private void OnImpact()
     {
+
     }
 }

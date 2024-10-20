@@ -33,7 +33,8 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
         if (monster == null || monster.MovementController.Path == null)
         {
-            monster.AnimationController.PlayIdleAnimation();
+            monster.MonsterStateMachineController.OnIdle();
+            monster.MovementController.Astar.StartPathCalculation();
             return;
         }
 

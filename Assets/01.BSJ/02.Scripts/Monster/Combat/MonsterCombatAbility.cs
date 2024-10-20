@@ -26,9 +26,10 @@ public class MonsterCombatAbility : IMonsterCombat
 
         MonsterAttack = new MonsterAttack(
             _statData.MonsterAttack.Damage,
+            _statData.MonsterAttack.Range,
             _statData.MonsterAttack.CooldownThreshold,
             _statData.MonsterAttack.TotalCount,
-            _statData.MonsterAttack.IsAttack,
+            _statData.MonsterAttack.IsTargetWithinAttackRange,
             _statData.MonsterAttack.IsEnableWeapon 
         );
 
