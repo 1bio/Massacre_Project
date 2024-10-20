@@ -17,10 +17,6 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private float heavyAttackDurationTime = 10f;
 
-    private float heavyAttackEnterTime;
-
-    private float currentTime;
-
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -47,21 +43,11 @@ public class PlayerFreeLookState : PlayerBaseState
 
         if (Input.GetKeyDown(KeyCode.E)) { Swap(); }
 
-        /*Debug.Log($"화염칼 남은 쿨타임: {stateMachine.CoolDownController.GetRemainingCooldown("화염칼")}");*/
-
-        currentTime += Time.time;
-
         // Attack
         if (stateMachine.InputReader.IsAttacking && stateMachine.WeaponPrefabs[0].activeSelf)
         {
-            stateMachine.ChangeState(new PlayerMeleeAttackState(stateMachine, basicAttackDataIndex));
-            return;
-
-           /* if (stateMachine.CoolDownController.GetRemainingCooldown("화염칼") <= 0 && currentTime - heavyAttackDurationTime >= heavyAttackEnterTime
-                && !DataManager.instance.playerData.skillData[4].isUnlock)
+            if (stateMachine.CoolDownController.GetRemainingCooldown("화염칼") <= 0 && !DataManager.instance.playerData.skillData[4].isUnlock)
             {
-                heavyAttackEnterTime = Time.time;
-
                 stateMachine.ChangeState(new PlayerHeavyAttackState(stateMachine, heavyAttackDataIndex));
                 return;
             }
@@ -69,7 +55,7 @@ public class PlayerFreeLookState : PlayerBaseState
             {
                 stateMachine.ChangeState(new PlayerMeleeAttackState(stateMachine, basicAttackDataIndex));
                 return;
-            }*/
+            }
         }
 
         // Idling

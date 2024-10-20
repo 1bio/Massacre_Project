@@ -32,9 +32,7 @@ public class ChargingShot : MonoBehaviour
             chargingShot.isUnlock = false;
         }
 
-        UpdateUI(); // 차징샷 UI
-
-        Destroy(gameObject); // UI 프리팹 제거
+        UpdateUI(); 
     }
 
     // 텍스트 업데이트

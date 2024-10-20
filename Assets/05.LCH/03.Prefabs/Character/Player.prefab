@@ -4143,7 +4143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 3520747393900054371}
-  rollSpeed: 10
+  rollSpeed: 8
 --- !u!114 &6931438412945847669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4225,7 +4225,7 @@ MonoBehaviour:
   EndPoint: {fileID: 2331967240235993489}
   TrailMat: {fileID: 2100000, guid: 71da4ca46f22d6e48bf58cd84757d1fe, type: 2}
   MaxFrame: 10
-  TrailSubs: 6
+  TrailSubs: 4
   StopMultiplier: 2
 --- !u!114 &2335224182043608082
 MonoBehaviour:

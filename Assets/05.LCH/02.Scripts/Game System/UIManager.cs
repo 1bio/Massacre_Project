@@ -31,14 +31,14 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            selectWindow.SetActive(true);
+            SelectWindow(true);
 
             GetRandomSkill();
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            inventoryWindow.SetActive(true);
+            InventoryWindow(!inventoryWindow.activeSelf);
         }
     }
 
@@ -67,8 +67,6 @@ public class UIManager : MonoBehaviour
             int randomValue = randomValues[i];
 
             Instantiate(skillPrefabs[randomValue], selectPosition[i].transform);
-
-
         }
     }
 }

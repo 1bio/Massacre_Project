@@ -5,13 +5,32 @@ using UnityEngine;
 public class CoolDownController : MonoBehaviour
 {
     private Dictionary<string, float> skills = new Dictionary<string, float>();
-
-    private bool isPassive = false;
+    private Dictionary<string, float> passiveTimer = new Dictionary<string, float>();
 
     // 스킬 추가
     public void AddSkill(string skillName, float cooldownDuration)
     {
         skills.Add(skillName, cooldownDuration);
+    }
+
+    // 패시브 추가
+    public void AddPassiveSkill(string skillName, float cooldownDuration)
+    {
+        skills.Add(skillName, Time.time + cooldownDuration);
+    }
+
+    // 등록된 스킬의 쿨타임(데이터) 반환
+    public float ReturnCoolDown(string skillName)
+    {
+        foreach (SkillData skill in DataManager.instance.playerData.skillData)
+        {
+            if (skill.skillName == skillName)
+            {
+                return skill.coolDown;
+            }
+        }
+
+        return 0;
     }
 
     // 쿨타임 시작
@@ -34,17 +53,14 @@ public class CoolDownController : MonoBehaviour
         return 0; 
     }
 
-    // 스킬 쿨타임 반환
-    public float ReturnCoolDown(string skillName)
+    // 남은 패시브 스킬 시간 반환
+    public float GetRemainingPassiveCooldown(string skillName)
     {
-        foreach (SkillData skill in DataManager.instance.playerData.skillData)
+        if (skills.ContainsKey(skillName))
         {
-            if(skill.skillName == skillName)
-            {
-                return skill.coolDown;
-            }
+            float remainingTime = passiveTimer[skillName] - Time.time;
+            return Mathf.Max(remainingTime, 0);
         }
-
         return 0;
     }
 
@@ -58,20 +74,38 @@ public class CoolDownController : MonoBehaviour
         return false;
     }
 
-    // 지속 시간 유지
-    public bool IsPassiveOn(string skillName, float passiveTime)
+    // 패시브 지속 시간 반환
+    public bool IsPassiveOn(string skillName)
     {
-        passiveTime -= Time.time;
-
-        if(passiveTime > 0)
+        if (passiveTimer.ContainsKey(skillName))
         {
-            isPassive = true;
-        }
-        else if(passiveTime <= 0)
-        {
-            isPassive = false;
+            float remainingTime = passiveTimer[skillName] - Time.time;
+            return remainingTime > 0;
         }
 
-        return isPassive;
+        return false;
+    }
+
+
+
+    private void Update()
+    {
+        List<string> finishedPassives = new List<string>();
+
+        // 종료된 패시브 리스트에 추가
+        foreach (var passive in passiveTimer)
+        {
+            if(Time.time >= passive.Value)
+            {
+                finishedPassives.Add(passive.Key);
+            }
+        }
+
+        // 지속 시간 후 쿨타임 시작
+        foreach (string skillName in finishedPassives)
+        {
+            StartCooldown(skillName);
+            passiveTimer.Remove(skillName);
+        }
     }
 }

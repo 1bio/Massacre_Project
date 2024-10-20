@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterDamageSource : MonoBehaviour
 {
-    private Health _playerHealth;
     private Monster _monster;
 
     private bool _canTakeDamage = true;
@@ -12,7 +10,6 @@ public class MonsterDamageSource : MonoBehaviour
 
     private void Awake()
     {
-        _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         _monster = GetComponentInParent<Monster>();
     }
 
@@ -20,12 +17,9 @@ public class MonsterDamageSource : MonoBehaviour
     {
         if (_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon)
         {
-            if (other.CompareTag("Player"))
+            if (other.TryGetComponent<Health>(out Health health))
             {
-                if (_playerHealth == null)
-                    return;
-
-                _playerHealth.TakeDamage(20); // 데미지 가져와서 넣기
+                health.TakeDamage(20);
             }
         }
     }
@@ -34,19 +28,18 @@ public class MonsterDamageSource : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()) && _canTakeDamage)
         {
-            if (_playerHealth != null)
+            if(other.TryGetComponent<Health>(out Health health))
             {
-                StartCoroutine(DealDamageOverTime());
+                StartCoroutine(DealDamageOverTime(health));
             }
         }
     }
 
-    private IEnumerator DealDamageOverTime()
+    private IEnumerator DealDamageOverTime(Health health)
     {
         _canTakeDamage = false;
 
-        _playerHealth.TakeDamage(_monster.MonsterSkillController.CurrentSkillData.Damage); // 데미지 가져와서 넣기
-        Debug.Log("Player Hit");
+        health.TakeDamage(_monster.MonsterSkillController.CurrentSkillData.Damage); 
 
         yield return new WaitForSeconds(_damageInterval);
 

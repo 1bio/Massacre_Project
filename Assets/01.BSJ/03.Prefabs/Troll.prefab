@@ -5889,8 +5889,8 @@ MonoBehaviour:
   StartPoint: {fileID: 3900586308007637272}
   EndPoint: {fileID: 3273559416383993013}
   TrailMat: {fileID: 2100000, guid: 71da4ca46f22d6e48bf58cd84757d1fe, type: 2}
-  MaxFrame: 5
-  TrailSubs: 6
+  MaxFrame: 10
+  TrailSubs: 4
   StopMultiplier: 2
 --- !u!114 &8487367234996065460
 MonoBehaviour:
