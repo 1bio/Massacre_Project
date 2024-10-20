@@ -21,7 +21,7 @@ public class MonsterLootItemData : ScriptableObject
 
         for (int i = 0; i < _lootItemArray.Length; i++)
         {
-            if (_persentArray.Length < i)
+            if (_persentArray.Length > i)
             {
                 newInstance.LootItemDropRates.Add(_lootItemArray[i], _persentArray[i]);
             }

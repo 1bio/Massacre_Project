@@ -11,7 +11,7 @@ public class MonsterLootItemController
         _monsterLootItemData = lootItemData.CreateInstance();
     }
 
-    private List<GameObject> GetLootItems(int maxLootCount)
+    private List<GameObject> GetLootItems()
     {
         List<GameObject> lootlist = new List<GameObject>();
         float randPersent;
@@ -25,9 +25,6 @@ public class MonsterLootItemController
                 if (_monsterLootItemData.LootItemDropRates[item] >= randPersent)
                 {
                     lootlist.Add(item);
-
-                    if (lootlist.Count >= maxLootCount)
-                        break;
                 }
             }
         }
@@ -35,9 +32,9 @@ public class MonsterLootItemController
         return lootlist;
     }
 
-    public void LootItems(Vector3 monsterPosition, int maxLootCount)
+    public void DropLootItems(Vector3 monsterPosition)
     {
-        List<GameObject> lootItems = GetLootItems(maxLootCount);
+        List<GameObject> lootItems = GetLootItems();
 
         if (lootItems == null || lootItems.Count <= 0)
             return;

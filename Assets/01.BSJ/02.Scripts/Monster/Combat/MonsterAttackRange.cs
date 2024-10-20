@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterAttackRange : MonoBehaviour
 {
-    private Monster _monster;
+    /*private Monster _monster;
 
     private void Awake()
     {
@@ -25,5 +25,5 @@ public class MonsterAttackRange : MonoBehaviour
         {
             _monster.MonsterCombatController.IsTargetInRange = false;
         }
-    }
+    }*/
 }
