@@ -49,7 +49,7 @@ public class PlayerStateMachine : StateMachine
         CoolDownController.AddSkill("화살비", CoolDownController.ReturnCoolDown("화살비"));
 
         CoolDownController.AddSkill("도약베기", CoolDownController.ReturnCoolDown("도약베기"));
-        CoolDownController.AddSkill("미정", CoolDownController.ReturnCoolDown("미정"));
+        CoolDownController.AddSkill("화염칼", CoolDownController.ReturnCoolDown("화염칼"));
         CoolDownController.AddSkill("회전베기", CoolDownController.ReturnCoolDown("회전베기"));
     }
 }

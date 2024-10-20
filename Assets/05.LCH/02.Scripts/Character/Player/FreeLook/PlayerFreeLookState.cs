@@ -47,25 +47,29 @@ public class PlayerFreeLookState : PlayerBaseState
 
         if (Input.GetKeyDown(KeyCode.E)) { Swap(); }
 
-        /*Debug.Log($"회전베기 남은 쿨타임: {stateMachine.CoolDownController.GetRemainingCooldown("회전베기")}");*/
+        /*Debug.Log($"화염칼 남은 쿨타임: {stateMachine.CoolDownController.GetRemainingCooldown("화염칼")}");*/
 
         currentTime += Time.time;
 
         // Attack
         if (stateMachine.InputReader.IsAttacking && stateMachine.WeaponPrefabs[0].activeSelf)
         {
-            if (stateMachine.CoolDownController.GetRemainingCooldown("미정") <= 0 && currentTime - heavyAttackDurationTime >= heavyAttackEnterTime)
+            stateMachine.ChangeState(new PlayerMeleeAttackState(stateMachine, basicAttackDataIndex));
+            return;
+
+           /* if (stateMachine.CoolDownController.GetRemainingCooldown("화염칼") <= 0 && currentTime - heavyAttackDurationTime >= heavyAttackEnterTime
+                && !DataManager.instance.playerData.skillData[4].isUnlock)
             {
                 heavyAttackEnterTime = Time.time;
 
                 stateMachine.ChangeState(new PlayerHeavyAttackState(stateMachine, heavyAttackDataIndex));
                 return;
             }
-            if (stateMachine.CoolDownController.GetRemainingCooldown("미정") > 0)
+            else if (stateMachine.CoolDownController.GetRemainingCooldown("화염칼") > 0 && DataManager.instance.playerData.skillData[4].isUnlock)
             {
                 stateMachine.ChangeState(new PlayerMeleeAttackState(stateMachine, basicAttackDataIndex));
                 return;
-            }
+            }*/
         }
 
         // Idling
@@ -123,18 +127,18 @@ public class PlayerFreeLookState : PlayerBaseState
         }
     }
 
-    private void OnAiming() // 도약베기
+    private void OnAiming() // 도약베기 [3]
     {
-        if (stateMachine.CoolDownController.GetRemainingCooldown("도약베기") <= 0f)
+        if (stateMachine.CoolDownController.GetRemainingCooldown("도약베기") <= 0f && !DataManager.instance.playerData.skillData[3].isUnlock)
         {
             stateMachine.ChangeState(new PlayerMeleeDashSlashState(stateMachine));
             return;
         }
     }
 
-    private void OnSkill() // 회전베기
+    private void OnSkill() // 회전베기 [5]
     {
-        if(stateMachine.CoolDownController.GetRemainingCooldown("회전베기") <= 0f)
+        if(stateMachine.CoolDownController.GetRemainingCooldown("회전베기") <= 0f && !DataManager.instance.playerData.skillData[5].isUnlock)
         {
             stateMachine.ChangeState(new PlayerMeleeSpinSlashState(stateMachine));
             return;

@@ -25,6 +25,8 @@ public class PlayerHeavyAttackState : PlayerBaseState
         stateMachine.MeleeComponenet.SetAttack(attack.Damage, attack.KnockBack);
 
         stateMachine.Health.ImpactEvent += OnImpact;
+
+        stateMachine.InputReader.RollEvent += OnRolling;
     }
 
     public override void Tick(float deltaTime)
@@ -60,6 +62,7 @@ public class PlayerHeavyAttackState : PlayerBaseState
 
     public override void Exit()
     {
+        stateMachine.InputReader.RollEvent -= OnRolling;
         stateMachine.Health.ImpactEvent -= OnImpact;
     }
     #endregion
@@ -120,6 +123,12 @@ public class PlayerHeavyAttackState : PlayerBaseState
 
 
     #region Event Methods
+    private void OnRolling() // ±¸¸£±â
+    {
+        stateMachine.ChangeState(new PlayerRollingState(stateMachine));
+        return;
+    }
+
     private void OnImpact()
     {
         stateMachine.ChangeState(new PlayerImpactState(stateMachine));
