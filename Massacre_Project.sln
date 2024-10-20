@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Mathematics", "Unity.Mathematics.csproj", "{31081E24-A038-F46C-B25A-24232598EA92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBS", "MBS.csproj", "{725C28C2-FB86-2A1E-9DA4-09C175E4022C}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.Common.Path.Editor", "Unity.2D.Common.Path.Editor.csproj", "{6D0AE485-E35E-FAEE-0181-392E3B0C1EE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.Psdimporter.Editor", "Unity.2D.Psdimporter.Editor.csproj", "{BC3DBA34-047A-FF5F-3B43-AFEDD2256F6E}"
@@ -169,6 +171,10 @@ Global
 		{31081E24-A038-F46C-B25A-24232598EA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31081E24-A038-F46C-B25A-24232598EA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31081E24-A038-F46C-B25A-24232598EA92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{725C28C2-FB86-2A1E-9DA4-09C175E4022C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{725C28C2-FB86-2A1E-9DA4-09C175E4022C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{725C28C2-FB86-2A1E-9DA4-09C175E4022C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{725C28C2-FB86-2A1E-9DA4-09C175E4022C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6D0AE485-E35E-FAEE-0181-392E3B0C1EE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6D0AE485-E35E-FAEE-0181-392E3B0C1EE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D0AE485-E35E-FAEE-0181-392E3B0C1EE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
