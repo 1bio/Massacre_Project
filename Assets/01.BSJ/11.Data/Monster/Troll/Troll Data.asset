@@ -20,7 +20,7 @@ MonoBehaviour:
   _monsterAttack:
     _damage: 0
     _range: 2
-    _cooldownThreshold: 0
+    _cooldownThreshold: 3
     _totalCount: 2
   _monsterTargetDistance:
     _minTargetDistance: 0

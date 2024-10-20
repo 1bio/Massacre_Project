@@ -24,6 +24,7 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
 
     public override void OnBehaviourEnd(Monster monster)
     {
+
     }
 
 
