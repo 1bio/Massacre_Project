@@ -21,7 +21,7 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        Move(Time.deltaTime);
+        /*Move(Time.deltaTime);*/
     }
 
     public override void OnBehaviourEnd(Monster monster)
