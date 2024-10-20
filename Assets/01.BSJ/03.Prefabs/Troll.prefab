@@ -5123,72 +5123,6 @@ Transform:
   - {fileID: 7403359943461177971}
   m_Father: {fileID: 5154775368433175507}
   m_LocalEulerAnglesHint: {x: -0.5165551, y: -5.9344587, z: 0.14605963}
---- !u!1 &8191291766685679943
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2099386571270629702}
-  - component: {fileID: 3565287989296457240}
-  - component: {fileID: 5942320097164352052}
-  m_Layer: 0
-  m_Name: AttackRange
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2099386571270629702
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8191291766685679943}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2615435843074279792}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &3565287989296457240
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8191291766685679943}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.8
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &5942320097164352052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8191291766685679943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feba2be623634824b95859efb33cc2d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8288395765441093079
 GameObject:
   m_ObjectHideFlags: 0
@@ -5740,7 +5674,6 @@ Transform:
   m_Children:
   - {fileID: 4878614420858466897}
   - {fileID: 3804257148610256353}
-  - {fileID: 2099386571270629702}
   - {fileID: 3873433519742677696}
   - {fileID: 6546273191423473416}
   m_Father: {fileID: 0}
@@ -5842,7 +5775,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectionDistance: 10
-  _fanCount: 5
 --- !u!114 &6232515372858526173
 MonoBehaviour:
   m_ObjectHideFlags: 0

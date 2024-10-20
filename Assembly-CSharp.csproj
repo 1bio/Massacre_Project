@@ -144,6 +144,7 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\State\MonsterStateMachine.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\FreeLook\Range\PlayerRangeAttackState.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\BlendShapesPresetManager.cs" />
+    <Compile Include="Assets\05.LCH\02.Scripts\UI\FireBlade.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourSpawn.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourAttack.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Assets\04.KMH\02.Scripts\Item\ItemObject.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterTargetDistance.cs" />
+    <Compile Include="Assets\05.LCH\02.Scripts\UI\SkyFallShot.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Data\StatusData.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourSkill.cs" />
     <Compile Include="Assets\Assets\AssetFiles\MRF\Scripts\ShatterHandler.cs" />
@@ -198,6 +200,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Controller\MonsterSkillController.cs" />
     <Compile Include="Assets\Assets\AssetFiles\MRF\Scripts\MSFEffectGroupExample.cs" />
+    <Compile Include="Assets\05.LCH\02.Scripts\UI\NextScene.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\ForceReceiver.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\SFB_ToggleOpposite.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\photoController.cs" />
@@ -247,6 +250,7 @@
     <Compile Include="Assets\04.KMH\02.Scripts\Item\EquipmentObject.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviour.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\State\MonsterStateMachineController.cs" />
+    <Compile Include="Assets\05.LCH\02.Scripts\Utility\RotationWeapon.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\_InfinityPBR - Medusa\Scripts\medusaTextureControl.cs" />
     <Compile Include="Assets\04.KMH\02.Scripts\Item\GroundItem.cs" />
     <Compile Include="Assets\Assets\AssetFiles\MRF\Scripts\ParticleEventHandler.cs" />

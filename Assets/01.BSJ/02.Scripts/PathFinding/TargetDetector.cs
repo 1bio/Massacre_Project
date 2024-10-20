@@ -17,6 +17,7 @@ public class TargetDetector : MonoBehaviour
     private void Awake()
     {
         _monster = GetComponent<Monster>();
+        IsTargetDetected = false;
     }
 
     private void FixedUpdate()
@@ -26,8 +27,11 @@ public class TargetDetector : MonoBehaviour
             if (IsInFanShapeDetection(_detectionDistance))
                 IsTargetDetected = true;
         }
-        _monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsTargetWithinAttackRange =
-            IsInFanShapeDetection(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Range);
+        else
+        {
+            _monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsTargetWithinAttackRange =
+               IsInFanShapeDetection(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Range);
+        }
     }
 
     public bool IsInFanShapeDetection(float detectionDistance)
@@ -39,7 +43,11 @@ public class TargetDetector : MonoBehaviour
 
         for (int i = 0; i < _fanCount; i++)
         {
-            float angle = -_fanAngle / 2 + (i * (_fanAngle / (_fanCount - 1)));
+            float angle = 0;
+            if (i > 0)
+            {
+                angle = (i % 2 == 0) ? angle - (i * (_fanAngle / (_fanCount - 1))) : angle + (i * (_fanAngle / (_fanCount - 1)));
+            }
             Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
 
             if (Physics.SphereCast(startPos, _detectionRadius, direction, out _hit, detectionDistance, layerMask))
