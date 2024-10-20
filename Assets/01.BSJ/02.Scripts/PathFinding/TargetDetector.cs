@@ -8,8 +8,8 @@ public class TargetDetector : MonoBehaviour
     // Raycast ฐüทร
     private RaycastHit _hit;
     [SerializeField] private float _detectionDistance = 10f;
-    private float _fanAngle = 48f;
-    [SerializeField] private float _fanCount = 5f;
+    private float _fanAngle = 50f;
+    private float _fanCount = 10f;
     private float _detectionRadius = 0.4f;
 
     public bool IsTargetDetected { get; set; } = false;
