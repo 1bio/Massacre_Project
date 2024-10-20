@@ -5,6 +5,7 @@ using UnityEngine.TextCore.Text;
 
 public class MonsterBehaviourSpawn : MonsterBehaviour
 {
+    private Monster _monster;
     private float _currentTime;
     private float _spawnDuration = 2f;
 
@@ -12,10 +13,13 @@ public class MonsterBehaviourSpawn : MonsterBehaviour
     {
         monster.AnimationController.IsLockedInAnimation = true;
         _currentTime = 0f;
+        _monster = monster;
 
         //monster.AnimationController.ObjectFadeInOut.StartFadeOut(0);
         monster.AnimationController.PlayIdleAnimation();
         //monster.AnimationController.ObjectFadeInOut.StartFadeIn(_spawnDuration);
+
+        monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
@@ -28,6 +32,11 @@ public class MonsterBehaviourSpawn : MonsterBehaviour
 
     public override void OnBehaviourEnd(Monster monster)
     {
+        monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
+    }
 
+    private void OnImpact()
+    {
+        _monster.MonsterStateMachineController.OnGotHit();
     }
 }

@@ -12,7 +12,6 @@ public class TrollFireBreath : MonsterSkillData
     private Transform _vfxTransform;
 
     private Transform _firePositionTransform;
-    private string _firePosHierarchyPath = "Ogre_root/Hips/Spine/Spine1/Spine2/Neck/Head/lip_top_m/FirePos";
 
     private bool _hasAttacked = false;
 
@@ -52,7 +51,7 @@ public class TrollFireBreath : MonsterSkillData
         _vfxTransform = monster.transform.Find("VFX Container/" + _vfxNameToFind);
         if (_vfxTransform == null) return;
 
-        _firePositionTransform = monster.transform.Find(_firePosHierarchyPath);
+        _firePositionTransform = monster.transform.Find("FirePos");
         if (_firePositionTransform == null) return;
 
         _vfxTransform.SetParent(_firePositionTransform);
