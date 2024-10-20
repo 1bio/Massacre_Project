@@ -33,8 +33,6 @@ public class SpinSlash : MonoBehaviour
         }
 
         UpdateUI(); // 차징샷 UI
-
-        Destroy(gameObject); // UI 프리팹 제거
     }
 
     // 텍스트 업데이트

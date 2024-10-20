@@ -20,14 +20,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        /*if (Input.GetKeyDown(KeyCode.S))
         {
             inventory.Save();
         }
         if (Input.GetKeyUp(KeyCode.L))
         {
             inventory.Load();
-        }
+        }*/
     }
 
     private void OnApplicationQuit()

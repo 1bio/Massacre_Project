@@ -32,22 +32,22 @@ public class PlayerImpactState : PlayerBaseState
 
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        // FreeLook
-        if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[0].activeSelf && stateMachine.Health.hitCount == 0)
-        {
-            stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
-            return;
-        }
-        else if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[1].activeSelf && stateMachine.Health.hitCount == 0)
-        {
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
-            return;
-        }
-
         // Impact -> Groggy
         if (stateMachine.Health.hitCount == doubleHits)
         {
             stateMachine.ChangeState(new PlayerGroggyState(stateMachine));
+            return;
+        }
+
+        // FreeLook
+        if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[0].activeSelf)
+        {
+            stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
+            return;
+        }
+        else if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[1].activeSelf)
+        {
+            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
             return;
         }
     }

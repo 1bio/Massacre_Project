@@ -82,22 +82,6 @@ MonoBehaviour:
         - {fileID: 3953627856094836606, guid: c38276929baec134b9f361aaffe3b66a, type: 3}
         - {fileID: 0}
     _decoratorGroups:
-    - guid: f929283d7cac4f10add6cbf48e0e5628
-      name: grid_1
-      _modules:
-      - guid: 45785cabdffa4eb9b7b4bd2493f548eb
-        name: grid_1
-        prefabs:
-        - {fileID: 5960410136848283905, guid: 9a21a7e2db8009a4fae2206198fb6996, type: 3}
-      _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
-    - guid: 395719005f934fccb9a7d5d7e8534ace
-      name: grid_2
-      _modules:
-      - guid: a6fa8c7dd4aa47a4947ec535d98e070d
-        name: grid_2
-        prefabs:
-        - {fileID: 9026282089432075811, guid: 2ab40cf29de9ebd47a78c4303f2e3fac, type: 3}
-      _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
     - guid: c5ba79cf37a54422a74bf12579f8cb03
       name: pillar_1
       _modules:
@@ -114,6 +98,22 @@ MonoBehaviour:
         prefabs:
         - {fileID: 7618217966884193430, guid: 7c4666e772db55040b55c207ab004765, type: 3}
       _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
+    - guid: 802bcfa3b82b4dd0ae615afa31901f05
+      name: pillar_3
+      _modules:
+      - guid: 44c23aff0e8c48e5ae6d3841f6668f26
+        name: pillar_3
+        prefabs:
+        - {fileID: 8493960004957123804, guid: 00b8e27f8be7360499fb86378a6d20ac, type: 3}
+      _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
+    - guid: 7f798c96dfbc4280835701dd9cb2f6e9
+      name: pillar_4
+      _modules:
+      - guid: 1c0a9ca444bf47308d37d5a9b2d1ef5e
+        name: pillar_4
+        prefabs:
+        - {fileID: 3605857445809111764, guid: 9f20a780e69ccb34bbc24fe83334a9f0, type: 3}
+      _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
     - guid: b1ce3cdd2a6e4ebb81946486da78ec06
       name: pillar_7
       _modules:
@@ -122,14 +122,22 @@ MonoBehaviour:
         prefabs:
         - {fileID: 166049548237679889, guid: 805e63a7957f86e498fd717ddc5a173a, type: 3}
       _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
-    - guid: 802bcfa3b82b4dd0ae615afa31901f05
-      name: New Decor Group
-      _modules: []
-      _assetCategoryGuid: 
-    - guid: 7f798c96dfbc4280835701dd9cb2f6e9
-      name: New Decor Group
-      _modules: []
-      _assetCategoryGuid: 
+    - guid: f929283d7cac4f10add6cbf48e0e5628
+      name: grid_1
+      _modules:
+      - guid: 45785cabdffa4eb9b7b4bd2493f548eb
+        name: grid_1
+        prefabs:
+        - {fileID: 5960410136848283905, guid: 9a21a7e2db8009a4fae2206198fb6996, type: 3}
+      _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
+    - guid: 395719005f934fccb9a7d5d7e8534ace
+      name: grid_2
+      _modules:
+      - guid: a6fa8c7dd4aa47a4947ec535d98e070d
+        name: grid_2
+        prefabs:
+        - {fileID: 9026282089432075811, guid: 2ab40cf29de9ebd47a78c4303f2e3fac, type: 3}
+      _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
     - guid: fe36be510e8e4a8c90b84450380c347d
       name: New Decor Group
       _modules: []
