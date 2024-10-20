@@ -36,13 +36,13 @@ public class DataManager : MonoBehaviour
         
         attackData = new List<AttackData>()
         {
-            new AttackData("Attack1@Melee", 1, 0.6f, 0.1f, 0.5f, 0.35f, 10f, 0.45f), // 근거리 공격 1
-            new AttackData("Attack2@Melee", 2, 0.5f, 0.1f, 0.5f, 0.35f, 10f, 0.45f), // 근거리 공격 2
-            new AttackData("Attack3@Melee", -1, 0, 0.1f, 0.65f, 0.35f, 20f, 0.55f), // 근거리 공격 3
+            new AttackData("Attack1@Melee", 1, 0.6f, 0.1f, 0.5f, 0.15f, 10f, 0f), // 근거리 공격 1
+            new AttackData("Attack2@Melee", 2, 0.5f, 0.1f, 0.5f, 0.15f, 10f, 0f), // 근거리 공격 2
+            new AttackData("Attack3@Melee", -1, 0, 0.1f, 0.65f, 0.15f, 20f, 0f), // 근거리 공격 3
 
-            new AttackData("HeavyAttack1@Melee", 4, 0.6f, 0.1f, 0.5f, 0.35f, 20f, 0.45f), // 근거리 패시브 공격 1
-            new AttackData("HeavyAttack2@Melee", 5, 0.5f, 0.1f, 0.5f, 0.35f, 20f, 0.45f), // 근거리 패시브 공격 2
-            new AttackData("HeavyAttack3@Melee", -1, 0, 0.1f, 0.65f, 0.35f, 35f, 0.55f) // 근거리 패시브 공격 3
+            new AttackData("HeavyAttack1@Melee", 4, 0.6f, 0.1f, 0.15f, 0.35f, 20f, 0f), // 근거리 패시브 공격 1
+            new AttackData("HeavyAttack2@Melee", 5, 0.5f, 0.1f, 0.15f, 0.35f, 20f, 0f), // 근거리 패시브 공격 2
+            new AttackData("HeavyAttack3@Melee", -1, 0, 0.1f, 0.15f, 0.35f, 35f, 0f) // 근거리 패시브 공격 3
         };
 
         rangeAttackData = new RangeAttackData("None", 0, 0f, 0f, 0f, 0f, 10f, 0.3f); // 원거리 공격
