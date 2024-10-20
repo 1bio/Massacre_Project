@@ -15,6 +15,8 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
         moveSpeed = _monster.MonsterCombatController.MonsterCombatAbility.MoveSpeed;
 
         monster.AnimationController.PlayGotHitAnimation();
+
+        monster.MovementController.TargetDetector.IsTargetDetected = true;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
@@ -24,6 +26,7 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
 
     public override void OnBehaviourEnd(Monster monster)
     {
+
     }
 
 

@@ -16,14 +16,14 @@ MonoBehaviour:
   _turnSpeed: 300
   _monsterHealth:
     _currentHealth: 0
-    _maxHealth: 50
+    _maxHealth: 100
   _monsterAttack:
     _damage: 0
     _range: 2
-    _cooldownThreshold: 0
+    _cooldownThreshold: 3
     _totalCount: 3
   _monsterTargetDistance:
     _minTargetDistance: 0
     _maxTargetDistance: 30
-    _idealTargetDistance: 3
+    _idealTargetDistance: 2
     _idealTargetDistanceThreshold: 0

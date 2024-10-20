@@ -125,6 +125,8 @@ public class MinotaurRamAttack : MonsterSkillData
                 monster.MovementController.CharacterController.SimpleMove(Vector3.zero);
                 monster.AnimationController.PlaySkillAnimation(Minotaur.RamAttackAnimationName.RamAttack.ToString());
                 _hasHitObject = true;
+
+                _hit.collider.gameObject.GetComponentInParent<PlayerHealth>().TakeDamage(monster.MonsterSkillController.CurrentSkillData.Damage);
             }
         }
         else if (_hit.collider.gameObject.layer == LayerMask.NameToLayer(GameLayers.Obstacle.ToString()))

@@ -33,11 +33,10 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
         if (monster == null || monster.MovementController.Path == null)
         {
-            monster.AnimationController.PlayIdleAnimation();
+            monster.MonsterStateMachineController.OnIdle();
+            monster.MovementController.Astar.StartPathCalculation();
             return;
         }
-
-        monster.MovementController.LookAtTarget(monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
 
         if (_path != monster.MovementController.Path && monster.MovementController.Path.Count >= 1)
         {
@@ -48,6 +47,8 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
         if (_pathIndex < _path.Count && !_isMoving)
         {
+            monster.MovementController.LookAtTarget(monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
+
             StepToNode(_path[_pathIndex], monster, _pathIndex);
 
             if (_pointGrid.GetPointNodeFromGridByPosition(monster.transform.position) == _path[_pathIndex])
