@@ -47,6 +47,8 @@ public class UIManager : MonoBehaviour
             int randomValue = randomValues[i];
 
             Instantiate(skillPrefabs[randomValue], selectPosition[i].transform);
+
+
         }
     }
 }

@@ -2356,6 +2356,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.04956642
       objectReference: {fileID: 0}
+    - target: {fileID: 6421235098220618430, guid: d880691704590ad44b7b1487e804f2ed, type: 3}
+      propertyPath: <CameraTransform>k__BackingField
+      value: 
+      objectReference: {fileID: 1648558187}
     - target: {fileID: 6580271581158454484, guid: d880691704590ad44b7b1487e804f2ed, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.9230445
@@ -2639,11 +2643,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5439399579502269137, guid: d880691704590ad44b7b1487e804f2ed, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 1292476421780514367, guid: d880691704590ad44b7b1487e804f2ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1584252055}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d880691704590ad44b7b1487e804f2ed, type: 3}
+--- !u!4 &1044370324 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1292476421780514367, guid: d880691704590ad44b7b1487e804f2ed, type: 3}
+  m_PrefabInstance: {fileID: 1044370323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1123343297
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,7 +3656,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1829579560}
+  m_Father: {fileID: 1044370324}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1584252056
 CapsuleCollider:
@@ -3924,8 +3933,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1829579560}
-  m_Follow: {fileID: 1829579560}
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 5
@@ -4034,11 +4043,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1829579560 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5439399579502269137, guid: d880691704590ad44b7b1487e804f2ed, type: 3}
-  m_PrefabInstance: {fileID: 1044370323}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1947177556
 GameObject:
   m_ObjectHideFlags: 0
