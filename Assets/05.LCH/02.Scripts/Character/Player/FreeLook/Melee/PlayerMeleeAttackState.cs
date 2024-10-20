@@ -23,6 +23,7 @@ public class PlayerMeleeAttackState : PlayerFreeLookState
 
         stateMachine.MeleeComponenet.SetAttack(attack.Damage, attack.KnockBack);
 
+        stateMachine.InputReader.RollEvent += OnRolling;
         stateMachine.Health.ImpactEvent += OnImpact;
     }
 
@@ -59,6 +60,7 @@ public class PlayerMeleeAttackState : PlayerFreeLookState
 
     public override void Exit()
     {
+        stateMachine.InputReader.RollEvent -= OnRolling;
         stateMachine.Health.ImpactEvent -= OnImpact;
     }
     #endregion
@@ -119,6 +121,12 @@ public class PlayerMeleeAttackState : PlayerFreeLookState
 
 
     #region Event Methods
+    private void OnRolling() 
+    {
+        stateMachine.ChangeState(new PlayerRollingState(stateMachine));
+        return;
+    }
+
     private void OnImpact()
     {
         stateMachine.ChangeState(new PlayerImpactState(stateMachine));
