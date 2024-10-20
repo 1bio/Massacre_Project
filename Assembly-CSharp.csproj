@@ -158,6 +158,7 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Minotaur\Skills\MinotaurRamAttack.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Domain\NationProperties.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\PlayerBaseState.cs" />
+    <Compile Include="Assets\04.KMH\02.Scripts\Inventory\UserInterface.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Monster.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\TakeScreenshot.cs" />
     <Compile Include="Assets\InfinityPBR\Equipment System\Scripts\BlendShapePreset.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Assets\InfinityPBR\Demo Scripts\IPBR_SupportAndReview.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Enemy\EnemyStateMachine.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\UI\StageController.cs" />
+    <Compile Include="Assets\04.KMH\02.Scripts\Inventory\DynamicInterface.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\DemoControl.cs" />
     <Compile Include="Assets\InfinityPBR\Equipment System\Scripts\EquipmentGroup.cs" />
     <Compile Include="Assets\Vertical Fog Package by Tzar\Fix\FixMobileDepth.cs" />
@@ -234,6 +236,7 @@
     <Compile Include="Assets\04.KMH\02.Scripts\Item\FoodObject.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\FreeLook\Melee\PlayerMeleeDashSlashState.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Controls\EventTriggerInvoker.cs" />
+    <Compile Include="Assets\04.KMH\02.Scripts\Inventory\StaticInterface.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\photoController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\DemoKeyCommands.cs" />
