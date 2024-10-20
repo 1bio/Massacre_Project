@@ -15,10 +15,16 @@ public class UIManager : MonoBehaviour
     [Header("인벤토리 UI")]
     public GameObject inventoryWindow;
 
-
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        selectWindow.SetActive(true);
+
+        GetRandomSkill();
     }
 
     private void Update()
@@ -33,11 +39,6 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             inventoryWindow.SetActive(true);
-        }
-
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            SceneController.instance.LoadScene("Level");
         }
     }
 

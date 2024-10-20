@@ -55,7 +55,7 @@ public class SceneController : MonoBehaviour
     [SerializeField]
     private float fadeSpeed; // 페이드 속도
 
-    private string loadSceneName; 
+    private string loadSceneName;
 
 
     public void LoadScene(string sceneName)
