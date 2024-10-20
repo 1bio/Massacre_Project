@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 33734f2c2fd0e0447b3380ab081d1fb6
-folderAsset: yes
-DefaultImporter:
+guid: 77f807cd10bfa5746afc757c5407c677
+labels:
+- Infinity
+- Sword
+- Weapon
+PrefabImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
