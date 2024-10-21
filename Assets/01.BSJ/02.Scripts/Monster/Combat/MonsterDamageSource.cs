@@ -20,10 +20,7 @@ public class MonsterDamageSource : MonoBehaviour
         if (_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon &&
             other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()))
         {
-            if (other.TryGetComponent<Health>(out Health health))
-            {
-                health.TakeDamage(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Damage);
-            }
+            _playerHealth.TakeDamage(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Damage);
         }
     }
 
@@ -31,7 +28,7 @@ public class MonsterDamageSource : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()) && _canTakeDamage)
         {
-            Debug.Log(other.gameObject.name);
+            Debug.LogWarning(other.name);
             if (_playerHealth != null)
             {
                 StartCoroutine(DealDamageOverTime(_playerHealth));

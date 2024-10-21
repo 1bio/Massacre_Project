@@ -48,8 +48,8 @@ public class TrollFireBreath : MonsterSkillData
 
     public void FindAndManipulateChild(Monster monster)
     {
-        _vfxTransform = monster.transform.Find("VFX Container/" + _vfxNameToFind);
-        if (_vfxTransform == null) return;
+        /*_vfxTransform = monster.transform.Find("VFX Container/" + _vfxNameToFind);
+        if (_vfxTransform == null) return;*/
 
         _firePositionTransform = monster.transform.Find("FirePos");
         if (_firePositionTransform == null) return;

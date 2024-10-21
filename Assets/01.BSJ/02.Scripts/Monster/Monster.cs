@@ -31,10 +31,10 @@ public class Monster : MonoBehaviour
     [Header(" # Loot Item Data")]
     [SerializeField] protected MonsterLootItemData p_monsterLootItemData;
 
-    private Transform _vfxContainerTransform;
+    private static Transform VFXContainerTransform;
+    private string _vfxContainerName = "Monster VFX Container";
     private TrailRenderer _objectTrail;
 
-    public string VFXContainerName { get; } = "VFX Container";
     public MonsterStateType MonsterStateType { get; set; }
     public MonsterStateMachineController MonsterStateMachineController { get; private set; }
     public MonsterSkillController MonsterSkillController { get; private set; }
@@ -49,9 +49,22 @@ public class Monster : MonoBehaviour
     public CharacterController Controller { get; protected set; }
     public ForceReceiver ForceReceiver { get; protected set; }
 
+    void FindOrCreateVFXContainer()
+    {
+        if (VFXContainerTransform == null)
+        {
+            GameObject vfxContainer = GameObject.Find(_vfxContainerName);
+            if (vfxContainer == null)
+            {
+                vfxContainer = new GameObject(_vfxContainerName);
+            }
+            VFXContainerTransform = vfxContainer.transform;
+        }
+    }
+
     protected virtual void Awake()
     {
-        _vfxContainerTransform = transform.Find(VFXContainerName);
+        FindOrCreateVFXContainer();
 
         _objectTrail = GetComponentInChildren<TrailRenderer>();
         if (_objectTrail != null)
@@ -71,9 +84,22 @@ public class Monster : MonoBehaviour
 
         if (p_monsterSkillDatas.Length > 0)
         {
-            MonsterParticleController = new MonsterParticleController(p_monsterSkillDatas, _vfxContainerTransform);
+            MonsterParticleController = new MonsterParticleController(p_monsterSkillDatas, VFXContainerTransform);
         }
     }
+
+    protected void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (MonsterSkillController.GetAvailableSkills().Count > 0
+                && MonsterSkillController.UpdateCurrentSkillData() != null)
+            {
+                MonsterStateMachineController.OnSkill();
+            }
+        }
+    }
+
 
     // Animation Event
     public void EnableWeapon()
