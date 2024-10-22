@@ -14,7 +14,7 @@ public class MonsterBehaviourAttack : MonsterBehaviour
     {
         _monster = monster;
 
-        monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
+        //monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
@@ -39,7 +39,7 @@ public class MonsterBehaviourAttack : MonsterBehaviour
         monster.MovementController.Astar.StartPathCalculation();
         monster.MonsterStateMachineController.CurrentBasicAttackCooldownTime = 0;
 
-        monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
+        //monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
     }
 
     private void OnImpact()

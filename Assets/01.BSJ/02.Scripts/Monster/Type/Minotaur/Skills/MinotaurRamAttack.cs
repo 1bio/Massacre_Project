@@ -7,6 +7,7 @@ using UnityEngine;
 public class MinotaurRamAttack : MonsterSkillData
 {
     private Minotaur _minotaur;
+    private Transform _vfxTransform;
 
     private int _currentAttackCount;
     private int _maxAttackLimit;    // 최대 공격 횟수
@@ -21,8 +22,15 @@ public class MinotaurRamAttack : MonsterSkillData
 
     //private Indicator _indicator;
 
-    private void InitializeValues()
+    private void InitializeValues(Monster monster)
     {
+        _minotaur = (Minotaur)monster;
+        
+        // VFX 초기화
+        _vfxTransform = monster.MonsterParticleController.VFX["SmokeCircle"].transform;
+        _vfxTransform.SetParent(monster.gameObject.transform);
+        _vfxTransform.localPosition = Vector3.zero;
+
         _currentAttackCount = 0;
         _maxAttackLimit = 3;
 
@@ -35,8 +43,8 @@ public class MinotaurRamAttack : MonsterSkillData
 
     public override void ActiveSkillEnter(Monster monster)
     {
-        InitializeValues();
-        _minotaur = (Minotaur) monster;
+        InitializeValues(monster);
+        
         monster.ObjectTrail.gameObject.SetActive(true);
 
         //_indicator = monster.GetComponentInChildren<Indicator>(true);

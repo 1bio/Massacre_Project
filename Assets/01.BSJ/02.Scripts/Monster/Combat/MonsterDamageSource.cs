@@ -4,6 +4,8 @@ using UnityEngine;
 public class MonsterDamageSource : MonoBehaviour
 {
     private Monster _monster;
+    // Health 주석 처리
+    /*private PlayerHealth _playerHealth;*/
 
     private bool _canTakeDamage = true;
     [SerializeField] private float _damageInterval = 1.5f;
@@ -11,16 +13,15 @@ public class MonsterDamageSource : MonoBehaviour
     private void Awake()
     {
         _monster = GetComponentInParent<Monster>();
+        /*_playerHealth = FindObjectOfType<PlayerHealth>();*/
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon)
+        if (_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon &&
+            other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()))
         {
-            if (other.TryGetComponent<Health>(out Health health))
-            {
-                health.TakeDamage(20);
-            }
+            /*_playerHealth.TakeDamage(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Damage);*/
         }
     }
 
@@ -28,21 +29,22 @@ public class MonsterDamageSource : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()) && _canTakeDamage)
         {
-            if(other.TryGetComponent<Health>(out Health health))
+            Debug.LogWarning(other.name);
+            /*if (_playerHealth != null)
             {
-                StartCoroutine(DealDamageOverTime(health));
-            }
+                StartCoroutine(DealDamageOverTime(_playerHealth));
+            }*/
         }
     }
 
-    private IEnumerator DealDamageOverTime(Health health)
+    /*private IEnumerator DealDamageOverTime(Health health)
     {
         _canTakeDamage = false;
 
-        health.TakeDamage(_monster.MonsterSkillController.CurrentSkillData.Damage); 
+        health.TakeDamage(_monster.MonsterSkillController.CurrentSkillData.Damage);
 
         yield return new WaitForSeconds(_damageInterval);
 
         _canTakeDamage = true;
-    }
+    }*/
 }

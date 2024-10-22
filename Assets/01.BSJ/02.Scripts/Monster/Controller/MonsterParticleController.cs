@@ -63,8 +63,6 @@ public class MonsterParticleController
     {
         if (VFX.ContainsKey(vfxName))
         {
-            VFX[vfxName].transform.localScale = Vector3.one;
-            VFX[vfxName].transform.localScale *= scaleFactor;
             VFX[vfxName].Stop();
             VFX[vfxName].Clear();
             VFX[vfxName].Play();
