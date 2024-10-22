@@ -13,6 +13,7 @@ public class TargetDetector : MonoBehaviour
     private float _detectionRadius = 0.4f;
 
     public bool IsTargetDetected { get; set; } = false;
+    public float DetectionDistance { get => _detectionDistance; }
 
     private void Awake()
     {
