@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
 
             transform.SetParent(collision.transform); 
 
-            health.TakeDamage(damage);
+            health.TakeDamage(damage, false);
 
             Debug.Log("Hit!");
 

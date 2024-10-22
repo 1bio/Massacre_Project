@@ -4,7 +4,7 @@ using UnityEngine;
 public class MonsterDamageSource : MonoBehaviour
 {
     private Monster _monster;
-    // Health ÁÖ¼® Ã³¸®
+    // Health ï¿½Ö¼ï¿½ Ã³ï¿½ï¿½
     private Health _playerHealth;
 
     private bool _canTakeDamage = true;

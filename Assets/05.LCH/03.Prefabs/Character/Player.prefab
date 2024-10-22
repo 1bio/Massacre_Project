@@ -3989,7 +3989,7 @@ GameObject:
   - component: {fileID: 6421235098220618430}
   - component: {fileID: 2995021622645198466}
   - component: {fileID: 1709189097732432438}
-  - component: {fileID: 6931438412945847669}
+  - component: {fileID: 5227869543375614183}
   - component: {fileID: 1988570932401786285}
   - component: {fileID: 8113685122807652929}
   - component: {fileID: 5837364901395093339}
@@ -4106,7 +4106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <InputReader>k__BackingField: {fileID: 2995021622645198466}
   <ForceReceiver>k__BackingField: {fileID: 1709189097732432438}
-  <Health>k__BackingField: {fileID: 6931438412945847669}
+  <Health>k__BackingField: {fileID: 5227869543375614183}
   <MeleeComponenet>k__BackingField: {fileID: 2288240251757653765}
   <RangeComponent>k__BackingField: {fileID: 8113685122807652929}
   <CoolDownController>k__BackingField: {fileID: 5837364901395093339}
@@ -4118,6 +4118,10 @@ MonoBehaviour:
   - {fileID: 7963103374477063319}
   - {fileID: 5667306821713486921}
   <RotationSpeed>k__BackingField: 25
+  <DodgeDuration>k__BackingField: 0
+  <DodgeLenght>k__BackingField: 0
+  <PreviousDodgeTime>k__BackingField: -Infinity
+  <DodgeCooldown>k__BackingField: 0
 --- !u!114 &2995021622645198466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4144,7 +4148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 3520747393900054371}
   rollSpeed: 6
---- !u!114 &6931438412945847669
+--- !u!114 &5227869543375614183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4153,10 +4157,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4971315938823647004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 816c5d8f71ead6f4392389f6523bde8d, type: 3}
+  m_Script: {fileID: 11500000, guid: b066cc1251f0b3840a8f32ea9ef795ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitCount: 0
 --- !u!114 &1988570932401786285
 MonoBehaviour:
   m_ObjectHideFlags: 0
