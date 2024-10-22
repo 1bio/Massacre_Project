@@ -15,6 +15,8 @@ public class PlayerHealth : Health
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
+       
+        ImpactEvent?.Invoke();
 
         health = Mathf.Max(health - damage, 0f);
 
@@ -26,9 +28,6 @@ public class PlayerHealth : Health
         {
             Dead();
         }
-
-        // Impact 이벤트 호출
-        ImpactEvent?.Invoke();
     }
 
     public override void Dead()

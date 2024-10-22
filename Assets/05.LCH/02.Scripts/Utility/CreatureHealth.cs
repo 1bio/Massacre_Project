@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CreatureHealth : Health
@@ -18,12 +16,12 @@ public class CreatureHealth : Health
     {
         base.TakeDamage(damage);
 
+        ImpactEvent?.Invoke();
+
         float health = monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth;
 
         monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth = Mathf.Max(health - damage, 0);
 
         Debug.Log($"Creature health: {health}");
-
-        ImpactEvent?.Invoke();
     }
 }

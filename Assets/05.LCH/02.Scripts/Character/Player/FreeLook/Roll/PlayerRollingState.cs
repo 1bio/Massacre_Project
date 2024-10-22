@@ -36,7 +36,7 @@ public class PlayerRollingState : PlayerBaseState
         }
         else if(currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[1].activeSelf)
         {
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }

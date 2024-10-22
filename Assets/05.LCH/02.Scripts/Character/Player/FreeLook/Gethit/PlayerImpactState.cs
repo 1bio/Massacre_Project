@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerImpactState : PlayerBaseState
 {
-    public readonly int GetHit = Animator.StringToHash("GetHit"); // 블렌드 트리
-
     public readonly int Impact = Animator.StringToHash("Impact"); // 애니메이션 해쉬
 
     public readonly float CrossFadeDuration = 0.1f;
@@ -22,22 +20,20 @@ public class PlayerImpactState : PlayerBaseState
     #region abstarct Methods
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(GetHit, CrossFadeDuration);
+        stateMachine.Animator.CrossFadeInFixedTime(Impact, CrossFadeDuration);
     }
 
 
     public override void Tick(float deltaTime)
     {
-        stateMachine.Animator.SetFloat(Impact, 1f, DampTime, deltaTime);
-
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        // Impact -> Groggy
+        /*// Impact -> Groggy
         if (stateMachine.Health.hitCount == doubleHits)
         {
             stateMachine.ChangeState(new PlayerGroggyState(stateMachine));
             return;
-        }
+        }*/
 
         // FreeLook
         if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[0].activeSelf)
@@ -47,7 +43,7 @@ public class PlayerImpactState : PlayerBaseState
         }
         else if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[1].activeSelf)
         {
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }

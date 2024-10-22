@@ -66,7 +66,6 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\PathFinding\Astar.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterAttack.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
-    <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\FreeLook\Range\PlayerRangeState.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\InfinityPBR\Demo Scripts\ExtendedFlycam.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterAttackRange.cs" />
@@ -110,6 +109,7 @@
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\FreeLook\Range\PlayerRangeSkyFallState.cs" />
     <Compile Include="Assets\InfinityPBR\_InfinityPBR - Minotaur\Scripts\SFB_MinotaurDemo.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Input\InputActions.cs" />
+    <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\FreeLook\Range\PlayerRangeFreeLookState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\FreeLook\Range\PlayerRangeRapidShotState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\FreeLook\Melee\PlayerHeavyAttackState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\UI\SpinSlash.cs" />

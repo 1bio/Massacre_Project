@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRangeSkyFallState : PlayerRangeState
+public class PlayerRangeSkyFallState : PlayerRangeFreeLookState
 {
     public readonly int SkyFallAnimationHash = Animator.StringToHash("SkyFall@Range"); // 연발 애니메이션 해쉬
 
@@ -24,7 +24,7 @@ public class PlayerRangeSkyFallState : PlayerRangeState
 
         if (currentInfo.normalizedTime > 0.8f)
         {
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }

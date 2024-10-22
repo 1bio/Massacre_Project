@@ -90,7 +90,7 @@ public class PlayerFreeLookState : PlayerBaseState
             stateMachine.WeaponPrefabs[0].SetActive(false); // 근접 무기 비활성화
             stateMachine.WeaponPrefabs[1].SetActive(true);  // 원거리 무기 활성화
 
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }

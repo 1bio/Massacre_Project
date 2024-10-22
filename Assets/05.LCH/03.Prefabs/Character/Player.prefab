@@ -4143,7 +4143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 3520747393900054371}
-  rollSpeed: 8
+  rollSpeed: 6
 --- !u!114 &6931438412945847669
 MonoBehaviour:
   m_ObjectHideFlags: 0

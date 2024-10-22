@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerRangeAimState : PlayerRangeState
+public class PlayerRangeAimState : PlayerRangeFreeLookState
 {
     public readonly int AimAnimationHash = Animator.StringToHash("Aim@Range"); // 조준 애니메이션 해쉬
 
@@ -28,7 +28,7 @@ public class PlayerRangeAimState : PlayerRangeState
 
         if (currentInfo.normalizedTime > 0.8f)
         {
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }

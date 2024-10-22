@@ -117,9 +117,26 @@ TextAsset:
     \"type\": 3\n                        }\n                    ]\n               
     }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
     },\n        {\n            \"guid\": \"fe36be510e8e4a8c90b84450380c347d\",\n           
-    \"name\": \"New Decor Group\",\n            \"_modules\": [],\n            \"_assetCategoryGuid\":
-    \"\"\n        },\n        {\n            \"guid\": \"c94aa5480fa847c59a2a59f18ce198bc\",\n           
-    \"name\": \"New Decor Group\",\n            \"_modules\": [],\n            \"_assetCategoryGuid\":
-    \"\"\n        }\n    ],\n    \"_decoratorCategories\": [\n        {\n           
-    \"guid\": \"5ed02f467a2443c7a77f6b068886c963\",\n            \"_name\": \"All\"\n       
+    \"name\": \"Touch\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"3fd75b2082044e6584fc79530511f474\",\n                    \"name\":
+    \"Touch\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 4916467779054868767,\n                            \"guid\": \"beb0691030ba59c4e94ffd7406eec0ae\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
+    },\n        {\n            \"guid\": \"c94aa5480fa847c59a2a59f18ce198bc\",\n           
+    \"name\": \"Box\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"25fa860a3a2c46bbb52e19f49a823e59\",\n                    \"name\":
+    \"Box\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 1628916006155128105,\n                            \"guid\": \"2a31b6bc2b401a046b0ac66fec97d55e\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
+    },\n        {\n            \"guid\": \"12502c7bc3354923a55a4a37551f63c6\",\n           
+    \"name\": \"Rum\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"0c6fb32508d74421828223c451153770\",\n                    \"name\":
+    \"Rum\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 4835829558058133802,\n                            \"guid\": \"e300ca4f63ac7df468a1dc91d9291585\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
+    }\n    ],\n    \"_decoratorCategories\": [\n        {\n            \"guid\":
+    \"5ed02f467a2443c7a77f6b068886c963\",\n            \"_name\": \"All\"\n       
     }\n    ]\n}"

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRangeRapidShotState : PlayerRangeState
+public class PlayerRangeRapidShotState : PlayerRangeFreeLookState
 {
     public readonly int RapidShotAnimationHash = Animator.StringToHash("RapidShot@Range"); // 연발 애니메이션 해쉬
 
@@ -26,7 +26,7 @@ public class PlayerRangeRapidShotState : PlayerRangeState
 
         if(currentInfo.normalizedTime > 0.8f)
         {
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }

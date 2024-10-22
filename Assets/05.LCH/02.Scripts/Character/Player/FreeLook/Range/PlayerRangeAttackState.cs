@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRangeAttackState : PlayerRangeState
+public class PlayerRangeAttackState : PlayerRangeFreeLookState
 {
     private AttackData attack;
 
@@ -26,7 +26,7 @@ public class PlayerRangeAttackState : PlayerRangeState
 
         if (!stateMachine.InputReader.IsAttacking && currentInfo.normalizedTime > 1.0f)
         {
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }
