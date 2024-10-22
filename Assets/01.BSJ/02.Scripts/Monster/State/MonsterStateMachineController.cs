@@ -63,7 +63,7 @@ public class MonsterStateMachineController : MonsterStateMachine
         }
     }
 
-    private bool IsAlive()
+    public bool IsAlive()
     {
         if (p_monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth > 0)
         {

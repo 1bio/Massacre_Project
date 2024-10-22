@@ -147,7 +147,6 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourSpawn.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Behaviour\MonsterBehaviourAttack.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\Health.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\CreatureHealth.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterCombatAbility.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\MatchValue.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\Projectile.cs" />

@@ -76,7 +76,8 @@ public class Health : MonoBehaviour
         }
         else // 몬스터 체력 초기화
         {
-            // 몬스터 체력 접근 후 데이터 초기화
+            Monster monster = GetComponent<Monster>();
+            monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth = currentHealth;
         }
     }
 

@@ -13,6 +13,7 @@ public class MonsterBehaviourAttack : MonsterBehaviour
     public override void OnBehaviourStart(Monster monster)
     {
         _monster = monster;
+        _monster.MonsterCombatController.Health.SetHealth(monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth);
 
         monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }

@@ -11203,11 +11203,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 123557002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c4f60c2447bad49abcc59d8f9aae2b, type: 3}
+  m_Script: {fileID: 11500000, guid: b066cc1251f0b3840a8f32ea9ef795ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitCount: 0
-  hitCount: 0
 --- !u!1 &124386363
 GameObject:
   m_ObjectHideFlags: 0
@@ -18108,7 +18106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257968671}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36607417, y: -0.3513603, z: 0.15163286, w: 0.8482589}
+  m_LocalRotation: {x: 0.36607417, y: -0.35136035, z: 0.1516329, w: 0.84825885}
   m_LocalPosition: {x: 77.1, y: 15, z: 91.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -67234,7 +67232,8 @@ PrefabInstance:
       propertyPath: m_SkinWidth
       value: 0.05
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8240036726838593853, guid: a73f56e7dba53b94abddd893018b4bc8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -96309,11 +96308,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1123262698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c4f60c2447bad49abcc59d8f9aae2b, type: 3}
+  m_Script: {fileID: 11500000, guid: b066cc1251f0b3840a8f32ea9ef795ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitCount: 0
-  hitCount: 0
 --- !u!1001 &1633729199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98550,7 +98547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678466697}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36607417, y: -0.3513603, z: 0.15163286, w: 0.8482589}
+  m_LocalRotation: {x: 0.36607417, y: -0.35136035, z: 0.1516329, w: 0.84825885}
   m_LocalPosition: {x: 77.1, y: 15, z: 91.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -122434,7 +122431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b066cc1251f0b3840a8f32ea9ef795ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitCount: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

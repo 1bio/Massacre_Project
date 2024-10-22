@@ -22,7 +22,7 @@ public class MonsterDamageSource : MonoBehaviour
             other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()))
         {
             Debug.Log("Player Hit");
-            _playerHealth.TakeDamage(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Damage);
+            _playerHealth.TakeDamage(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Damage, true);
         }
     }
 
@@ -42,7 +42,7 @@ public class MonsterDamageSource : MonoBehaviour
     {
         _canTakeDamage = false;
 
-        health.TakeDamage(_monster.MonsterSkillController.CurrentSkillData.Damage);
+        health.TakeDamage(_monster.MonsterSkillController.CurrentSkillData.Damage, true);
 
         yield return new WaitForSeconds(_damageInterval);
 
