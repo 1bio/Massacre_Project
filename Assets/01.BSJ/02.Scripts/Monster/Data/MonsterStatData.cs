@@ -14,8 +14,8 @@ public class MonsterStatData : ScriptableObject, IMonsterCombat
     public MonsterHealth MonsterHealth => _monsterHealth;
     public MonsterAttack MonsterAttack => _monsterAttack;
 
-    public float ReturnHealth()
+    public MonsterStatData CreateInstance()
     {
-        return _monsterHealth.CurrentHealth;
+        return Instantiate(this);
     }
 }

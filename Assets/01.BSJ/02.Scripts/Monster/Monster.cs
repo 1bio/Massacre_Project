@@ -77,7 +77,7 @@ public class Monster : MonoBehaviour
         MonsterLootItemController = new MonsterLootItemController(p_monsterLootItemData);
         MovementController = new MonsterMovementController(GetComponent<TargetDetector>(), GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
         AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),50f);
-        MonsterCombatController = new MonsterCombatController(p_monsterStatData/*, GetComponent<CreatureHealth>()*/);
+        MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<CreatureHealth>());
      
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();

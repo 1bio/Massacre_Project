@@ -56,9 +56,7 @@ public class MonsterStateMachineController : MonsterStateMachine
                     OnAttack();
                 }
             }
-            else if (p_monster.MonsterStateType != MonsterStateType.Walk
-                    && Vector3.Distance(p_monster.MovementController.Astar.TargetTransform.position, this.transform.position)
-                    <= p_monster.MonsterCombatController.MonsterCombatAbility.MonsterTargetDistance.MaxTargetDistance)
+            else if (p_monster.MonsterStateType != MonsterStateType.Walk)
             {
                 OnMove();
             }

@@ -25,7 +25,7 @@ public class MeleeComponenet : MonoBehaviour
             forceReceiver.AddForce(direction * knockBack);
         }
 
-        if (other.TryGetComponent<Health>(out Health health))
+        if (other.TryGetComponent<CreatureHealth>(out CreatureHealth health))
         {
             if (other.CompareTag("Player"))
                 return;
