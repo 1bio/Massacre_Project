@@ -32,12 +32,5 @@ public class MonsterCombatAbility : IMonsterCombat
             _statData.MonsterAttack.IsTargetWithinAttackRange,
             _statData.MonsterAttack.IsEnableWeapon 
         );
-
-        MonsterTargetDistance = new MonsterTargetDistance(
-            _statData.MonsterTargetDistance.MinTargetDistance,
-            _statData.MonsterTargetDistance.MaxTargetDistance,
-            _statData.MonsterTargetDistance.IdealTargetDistance,
-            _statData.MonsterTargetDistance.IdealTargetDistanceThreshold
-        );
     }
 }

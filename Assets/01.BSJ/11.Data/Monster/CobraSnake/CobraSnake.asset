@@ -13,16 +13,12 @@ MonoBehaviour:
   m_Name: CobraSnake
   m_EditorClassIdentifier: 
   _moveSpeed: 5
-  _turnSpeed: 300
+  _turnSpeed: 700
   _monsterHealth:
     _currentHealth: 0
     _maxHealth: 100
   _monsterAttack:
     _damage: 0
-    _cooldownThreshold: 0
-    _totalCount: 0
-  _monsterTargetDistance:
-    _minTargetDistance: 0
-    _maxTargetDistance: 30
-    _idealTargetDistance: 3
-    _idealTargetDistanceThreshold: 0
+    _range: 10
+    _cooldownThreshold: 3
+    _totalCount: 3

@@ -24,15 +24,12 @@ public class MonsterMovementController
     {
         Vector3 startNode = monster.transform.position;
         Vector3 targetNode = Path[pathIndex].Position;
-        Vector3 direction = (targetNode - startNode).normalized;
+        Direction = (targetNode - startNode).normalized;
         float speed = monster.MonsterCombatController.MonsterCombatAbility.MoveSpeed * monster.AnimationController.LocomotionBlendValue;
 
-        if (Vector3.Distance(startNode, targetNode) > 0.1f)
-        {
-            LookAtNode(startNode + direction, monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
-        }
+        LookAtNode(targetNode, monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
 
-        Vector3 newPosition = direction * speed;
+        Vector3 newPosition = Direction * speed;
         CharacterController.SimpleMove(newPosition);
     }
 
@@ -47,23 +44,24 @@ public class MonsterMovementController
         CharacterController.transform.rotation = Quaternion.RotateTowards(CharacterController.transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
     }
 
-    public void LookAtNode(Vector3 nodePosition, float rotationSpeed)
+    public void LookAtNode(Vector3 targetNodePosition, float rotationSpeed)
     {
-        nodePosition.y = CharacterController.transform.position.y;
+        targetNodePosition.y = CharacterController.transform.position.y;
 
-        Direction = (nodePosition - CharacterController.transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(Direction);
+        Vector3 forward = CharacterController.transform.forward.normalized;
+        Direction = (targetNodePosition - CharacterController.transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(Direction); 
 
-        float angle = Vector3.Angle(Direction, CharacterController.transform.forward);
-        Debug.Log(angle);
+        float angle = Mathf.Acos(Vector3.Dot(forward, Direction)) * Mathf.Rad2Deg;
+        //Debug.Log($"angle: {angle}, Direction: {Direction}");
 
         float currentRotationSpeed = (angle > 45) ? rotationSpeed : rotationSpeed * 0.25f;
 
         CharacterController.transform.rotation = Quaternion.RotateTowards(CharacterController.transform.rotation, lookRotation, currentRotationSpeed * Time.deltaTime);
 
-        if (angle < 1f) // 각도가 1도 이내로 가깝다면
+        if (angle < 1f)
         {
-            CharacterController.transform.rotation = lookRotation; // 직접적으로 목표 회전으로 설정
+            CharacterController.transform.rotation = lookRotation;
         }
     }
 }
