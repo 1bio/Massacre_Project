@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRangeAttackState : PlayerRangeState
+public class PlayerRangeAttackState : PlayerRangeFreeLookState
 {
     private AttackData attack;
 
@@ -15,7 +15,7 @@ public class PlayerRangeAttackState : PlayerRangeState
     {
         stateMachine.Animator.CrossFadeInFixedTime(AttackAnimationHash, CrossFadeDuration);
 
-        stateMachine.Health.ImpactEvent += OnImpact;
+        stateMachine.InputReader.RollEvent += OnRolling;
     }
 
     public override void Tick(float deltaTime)
@@ -26,24 +26,23 @@ public class PlayerRangeAttackState : PlayerRangeState
 
         if (!stateMachine.InputReader.IsAttacking && currentInfo.normalizedTime > 1.0f)
         {
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }
 
     public override void Exit()
     {
-        stateMachine.Health.ImpactEvent -= OnImpact;
+        stateMachine.InputReader.RollEvent -= OnRolling;
     }
     #endregion
 
 
     #region Event Methods
-    private void OnImpact()
+    private void OnRolling()
     {
-        stateMachine.ChangeState(new PlayerImpactState(stateMachine));
+        stateMachine.ChangeState(new PlayerRollingState(stateMachine));
         return;
     }
     #endregion
-
 }

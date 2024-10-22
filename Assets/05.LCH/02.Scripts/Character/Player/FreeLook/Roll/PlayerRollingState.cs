@@ -6,6 +6,10 @@ public class PlayerRollingState : PlayerBaseState
 
     public readonly float CrossFadeDuration = 0.1f;
 
+    private Vector2 DodgeDirectionInput;
+
+    private float remainingDodgeTime;
+
     private float currentTime;
 
     private float lastTime;
@@ -19,7 +23,18 @@ public class PlayerRollingState : PlayerBaseState
     #region abstract Methods 
     public override void Enter()
     {
+        stateMachine.Health.SetInvulnerable(true);
+
         stateMachine.Animator.CrossFadeInFixedTime(RollAnimationHash, CrossFadeDuration);
+
+        if (Time.time - stateMachine.PreviousDodgeTime < stateMachine.DodgeCooldown)
+            return;
+
+        stateMachine.SetDodgeTime(Time.time);
+
+        DodgeDirectionInput = stateMachine.InputReader.MoveValue;
+
+        remainingDodgeTime = stateMachine.DodgeDuration;
     }
 
     public override void Tick(float deltaTime)
@@ -36,13 +51,14 @@ public class PlayerRollingState : PlayerBaseState
         }
         else if(currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[1].activeSelf)
         {
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }
 
     public override void Exit()
     {
+        stateMachine.Health.SetInvulnerable(false);
     }
     #endregion
 }

@@ -9,5 +9,5 @@ public class MonsterCombatController
     }
 
     public MonsterCombatAbility MonsterCombatAbility { get; private set; }
-    public CreatureHealth Health { get; private set; }
+    /*public CreatureHealth Health { get; private set; }*/
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRangeRapidShotState : PlayerRangeState
+public class PlayerRangeRapidShotState : PlayerRangeFreeLookState
 {
     public readonly int RapidShotAnimationHash = Animator.StringToHash("RapidShot@Range"); // 연발 애니메이션 해쉬
 
@@ -15,7 +15,6 @@ public class PlayerRangeRapidShotState : PlayerRangeState
         stateMachine.Animator.CrossFadeInFixedTime(RapidShotAnimationHash, CrossFadeDuration);
 
         stateMachine.InputReader.RollEvent += OnRolling;
-        stateMachine.Health.ImpactEvent += OnImpact;
     }
 
     public override void Tick(float deltaTime)
@@ -26,7 +25,7 @@ public class PlayerRangeRapidShotState : PlayerRangeState
 
         if(currentInfo.normalizedTime > 0.8f)
         {
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }
@@ -34,7 +33,6 @@ public class PlayerRangeRapidShotState : PlayerRangeState
     public override void Exit()
     {
         stateMachine.InputReader.RollEvent -= OnRolling;
-        stateMachine.Health.ImpactEvent -= OnImpact;
     }
     #endregion
 
@@ -43,12 +41,6 @@ public class PlayerRangeRapidShotState : PlayerRangeState
     private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
-    }
-
-    private void OnImpact()
-    {
-        stateMachine.ChangeState(new PlayerImpactState(stateMachine));
         return;
     }
     #endregion

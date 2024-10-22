@@ -7,7 +7,7 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
 
-    [field: SerializeField] public PlayerHealth Health { get; private set; }
+    [field: SerializeField] public Health Health { get; private set; }
 
     [field: SerializeField] public MeleeComponenet MeleeComponenet { get; private set; }
 
@@ -31,6 +31,29 @@ public class PlayerStateMachine : StateMachine
     [field: Header("플레이어 세팅")]
     [field: SerializeField] public float RotationSpeed { get; private set; }
 
+    [field: SerializeField] public float DodgeDuration { get; private set; }
+
+    [field: SerializeField] public float DodgeLenght { get; private set; }
+
+    [field: SerializeField] public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
+
+    [field: SerializeField] public float DodgeCooldown { get; private set; }
+
+
+    private void OnEnable()
+    {
+        Health.ImpactEvent += OnHandleTakeDamage;
+    }
+
+    private void OnDisable()
+    {
+        Health.ImpactEvent -= OnHandleTakeDamage;
+    }
+
+    public void SetDodgeTime(float dodgeTime)
+    {
+        PreviousDodgeTime = dodgeTime;
+    }
 
     // 초기화
     private void Start()
@@ -52,4 +75,25 @@ public class PlayerStateMachine : StateMachine
         CoolDownController.AddSkill("화염칼", CoolDownController.ReturnCoolDown("화염칼"));
         CoolDownController.AddSkill("회전베기", CoolDownController.ReturnCoolDown("회전베기"));
     }
+
+    #region Event Methods
+    // Impact
+    void OnHandleTakeDamage()
+    {
+        ChangeState(new PlayerImpactState(this));
+    }
+
+    // Groggy
+    /* void OnHandleGroggy()
+     {
+         ChangeState(new PlayerGroggyState(this));
+     }*/
+
+    // Dead
+    /*void OnHandleDie()
+    {
+        ChangeState(new PlayerDeadState(this));
+    }*/
+    #endregion
+
 }

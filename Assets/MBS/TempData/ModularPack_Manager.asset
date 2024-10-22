@@ -139,13 +139,29 @@ MonoBehaviour:
         - {fileID: 9026282089432075811, guid: 2ab40cf29de9ebd47a78c4303f2e3fac, type: 3}
       _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
     - guid: fe36be510e8e4a8c90b84450380c347d
-      name: New Decor Group
-      _modules: []
-      _assetCategoryGuid: 
+      name: Touch
+      _modules:
+      - guid: 3fd75b2082044e6584fc79530511f474
+        name: Touch
+        prefabs:
+        - {fileID: 4916467779054868767, guid: beb0691030ba59c4e94ffd7406eec0ae, type: 3}
+      _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
     - guid: c94aa5480fa847c59a2a59f18ce198bc
-      name: New Decor Group
-      _modules: []
-      _assetCategoryGuid: 
+      name: Box
+      _modules:
+      - guid: 25fa860a3a2c46bbb52e19f49a823e59
+        name: Box
+        prefabs:
+        - {fileID: 1628916006155128105, guid: 2a31b6bc2b401a046b0ac66fec97d55e, type: 3}
+      _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
+    - guid: 12502c7bc3354923a55a4a37551f63c6
+      name: Rum
+      _modules:
+      - guid: 0c6fb32508d74421828223c451153770
+        name: Rum
+        prefabs:
+        - {fileID: 4835829558058133802, guid: e300ca4f63ac7df468a1dc91d9291585, type: 3}
+      _assetCategoryGuid: 5ed02f467a2443c7a77f6b068886c963
     _decoratorCategories:
     - guid: 5ed02f467a2443c7a77f6b068886c963
       _name: All

@@ -60,7 +60,7 @@ public class InputReader : MonoBehaviour, InputActions.IPlayerActions
     // Rolling
     public void OnRoll(InputAction.CallbackContext context)
     {
-        if (!context.started)
+        if (!context.performed)
             return;
 
         RollEvent?.Invoke();

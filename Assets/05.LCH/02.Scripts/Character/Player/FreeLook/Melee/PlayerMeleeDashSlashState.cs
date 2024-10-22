@@ -27,8 +27,6 @@ public class PlayerMeleeDashSlashState : PlayerFreeLookState
         SetForce();
 
         stateMachine.Animator.CrossFadeInFixedTime(DashSlashAnimationHash, CrossFadeDuration);
-
-        stateMachine.Health.ImpactEvent += OnImpact;
     }
 
     public override void Tick(float deltaTime)
@@ -61,7 +59,6 @@ public class PlayerMeleeDashSlashState : PlayerFreeLookState
 
     public override void Exit()
     {
-        stateMachine.Health.ImpactEvent -= OnImpact;
     }
     #endregion
 
@@ -71,15 +68,6 @@ public class PlayerMeleeDashSlashState : PlayerFreeLookState
     {
         Force = DataManager.instance.playerData.skillData[3].force;
         ForceTime = DataManager.instance.playerData.skillData[3].forceTime;
-    }
-    #endregion
-
-
-    #region Event Methods
-    private void OnImpact()
-    {
-        stateMachine.ChangeState(new PlayerImpactState(stateMachine));
-        return;
     }
     #endregion
 }

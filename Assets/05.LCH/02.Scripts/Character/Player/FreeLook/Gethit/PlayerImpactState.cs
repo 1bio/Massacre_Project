@@ -1,18 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerImpactState : PlayerBaseState
 {
-    public readonly int GetHit = Animator.StringToHash("GetHit"); // 블렌드 트리
-
-    public readonly int Impact = Animator.StringToHash("Impact"); // 애니메이션 해쉬
+    public readonly int ImpactAnimationHash = Animator.StringToHash("Impact"); // 애니메이션 해쉬
 
     public readonly float CrossFadeDuration = 0.1f;
 
-    public readonly float DampTime = 0.1f;
-
-    public readonly int doubleHits = 2;
+    private float duration = 1f;
 
     public PlayerImpactState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -22,32 +16,29 @@ public class PlayerImpactState : PlayerBaseState
     #region abstarct Methods
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(GetHit, CrossFadeDuration);
+        stateMachine.Animator.CrossFadeInFixedTime(ImpactAnimationHash, CrossFadeDuration);
+
+        stateMachine.Health.SetHealth(DataManager.instance.playerData.statusData.currentHealth);
     }
 
 
     public override void Tick(float deltaTime)
     {
-        stateMachine.Animator.SetFloat(Impact, 1f, DampTime, deltaTime);
+        Move(deltaTime);
+
+        duration -= deltaTime;
 
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        // Impact -> Groggy
-        if (stateMachine.Health.hitCount == doubleHits)
-        {
-            stateMachine.ChangeState(new PlayerGroggyState(stateMachine));
-            return;
-        }
-
         // FreeLook
-        if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[0].activeSelf)
+        if (duration <= 0f && stateMachine.WeaponPrefabs[0].activeSelf)
         {
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
             return;
         }
-        else if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[1].activeSelf)
+        else if (duration <= 0f && stateMachine.WeaponPrefabs[1].activeSelf)
         {
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }
