@@ -32,7 +32,7 @@ public class MeleeComponenet : MonoBehaviour
 
             cameraShake.ShakeCamera(1f, 0.2f);
 
-            health?.TakeDamage(damage); // 공용 
+            health?.TakeDamage(damage, false); // 공용 
         }
     }
     #endregion

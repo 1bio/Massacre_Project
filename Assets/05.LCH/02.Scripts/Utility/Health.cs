@@ -6,7 +6,8 @@ public class Health : MonoBehaviour
     private float currentHealth;
 
     // 피격 카운트 필드
-    public int hitCount = 0;
+    private int hitCount;
+    private int groggyCount = 3;
 
     private float currentTime;
     private float lastImpactTime;
@@ -17,8 +18,8 @@ public class Health : MonoBehaviour
 
     // 이벤트 필드
     public event Action ImpactEvent;
-    // Groggy 이벤트
-    // 사망 이벤트
+    public event Action GroggyEvent;
+    public event Action DeadEvent;
 
     private void Start()
     {
@@ -41,7 +42,7 @@ public class Health : MonoBehaviour
         this.isInvunerable = isInvunerable;
     }
 
-    public void CheckCoolDown() // 카운트 체크
+    private void CheckCoolDown() // 카운트 체크
     {
         currentTime = Time.time;
         
@@ -51,33 +52,55 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage) 
+    public void TakeDamage(float damage, bool IsPlayer)
     {
         if (isInvunerable)
             return;
 
-        ImpactEvent.Invoke();
+        ImpactEvent?.Invoke();
 
+        Groggy(); 
+
+        currentHealth = Mathf.Max(currentHealth - damage, 0);
+
+        if (currentHealth == 0)
+        {
+            Dead();
+        }
+
+        // 플레이어 체력 초기화
+        if (IsPlayer)
+        {
+            DataManager.instance.playerData.statusData.currentHealth = currentHealth;
+            return;
+        }
+        else // 몬스터 체력 초기화
+        {
+            // 몬스터 체력 접근 후 데이터 초기화
+        }
+    }
+
+    // hitCount 확인
+    private void Groggy()
+    {
         // 피격 횟수 로직
         float currentImpactTime = Time.time;
         lastImpactTime = currentImpactTime;
         hitCount++;
 
-        // 데미지 처리 로직
-        currentHealth = Mathf.Max(currentHealth - damage, 0);
-        
-        if(currentHealth == 0)
+        if (hitCount >= groggyCount)
         {
-            Dead();
-        }
+            GroggyEvent?.Invoke();
 
-        DataManager.instance.playerData.statusData.currentHealth = currentHealth;
+            hitCount = 0;
+        }
     }
 
-
-    public void Dead()
+    private void Dead()
     {
+        DeadEvent?.Invoke();
 
+        // GameManager에서 이벤트 실행, 로비로 가기, UI 패널 열기 등 
     }
     #endregion
 }

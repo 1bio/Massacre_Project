@@ -23,7 +23,7 @@ public class MonsterDamageSource : MonoBehaviour
         {
             if(other.TryGetComponent<Health>(out Health playerHealth))
             {
-                playerHealth.TakeDamage(30);
+                playerHealth.TakeDamage(30, true); 
             }
             /*_playerHealth.TakeDamage(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Damage);*/
         }
