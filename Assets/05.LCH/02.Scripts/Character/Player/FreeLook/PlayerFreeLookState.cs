@@ -19,6 +19,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
+    
     }
 
     #region abstarct Methods

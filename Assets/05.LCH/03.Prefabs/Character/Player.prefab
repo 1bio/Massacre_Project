@@ -4111,6 +4111,8 @@ MonoBehaviour:
   <RangeComponent>k__BackingField: {fileID: 8113685122807652929}
   <CoolDownController>k__BackingField: {fileID: 5837364901395093339}
   <CameraShake>k__BackingField: {fileID: 510055835998302173}
+  <WeaponTrail>k__BackingField: {fileID: 6514519823197895514}
+  <ParticleEventHandler>k__BackingField: {fileID: 2335224182043608082}
   <Animator>k__BackingField: {fileID: 1824995815437883135}
   <Controller>k__BackingField: {fileID: 3520747393900054371}
   <CameraTransform>k__BackingField: {fileID: 0}
