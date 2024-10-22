@@ -4,8 +4,8 @@ using UnityEngine;
 public class MonsterDamageSource : MonoBehaviour
 {
     private Monster _monster;
-    // Health ÁÖ¼® Ã³¸®
-    /*private PlayerHealth _playerHealth;*/
+    // Health ï¿½Ö¼ï¿½ Ã³ï¿½ï¿½
+    private Health _playerHealth;
 
     private bool _canTakeDamage = true;
     [SerializeField] private float _damageInterval = 1.5f;
@@ -13,7 +13,7 @@ public class MonsterDamageSource : MonoBehaviour
     private void Awake()
     {
         _monster = GetComponentInParent<Monster>();
-        /*_playerHealth = FindObjectOfType<PlayerHealth>();*/
+        _playerHealth = GameObject.Find("Player").GetComponent<Health>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,11 +21,8 @@ public class MonsterDamageSource : MonoBehaviour
         if (_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon &&
             other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()))
         {
-            if(other.TryGetComponent<Health>(out Health playerHealth))
-            {
-                playerHealth.TakeDamage(30, true); 
-            }
-            /*_playerHealth.TakeDamage(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Damage);*/
+            Debug.Log("Player Hit");
+            _playerHealth.TakeDamage(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Damage, true);
         }
     }
 
@@ -34,21 +31,21 @@ public class MonsterDamageSource : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()) && _canTakeDamage)
         {
             Debug.LogWarning(other.name);
-            /*if (_playerHealth != null)
+            if (_playerHealth != null)
             {
                 StartCoroutine(DealDamageOverTime(_playerHealth));
-            }*/
+            }
         }
     }
 
-    /*private IEnumerator DealDamageOverTime(Health health)
+    private IEnumerator DealDamageOverTime(Health health)
     {
         _canTakeDamage = false;
 
-        health.TakeDamage(_monster.MonsterSkillController.CurrentSkillData.Damage);
+        health.TakeDamage(_monster.MonsterSkillController.CurrentSkillData.Damage, true);
 
         yield return new WaitForSeconds(_damageInterval);
 
         _canTakeDamage = true;
-    }*/
+    }
 }

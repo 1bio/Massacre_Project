@@ -13,8 +13,9 @@ public class MonsterBehaviourAttack : MonsterBehaviour
     public override void OnBehaviourStart(Monster monster)
     {
         _monster = monster;
+        _monster.MonsterCombatController.Health.SetHealth(monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth);
 
-        //monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
+        monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
@@ -39,14 +40,15 @@ public class MonsterBehaviourAttack : MonsterBehaviour
         monster.MovementController.Astar.StartPathCalculation();
         monster.MonsterStateMachineController.CurrentBasicAttackCooldownTime = 0;
 
-        //monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
+        monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
     }
 
     private void OnImpact()
     {
-        if (Vector3.Angle(_monster.transform.forward, _monster.MovementController.Direction) > _attackAngleThreshold)
+        /*if (!_monster.AnimationController.IsLockedInAnimation)
         {
             _monster.MonsterStateMachineController.OnGotHit();
-        }
+        }*/
+        _monster.MonsterStateMachineController.OnGotHit();
     }
 }

@@ -11,6 +11,7 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
     public override void OnBehaviourStart(Monster monster)
     {
         _monster = monster;
+        _monster.MonsterCombatController.Health.SetHealth(monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth);
 
         moveSpeed = _monster.MonsterCombatController.MonsterCombatAbility.MoveSpeed;
 
@@ -21,6 +22,8 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
 
     public override void OnBehaviourUpdate(Monster monster)
     {
+        if (!monster.MonsterStateMachineController.IsAlive())
+            monster.MonsterStateMachineController.OnDead();
         /*Move(Time.deltaTime);*/
     }
 

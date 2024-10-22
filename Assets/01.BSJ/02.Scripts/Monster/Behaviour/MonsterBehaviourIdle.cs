@@ -8,10 +8,12 @@ public class MonsterBehaviourIdle : MonsterBehaviour
     private Monster _monster;
     public override void OnBehaviourStart(Monster monster)
     {
-        _monster = monster; 
+        _monster = monster;
+        _monster.MonsterCombatController.Health.SetHealth(monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth);
+
         monster.AnimationController.PlayIdleAnimation();
 
-        //monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
+        monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
@@ -22,7 +24,7 @@ public class MonsterBehaviourIdle : MonsterBehaviour
 
     public override void OnBehaviourEnd(Monster monster)
     {
-        //monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
+        monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
     }
 
     private void OnImpact()

@@ -29,7 +29,7 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
         monster.AnimationController.PlayWalkAnimation();
 
-        //monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
+        monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
@@ -64,7 +64,7 @@ public class MonsterBehaviourMovement : MonsterBehaviour
     public override void OnBehaviourEnd(Monster monster)
     {
         monster.AnimationController.PlayIdleAnimation();
-        //monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
+        monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
     }
 
     private void OnImpact()
