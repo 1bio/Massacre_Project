@@ -55,7 +55,7 @@ public class MonsterMovementController
         Quaternion lookRotation = Quaternion.LookRotation(Direction);
 
         float angle = Vector3.Angle(Direction, CharacterController.transform.forward);
-        Debug.Log(angle);
+        /*Debug.Log(angle);*/
 
         float currentRotationSpeed = (angle > 45) ? rotationSpeed : rotationSpeed * 0.25f;
 

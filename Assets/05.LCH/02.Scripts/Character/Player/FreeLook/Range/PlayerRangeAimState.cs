@@ -15,9 +15,6 @@ public class PlayerRangeAimState : PlayerRangeFreeLookState
         Aiming();
 
         stateMachine.Animator.CrossFadeInFixedTime(AimAnimationHash, CrossFadeDuration);
-     
-        stateMachine.InputReader.RollEvent += OnRolling;
-        stateMachine.Health.ImpactEvent += OnImpact;
     }
 
     public override void Tick(float deltaTime)
@@ -35,23 +32,6 @@ public class PlayerRangeAimState : PlayerRangeFreeLookState
 
     public override void Exit()
     {
-        stateMachine.InputReader.RollEvent -= OnRolling;
-        stateMachine.Health.ImpactEvent -= OnImpact;
-    }
-    #endregion
-
-
-    #region Event Methods
-    private void OnRolling()
-    {
-        stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
-    }
-
-    private void OnImpact()
-    {
-        stateMachine.ChangeState(new PlayerImpactState(stateMachine));
-        return;
     }
     #endregion
 }

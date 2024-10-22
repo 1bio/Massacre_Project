@@ -13,9 +13,6 @@ public class PlayerRangeSkyFallState : PlayerRangeFreeLookState
     public override void Enter()
     {
         stateMachine.Animator.CrossFadeInFixedTime(SkyFallAnimationHash, CrossFadeDuration);
-
-        stateMachine.InputReader.RollEvent += OnRolling;
-        stateMachine.Health.ImpactEvent += OnImpact;
     }
 
     public override void Tick(float deltaTime)
@@ -31,23 +28,6 @@ public class PlayerRangeSkyFallState : PlayerRangeFreeLookState
 
     public override void Exit()
     {
-        stateMachine.InputReader.RollEvent -= OnRolling;
-        stateMachine.Health.ImpactEvent -= OnImpact;
-    }
-    #endregion
-
-
-    #region Event Methods
-    private void OnRolling()
-    {
-        stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
-    }
-
-    private void OnImpact()
-    {
-        stateMachine.ChangeState(new PlayerImpactState(stateMachine));
-        return;
     }
     #endregion
 }

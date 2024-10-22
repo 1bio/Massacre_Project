@@ -15,7 +15,6 @@ public class PlayerRangeRapidShotState : PlayerRangeFreeLookState
         stateMachine.Animator.CrossFadeInFixedTime(RapidShotAnimationHash, CrossFadeDuration);
 
         stateMachine.InputReader.RollEvent += OnRolling;
-        stateMachine.Health.ImpactEvent += OnImpact;
     }
 
     public override void Tick(float deltaTime)
@@ -34,7 +33,6 @@ public class PlayerRangeRapidShotState : PlayerRangeFreeLookState
     public override void Exit()
     {
         stateMachine.InputReader.RollEvent -= OnRolling;
-        stateMachine.Health.ImpactEvent -= OnImpact;
     }
     #endregion
 
@@ -43,12 +41,6 @@ public class PlayerRangeRapidShotState : PlayerRangeFreeLookState
     private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
-    }
-
-    private void OnImpact()
-    {
-        stateMachine.ChangeState(new PlayerImpactState(stateMachine));
         return;
     }
     #endregion

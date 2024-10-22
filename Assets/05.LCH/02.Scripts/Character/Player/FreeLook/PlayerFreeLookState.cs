@@ -26,9 +26,7 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         stateMachine.Animator.CrossFadeInFixedTime(FreeLookWithMelee, CrossFadeDuration);
 
-        stateMachine.InputReader.RollEvent += OnRolling; // 구르기 
-        stateMachine.Health.ImpactEvent += OnImpact; // 피격 
-
+        stateMachine.InputReader.RollEvent += OnRolling;
         stateMachine.InputReader.AimingEvent += OnAiming; // 도약베기
         stateMachine.InputReader.SkillEvent += OnSkill; // 회전베기
     }
@@ -72,8 +70,6 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.RollEvent -= OnRolling;
-        stateMachine.Health.ImpactEvent -= OnImpact;
-
         stateMachine.InputReader.AimingEvent -= OnAiming;
         stateMachine.InputReader.SkillEvent -= OnSkill;
     }
@@ -98,19 +94,10 @@ public class PlayerFreeLookState : PlayerBaseState
 
 
     #region Event Methods
-    private void OnRolling() // 구르기
+    private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
         return;
-    }
-
-    private void OnImpact() // 피격
-    {
-        if (stateMachine.Health.hitCount == 1)
-        {
-            stateMachine.ChangeState(new PlayerImpactState(stateMachine));
-            return;
-        }
     }
 
     private void OnAiming() // 도약베기 [3]

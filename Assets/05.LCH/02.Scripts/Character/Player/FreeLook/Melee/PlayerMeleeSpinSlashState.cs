@@ -24,8 +24,6 @@ public class PlayerMeleeSpinSlashState : PlayerFreeLookState
         SetForce();
 
         stateMachine.Animator.CrossFadeInFixedTime(SpinSlashAnimationHash, CrossFadeDuration);
-
-        stateMachine.Health.ImpactEvent += OnImpact;
     }
 
     public override void Tick(float deltaTime)
@@ -53,7 +51,6 @@ public class PlayerMeleeSpinSlashState : PlayerFreeLookState
 
     public override void Exit()
     {
-        stateMachine.Health.ImpactEvent -= OnImpact;
     }
     #endregion
 
@@ -65,14 +62,4 @@ public class PlayerMeleeSpinSlashState : PlayerFreeLookState
         ForceTime = DataManager.instance.playerData.skillData[5].forceTime;
     }
     #endregion
-
-
-    #region Event Methods
-    private void OnImpact()
-    {
-        stateMachine.ChangeState(new PlayerImpactState(stateMachine));
-        return;
-    }
-    #endregion
-
 }
