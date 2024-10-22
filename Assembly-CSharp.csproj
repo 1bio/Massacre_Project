@@ -151,6 +151,7 @@
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\MatchValue.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Utility\Projectile.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Troll\Troll.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Medusa\Medusa.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\_InfinityPBR - Minotaur\Scripts\SFB_MinotaurDemo.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Minotaur\Skills\MinotaurRamAttack.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\PlayerBaseState.cs" />
