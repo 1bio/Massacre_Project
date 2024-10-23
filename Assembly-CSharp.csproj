@@ -98,6 +98,7 @@
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\_InfinityPBR - Cobra Snake\Scripts\SFB_CobraSnakeDemo.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\FreeLook\Melee\PlayerMeleeSpinSlashState.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\UI\DashSlash.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Medusa\Skills\MedusaJumpAttack.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\InfinityDemoCharacter.cs" />
     <Compile Include="Assets\04.KMH\02.Scripts\Inventory\InventoryObject.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />

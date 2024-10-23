@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MonsterSkillData", menuName = "Data/MonsterSKillData/Troll/ChargeAttack")]
+[CreateAssetMenu(fileName = "TrollChargeAttack", menuName = "Data/MonsterSKillData/Troll/ChargeAttack")]
 public class TrollChargeAttack : MonsterSkillData
 {
-    [Header(" # VFX  Name")]
-    [SerializeField] private string _vfxNameToFind;
     private Transform _vfxTransform;
 
     private Transform _swordObjectTransform;
@@ -15,20 +13,26 @@ public class TrollChargeAttack : MonsterSkillData
 
     private float _hitSphere;
 
+    private HashSet<Collider> damagedPlayers = new HashSet<Collider>();
     private bool _hasAttacked = false;
     private bool _hasGroundHit = false;
 
-    private void InitializeValues()
+    private void InitializeValues(Monster monster)
     {
+        _vfxTransform = monster.MonsterParticleController.VFX["SmokeCircle"].transform;
+
+        _swordObjectTransform = monster.transform.Find(_swordHierarchyPath);
+
         _hitSphere = 2f;
+
+        damagedPlayers = new HashSet<Collider>();
         _hasAttacked = false;
         _hasGroundHit = false;
     }
 
     public override void ActiveSkillEnter(Monster monster)
     {
-        FindVFXAndSwordTransform(monster);
-        InitializeValues();
+        InitializeValues(monster);
     }
 
     public override void ActiveSkillTick(Monster monster)
@@ -54,12 +58,6 @@ public class TrollChargeAttack : MonsterSkillData
         
     }
 
-    public void FindVFXAndSwordTransform(Monster monster)
-    {
-        _vfxTransform = monster.transform.Find("VFX Container/" + _vfxNameToFind);
-        _swordObjectTransform = monster.transform.Find(_swordHierarchyPath);
-    }
-
     private void ActivateVFXIfHitGround(Monster monster)
     {
         if (!_hasGroundHit)
@@ -67,7 +65,7 @@ public class TrollChargeAttack : MonsterSkillData
             Vector3 rayOrigin = _swordObjectTransform.position + new Vector3(0, 0, 0.66f);
             Vector3 rayDirection = Vector3.down;
 
-            float rayLength = 0.5f;
+            float rayLength = 0.7f;
 
             int layerMask = (1 << LayerMask.NameToLayer(GameLayers.Ground.ToString()));
             if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, rayLength, layerMask))
@@ -85,15 +83,22 @@ public class TrollChargeAttack : MonsterSkillData
         if (_vfxTransform != null)
         {
             _vfxTransform.position = position;
-            monster.MonsterParticleController.RePlayVFX(_vfxTransform.name);
+            monster.MonsterParticleController.RePlayVFX(_vfxTransform.name, 0.8f);
+            Hit(position, monster);
         }
     }
 
-    private void Hit(Vector3 position)
+    private void Hit(Vector3 position, Monster monster)
     {
         int layermask = (1 << LayerMask.NameToLayer(GameLayers.Player.ToString()));
         Collider[] colliders = Physics.OverlapSphere(position, _hitSphere, layermask);
 
-
+        foreach (Collider collider in colliders)
+        {
+            if (damagedPlayers.Add(collider))
+            {
+                collider.gameObject.GetComponent<Health>()?.TakeDamage(monster.MonsterSkillController.CurrentSkillData.Damage, true);
+            }
+        }
     }
 }

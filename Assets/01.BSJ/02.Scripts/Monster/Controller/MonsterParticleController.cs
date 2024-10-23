@@ -61,8 +61,16 @@ public class MonsterParticleController
 
     public void RePlayVFX(string vfxName, float scaleFactor)
     {
+        int index = vfxName.IndexOf('(');
+
+        if (index != -1)
+        {
+            vfxName = vfxName.Substring(0, index);
+        }
+
         if (VFX.ContainsKey(vfxName))
         {
+            VFX[vfxName].transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
             VFX[vfxName].Stop();
             VFX[vfxName].Clear();
             VFX[vfxName].Play();

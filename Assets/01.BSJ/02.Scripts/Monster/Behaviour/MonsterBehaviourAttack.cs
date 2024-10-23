@@ -8,7 +8,7 @@ public class MonsterBehaviourAttack : MonsterBehaviour
     private Monster _monster;
     private bool _hasAttacked = false;
     private float _currentTime = 0;
-    private float _attackAngleThreshold = 20f;
+    private float _attackAngleThreshold = 5f;
 
     public override void OnBehaviourStart(Monster monster)
     {

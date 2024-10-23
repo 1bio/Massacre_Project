@@ -24,12 +24,12 @@ public class MonsterMovementController
     {
         Vector3 startNode = monster.transform.position;
         Vector3 targetNode = Path[pathIndex].Position;
-        Direction = (targetNode - startNode).normalized;
+        Vector3 direction = (targetNode - startNode).normalized;
         float speed = monster.MonsterCombatController.MonsterCombatAbility.MoveSpeed * monster.AnimationController.LocomotionBlendValue;
 
         LookAtNode(targetNode, monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
 
-        Vector3 newPosition = Direction * speed;
+        Vector3 newPosition = direction * speed;
         CharacterController.SimpleMove(newPosition);
     }
 
@@ -49,10 +49,10 @@ public class MonsterMovementController
         targetNodePosition.y = CharacterController.transform.position.y;
 
         Vector3 forward = CharacterController.transform.forward.normalized;
-        Direction = (targetNodePosition - CharacterController.transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(Direction); 
+        Vector3 direction = (targetNodePosition - CharacterController.transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction); 
 
-        float angle = Mathf.Acos(Vector3.Dot(forward, Direction)) * Mathf.Rad2Deg;
+        float angle = Mathf.Acos(Vector3.Dot(forward, direction)) * Mathf.Rad2Deg;
         //Debug.Log($"angle: {angle}, Direction: {Direction}");
 
         float currentRotationSpeed = (angle > 45) ? rotationSpeed : rotationSpeed * 0.25f;
