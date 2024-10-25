@@ -35,7 +35,7 @@ public class PlayerRangeFreeLookState : PlayerBaseState
         Rotate(movement, deltaTime); // 회전
 
         if (Input.GetKeyDown(KeyCode.E)) { Swap(); }
-
+/*
         Debug.Log($"트리플샷 스킬 쿨타임: {stateMachine.CoolDownController.GetRemainingCooldown("트리플샷")}");
 
         // Attack
@@ -49,7 +49,7 @@ public class PlayerRangeFreeLookState : PlayerBaseState
         {
             stateMachine.ChangeState(new PlayerRangeAttackState(stateMachine));
             return;
-        }
+        }*/
 
         // Idle
         if(stateMachine.InputReader.MoveValue == Vector2.zero)
@@ -95,20 +95,20 @@ public class PlayerRangeFreeLookState : PlayerBaseState
 
     private void OnAiming() // 정조준
     {
-        if (stateMachine.CoolDownController.GetRemainingCooldown("정조준") <= 0f)
+        /*if (stateMachine.CoolDownController.GetRemainingCooldown("정조준") <= 0f)
         {
             stateMachine.ChangeState(new PlayerRangeAimState(stateMachine));
             return;
-        }
+        }*/
     }
 
     private void OnSkill() // 화살비
     {
-        if(stateMachine.CoolDownController.GetRemainingCooldown("화살비") <= 0f)
+       /* if(stateMachine.CoolDownController.GetRemainingCooldown("화살비") <= 0f)
         {
             stateMachine.ChangeState(new PlayerRangeSkyFallState(stateMachine));
             return;
-        }
+        }*/
     }
     #endregion
 }

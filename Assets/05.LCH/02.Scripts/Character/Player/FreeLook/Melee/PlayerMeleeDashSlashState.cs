@@ -22,8 +22,6 @@ public class PlayerMeleeDashSlashState : PlayerFreeLookState
     #region abstarct Methods
     public override void Enter()
     {
-        Aiming();
-
         SetForce();
 
         stateMachine.Animator.CrossFadeInFixedTime(DashSlashAnimationHash, CrossFadeDuration);

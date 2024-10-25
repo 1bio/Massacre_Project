@@ -6,7 +6,7 @@ public class PlayerImpactState : PlayerBaseState
 
     public readonly float CrossFadeDuration = 0.1f;
 
-    private float duration = 1f;
+    private float duration = 0.8f;
 
     public PlayerImpactState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -27,8 +27,6 @@ public class PlayerImpactState : PlayerBaseState
         Move(deltaTime);
 
         duration -= deltaTime;
-
-        AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
         // FreeLook
         if (duration <= 0f && stateMachine.WeaponPrefabs[0].activeSelf)

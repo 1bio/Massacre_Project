@@ -11,8 +11,10 @@ public class SkillData
     public string description;
     public float multipleDamage;
     public float multipleCoolDown;
+    public float duration;
+    public bool isPassive;
 
-    public SkillData(string skillName, int level, float damage, float coolDown, float force, float forceTime, bool isUnlock, string description, float multipleDamage, float multipleCoolDown)
+    public SkillData(string skillName, int level, float damage, float coolDown, float force, float forceTime, bool isUnlock, string description, float multipleDamage, float multipleCoolDown, float duration, bool isPassive)
     {
         this.skillName = skillName;
         this.level = level;
@@ -24,5 +26,7 @@ public class SkillData
         this.description = description;
         this.multipleDamage = multipleDamage;
         this.multipleCoolDown = multipleCoolDown;
+        this.duration = duration;
+        this.isPassive = isPassive;
     }
 }

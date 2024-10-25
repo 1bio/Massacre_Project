@@ -15,6 +15,7 @@ public class FireBlade : MonoBehaviour
     private void Awake()
     {
         fireBlade = GetFireBladeData();
+
         UpdateUI();
     }
     #endregion
@@ -23,14 +24,16 @@ public class FireBlade : MonoBehaviour
     #region Main Methods
     public void FireBlade_LevelUp() // 버튼 이벤트
     {
-        DataManager.instance.SkillLevelUp("화염칼", 1);
-        UIManager.instance.SelectWindow(false);
-
         // 스킬 잠금 해제
-        if (fireBlade.level > 0)
+        if (fireBlade.level == 0)
         {
             fireBlade.isUnlock = false;
+            SkillManager.instance.AddSkill(fireBlade.skillName, fireBlade.coolDown);
+            Debug.Log("화염칼 얻음!");
         }
+
+        DataManager.instance.SkillLevelUp("화염칼", 1);
+        UIManager.instance.SelectWindow(false);
 
         UpdateUI();
     }

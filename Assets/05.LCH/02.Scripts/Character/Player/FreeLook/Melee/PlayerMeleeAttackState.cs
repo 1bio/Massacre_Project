@@ -23,6 +23,10 @@ public class PlayerMeleeAttackState : PlayerFreeLookState
 
         stateMachine.MeleeComponenet.SetAttack(attack.Damage, attack.KnockBack);
 
+        stateMachine.WeaponToggle.EnableWeapon();
+
+        stateMachine.WeaponTrail.CreateTrail();
+
         stateMachine.InputReader.RollEvent += OnRolling;
     }
 
@@ -59,6 +63,10 @@ public class PlayerMeleeAttackState : PlayerFreeLookState
 
     public override void Exit()
     {
+        stateMachine.WeaponTrail.DestroyTrail();
+
+        stateMachine.WeaponToggle.DisableWeapon();
+
         stateMachine.InputReader.RollEvent -= OnRolling;
     }
     #endregion

@@ -37,7 +37,7 @@ public class Health : MonoBehaviour
         this.currentHealth = currentHealth;
     }
 
-    public void SetInvulnerable(bool isInvunerable) // 무적 상태 체크(플레이어 로직[PlayerRollingState])
+    public void SetInvulnerable(bool isInvunerable) // 무적 상태 적용
     {
         this.isInvunerable = isInvunerable;
     }

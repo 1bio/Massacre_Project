@@ -25,6 +25,11 @@ public class PlayerHeavyAttackState : PlayerFreeLookState
 
         stateMachine.MeleeComponenet.SetAttack(attack.Damage, attack.KnockBack);
 
+        stateMachine.WeaponToggle.EnableWeapon();
+
+        stateMachine.WeaponTrail.CreateTrail();
+        stateMachine.ParticleEventHandler.StartParticleSystem();
+
         stateMachine.InputReader.RollEvent += OnRolling;
     }
 
@@ -61,6 +66,11 @@ public class PlayerHeavyAttackState : PlayerFreeLookState
 
     public override void Exit()
     {
+        stateMachine.WeaponToggle.DisableWeapon();
+
+        stateMachine.WeaponTrail.DestroyTrail();
+        stateMachine.ParticleEventHandler.StopParticleSystem();
+
         stateMachine.InputReader.RollEvent -= OnRolling;
     }
     #endregion
