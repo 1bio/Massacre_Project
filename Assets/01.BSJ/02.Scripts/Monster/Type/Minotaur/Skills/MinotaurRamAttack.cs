@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MonsterSkillData", menuName = "Data/MonsterSKillData/Minotaur/RamAttack")]
+[CreateAssetMenu(fileName = "MinotaurRamAttack", menuName = "Data/MonsterSKillData/Minotaur/RamAttack")]
 public class MinotaurRamAttack : MonsterSkillData
 {
     private Minotaur _minotaur;

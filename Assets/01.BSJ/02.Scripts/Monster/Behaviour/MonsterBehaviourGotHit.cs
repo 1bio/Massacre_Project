@@ -22,8 +22,6 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
 
     public override void OnBehaviourUpdate(Monster monster)
     {
-        if (!monster.MonsterStateMachineController.IsAlive())
-            monster.MonsterStateMachineController.OnDead();
         /*Move(Time.deltaTime);*/
     }
 

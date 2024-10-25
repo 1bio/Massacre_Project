@@ -76,7 +76,7 @@ public class Monster : MonoBehaviour
         MonsterSkillController = new MonsterSkillController(p_monsterSkillDatas);
         MonsterLootItemController = new MonsterLootItemController(p_monsterLootItemData);
         MovementController = new MonsterMovementController(GetComponent<TargetDetector>(), GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
-        AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),50f);
+        AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),100f);
         MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<Health>());
      
         Controller = GetComponent<CharacterController>();
@@ -88,7 +88,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    protected void Update()
+    /*protected void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -98,7 +98,7 @@ public class Monster : MonoBehaviour
                 MonsterStateMachineController.OnSkill();
             }
         }
-    }
+    }*/
 
 
     // Animation Event
@@ -119,6 +119,7 @@ public class Monster : MonoBehaviour
 
     public void RePlayVFX(string vfxNameWithScale)
     {
+        MonsterParticleController.RePlayVFX(vfxNameWithScale);
         if (vfxNameWithScale.Contains('_'))
         {
             string[] parts = vfxNameWithScale.Split('_');

@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[CreateAssetMenu(fileName = "MonsterSkillData", menuName = "Data/MonsterSKillData/Troll/FireBreath")]
+[CreateAssetMenu(fileName = "TrollFireBreath", menuName = "Data/MonsterSKillData/Troll/FireBreath")]
 public class TrollFireBreath : MonsterSkillData
 {
     private Troll _troll;

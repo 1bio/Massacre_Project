@@ -4,7 +4,6 @@ using UnityEngine;
 public class MonsterDamageSource : MonoBehaviour
 {
     private Monster _monster;
-    // Health �ּ� ó��
     private Health _playerHealth;
 
     private bool _canTakeDamage = true;
@@ -22,7 +21,7 @@ public class MonsterDamageSource : MonoBehaviour
             other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()))
         {
             Debug.Log("Player Hit");
-            _playerHealth.TakeDamage(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Damage, true);
+            _playerHealth?.TakeDamage(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Damage, true);
         }
     }
 
