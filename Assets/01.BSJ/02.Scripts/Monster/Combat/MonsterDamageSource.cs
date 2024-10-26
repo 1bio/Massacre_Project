@@ -9,6 +9,11 @@ public class MonsterDamageSource : MonoBehaviour
     private bool _canTakeDamage = true;
     [SerializeField] private float _damageInterval = 1.5f;
 
+    public void SetMonster(Monster monster)
+    {
+        _monster = monster;
+    }
+
     private void Awake()
     {
         _monster = GetComponentInParent<Monster>();

@@ -84,7 +84,7 @@ public class Monster : MonoBehaviour
 
         if (p_monsterSkillDatas.Length > 0)
         {
-            MonsterParticleController = new MonsterParticleController(p_monsterSkillDatas, VFXContainerTransform);
+            MonsterParticleController = new MonsterParticleController(p_monsterSkillDatas, VFXContainerTransform, this);
         }
     }
 
@@ -119,7 +119,6 @@ public class Monster : MonoBehaviour
 
     public void RePlayVFX(string vfxNameWithScale)
     {
-        MonsterParticleController.RePlayVFX(vfxNameWithScale);
         if (vfxNameWithScale.Contains('_'))
         {
             string[] parts = vfxNameWithScale.Split('_');

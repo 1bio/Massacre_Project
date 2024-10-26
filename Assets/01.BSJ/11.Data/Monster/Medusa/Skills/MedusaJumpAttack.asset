@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MedusaJumpAttack
   m_EditorClassIdentifier: 
   _vfx:
-  - {fileID: 99785806984778513, guid: 459a72c585d0e094ea6297cfc5c42760, type: 3}
-  _cooldownThreshold: 2
+  - {fileID: 1949624779417528, guid: d8ee7b1fd148e334e89c74f7b6b6899e, type: 3}
+  _cooldownThreshold: 20
   _damage: 20
-  _range: 4
+  _range: 6
   _castTime: 0

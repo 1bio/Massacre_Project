@@ -4,26 +4,38 @@ using UnityEngine;
 
 public class Medusa : Monster
 {
+    private float _jumpSpeed = 10f;
     private bool _isJumping = false;
+
+    private float _spinSpeed = 5f;
+    private bool _isSpinning = false;
 
     public enum JumpAttackAnimationName
     {
         JumpAttack
     }
 
+    public enum SpinAttackAnimationName
+    {
+        SpinAttack
+    }
+
     private void Update()
     {
         if (MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth > 0)
         {
-            JumpAttack();
+            SkillAttackMove();
         }
     }
 
-    private void JumpAttack()
+    private void SkillAttackMove()
     {
         if (_isJumping &&
             Vector3.Distance(transform.position, MovementController.Astar.TargetTransform.position) > 1)
-            MovementController.CharacterController.SimpleMove(MovementController.Direction * 10f);
+            MovementController.CharacterController.SimpleMove(MovementController.Direction * _jumpSpeed);
+        else if (_isSpinning &&
+            Vector3.Distance(transform.position, MovementController.Astar.TargetTransform.position) > 1)
+            MovementController.CharacterController.SimpleMove(MovementController.Direction * _spinSpeed);
     }
 
     // Animation Event
@@ -35,5 +47,15 @@ public class Medusa : Monster
     public void StopJumpAttackMove()
     {
         _isJumping = false;
+    }
+
+    public void StartSpinAttackMove()
+    {
+        _isSpinning = true;
+    }
+
+    public void StopSpinAttackMove()
+    {
+        _isSpinning = false;
     }
 }
