@@ -14,10 +14,10 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public RangeComponent RangeComponent { get; private set; }
 
-    [field: SerializeField] public CoolDownController CoolDownController { get; private set; }
+    [field: SerializeField] public WeaponToggle WeaponToggle { get; private set; }
 
     [field: SerializeField] public CameraShake CameraShake { get; private set; }
-    
+
     [field: SerializeField] public SimpleWeaponTrail WeaponTrail{ get; private set; }
 
     [field: SerializeField] public ParticleEventHandler ParticleEventHandler { get; private set; }
@@ -59,27 +59,15 @@ public class PlayerStateMachine : StateMachine
     {
         PreviousDodgeTime = dodgeTime;
     }
-
+  
     // 초기화
     private void Start()
     {
-        Initialized();
-
         DataManager.instance.SaveData();
 
         ChangeState(new PlayerFreeLookState(this));
     }
 
-    private void Initialized()
-    {
-        CoolDownController.AddSkill("정조준", CoolDownController.ReturnCoolDown("정조준"));
-        CoolDownController.AddSkill("트리플샷", CoolDownController.ReturnCoolDown("트리플샷"));
-        CoolDownController.AddSkill("화살비", CoolDownController.ReturnCoolDown("화살비"));
-
-        CoolDownController.AddSkill("도약베기", CoolDownController.ReturnCoolDown("도약베기"));
-        CoolDownController.AddSkill("화염칼", CoolDownController.ReturnCoolDown("화염칼"));
-        CoolDownController.AddSkill("회전베기", CoolDownController.ReturnCoolDown("회전베기"));
-    }
 
     #region Event Methods
     // Impact
@@ -100,5 +88,11 @@ public class PlayerStateMachine : StateMachine
         ChangeState(new PlayerDeadState(this));
     }*/
     #endregion
+
+    protected void CoolDownEvent(string skillName)
+    {
+        SkillManager.instance.StartCooldown(skillName);
+    }
+
 
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
@@ -17,6 +16,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private float heavyAttackDurationTime = 10f;
 
+
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     
@@ -25,11 +25,11 @@ public class PlayerFreeLookState : PlayerBaseState
     #region abstarct Methods
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(FreeLookWithMelee, CrossFadeDuration);
-
         stateMachine.InputReader.RollEvent += OnRolling;
-        stateMachine.InputReader.AimingEvent += OnAiming; // 도약베기
-        stateMachine.InputReader.SkillEvent += OnSkill; // 회전베기
+        stateMachine.InputReader.AimingEvent += OnAiming;
+        stateMachine.InputReader.SkillEvent += OnSkill;
+
+        stateMachine.Animator.CrossFadeInFixedTime(FreeLookWithMelee, CrossFadeDuration);
     }
 
     public override void Tick(float deltaTime)
@@ -40,32 +40,37 @@ public class PlayerFreeLookState : PlayerBaseState
 
         Rotate(movement, deltaTime); // 회전
 
-        if (Input.GetKeyDown(KeyCode.E)) { Swap(); }
+        if(Input.GetKeyDown(KeyCode.E)) { Swap(); }
 
-        // Attack
-        if (stateMachine.InputReader.IsAttacking && stateMachine.WeaponPrefabs[0].activeSelf)
+        Debug.Log(SkillManager.instance.GetRemainingCooldown("도약베기"));
+        Debug.Log(SkillManager.instance.GetRemainingCooldown("화염칼"));
+        Debug.Log(SkillManager.instance.GetRemainingCooldown("회전베기"));
+
+        // Attacking
+        if (stateMachine.InputReader.IsAttacking)
         {
-            if (stateMachine.CoolDownController.GetRemainingCooldown("화염칼") <= 0 && !DataManager.instance.playerData.skillData[4].isUnlock)
+            if (SkillManager.instance.IsPassiveActive("화염칼"))
             {
                 stateMachine.ChangeState(new PlayerHeavyAttackState(stateMachine, heavyAttackDataIndex));
                 return;
             }
-            else if (stateMachine.CoolDownController.GetRemainingCooldown("화염칼") > 0 && DataManager.instance.playerData.skillData[4].isUnlock)
+            else
             {
                 stateMachine.ChangeState(new PlayerMeleeAttackState(stateMachine, basicAttackDataIndex));
                 return;
             }
         }
 
-        // Idling
+        // 이동 로직
         if (stateMachine.InputReader.MoveValue == Vector2.zero)
         {
             stateMachine.Animator.SetFloat(Velocity, 0f, DampTime, deltaTime);
-            return;
+        }
+        else if(stateMachine.InputReader.MoveValue != Vector2.zero)
+        {
+            stateMachine.Animator.SetFloat(Velocity, 1f, DampTime, deltaTime);
         }
 
-        // Moving
-        stateMachine.Animator.SetFloat(Velocity, 1f, DampTime, deltaTime);
     }
 
     public override void Exit()
@@ -74,6 +79,8 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.InputReader.AimingEvent -= OnAiming;
         stateMachine.InputReader.SkillEvent -= OnSkill;
     }
+
+
     #endregion
 
 
@@ -98,24 +105,21 @@ public class PlayerFreeLookState : PlayerBaseState
     private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
     }
 
     private void OnAiming() // 도약베기 [3]
     {
-        if (stateMachine.CoolDownController.GetRemainingCooldown("도약베기") <= 0f && !DataManager.instance.playerData.skillData[3].isUnlock)
+        if (SkillManager.instance.GetRemainingCooldown("도약베기") <= 0f)
         {
             stateMachine.ChangeState(new PlayerMeleeDashSlashState(stateMachine));
-            return;
         }
     }
 
     private void OnSkill() // 회전베기 [5]
     {
-        if(stateMachine.CoolDownController.GetRemainingCooldown("회전베기") <= 0f && !DataManager.instance.playerData.skillData[5].isUnlock)
+        if(SkillManager.instance.GetRemainingCooldown("회전베기") <= 0f)
         {
             stateMachine.ChangeState(new PlayerMeleeSpinSlashState(stateMachine));
-            return;
         }
     }
     #endregion

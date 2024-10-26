@@ -3992,7 +3992,6 @@ GameObject:
   - component: {fileID: 5227869543375614183}
   - component: {fileID: 1988570932401786285}
   - component: {fileID: 8113685122807652929}
-  - component: {fileID: 5837364901395093339}
   - component: {fileID: 510055835998302173}
   - component: {fileID: 6514519823197895514}
   - component: {fileID: 2335224182043608082}
@@ -4109,7 +4108,6 @@ MonoBehaviour:
   <Health>k__BackingField: {fileID: 5227869543375614183}
   <MeleeComponenet>k__BackingField: {fileID: 2288240251757653765}
   <RangeComponent>k__BackingField: {fileID: 8113685122807652929}
-  <CoolDownController>k__BackingField: {fileID: 5837364901395093339}
   <CameraShake>k__BackingField: {fileID: 510055835998302173}
   <WeaponTrail>k__BackingField: {fileID: 6514519823197895514}
   <ParticleEventHandler>k__BackingField: {fileID: 2335224182043608082}
@@ -4189,18 +4187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingTransform: {fileID: 7184415642696407372}
   projectileSpeed: 30
---- !u!114 &5837364901395093339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4971315938823647004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 136ed635aeeefc04eaba9bea5ef508e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &510055835998302173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4229,8 +4215,8 @@ MonoBehaviour:
   StartPoint: {fileID: 7127332195702783049}
   EndPoint: {fileID: 2331967240235993489}
   TrailMat: {fileID: 2100000, guid: 71da4ca46f22d6e48bf58cd84757d1fe, type: 2}
-  MaxFrame: 10
-  TrailSubs: 4
+  MaxFrame: 5
+  TrailSubs: 6
   StopMultiplier: 2
 --- !u!114 &2335224182043608082
 MonoBehaviour:

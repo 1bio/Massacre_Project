@@ -15,6 +15,7 @@ public class DashSlash : MonoBehaviour
     private void Awake()
     {
         dashSlash = GetDashSlashData();
+
         UpdateUI();
     }
     #endregion
@@ -23,14 +24,16 @@ public class DashSlash : MonoBehaviour
     #region Main Methods
     public void DashSlash_LevelUp() // 버튼 이벤트
     {
-        DataManager.instance.SkillLevelUp("도약베기", 1);
-        UIManager.instance.SelectWindow(false);
-
         // 스킬 잠금 해제
-        if (dashSlash.level > 0)
+        if (dashSlash.level == 0)
         {
             dashSlash.isUnlock = false;
+            SkillManager.instance.AddSkill(dashSlash.skillName, dashSlash.coolDown);
+            Debug.Log("도약베기 얻음!");
         }
+
+        DataManager.instance.SkillLevelUp("도약베기", 1);
+        UIManager.instance.SelectWindow(false);
 
         UpdateUI(); 
     }
