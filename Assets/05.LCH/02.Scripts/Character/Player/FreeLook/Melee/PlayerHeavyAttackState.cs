@@ -68,8 +68,8 @@ public class PlayerHeavyAttackState : PlayerFreeLookState
 
         stateMachine.WeaponToggle.DisableWeapon();
 
-        stateMachine.WeaponTrail.DestroyTrail();
-        stateMachine.ParticleEventHandler.StopParticleSystem();
+//        stateMachine.WeaponTrail.DestroyTrail();
+//        stateMachine.ParticleEventHandler.StopParticleSystem();
     }
     #endregion
 

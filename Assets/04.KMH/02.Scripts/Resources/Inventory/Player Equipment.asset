@@ -32,15 +32,7 @@ MonoBehaviour:
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 02000000
-      parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 0300000002000000
+    - AllowedItems: 08000000
       parent: {fileID: 0}
       ID: -1
       item:
@@ -49,6 +41,54 @@ MonoBehaviour:
         buffs: []
       amount: 0
     - AllowedItems: 04000000
+      parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 09000000
+      parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 06000000
+      parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 0a000000
+      parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 07000000
+      parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 02000000
+      parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 03000000
       parent: {fileID: 0}
       ID: -1
       item:

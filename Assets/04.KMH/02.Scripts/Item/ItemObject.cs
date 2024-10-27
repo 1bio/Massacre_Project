@@ -11,6 +11,11 @@ public enum ItemType
     Shield,
     Boots,
     Chest,
+    Back,
+    Pants,
+    Glove,
+    Shoulder,
+    Belt,
     Default
 }
 

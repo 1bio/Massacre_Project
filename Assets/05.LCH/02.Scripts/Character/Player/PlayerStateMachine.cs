@@ -1,4 +1,4 @@
-﻿using MasterRealisticFX;
+﻿//using MasterRealisticFX;
 using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
@@ -22,9 +22,9 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public VFXController VFXController { get; private set; }
 
-    [field: SerializeField] public SimpleWeaponTrail WeaponTrail{ get; private set; }
+//    [field: SerializeField] public SimpleWeaponTrail WeaponTrail{ get; private set; }
 
-    [field: SerializeField] public ParticleEventHandler ParticleEventHandler { get; private set; }
+//    [field: SerializeField] public ParticleEventHandler ParticleEventHandler { get; private set; }
 
 
     [field: Header("컴포넌트")]

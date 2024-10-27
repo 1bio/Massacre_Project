@@ -60,7 +60,7 @@ public class PlayerMeleeAttackState : PlayerFreeLookState
 
     public override void Exit()
     {
-        stateMachine.WeaponTrail.DestroyTrail();
+//        stateMachine.WeaponTrail.DestroyTrail();
 
         stateMachine.WeaponToggle.DisableWeapon();
 
