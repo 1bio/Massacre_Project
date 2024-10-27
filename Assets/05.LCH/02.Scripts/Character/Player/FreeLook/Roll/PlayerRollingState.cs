@@ -23,8 +23,6 @@ public class PlayerRollingState : PlayerBaseState
     #region abstract Methods 
     public override void Enter()
     {
-        Debug.Log("123");
-
         stateMachine.Health.SetInvulnerable(true);
 
         stateMachine.Animator.CrossFadeInFixedTime(RollAnimationHash, CrossFadeDuration);

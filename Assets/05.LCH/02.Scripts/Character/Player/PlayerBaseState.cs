@@ -56,8 +56,8 @@ public abstract class PlayerBaseState : State
     // 회전(마우스 공격 방향)
     protected void Aiming()
     {
-        if (stateMachine.InputReader.IsAiming == false)
-            return;
+        /*if (stateMachine.InputReader.IsAiming == false)
+            return;*/
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 

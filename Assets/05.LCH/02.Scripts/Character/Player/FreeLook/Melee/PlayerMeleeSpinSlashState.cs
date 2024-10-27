@@ -42,7 +42,6 @@ public class PlayerMeleeSpinSlashState : PlayerFreeLookState
         if (normalizedTime >= ExitTime)
         {
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
-            return;
         }
 
     }

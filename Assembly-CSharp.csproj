@@ -104,6 +104,7 @@
     <Compile Include="Assets\InfinityPBR\Equipment System\Scripts\BlendShapesManager.cs" />
     <Compile Include="Assets\InfinityPBR\_InfinityPBR - Medusa\Scripts\medusaTypeControl.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\System\SkillManager.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Medusa\Skills\MedusaSpinAttack.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Combat\VFXController.cs" />
     <Compile Include="Assets\05.LCH\02.Scripts\Character\Player\FreeLook\Melee\PlayerMeleeSpinSlashState.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Medusa\Skills\MedusaJumpAttack.cs" />

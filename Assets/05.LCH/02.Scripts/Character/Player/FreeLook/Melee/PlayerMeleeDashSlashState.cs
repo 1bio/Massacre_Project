@@ -51,7 +51,6 @@ public class PlayerMeleeDashSlashState : PlayerFreeLookState
         if (currentInfo.normalizedTime >= ExitTime)
         {
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
-            return;
         }
     }
 

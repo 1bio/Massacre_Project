@@ -65,12 +65,10 @@ public class PlayerFreeLookState : PlayerBaseState
         if (stateMachine.InputReader.MoveValue == Vector2.zero)
         {
             stateMachine.Animator.SetFloat(Velocity, 0f, DampTime, deltaTime);
-        }
-        else if(stateMachine.InputReader.MoveValue != Vector2.zero)
-        {
-            stateMachine.Animator.SetFloat(Velocity, 1f, DampTime, deltaTime);
+            return;
         }
 
+        stateMachine.Animator.SetFloat(Velocity, 1f, DampTime, deltaTime);
     }
 
     public override void Exit()
@@ -93,7 +91,6 @@ public class PlayerFreeLookState : PlayerBaseState
             stateMachine.WeaponPrefabs[1].SetActive(true);  // 원거리 무기 활성화
 
             stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
-            return;
         }
     }
     #endregion
@@ -103,7 +100,6 @@ public class PlayerFreeLookState : PlayerBaseState
     private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
     }
 
     private void OnAiming() // 도약베기 [3]

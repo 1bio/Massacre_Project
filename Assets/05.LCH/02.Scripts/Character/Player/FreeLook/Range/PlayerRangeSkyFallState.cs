@@ -23,7 +23,6 @@ public class PlayerRangeSkyFallState : PlayerRangeFreeLookState
         if (currentInfo.normalizedTime > ExitTime)
         {
             stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
-            return;
         }
     }
 

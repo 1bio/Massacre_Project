@@ -27,10 +27,8 @@ public class PlayerHeavyAttackState : PlayerFreeLookState
 
         stateMachine.MeleeComponenet.SetAttack(attack.Damage, attack.KnockBack);
 
-        stateMachine.WeaponToggle.EnableWeapon();
-
-        stateMachine.WeaponTrail.CreateTrail();
-        stateMachine.ParticleEventHandler.StartParticleSystem();
+        //stateMachine.WeaponTrail.CreateTrail();
+        //stateMachine.ParticleEventHandler.StartParticleSystem();
 
     }
 
@@ -58,7 +56,6 @@ public class PlayerHeavyAttackState : PlayerFreeLookState
             if (!stateMachine.InputReader.IsAttacking)
             {
                 stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
-                return;
             }
         }
 
@@ -112,9 +109,9 @@ public class PlayerHeavyAttackState : PlayerFreeLookState
         if (!stateMachine.InputReader.IsAttacking)
             return;
 
-        if (!stateMachine.InputReader.IsAiming)
+        /*if (!stateMachine.InputReader.IsAiming)
             return;
-
+*/
         stateMachine.ChangeState(new PlayerHeavyAttackState(stateMachine, attack.ComboAttackIndex));
     }
 
@@ -135,7 +132,6 @@ public class PlayerHeavyAttackState : PlayerFreeLookState
     private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
     }
     #endregion
 }

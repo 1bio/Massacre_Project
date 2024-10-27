@@ -38,21 +38,17 @@ public class PlayerRangeFreeLookState : PlayerBaseState
         if (Input.GetKeyDown(KeyCode.E)) { Swap(); }
 
         /*Debug.Log($"화살비 스킬 쿨타임: {SkillManager.instance.GetRemainingCooldown("화살비")}");*/
-
       
-
         // Attack
         if (stateMachine.InputReader.IsAttacking)
         {
             if (SkillManager.instance.IsPassiveActive("트리플샷")) // 트리플샷 [1]
             {
                 stateMachine.ChangeState(new PlayerRangeRapidShotState(stateMachine));
-                return;
             }
             else
             {
                 stateMachine.ChangeState(new PlayerRangeAttackState(stateMachine));
-                return;
             }
         }
 
@@ -62,11 +58,8 @@ public class PlayerRangeFreeLookState : PlayerBaseState
             stateMachine.Animator.SetFloat(RangeVelocity, 0f, DampTime, deltaTime);
             return;
         }
-        else if(stateMachine.InputReader.MoveValue != Vector2.zero)
-        {
-            stateMachine.Animator.SetFloat(RangeVelocity, 1f, DampTime, deltaTime);
-        }
 
+        stateMachine.Animator.SetFloat(RangeVelocity, 1f, DampTime, deltaTime);
     }
 
     public override void Exit()
@@ -97,7 +90,6 @@ public class PlayerRangeFreeLookState : PlayerBaseState
     private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
     }
 
     private void OnAiming() // 정조준 [0]
@@ -105,25 +97,17 @@ public class PlayerRangeFreeLookState : PlayerBaseState
         if (SkillManager.instance.GetRemainingCooldown("정조준") <= 0f && !DataManager.instance.playerData.skillData[0].isUnlock)
         {
             stateMachine.ChangeState(new PlayerRangeAimState(stateMachine));
-            return;
         }
     }
 
     private void OnSkill() // 화살비 [2]
     {
-        AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
-
-        if (currentInfo.normalizedTime > 0.2f)
+        if (SkillManager.instance.GetRemainingCooldown("화살비") <= 0f && !DataManager.instance.playerData.skillData[2].isUnlock)
         {
-            if (SkillManager.instance.GetRemainingCooldown("화살비") <= 0f && !DataManager.instance.playerData.skillData[2].isUnlock && stateMachine.InputReader.IsSkill)
-            {
-                Debug.Log("123");
-                stateMachine.ChangeState(new PlayerRangeSkyFallState(stateMachine));
-                return;
-            }
+            stateMachine.ChangeState(new PlayerRangeSkyFallState(stateMachine));
         }
-
-      
     }
     #endregion
+
+
 }

@@ -23,10 +23,9 @@ public class PlayerRangeAimState : PlayerRangeFreeLookState
         
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        if (!stateMachine.InputReader.IsAiming && currentInfo.normalizedTime >= ExitTime)
+        if (/*!stateMachine.InputReader.IsAiming &&*/ currentInfo.normalizedTime >= ExitTime)
         {
             stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
-            return;
         }
     }
 

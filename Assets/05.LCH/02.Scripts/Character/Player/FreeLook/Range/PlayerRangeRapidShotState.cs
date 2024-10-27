@@ -29,7 +29,6 @@ public class PlayerRangeRapidShotState : PlayerRangeFreeLookState
         if (!stateMachine.InputReader.IsAttacking && normalizedTime >= ExitTime)
         {
             stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
-            return;
         }
     }
 
@@ -44,7 +43,6 @@ public class PlayerRangeRapidShotState : PlayerRangeFreeLookState
     private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
     }
     #endregion
 }

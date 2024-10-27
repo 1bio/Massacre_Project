@@ -23,9 +23,7 @@ public class PlayerMeleeAttackState : PlayerFreeLookState
 
         stateMachine.MeleeComponenet.SetAttack(attack.Damage, attack.KnockBack);
 
-        stateMachine.WeaponToggle.EnableWeapon();
-
-        stateMachine.WeaponTrail.CreateTrail();
+        //stateMachine.WeaponTrail.CreateTrail();
 
         stateMachine.InputReader.RollEvent += OnRolling;
     }
@@ -54,7 +52,6 @@ public class PlayerMeleeAttackState : PlayerFreeLookState
             if (!stateMachine.InputReader.IsAttacking)
             {
                 stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
-                return;
             }
         }
 
@@ -107,8 +104,8 @@ public class PlayerMeleeAttackState : PlayerFreeLookState
         if (!stateMachine.InputReader.IsAttacking)
             return;
 
-        if (!stateMachine.InputReader.IsAiming)
-            return;
+     /*   if (!stateMachine.InputReader.IsAiming)
+            return;*/
 
         stateMachine.ChangeState(new PlayerMeleeAttackState(stateMachine, attack.ComboAttackIndex));
     }
@@ -130,7 +127,6 @@ public class PlayerMeleeAttackState : PlayerFreeLookState
     private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
     }
     #endregion
 }
