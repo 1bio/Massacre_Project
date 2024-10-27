@@ -10,11 +10,11 @@ public class InputReader : MonoBehaviour, InputActions.IPlayerActions
     public Vector2 MoveValue { get; private set; }
 
     public bool IsAttacking { get; private set; } = false;
-
     public bool IsAiming { get; private set; } = false;
+    public bool IsSkill { get; private set; } = false;
+    public bool IsRolling { get; private set; } = false;
 
     public event Action RollEvent;
-
     public event Action AimingEvent;
     public event Action SkillEvent;
 
@@ -59,28 +59,43 @@ public class InputReader : MonoBehaviour, InputActions.IPlayerActions
     // Rolling
     public void OnRoll(InputAction.CallbackContext context)
     {
-        if (!context.performed)
-            return;
-
-        RollEvent?.Invoke();
+        if (context.started && !IsRolling)
+        {
+            IsRolling = true;
+            RollEvent?.Invoke();
+        }
+        else if (context.canceled && IsRolling)
+        {
+            IsRolling = false;
+        }
     }
 
     // Rotating
     public void OnAim(InputAction.CallbackContext context)
     {
-        if (!context.performed)
-            return;
-
-        AimingEvent?.Invoke();
+        if (context.performed && !IsAiming)
+        {
+            IsAiming = true;
+            AimingEvent?.Invoke();
+        }
+        else if (context.canceled && IsAiming)
+        {
+            IsAiming = false;
+        }
     }
 
     // Q Skill
     public void OnSkill(InputAction.CallbackContext context)
     {
-        if (!context.performed)
-            return;
-
-        SkillEvent?.Invoke();
+        if (context.started && !IsSkill)
+        {
+            IsSkill = true;
+            SkillEvent?.Invoke();
+        }
+        else if (context.canceled && IsSkill)
+        {
+            IsSkill = false;
+        }
     }
     #endregion
 }

@@ -39,7 +39,7 @@ public class PlayerMeleeSpinSlashState : PlayerFreeLookState
             }
         }
 
-        if (normalizedTime > 0.8f)
+        if (normalizedTime >= ExitTime)
         {
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
             return;

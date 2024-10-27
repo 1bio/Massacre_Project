@@ -2,7 +2,7 @@
 
 public abstract class PlayerBaseState : State
 {
-    protected PlayerStateMachine stateMachine; // State의 currentState 변수 접근
+    protected PlayerStateMachine stateMachine; 
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {

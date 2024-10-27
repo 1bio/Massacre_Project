@@ -23,7 +23,7 @@ public class SkillManager : MonoBehaviour
 
         foreach (SkillData skill in DataManager.instance.playerData.skillData)
         {
-            if (skill.isPassive) // 스킬이 패시브면
+            if (skill.isPassive && !skill.isUnlock) // 스킬이 패시브면
             {
                 passiveSkills.Add(skill); // 리스트에 추가
             }
@@ -100,9 +100,6 @@ public class SkillManager : MonoBehaviour
 
         foreach (SkillData skill in passiveSkills)
         {
-            if (skill.isUnlock)
-                return;
-
             // 패시브 시간이 종료
             if (activePassives.ContainsKey(skill.skillName) && Time.time >= activePassives[skill.skillName])
             {

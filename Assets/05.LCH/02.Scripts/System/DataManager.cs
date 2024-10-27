@@ -25,12 +25,12 @@ public class DataManager : MonoBehaviour
         {
             // 원거리
             new SkillData("정조준", 0, 20f, 12f, 0f, 0f, true, "1초 동안 힘을 모아 \r\n강력한 화살을 발사합니다", 1.15f, 0.9f, 0f, false), // 스킬 1 [0]
-            new SkillData("트리플샷", 0, 7f, 8f, 0f, 0f, true, "기본 공격 시 3발의 화살을 \r\n연속으로 발사합니다", 1.1f, 0.95f, 0f, false), // 스킬 2 [1]
+            new SkillData("트리플샷", 0, 7f, 7f, 0f, 0f, true, "기본 공격 시 10초 동안 3발의 \r\n화살을 연속으로 발사합니다", 1.1f, 0.95f, 5f, true), // 스킬 2 [1]
             new SkillData("화살비", 0, 0f, 10f, 0f, 0f, true, "하늘에 떨어지는 화살을 \r\n여러 번 발사합니다", 1.05f, 0.95f, 0f, false), // 스킬 3 [2]
 
             // 근거리
             new SkillData("도약베기", 0, 20f, 15f, 0.02f, 0.35f, true, "짧게 도약하며 \r\n근처의 적들을 공격합니다", 1.07f, 0.85f, 0f, false), // 스킬 1 [3]
-            new SkillData("화염칼", 0, 0f, 25f, 20f, 0.35f, true, "8초동안 근거리 무기를 \r\n불로 강화하여 공격합니다", 1.13f, 0.95f, 8f, true), // 스킬 2 [4]
+            new SkillData("화염칼", 0, 0f, 10f, 20f, 0.35f, true, "12초동안 근거리 무기를 \r\n불로 강화하여 공격합니다", 1.13f, 0.95f, 5f, true), // 스킬 2 [4]
             new SkillData("회전베기", 0, 20f, 12f, 0.005f, 0.35f, true, "1초동안 회전하며 \r\n강력한 힘을 방출합니다", 1.10f, 0.9f, 0f, false), // 스킬 3 [5]
         };
         

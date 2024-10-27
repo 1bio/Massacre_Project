@@ -73,7 +73,7 @@ public class PlayerMeleeAttackState : PlayerFreeLookState
 
 
     #region Main Methods
-    protected float GetNormalizedTime(Animator animator) // 공격 애니메이션 normalizedTime 값 리턴
+    private float GetNormalizedTime(Animator animator) // 애니메이션 normalizedTime 값 리턴
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
         AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);

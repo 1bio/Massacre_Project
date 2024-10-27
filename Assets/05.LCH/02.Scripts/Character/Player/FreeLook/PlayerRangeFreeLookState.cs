@@ -10,20 +10,21 @@ public class PlayerRangeFreeLookState : PlayerBaseState
 
     public readonly float DampTime = 0.1f;
 
+    public readonly float ExitTime = 0.8f;
+
 
     public PlayerRangeFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
 
-
     #region abstarct Methods
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(FreeLookWithRange, CrossFadeDuration);
-
         stateMachine.InputReader.RollEvent += OnRolling;
         stateMachine.InputReader.AimingEvent += OnAiming; // 정조준
         stateMachine.InputReader.SkillEvent += OnSkill; // 화살비
+
+        stateMachine.Animator.CrossFadeInFixedTime(FreeLookWithRange, CrossFadeDuration);
     }
 
     public override void Tick(float deltaTime)
@@ -35,38 +36,44 @@ public class PlayerRangeFreeLookState : PlayerBaseState
         Rotate(movement, deltaTime); // 회전
 
         if (Input.GetKeyDown(KeyCode.E)) { Swap(); }
-/*
-        Debug.Log($"트리플샷 스킬 쿨타임: {stateMachine.CoolDownController.GetRemainingCooldown("트리플샷")}");
+
+        /*Debug.Log($"화살비 스킬 쿨타임: {SkillManager.instance.GetRemainingCooldown("화살비")}");*/
+
+      
 
         // Attack
-        if(stateMachine.InputReader.IsAttacking && stateMachine.CoolDownController.GetRemainingCooldown("트리플샷") <= 0)
+        if (stateMachine.InputReader.IsAttacking)
         {
-            stateMachine.ChangeState(new PlayerRangeRapidShotState(stateMachine));
-            return;
+            if (SkillManager.instance.IsPassiveActive("트리플샷")) // 트리플샷 [1]
+            {
+                stateMachine.ChangeState(new PlayerRangeRapidShotState(stateMachine));
+                return;
+            }
+            else
+            {
+                stateMachine.ChangeState(new PlayerRangeAttackState(stateMachine));
+                return;
+            }
         }
-        
-        if(stateMachine.InputReader.IsAttacking && stateMachine.CoolDownController.GetRemainingCooldown("트리플샷") > 0)
-        {
-            stateMachine.ChangeState(new PlayerRangeAttackState(stateMachine));
-            return;
-        }*/
 
-        // Idle
-        if(stateMachine.InputReader.MoveValue == Vector2.zero)
+        // Idle & Moving
+        if (stateMachine.InputReader.MoveValue == Vector2.zero)
         {
             stateMachine.Animator.SetFloat(RangeVelocity, 0f, DampTime, deltaTime);
             return;
         }
+        else if(stateMachine.InputReader.MoveValue != Vector2.zero)
+        {
+            stateMachine.Animator.SetFloat(RangeVelocity, 1f, DampTime, deltaTime);
+        }
 
-        // Moving
-        stateMachine.Animator.SetFloat(RangeVelocity, 1f, DampTime, deltaTime);
     }
 
     public override void Exit()
     {
         stateMachine.InputReader.RollEvent -= OnRolling;
-        stateMachine.InputReader.AimingEvent -= OnAiming; // 정조준
-        stateMachine.InputReader.SkillEvent -= OnSkill; // 화살비 
+        stateMachine.InputReader.AimingEvent -= OnAiming;
+        stateMachine.InputReader.SkillEvent -= OnSkill; 
     }
     #endregion
 
@@ -93,22 +100,30 @@ public class PlayerRangeFreeLookState : PlayerBaseState
         return;
     }
 
-    private void OnAiming() // 정조준
+    private void OnAiming() // 정조준 [0]
     {
-        /*if (stateMachine.CoolDownController.GetRemainingCooldown("정조준") <= 0f)
+        if (SkillManager.instance.GetRemainingCooldown("정조준") <= 0f && !DataManager.instance.playerData.skillData[0].isUnlock)
         {
             stateMachine.ChangeState(new PlayerRangeAimState(stateMachine));
             return;
-        }*/
+        }
     }
 
-    private void OnSkill() // 화살비
+    private void OnSkill() // 화살비 [2]
     {
-       /* if(stateMachine.CoolDownController.GetRemainingCooldown("화살비") <= 0f)
+        AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
+
+        if (currentInfo.normalizedTime > 0.2f)
         {
-            stateMachine.ChangeState(new PlayerRangeSkyFallState(stateMachine));
-            return;
-        }*/
+            if (SkillManager.instance.GetRemainingCooldown("화살비") <= 0f && !DataManager.instance.playerData.skillData[2].isUnlock && stateMachine.InputReader.IsSkill)
+            {
+                Debug.Log("123");
+                stateMachine.ChangeState(new PlayerRangeSkyFallState(stateMachine));
+                return;
+            }
+        }
+
+      
     }
     #endregion
 }

@@ -4,7 +4,6 @@ public class PlayerRangeRapidShotState : PlayerRangeFreeLookState
 {
     public readonly int RapidShotAnimationHash = Animator.StringToHash("RapidShot@Range"); // 연발 애니메이션 해쉬
 
-
     public PlayerRangeRapidShotState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -12,18 +11,22 @@ public class PlayerRangeRapidShotState : PlayerRangeFreeLookState
     #region abstarct Methods
     public override void Enter()
     {
+        stateMachine.InputReader.RollEvent += OnRolling;
+
         stateMachine.Animator.CrossFadeInFixedTime(RapidShotAnimationHash, CrossFadeDuration);
 
-        stateMachine.InputReader.RollEvent += OnRolling;
+        Aiming();
     }
 
     public override void Tick(float deltaTime)
     {
-        Aiming();
+        Move(deltaTime);
 
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        if(currentInfo.normalizedTime > 0.8f)
+        float normalizedTime = currentInfo.normalizedTime;
+
+        if (!stateMachine.InputReader.IsAttacking && normalizedTime >= ExitTime)
         {
             stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
