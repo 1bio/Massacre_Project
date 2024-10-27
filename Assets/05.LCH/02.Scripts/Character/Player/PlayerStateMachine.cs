@@ -12,11 +12,15 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public MeleeComponenet MeleeComponenet { get; private set; }
 
-    [field: SerializeField] public RangeComponent RangeComponent { get; private set; }
-
     [field: SerializeField] public WeaponToggle WeaponToggle { get; private set; }
 
+    [field: SerializeField] public RangeComponent RangeComponent { get; private set; }
+
+    [field: SerializeField] public Targeting Targeting { get; private set; }
+
     [field: SerializeField] public CameraShake CameraShake { get; private set; }
+
+    [field: SerializeField] public VFXController VFXController { get; private set; }
 
     [field: SerializeField] public SimpleWeaponTrail WeaponTrail{ get; private set; }
 

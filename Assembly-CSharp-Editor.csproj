@@ -78,6 +78,7 @@
     <Compile Include="Assets\InfinityPBR\Equipment System\Editor\BlendShapesPresetManagerEditor.cs" />
     <Compile Include="Assets\InfinityPBR\Editor\SFB_AudioSnapshotExporterEditor.cs" />
     <Compile Include="Assets\InfinityPBR\Equipment System\Editor\BlendShapesManagerEditor.cs" />
+    <Compile Include="Assets\Hovl Studio\Render Pipelines support\Editor\ShaderChanger.cs" />
     <Compile Include="Assets\InfinityPBR\Editor\ObjExporterScript.cs" />
     <Compile Include="Assets\InfinityPBR\---Game Modules\Audio Clip Combiner\Editor\AudioClipCombinerEditor.cs" />
     <Compile Include="Assets\InfinityPBR\Equipment System\Editor\WardrobePrefabManagerEditor.cs" />

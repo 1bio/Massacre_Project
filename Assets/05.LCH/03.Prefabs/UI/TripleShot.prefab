@@ -125,7 +125,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCFE8\uD0C0\uC784: 7\uCD08"
+  m_text: "\uCFE8\uD0C0\uC784: 7\uCD08\n<size=100%>\uC9C0\uC18D\uC2DC\uAC04 : 10\uCD08</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6504ab708fe4b44c967747360d264cf, type: 2}
   m_sharedMaterial: {fileID: -1833563930360725914, guid: f6504ab708fe4b44c967747360d264cf, type: 2}

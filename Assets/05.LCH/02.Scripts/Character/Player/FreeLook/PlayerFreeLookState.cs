@@ -10,11 +10,11 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public readonly float DampTime = 0.1f;
 
+    public readonly float ExitTime = 0.8f;
+
     private int basicAttackDataIndex = 0; 
 
     private int heavyAttackDataIndex = 3;
-
-    private float heavyAttackDurationTime = 10f;
 
 
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -42,14 +42,14 @@ public class PlayerFreeLookState : PlayerBaseState
 
         if(Input.GetKeyDown(KeyCode.E)) { Swap(); }
 
-        Debug.Log(SkillManager.instance.GetRemainingCooldown("도약베기"));
-        Debug.Log(SkillManager.instance.GetRemainingCooldown("화염칼"));
-        Debug.Log(SkillManager.instance.GetRemainingCooldown("회전베기"));
+        //Debug.Log(SkillManager.instance.GetRemainingCooldown("도약베기"));
+        //Debug.Log(SkillManager.instance.GetRemainingCooldown("화염칼"));
+        //Debug.Log(SkillManager.instance.GetRemainingCooldown("회전베기"));
 
         // Attacking
         if (stateMachine.InputReader.IsAttacking)
         {
-            if (SkillManager.instance.IsPassiveActive("화염칼"))
+            if (SkillManager.instance.IsPassiveActive("화염칼")) // 화염칼 [4]
             {
                 stateMachine.ChangeState(new PlayerHeavyAttackState(stateMachine, heavyAttackDataIndex));
                 return;
@@ -61,7 +61,7 @@ public class PlayerFreeLookState : PlayerBaseState
             }
         }
 
-        // 이동 로직
+        // Idle & Moving
         if (stateMachine.InputReader.MoveValue == Vector2.zero)
         {
             stateMachine.Animator.SetFloat(Velocity, 0f, DampTime, deltaTime);
@@ -79,8 +79,6 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.InputReader.AimingEvent -= OnAiming;
         stateMachine.InputReader.SkillEvent -= OnSkill;
     }
-
-
     #endregion
 
 
@@ -105,11 +103,12 @@ public class PlayerFreeLookState : PlayerBaseState
     private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
+        return;
     }
 
     private void OnAiming() // 도약베기 [3]
     {
-        if (SkillManager.instance.GetRemainingCooldown("도약베기") <= 0f)
+        if (SkillManager.instance.GetRemainingCooldown("도약베기") <= 0f && !DataManager.instance.playerData.skillData[3].isUnlock)
         {
             stateMachine.ChangeState(new PlayerMeleeDashSlashState(stateMachine));
         }
@@ -117,7 +116,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private void OnSkill() // 회전베기 [5]
     {
-        if(SkillManager.instance.GetRemainingCooldown("회전베기") <= 0f)
+        if(SkillManager.instance.GetRemainingCooldown("회전베기") <= 0f && !DataManager.instance.playerData.skillData[5].isUnlock)
         {
             stateMachine.ChangeState(new PlayerMeleeSpinSlashState(stateMachine));
         }

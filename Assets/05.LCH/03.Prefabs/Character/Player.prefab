@@ -3441,6 +3441,74 @@ Transform:
   - {fileID: 204223738035705452}
   m_Father: {fileID: 462436847688295774}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4163042486631653708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9062847188956691608}
+  - component: {fileID: 5766231223656928363}
+  - component: {fileID: 3072554632610185159}
+  m_Layer: 12
+  m_Name: Targeting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9062847188956691608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163042486631653708}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1292476421780514367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &5766231223656928363
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163042486631653708}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 12
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &3072554632610185159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163042486631653708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6bb52e7fd1387147a4f06d69cb6e2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Targets>k__BackingField: []
+  <CurrentTarget>k__BackingField: {fileID: 0}
 --- !u!1 &4167282803614939255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3993,6 +4061,7 @@ GameObject:
   - component: {fileID: 1988570932401786285}
   - component: {fileID: 8113685122807652929}
   - component: {fileID: 510055835998302173}
+  - component: {fileID: 540831016574674895}
   - component: {fileID: 6514519823197895514}
   - component: {fileID: 2335224182043608082}
   m_Layer: 12
@@ -4015,6 +4084,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 9062847188956691608}
   - {fileID: 399615830384574668}
   - {fileID: 5889661677158080390}
   - {fileID: 154831846003138860}
@@ -4107,8 +4177,11 @@ MonoBehaviour:
   <ForceReceiver>k__BackingField: {fileID: 1709189097732432438}
   <Health>k__BackingField: {fileID: 5227869543375614183}
   <MeleeComponenet>k__BackingField: {fileID: 2288240251757653765}
+  <WeaponToggle>k__BackingField: {fileID: 1988570932401786285}
   <RangeComponent>k__BackingField: {fileID: 8113685122807652929}
+  <Targeting>k__BackingField: {fileID: 3072554632610185159}
   <CameraShake>k__BackingField: {fileID: 510055835998302173}
+  <VFXController>k__BackingField: {fileID: 540831016574674895}
   <WeaponTrail>k__BackingField: {fileID: 6514519823197895514}
   <ParticleEventHandler>k__BackingField: {fileID: 2335224182043608082}
   <Animator>k__BackingField: {fileID: 1824995815437883135}
@@ -4200,6 +4273,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCam: {fileID: 0}
+--- !u!114 &540831016574674895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4971315938823647004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e202e9e0ef569240bc7865a1311977b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  s_prefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  c_prefabs:
+  - {fileID: 0}
+  castingTime:
+  - 1.2
+  Targeting: {fileID: 3072554632610185159}
 --- !u!114 &6514519823197895514
 MonoBehaviour:
   m_ObjectHideFlags: 0

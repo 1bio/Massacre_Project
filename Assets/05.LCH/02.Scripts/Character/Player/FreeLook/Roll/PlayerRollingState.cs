@@ -23,6 +23,8 @@ public class PlayerRollingState : PlayerBaseState
     #region abstract Methods 
     public override void Enter()
     {
+        Debug.Log("123");
+
         stateMachine.Health.SetInvulnerable(true);
 
         stateMachine.Animator.CrossFadeInFixedTime(RollAnimationHash, CrossFadeDuration);
@@ -44,12 +46,12 @@ public class PlayerRollingState : PlayerBaseState
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
         // FreeLook
-        if (currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[0].activeSelf)
+        if (currentInfo.normalizedTime > 0.8f && stateMachine.WeaponPrefabs[0].activeSelf)
         {
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
             return;
         }
-        else if(currentInfo.normalizedTime >= 0.8f && stateMachine.WeaponPrefabs[1].activeSelf)
+        else if(currentInfo.normalizedTime > 0.8f && stateMachine.WeaponPrefabs[1].activeSelf)
         {
             stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;

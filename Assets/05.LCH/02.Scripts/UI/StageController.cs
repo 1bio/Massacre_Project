@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ public class StageController : MonoBehaviour
 {
     public GameObject stageWindow; 
 
-    public CanvasGroup canvasGroup; // ¾ËÆÄ °ª Á¶Á¤
+    public CanvasGroup canvasGroup; // ì•ŒíŒŒ ê°’ ì¡°ì •
 
     [SerializeField] private float fadeSpeed;
 
@@ -26,18 +26,18 @@ public class StageController : MonoBehaviour
     #region Main Methods
     private IEnumerator Fade(bool isFadeIn)
     {
-        float startAlpha = isFadeIn ? 0f : 1f; // ÆäÀÌµå ÀÎ 
-        float endAlpha = isFadeIn ? 1f : 0f; // ÆäÀÌµå ¾Æ¿ô
+        float startAlpha = isFadeIn ? 0f : 1f; // í˜ì´ë“œ ì¸ 
+        float endAlpha = isFadeIn ? 1f : 0f; // í˜ì´ë“œ ì•„ì›ƒ
         float timer = 0f;
      
         while (timer < 1f)
         {
             timer += Time.unscaledDeltaTime * fadeSpeed;
-            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, timer); // ÆäÀÌµå Ã³¸®
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, timer); // í˜ì´ë“œ ì²˜ë¦¬
             yield return null;
         }
 
-        // ÆäÀÌµå°¡ ³¡³ª°í Ã¢À» ¼û±æ ¶§¸¸ ºñÈ°¼ºÈ­
+        // í˜ì´ë“œê°€ ëë‚˜ê³  ì°½ì„ ìˆ¨ê¸¸ ë•Œë§Œ ë¹„í™œì„±í™”
         if (!isFadeIn)
         {
             stageWindow.SetActive(false);

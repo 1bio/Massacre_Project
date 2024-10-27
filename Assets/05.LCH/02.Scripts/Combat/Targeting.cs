@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Targeting : MonoBehaviour
 {
-    [field: SerializeField] public SphereCollider Collider { get; private set; }
-
     [field: SerializeField] public List<Target> Targets { get; private set; } = new List<Target>();
 
     [field: SerializeField] public Target CurrentTarget { get; private set; }
@@ -20,11 +18,11 @@ public class Targeting : MonoBehaviour
         SelectNearMonster();
     }
 
-    // 감지 범위 설정(원거리 및 근거리)
+    /*// 감지 범위 설정(원거리 및 근거리)
     public void SetRadius(float radius)
     {
         this.Collider.radius = radius; 
-    }
+    }*/
 
 
     #region Collsion Methods

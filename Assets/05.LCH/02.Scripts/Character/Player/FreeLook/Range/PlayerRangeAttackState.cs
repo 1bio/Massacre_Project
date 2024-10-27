@@ -13,18 +13,22 @@ public class PlayerRangeAttackState : PlayerRangeFreeLookState
     #region abstract Methods
     public override void Enter()
     {
+        stateMachine.InputReader.RollEvent += OnRolling;
+
         stateMachine.Animator.CrossFadeInFixedTime(AttackAnimationHash, CrossFadeDuration);
 
-        stateMachine.InputReader.RollEvent += OnRolling;
+        Aiming();
     }
 
     public override void Tick(float deltaTime)
     {
-        Aiming();
+        Move(deltaTime);
 
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        if (!stateMachine.InputReader.IsAttacking && currentInfo.normalizedTime > 1.0f)
+        float normalizedTime = currentInfo.normalizedTime;
+
+        if (!stateMachine.InputReader.IsAttacking && normalizedTime >= ExitTime)
         {
             stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;

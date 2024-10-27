@@ -19,9 +19,11 @@ public class PlayerHeavyAttackState : PlayerFreeLookState
     #region abstract Methods
     public override void Enter()
     {
-        Aiming();
+        stateMachine.InputReader.RollEvent += OnRolling;
 
         stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
+
+        Aiming();
 
         stateMachine.MeleeComponenet.SetAttack(attack.Damage, attack.KnockBack);
 
@@ -30,7 +32,6 @@ public class PlayerHeavyAttackState : PlayerFreeLookState
         stateMachine.WeaponTrail.CreateTrail();
         stateMachine.ParticleEventHandler.StartParticleSystem();
 
-        stateMachine.InputReader.RollEvent += OnRolling;
     }
 
     public override void Tick(float deltaTime)
@@ -66,18 +67,18 @@ public class PlayerHeavyAttackState : PlayerFreeLookState
 
     public override void Exit()
     {
+        stateMachine.InputReader.RollEvent -= OnRolling;
+
         stateMachine.WeaponToggle.DisableWeapon();
 
         stateMachine.WeaponTrail.DestroyTrail();
         stateMachine.ParticleEventHandler.StopParticleSystem();
-
-        stateMachine.InputReader.RollEvent -= OnRolling;
     }
     #endregion
 
 
     #region Main Methods
-    protected float GetNormalizedTime(Animator animator) // 공격 애니메이션 normalizedTime 값 리턴
+    private float GetNormalizedTime(Animator animator) // 애니메이션 normalizedTime 값 리턴
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
         AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);

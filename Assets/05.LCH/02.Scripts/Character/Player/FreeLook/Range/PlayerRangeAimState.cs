@@ -12,9 +12,9 @@ public class PlayerRangeAimState : PlayerRangeFreeLookState
     #region abstract Methods
     public override void Enter()
     {
-        Aiming();
-
         stateMachine.Animator.CrossFadeInFixedTime(AimAnimationHash, CrossFadeDuration);
+
+        Aiming();
     }
 
     public override void Tick(float deltaTime)
@@ -23,7 +23,7 @@ public class PlayerRangeAimState : PlayerRangeFreeLookState
         
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
 
-        if (currentInfo.normalizedTime > 0.8f)
+        if (!stateMachine.InputReader.IsAiming && currentInfo.normalizedTime >= ExitTime)
         {
             stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
