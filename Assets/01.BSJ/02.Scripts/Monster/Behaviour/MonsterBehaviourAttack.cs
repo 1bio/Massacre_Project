@@ -20,6 +20,9 @@ public class MonsterBehaviourAttack : MonsterBehaviour
 
     public override void OnBehaviourUpdate(Monster monster)
     {
+        if (!monster.MonsterStateMachineController.IsAlive())
+            monster.MonsterStateMachineController.OnDead();
+
         _currentTime += Time.deltaTime;
 
         if (!monster.AnimationController.IsLockedInAnimation)
@@ -45,10 +48,10 @@ public class MonsterBehaviourAttack : MonsterBehaviour
 
     private void OnImpact()
     {
-        /*if (!_monster.AnimationController.IsLockedInAnimation)
+        if (!_monster.AnimationController.IsLockedInAnimation)
         {
             _monster.MonsterStateMachineController.OnGotHit();
-        }*/
-        _monster.MonsterStateMachineController.OnGotHit();
+        }
+        //_monster.MonsterStateMachineController.OnGotHit();
     }
 }

@@ -19,15 +19,19 @@ public class MonsterBehaviourSkill : MonsterBehaviour
 
     public override void OnBehaviourUpdate(Monster monster)
     {
+        if (!monster.MonsterStateMachineController.IsAlive())
+            monster.MonsterStateMachineController.OnDead();
+
         monster.AnimationController.AnimatorStateInfo = monster.AnimationController.Animator.GetCurrentAnimatorStateInfo(0);
         _skillData.ActiveSkillTick(monster);
     }
 
     public override void OnBehaviourEnd(Monster monster)
     {
-        _skillData.ActiveSkillExit(monster);
+        _skillData?.ActiveSkillExit(monster);
         monster.MonsterSkillController.CurrentSkillData.CooldownTimer = 0f;
 
-        monster.MovementController.Astar.StartPathCalculation();
+        monster.MonsterParticleController?.AllStopVFXs();
+        monster.MovementController.Astar?.StartPathCalculation();
     }
 }

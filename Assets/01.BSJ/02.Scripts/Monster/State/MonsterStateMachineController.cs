@@ -81,6 +81,14 @@ public class MonsterStateMachineController : MonsterStateMachine
 
     private IEnumerator DeathCheck()
     {
+        yield return new WaitForEndOfFrame();
+
+        if (p_monster.MonsterStateType != MonsterStateType.Death &&
+            !p_monster.AnimationController.AnimatorStateInfo.IsName("Death"))
+        {
+            OnDead();
+        }
+
         yield return new WaitForSeconds(3f);
 
         if(p_monster.gameObject.activeSelf)
