@@ -25,6 +25,9 @@ public class MonsterStateMachineController : MonsterStateMachine
         {
             if (p_monster.MonsterStateType != MonsterStateType.Death)
                 OnDead();
+
+            // 사라지지 않았을 때
+            StartCoroutine(DeathCheck());
         }
         else if (p_monster.MovementController.TargetDetector.IsTargetDetected)
         {
@@ -74,5 +77,13 @@ public class MonsterStateMachineController : MonsterStateMachine
             p_monster.MonsterCombatController.MonsterCombatAbility.IsDead = true;
             return false;
         }
+    }
+
+    private IEnumerator DeathCheck()
+    {
+        yield return new WaitForSeconds(3f);
+
+        if(p_monster.gameObject.activeSelf)
+            p_monster.gameObject.SetActive(false);
     }
 }

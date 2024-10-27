@@ -21,7 +21,8 @@ public class MedusaJumpAttack : MonsterSkillData
 
     private void InitializeValues(Monster monster)
     {
-        _vfxTransform = monster.MonsterParticleController.VFX["SmokeCircle"].transform;
+        _vfxTransform = monster.MonsterParticleController.VFX["Crack"].transform;
+        
 
         _swordObjectTransform = monster.transform.Find(_swordHierarchyPath);
 
@@ -86,7 +87,7 @@ public class MedusaJumpAttack : MonsterSkillData
             int layerMask = (1 << LayerMask.NameToLayer(GameLayers.Ground.ToString()));
             if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, rayLength, layerMask))
             {
-                ActivateVFX(monster.transform.position + monster.transform.forward * _hitSphere, monster);
+                ActivateVFX(monster.transform.position + monster.transform.forward /** _hitSphere*/, monster);
             }
 
             Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red, 2f);
@@ -101,12 +102,13 @@ public class MedusaJumpAttack : MonsterSkillData
         if (_vfxTransform != null)
         {
             _vfxTransform.position = position;
-            monster.MonsterParticleController.RePlayVFX(_vfxTransform.name, _hitSphere / 3);
-            Hit(position, monster);
+            _vfxTransform.rotation = _vfxTransform.rotation = Quaternion.LookRotation(monster.transform.forward);
+            /*monster.MonsterParticleController.RePlayVFX(_vfxTransform.name, _hitSphere / 3);*/
+            /*Hit(position, monster);*/
         }
     }
 
-    private void Hit(Vector3 position, Monster monster)
+    /*private void Hit(Vector3 position, Monster monster)
     {
         int layermask = (1 << LayerMask.NameToLayer(GameLayers.Player.ToString()));
         Collider[] colliders = Physics.OverlapSphere(position, _hitSphere, layermask);
@@ -118,6 +120,6 @@ public class MedusaJumpAttack : MonsterSkillData
                 collider.gameObject.GetComponent<Health>()?.TakeDamage(monster.MonsterSkillController.CurrentSkillData.Damage, true);
             }
         }
-    }
+    }*/
 
 }

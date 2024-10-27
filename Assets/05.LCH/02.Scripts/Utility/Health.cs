@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -77,7 +78,10 @@ public class Health : MonoBehaviour
         else // 몬스터 체력 초기화
         {
             Monster monster = GetComponent<Monster>();
+            currentHealth = Mathf.Max(monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth - damage, 0);
             monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth = currentHealth;
+            if (!monster.MovementController.TargetDetector.IsTargetDetected)
+                monster.MovementController.TargetDetector.IsTargetDetected = true;
         }
     }
 
