@@ -11,6 +11,7 @@ public class MonsterBehaviourGotHit : MonsterBehaviour
     public override void OnBehaviourStart(Monster monster)
     {
         _monster = monster;
+        _monster.MonsterCombatController.Health.SetHealth(monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth);
 
         moveSpeed = _monster.MonsterCombatController.MonsterCombatAbility.MoveSpeed;
 

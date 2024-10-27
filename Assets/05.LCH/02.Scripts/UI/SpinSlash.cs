@@ -15,6 +15,7 @@ public class SpinSlash : MonoBehaviour
     private void Awake()
     {
         spinSlash = GetSpinSlashData();
+
         UpdateUI();
     }
     #endregion
@@ -23,18 +24,18 @@ public class SpinSlash : MonoBehaviour
     #region Main Methods
     public void SpinSlash_LevelUp() // 버튼 이벤트
     {
+        // 스킬 잠금 해제
+        if (spinSlash.level == 0)
+        {
+            spinSlash.isUnlock = false;
+            SkillManager.instance.AddSkill(spinSlash.skillName, spinSlash.coolDown);
+            Debug.Log("회전베기 얻음!");
+        }
+
         DataManager.instance.SkillLevelUp("회전베기", 1);
         UIManager.instance.SelectWindow(false);
 
-        // 스킬 잠금 해제
-        if (spinSlash.level > 0)
-        {
-            spinSlash.isUnlock = false;
-        }
-
         UpdateUI(); // 차징샷 UI
-
-        Destroy(gameObject); // UI 프리팹 제거
     }
 
     // 텍스트 업데이트

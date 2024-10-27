@@ -19,7 +19,7 @@ public class MonsterBehaviourSpawn : MonsterBehaviour
         monster.AnimationController.PlayIdleAnimation();
         //monster.AnimationController.ObjectFadeInOut.StartFadeIn(_spawnDuration);
 
-        monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
+        //monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
@@ -32,7 +32,7 @@ public class MonsterBehaviourSpawn : MonsterBehaviour
 
     public override void OnBehaviourEnd(Monster monster)
     {
-        monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
+        //monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
     }
 
     private void OnImpact()

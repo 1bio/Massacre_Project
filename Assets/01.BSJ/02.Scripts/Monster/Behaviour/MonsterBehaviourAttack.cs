@@ -8,11 +8,12 @@ public class MonsterBehaviourAttack : MonsterBehaviour
     private Monster _monster;
     private bool _hasAttacked = false;
     private float _currentTime = 0;
-    private float _attackAngleThreshold = 20f;
+    private float _attackAngleThreshold = 5f;
 
     public override void OnBehaviourStart(Monster monster)
     {
         _monster = monster;
+        _monster.MonsterCombatController.Health.SetHealth(monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth);
 
         monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
     }
@@ -44,9 +45,10 @@ public class MonsterBehaviourAttack : MonsterBehaviour
 
     private void OnImpact()
     {
-        if (Vector3.Angle(_monster.transform.forward, _monster.MovementController.Direction) > _attackAngleThreshold)
+        /*if (!_monster.AnimationController.IsLockedInAnimation)
         {
             _monster.MonsterStateMachineController.OnGotHit();
-        }
+        }*/
+        _monster.MonsterStateMachineController.OnGotHit();
     }
 }

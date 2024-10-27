@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MonsterSkillData", menuName = "Data/MonsterSKillData/Minotaur/RamAttack")]
+[CreateAssetMenu(fileName = "MinotaurRamAttack", menuName = "Data/MonsterSKillData/Minotaur/RamAttack")]
 public class MinotaurRamAttack : MonsterSkillData
 {
     private Minotaur _minotaur;
+    private Transform _vfxTransform;
 
     private int _currentAttackCount;
     private int _maxAttackLimit;    // 최대 공격 횟수
@@ -21,8 +22,15 @@ public class MinotaurRamAttack : MonsterSkillData
 
     //private Indicator _indicator;
 
-    private void InitializeValues()
+    private void InitializeValues(Monster monster)
     {
+        _minotaur = (Minotaur)monster;
+        
+        // VFX 초기화
+        _vfxTransform = monster.MonsterParticleController.VFX["SmokeCircle"].transform;
+        _vfxTransform.SetParent(monster.gameObject.transform);
+        _vfxTransform.localPosition = Vector3.zero;
+
         _currentAttackCount = 0;
         _maxAttackLimit = 3;
 
@@ -35,8 +43,8 @@ public class MinotaurRamAttack : MonsterSkillData
 
     public override void ActiveSkillEnter(Monster monster)
     {
-        InitializeValues();
-        _minotaur = (Minotaur) monster;
+        InitializeValues(monster);
+        
         monster.ObjectTrail.gameObject.SetActive(true);
 
         //_indicator = monster.GetComponentInChildren<Indicator>(true);
@@ -126,7 +134,7 @@ public class MinotaurRamAttack : MonsterSkillData
                 monster.AnimationController.PlaySkillAnimation(Minotaur.RamAttackAnimationName.RamAttack.ToString());
                 _hasHitObject = true;
 
-                _hit.collider.gameObject.GetComponentInParent<PlayerHealth>().TakeDamage(monster.MonsterSkillController.CurrentSkillData.Damage);
+                _hit.collider.gameObject.GetComponentInParent<Health>().TakeDamage(monster.MonsterSkillController.CurrentSkillData.Damage, true);
             }
         }
         else if (_hit.collider.gameObject.layer == LayerMask.NameToLayer(GameLayers.Obstacle.ToString()))

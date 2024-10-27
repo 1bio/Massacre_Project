@@ -38,6 +38,7 @@ public abstract class PlayerBaseState : State
         Move(Vector3.zero, deltaTime);
     }
 
+
     // 회전(이동 키 입력 방향)
     protected void Rotate(Vector3 movement, float deltaTime)
     {
@@ -68,6 +69,7 @@ public abstract class PlayerBaseState : State
             stateMachine.transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         }
     }
+
 
     // 삭제 예정
     /*    // 공격 시 회전 보정

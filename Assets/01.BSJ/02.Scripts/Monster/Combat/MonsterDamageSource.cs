@@ -1,32 +1,32 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterDamageSource : MonoBehaviour
 {
-    private Health _playerHealth;
     private Monster _monster;
+    private Health _playerHealth;
 
     private bool _canTakeDamage = true;
     [SerializeField] private float _damageInterval = 1.5f;
 
+    public void SetMonster(Monster monster)
+    {
+        _monster = monster;
+    }
+
     private void Awake()
     {
-        _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         _monster = GetComponentInParent<Monster>();
+        _playerHealth = GameObject.Find("Player").GetComponent<Health>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon)
+        if (_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon &&
+            other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()))
         {
-            if (other.CompareTag("Player"))
-            {
-                if (_playerHealth == null)
-                    return;
-
-                _playerHealth.TakeDamage(20); // 데미지 가져와서 넣기
-            }
+            Debug.Log("Player Hit");
+            _playerHealth?.TakeDamage(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Damage, true);
         }
     }
 
@@ -34,19 +34,19 @@ public class MonsterDamageSource : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()) && _canTakeDamage)
         {
+            Debug.LogWarning(other.name);
             if (_playerHealth != null)
             {
-                StartCoroutine(DealDamageOverTime());
+                StartCoroutine(DealDamageOverTime(_playerHealth));
             }
         }
     }
 
-    private IEnumerator DealDamageOverTime()
+    private IEnumerator DealDamageOverTime(Health health)
     {
         _canTakeDamage = false;
 
-        _playerHealth.TakeDamage(_monster.MonsterSkillController.CurrentSkillData.Damage); // 데미지 가져와서 넣기
-        Debug.Log("Player Hit");
+        health.TakeDamage(_monster.MonsterSkillController.CurrentSkillData.Damage, true);
 
         yield return new WaitForSeconds(_damageInterval);
 

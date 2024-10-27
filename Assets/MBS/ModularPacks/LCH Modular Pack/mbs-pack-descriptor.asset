@@ -67,25 +67,11 @@ TextAsset:
     \"type\": 3\n                        },\n                        {\n                           
     \"instanceID\": 0\n                        }\n                    ]\n               
     }\n            ]\n        }\n    ],\n    \"_decoratorGroups\": [\n        {\n           
-    \"guid\": \"f929283d7cac4f10add6cbf48e0e5628\",\n            \"name\": \"grid_1\",\n           
-    \"_modules\": [\n                {\n                    \"guid\": \"45785cabdffa4eb9b7b4bd2493f548eb\",\n                   
-    \"name\": \"grid_1\",\n                    \"prefabs\": [\n                       
-    {\n                            \"fileID\": 5960410136848283905,\n                           
-    \"guid\": \"9a21a7e2db8009a4fae2206198fb6996\",\n                           
-    \"type\": 3\n                        }\n                    ]\n               
-    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
-    },\n        {\n            \"guid\": \"395719005f934fccb9a7d5d7e8534ace\",\n           
-    \"name\": \"grid_2\",\n            \"_modules\": [\n                {\n                   
-    \"guid\": \"a6fa8c7dd4aa47a4947ec535d98e070d\",\n                    \"name\":
-    \"grid_2\",\n                    \"prefabs\": [\n                        {\n                           
-    \"fileID\": 9026282089432075811,\n                            \"guid\": \"2ab40cf29de9ebd47a78c4303f2e3fac\",\n                           
-    \"type\": 3\n                        }\n                    ]\n               
-    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
-    },\n        {\n            \"guid\": \"c5ba79cf37a54422a74bf12579f8cb03\",\n           
-    \"name\": \"pillar_1\",\n            \"_modules\": [\n                {\n                   
-    \"guid\": \"2b2bf7cb41cb4794914e37ba7897bdfc\",\n                    \"name\":
-    \"pillar_1\",\n                    \"prefabs\": [\n                        {\n                           
-    \"fileID\": 8453669980430380928,\n                            \"guid\": \"34759e2cfffada74ea9a9def6f0d82bf\",\n                           
+    \"guid\": \"c5ba79cf37a54422a74bf12579f8cb03\",\n            \"name\": \"pillar_1\",\n           
+    \"_modules\": [\n                {\n                    \"guid\": \"2b2bf7cb41cb4794914e37ba7897bdfc\",\n                   
+    \"name\": \"pillar_1\",\n                    \"prefabs\": [\n                       
+    {\n                            \"fileID\": 8453669980430380928,\n                           
+    \"guid\": \"34759e2cfffada74ea9a9def6f0d82bf\",\n                           
     \"type\": 3\n                        }\n                    ]\n               
     }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
     },\n        {\n            \"guid\": \"3ef210b9b870447e87196d233711e910\",\n           
@@ -95,6 +81,20 @@ TextAsset:
     \"fileID\": 7618217966884193430,\n                            \"guid\": \"7c4666e772db55040b55c207ab004765\",\n                           
     \"type\": 3\n                        }\n                    ]\n               
     }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
+    },\n        {\n            \"guid\": \"802bcfa3b82b4dd0ae615afa31901f05\",\n           
+    \"name\": \"pillar_3\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"44c23aff0e8c48e5ae6d3841f6668f26\",\n                    \"name\":
+    \"pillar_3\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 8493960004957123804,\n                            \"guid\": \"00b8e27f8be7360499fb86378a6d20ac\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
+    },\n        {\n            \"guid\": \"7f798c96dfbc4280835701dd9cb2f6e9\",\n           
+    \"name\": \"pillar_4\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"1c0a9ca444bf47308d37d5a9b2d1ef5e\",\n                    \"name\":
+    \"pillar_4\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 3605857445809111764,\n                            \"guid\": \"9f20a780e69ccb34bbc24fe83334a9f0\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
     },\n        {\n            \"guid\": \"b1ce3cdd2a6e4ebb81946486da78ec06\",\n           
     \"name\": \"pillar_7\",\n            \"_modules\": [\n                {\n                   
     \"guid\": \"4544b443687a469998a2af05638a3f89\",\n                    \"name\":
@@ -102,14 +102,41 @@ TextAsset:
     \"fileID\": 166049548237679889,\n                            \"guid\": \"805e63a7957f86e498fd717ddc5a173a\",\n                           
     \"type\": 3\n                        }\n                    ]\n               
     }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
-    },\n        {\n            \"guid\": \"802bcfa3b82b4dd0ae615afa31901f05\",\n           
-    \"name\": \"New Decor Group\",\n            \"_modules\": [],\n            \"_assetCategoryGuid\":
-    \"\"\n        },\n        {\n            \"guid\": \"7f798c96dfbc4280835701dd9cb2f6e9\",\n           
-    \"name\": \"New Decor Group\",\n            \"_modules\": [],\n            \"_assetCategoryGuid\":
-    \"\"\n        },\n        {\n            \"guid\": \"fe36be510e8e4a8c90b84450380c347d\",\n           
-    \"name\": \"New Decor Group\",\n            \"_modules\": [],\n            \"_assetCategoryGuid\":
-    \"\"\n        },\n        {\n            \"guid\": \"c94aa5480fa847c59a2a59f18ce198bc\",\n           
-    \"name\": \"New Decor Group\",\n            \"_modules\": [],\n            \"_assetCategoryGuid\":
-    \"\"\n        }\n    ],\n    \"_decoratorCategories\": [\n        {\n           
-    \"guid\": \"5ed02f467a2443c7a77f6b068886c963\",\n            \"_name\": \"All\"\n       
+    },\n        {\n            \"guid\": \"f929283d7cac4f10add6cbf48e0e5628\",\n           
+    \"name\": \"grid_1\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"45785cabdffa4eb9b7b4bd2493f548eb\",\n                    \"name\":
+    \"grid_1\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 5960410136848283905,\n                            \"guid\": \"9a21a7e2db8009a4fae2206198fb6996\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
+    },\n        {\n            \"guid\": \"395719005f934fccb9a7d5d7e8534ace\",\n           
+    \"name\": \"grid_2\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"a6fa8c7dd4aa47a4947ec535d98e070d\",\n                    \"name\":
+    \"grid_2\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 9026282089432075811,\n                            \"guid\": \"2ab40cf29de9ebd47a78c4303f2e3fac\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
+    },\n        {\n            \"guid\": \"fe36be510e8e4a8c90b84450380c347d\",\n           
+    \"name\": \"Touch\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"3fd75b2082044e6584fc79530511f474\",\n                    \"name\":
+    \"Touch\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 4916467779054868767,\n                            \"guid\": \"beb0691030ba59c4e94ffd7406eec0ae\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
+    },\n        {\n            \"guid\": \"c94aa5480fa847c59a2a59f18ce198bc\",\n           
+    \"name\": \"Box\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"25fa860a3a2c46bbb52e19f49a823e59\",\n                    \"name\":
+    \"Box\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 1628916006155128105,\n                            \"guid\": \"2a31b6bc2b401a046b0ac66fec97d55e\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
+    },\n        {\n            \"guid\": \"12502c7bc3354923a55a4a37551f63c6\",\n           
+    \"name\": \"Rum\",\n            \"_modules\": [\n                {\n                   
+    \"guid\": \"0c6fb32508d74421828223c451153770\",\n                    \"name\":
+    \"Rum\",\n                    \"prefabs\": [\n                        {\n                           
+    \"fileID\": 4835829558058133802,\n                            \"guid\": \"e300ca4f63ac7df468a1dc91d9291585\",\n                           
+    \"type\": 3\n                        }\n                    ]\n               
+    }\n            ],\n            \"_assetCategoryGuid\": \"5ed02f467a2443c7a77f6b068886c963\"\n       
+    }\n    ],\n    \"_decoratorCategories\": [\n        {\n            \"guid\":
+    \"5ed02f467a2443c7a77f6b068886c963\",\n            \"_name\": \"All\"\n       
     }\n    ]\n}"

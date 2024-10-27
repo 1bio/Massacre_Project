@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
@@ -17,24 +16,20 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private float heavyAttackDurationTime = 10f;
 
-    private float heavyAttackEnterTime;
-
-    private float currentTime;
 
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
+    
     }
 
     #region abstarct Methods
     public override void Enter()
     {
+        stateMachine.InputReader.RollEvent += OnRolling;
+        stateMachine.InputReader.AimingEvent += OnAiming;
+        stateMachine.InputReader.SkillEvent += OnSkill;
+
         stateMachine.Animator.CrossFadeInFixedTime(FreeLookWithMelee, CrossFadeDuration);
-
-        stateMachine.InputReader.RollEvent += OnRolling; // 구르기 
-        stateMachine.Health.ImpactEvent += OnImpact; // 피격 
-
-        stateMachine.InputReader.AimingEvent += OnAiming; // 도약베기
-        stateMachine.InputReader.SkillEvent += OnSkill; // 회전베기
     }
 
     public override void Tick(float deltaTime)
@@ -45,52 +40,47 @@ public class PlayerFreeLookState : PlayerBaseState
 
         Rotate(movement, deltaTime); // 회전
 
-        if (Input.GetKeyDown(KeyCode.E)) { Swap(); }
+        if(Input.GetKeyDown(KeyCode.E)) { Swap(); }
 
-        /*Debug.Log($"화염칼 남은 쿨타임: {stateMachine.CoolDownController.GetRemainingCooldown("화염칼")}");*/
+        Debug.Log(SkillManager.instance.GetRemainingCooldown("도약베기"));
+        Debug.Log(SkillManager.instance.GetRemainingCooldown("화염칼"));
+        Debug.Log(SkillManager.instance.GetRemainingCooldown("회전베기"));
 
-        currentTime += Time.time;
-
-        // Attack
-        if (stateMachine.InputReader.IsAttacking && stateMachine.WeaponPrefabs[0].activeSelf)
+        // Attacking
+        if (stateMachine.InputReader.IsAttacking)
         {
-            stateMachine.ChangeState(new PlayerMeleeAttackState(stateMachine, basicAttackDataIndex));
-            return;
-
-           /* if (stateMachine.CoolDownController.GetRemainingCooldown("화염칼") <= 0 && currentTime - heavyAttackDurationTime >= heavyAttackEnterTime
-                && !DataManager.instance.playerData.skillData[4].isUnlock)
+            if (SkillManager.instance.IsPassiveActive("화염칼"))
             {
-                heavyAttackEnterTime = Time.time;
-
                 stateMachine.ChangeState(new PlayerHeavyAttackState(stateMachine, heavyAttackDataIndex));
                 return;
             }
-            else if (stateMachine.CoolDownController.GetRemainingCooldown("화염칼") > 0 && DataManager.instance.playerData.skillData[4].isUnlock)
+            else
             {
                 stateMachine.ChangeState(new PlayerMeleeAttackState(stateMachine, basicAttackDataIndex));
                 return;
-            }*/
+            }
         }
 
-        // Idling
+        // 이동 로직
         if (stateMachine.InputReader.MoveValue == Vector2.zero)
         {
             stateMachine.Animator.SetFloat(Velocity, 0f, DampTime, deltaTime);
-            return;
+        }
+        else if(stateMachine.InputReader.MoveValue != Vector2.zero)
+        {
+            stateMachine.Animator.SetFloat(Velocity, 1f, DampTime, deltaTime);
         }
 
-        // Moving
-        stateMachine.Animator.SetFloat(Velocity, 1f, DampTime, deltaTime);
     }
 
     public override void Exit()
     {
         stateMachine.InputReader.RollEvent -= OnRolling;
-        stateMachine.Health.ImpactEvent -= OnImpact;
-
         stateMachine.InputReader.AimingEvent -= OnAiming;
         stateMachine.InputReader.SkillEvent -= OnSkill;
     }
+
+
     #endregion
 
 
@@ -104,7 +94,7 @@ public class PlayerFreeLookState : PlayerBaseState
             stateMachine.WeaponPrefabs[0].SetActive(false); // 근접 무기 비활성화
             stateMachine.WeaponPrefabs[1].SetActive(true);  // 원거리 무기 활성화
 
-            stateMachine.ChangeState(new PlayerRangeState(stateMachine));
+            stateMachine.ChangeState(new PlayerRangeFreeLookState(stateMachine));
             return;
         }
     }
@@ -112,36 +102,24 @@ public class PlayerFreeLookState : PlayerBaseState
 
 
     #region Event Methods
-    private void OnRolling() // 구르기
+    private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
-    }
-
-    private void OnImpact() // 피격
-    {
-        if (stateMachine.Health.hitCount == 1)
-        {
-            stateMachine.ChangeState(new PlayerImpactState(stateMachine));
-            return;
-        }
     }
 
     private void OnAiming() // 도약베기 [3]
     {
-        if (stateMachine.CoolDownController.GetRemainingCooldown("도약베기") <= 0f && !DataManager.instance.playerData.skillData[3].isUnlock)
+        if (SkillManager.instance.GetRemainingCooldown("도약베기") <= 0f)
         {
             stateMachine.ChangeState(new PlayerMeleeDashSlashState(stateMachine));
-            return;
         }
     }
 
     private void OnSkill() // 회전베기 [5]
     {
-        if(stateMachine.CoolDownController.GetRemainingCooldown("회전베기") <= 0f && !DataManager.instance.playerData.skillData[5].isUnlock)
+        if(SkillManager.instance.GetRemainingCooldown("회전베기") <= 0f)
         {
             stateMachine.ChangeState(new PlayerMeleeSpinSlashState(stateMachine));
-            return;
         }
     }
     #endregion

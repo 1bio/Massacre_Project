@@ -12,18 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01027fa622f7dde4dad3d6d34f9f8fd6, type: 3}
   m_Name: Minotaur Data
   m_EditorClassIdentifier: 
-  _moveSpeed: 4
-  _turnSpeed: 300
+  _moveSpeed: 3.3
+  _turnSpeed: 600
   _monsterHealth:
     _currentHealth: 0
     _maxHealth: 100
   _monsterAttack:
     _damage: 0
-    _range: 2
+    _range: 1.8
     _cooldownThreshold: 3
     _totalCount: 3
-  _monsterTargetDistance:
-    _minTargetDistance: 0
-    _maxTargetDistance: 30
-    _idealTargetDistance: 2
-    _idealTargetDistanceThreshold: 0

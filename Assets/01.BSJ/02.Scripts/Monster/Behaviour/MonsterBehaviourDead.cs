@@ -8,7 +8,7 @@ public class MonsterBehaviourDead : MonsterBehaviour
 
     public override void OnBehaviourStart(Monster monster)
     {
-        monster.MonsterParticleController.AllStopVFXs();
+        monster.MonsterParticleController?.AllStopVFXs();
         monster.AnimationController.PlayDeathAnimation();
         _monsterObj = monster.gameObject;
 

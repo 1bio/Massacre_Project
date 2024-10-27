@@ -13,7 +13,6 @@ public class MonsterBehaviourSkill : MonsterBehaviour
         monster.AnimationController.IsLockedInAnimation = true;
 
         _monster = monster;
-        /*monster.MonsterCombatController.Health.ImpactEvent += OnImpact;*/
         _skillData = monster.MonsterSkillController.CurrentSkillData;
         _skillData.ActiveSkillEnter(monster);
     }
@@ -30,12 +29,5 @@ public class MonsterBehaviourSkill : MonsterBehaviour
         monster.MonsterSkillController.CurrentSkillData.CooldownTimer = 0f;
 
         monster.MovementController.Astar.StartPathCalculation();
-
-        /*monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;*/
-    }
-
-    private void OnImpact()
-    {
-
     }
 }

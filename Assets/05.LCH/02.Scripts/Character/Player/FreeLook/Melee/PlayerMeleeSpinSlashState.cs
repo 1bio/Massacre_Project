@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMeleeSpinSlashState : PlayerFreeLookState
@@ -11,7 +8,7 @@ public class PlayerMeleeSpinSlashState : PlayerFreeLookState
 
     private float ForceTime;
 
-    private float FrameTimeLimit = 1f;
+    private float FrameLimit = 1f;
 
 
     public PlayerMeleeSpinSlashState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -21,11 +18,9 @@ public class PlayerMeleeSpinSlashState : PlayerFreeLookState
     #region abstarct Methods
     public override void Enter()
     {
-        SetForce();
-
         stateMachine.Animator.CrossFadeInFixedTime(SpinSlashAnimationHash, CrossFadeDuration);
 
-        stateMachine.Health.ImpactEvent += OnImpact;
+        SetForce();
     }
 
     public override void Tick(float deltaTime)
@@ -36,7 +31,7 @@ public class PlayerMeleeSpinSlashState : PlayerFreeLookState
 
         float normalizedTime = currentInfo.normalizedTime;
 
-        if (normalizedTime >= 0f && FrameTimeLimit > normalizedTime)
+        if (normalizedTime >= 0f && FrameLimit > normalizedTime)
         {
             if (ForceTime >= normalizedTime)
             {
@@ -44,16 +39,16 @@ public class PlayerMeleeSpinSlashState : PlayerFreeLookState
             }
         }
 
-        if (!stateMachine.InputReader.IsAttacking && normalizedTime > 0.8)
+        if (normalizedTime > 0.8f)
         {
             stateMachine.ChangeState(new PlayerFreeLookState(stateMachine));
             return;
         }
+
     }
 
     public override void Exit()
     {
-        stateMachine.Health.ImpactEvent -= OnImpact;
     }
     #endregion
 
@@ -65,14 +60,4 @@ public class PlayerMeleeSpinSlashState : PlayerFreeLookState
         ForceTime = DataManager.instance.playerData.skillData[5].forceTime;
     }
     #endregion
-
-
-    #region Event Methods
-    private void OnImpact()
-    {
-        stateMachine.ChangeState(new PlayerImpactState(stateMachine));
-        return;
-    }
-    #endregion
-
 }

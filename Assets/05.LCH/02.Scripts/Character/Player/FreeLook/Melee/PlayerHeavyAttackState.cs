@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class PlayerHeavyAttackState : PlayerBaseState
+public class PlayerHeavyAttackState : PlayerFreeLookState
 {
     private AttackData attack;
 
@@ -24,7 +25,10 @@ public class PlayerHeavyAttackState : PlayerBaseState
 
         stateMachine.MeleeComponenet.SetAttack(attack.Damage, attack.KnockBack);
 
-        stateMachine.Health.ImpactEvent += OnImpact;
+        stateMachine.WeaponToggle.EnableWeapon();
+
+        stateMachine.WeaponTrail.CreateTrail();
+        stateMachine.ParticleEventHandler.StartParticleSystem();
 
         stateMachine.InputReader.RollEvent += OnRolling;
     }
@@ -62,8 +66,12 @@ public class PlayerHeavyAttackState : PlayerBaseState
 
     public override void Exit()
     {
+        stateMachine.WeaponToggle.DisableWeapon();
+
+        stateMachine.WeaponTrail.DestroyTrail();
+        stateMachine.ParticleEventHandler.StopParticleSystem();
+
         stateMachine.InputReader.RollEvent -= OnRolling;
-        stateMachine.Health.ImpactEvent -= OnImpact;
     }
     #endregion
 
@@ -123,15 +131,9 @@ public class PlayerHeavyAttackState : PlayerBaseState
 
 
     #region Event Methods
-    private void OnRolling() // ±¸¸£±â
+    private void OnRolling()
     {
         stateMachine.ChangeState(new PlayerRollingState(stateMachine));
-        return;
-    }
-
-    private void OnImpact()
-    {
-        stateMachine.ChangeState(new PlayerImpactState(stateMachine));
         return;
     }
     #endregion

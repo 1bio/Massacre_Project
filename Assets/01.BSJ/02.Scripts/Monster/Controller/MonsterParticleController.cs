@@ -6,16 +6,16 @@ using UnityEngine;
 public class MonsterParticleController
 {
     private MonsterSkillData[] _skillDatas;
-    public MonsterParticleController(MonsterSkillData[] skillDatas, Transform parentTransform)
+    public MonsterParticleController(MonsterSkillData[] skillDatas, Transform parentTransform, Monster monster)
     {
         _skillDatas = skillDatas;
         VFX = new Dictionary<string, ParticleSystem>();
-        InstantiateVFX(parentTransform);
+        InstantiateVFX(parentTransform, monster);
     }
 
     public Dictionary<string, ParticleSystem> VFX { get; private set; }
 
-    public void InstantiateVFX(Transform parentTransform)
+    public void InstantiateVFX(Transform parentTransform, Monster monster)
     {
         for (int i = 0; i < _skillDatas.Length; i++)
         {
@@ -36,6 +36,9 @@ public class MonsterParticleController
                 {
                     VFX.Add(vfxPrefab.name, vfxPrefab.GetComponent<ParticleSystem>());
                 }
+
+                MonsterDamageSource damageSource = VFX[vfxPrefab.name].GetComponentInChildren<MonsterDamageSource>();
+                damageSource?.SetMonster(monster);
 
                 VFX[vfxPrefab.name].Stop();
             }
@@ -61,10 +64,16 @@ public class MonsterParticleController
 
     public void RePlayVFX(string vfxName, float scaleFactor)
     {
+        int index = vfxName.IndexOf('(');
+
+        if (index != -1)
+        {
+            vfxName = vfxName.Substring(0, index);
+        }
+
         if (VFX.ContainsKey(vfxName))
         {
-            VFX[vfxName].transform.localScale = Vector3.one;
-            VFX[vfxName].transform.localScale *= scaleFactor;
+            VFX[vfxName].transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
             VFX[vfxName].Stop();
             VFX[vfxName].Clear();
             VFX[vfxName].Play();
