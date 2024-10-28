@@ -27,7 +27,10 @@ public class MonsterStateMachineController : MonsterStateMachine
                 OnDead();
 
             // 사라지지 않았을 때
-            StartCoroutine(DeathCheck());
+            if (p_monster.gameObject.activeSelf)
+            {
+                StartCoroutine(DeathCheck());
+            }
         }
         else if (p_monster.MovementController.TargetDetector.IsTargetDetected)
         {
@@ -47,7 +50,7 @@ public class MonsterStateMachineController : MonsterStateMachine
 
                 OnSkill();
             }
-            else if (p_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsTargetWithinAttackRange ||
+            else if (p_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsTargetWithinAttackRange &&
                     Vector3.Distance(p_monster.MovementController.Astar.TargetTransform.position, this.transform.position)
                     <= p_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Range)
             {
@@ -91,7 +94,6 @@ public class MonsterStateMachineController : MonsterStateMachine
 
         yield return new WaitForSeconds(3f);
 
-        if(p_monster.gameObject.activeSelf)
-            p_monster.gameObject.SetActive(false);
+        p_monster.gameObject.SetActive(false);
     }
 }
