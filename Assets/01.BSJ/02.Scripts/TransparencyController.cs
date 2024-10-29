@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,6 +76,8 @@ public class TransparencyController : MonoBehaviour
     {
         for (int i = 0; i < colors.Length; i++)
         {
+            ChangeWallTransparency(materials[i], true);
+
             colors[i] = materials[i].color;
             colors[i].a = startAlpha;
             materials[i].color = colors[i];
@@ -85,5 +88,51 @@ public class TransparencyController : MonoBehaviour
             colors[i].a = endAlpha;
             materials[i].color = colors[i];
         }
+
+        if (endAlpha >= 1)
+        {
+            for (int i = 0; i < materials.Length; i++)
+                ChangeWallTransparency(materials[i], false);
+        }
     }
+
+    public void ChangeWallTransparency(Material wallMaterial, bool transparent)
+    {
+        if (transparent)
+        {
+            wallMaterial.SetFloat("_Surface", 1);   // Transparent
+            wallMaterial.SetFloat("_Blend", 0);  // 알파 블렌드 모드 설정
+        }
+        else
+        {
+            wallMaterial.SetFloat("_Surface", 0); // Opaque
+        }
+
+        SetupMaterialBlendMode(wallMaterial, transparent);
+    }
+
+    void SetupMaterialBlendMode(Material material, bool transparent)
+    {
+        if (transparent)
+        {
+            material.SetOverrideTag("RenderType", "Transparent");
+            material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            material.SetInt("_ZWrite", 0);
+            material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+            material.SetShaderPassEnabled("ShadowCaster", false);
+        }
+        else
+        {
+            material.SetOverrideTag("RenderType", "");
+            material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+            material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+            material.SetInt("_ZWrite", 1);
+            material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            material.renderQueue = -1;
+            material.SetShaderPassEnabled("ShadowCaster", true);
+        }
+    }
+
 }
