@@ -19,6 +19,6 @@ MonoBehaviour:
     _maxHealth: 100
   _monsterAttack:
     _damage: 0
-    _range: 10
+    _range: 1
     _cooldownThreshold: 3
     _totalCount: 3

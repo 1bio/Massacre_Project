@@ -163,6 +163,7 @@
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Combat\MonsterCombatAbility.cs" />
     <Compile Include="Assets\MedievalKingdomUI\Scripts\Controls\SliderStepController.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Equipment System\Scripts\MatchValue.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\FadeInOut\TransparencyController.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Troll\Troll.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\Medusa\Medusa.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\_InfinityPBR - Minotaur\Scripts\SFB_MinotaurDemo.cs" />
@@ -260,6 +261,7 @@
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Demo Scripts\DemoWardrobe.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\Audio Snapshot Exporter\SFB_AudioSnapshotExporter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\01.BSJ\02.Scripts\Monster\Type\CobraSnake\CobraSnakePoisonThrow.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\_InfinityPBR - Medusa\Scripts\medusaDemo.cs" />
     <Compile Include="Assets\Assets\AssetFiles\MRF\Scripts\BillBoardParticle.cs" />
     <Compile Include="Assets\04.KMH\02.Scripts\Item\FoodObject.cs" />
@@ -268,7 +270,6 @@
     <Compile Include="Assets\04.KMH\02.Scripts\Inventory\StaticInterface.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\01.BSJ\02.Scripts\TransparencyController.cs" />
     <Compile Include="Assets\01.BSJ\02.Scripts\PathFinding\PointNode.cs" />
     <Compile Include="Assets\Assets\AssetFiles\InfinityPBR\_InfinityPBR Human - Humans\Scripts\MaterialColorChanger.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />

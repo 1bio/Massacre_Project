@@ -36,10 +36,15 @@ public class MonsterBehaviourMovement : MonsterBehaviour
     {
         monster.AnimationController.AnimatorStateInfo = monster.AnimationController.Animator.GetCurrentAnimatorStateInfo(0);
 
+        if (monster.MovementController.Astar.OnHasTargetMoved() && !monster.MovementController.Astar.IsCalculating)
+        {
+            monster.MovementController.Astar.StartPathCalculation(monster.transform.position, monster.MovementController.Astar.TargetTransform.position);
+        }
+
         if (monster == null || monster.MovementController.Path == null)
         {
             monster.MonsterStateMachineController.OnIdle();
-            monster.MovementController.Astar.StartPathCalculation();
+            monster.MovementController.Astar.StartPathCalculation(monster.transform.position, monster.MovementController.Astar.TargetTransform.position);
             return;
         }
 

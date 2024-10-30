@@ -10,6 +10,7 @@ public class Astar : MonoBehaviour
     public Transform TargetTransform => _targetTransform;
     public List<PointNode> Path => _path;
     public bool HasTargetMoved => _hasTargetMoved;
+    public bool IsCalculating { get; private set; } = false;
 
 
     private Monster _monster;
@@ -21,7 +22,6 @@ public class Astar : MonoBehaviour
 
     private List<PointNode> _path;
     private bool _hasTargetMoved;
-    private bool _isCalculating = false;
 
     private float _distanceToDetectMovement = 1;
     private float _separationRadius = 2f;
@@ -38,32 +38,18 @@ public class Astar : MonoBehaviour
         _allMonsters = FindObjectsOfType<Monster>().ToList();
     }
 
-    private void Update()
+    public void StartPathCalculation(Vector3 startPos, Vector3 targetPos)
     {
-        if (_targetTransform != null)
-        {
-            OnHasTargetMoved();
-        }
-
-        if (_hasTargetMoved && !_isCalculating)
-        {
-            StartPathCalculation();
-        }
+        StartCoroutine(CalculatePathCoroutine(startPos, targetPos));
     }
 
-
-    public void StartPathCalculation()
+    private IEnumerator CalculatePathCoroutine(Vector3 startPos, Vector3 targetPos)
     {
-        StartCoroutine(CalculatePathCoroutine());
-    }
-
-    private IEnumerator CalculatePathCoroutine()
-    {
-        _isCalculating = true;
+        IsCalculating = true;
         _grid.InitializeNodeValues();
-        _path = FindPath(this.transform.position, _targetTransform.position);
+        _path = FindPath(startPos, targetPos);
         _lastTargetPos = _targetTransform.position;
-        _isCalculating = false;
+        IsCalculating = false;
 
         yield return null; // 다음 프레임으로 이동
     }
@@ -165,15 +151,15 @@ public class Astar : MonoBehaviour
     }
 
 
-    private void OnHasTargetMoved()
+    public bool OnHasTargetMoved()
     {
         if (_lastTargetPos.x + _distanceToDetectMovement < _targetTransform.position.x
             || _lastTargetPos.x - _distanceToDetectMovement > _targetTransform.position.x
             || _lastTargetPos.z + _distanceToDetectMovement < _targetTransform.position.z
             || _lastTargetPos.z - _distanceToDetectMovement > _targetTransform.position.z)
-            _hasTargetMoved = true;
+            return true;
         else
-            _hasTargetMoved = false;
+            return false;
     }
 
     // OnDrawGizmos 메서드 추가하여 path 시각화

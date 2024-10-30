@@ -32,6 +32,6 @@ public class MonsterBehaviourSkill : MonsterBehaviour
         monster.MonsterSkillController.CurrentSkillData.CooldownTimer = 0f;
 
         monster.MonsterParticleController?.AllStopVFXs();
-        monster.MovementController.Astar?.StartPathCalculation();
+        monster.MovementController.Astar?.StartPathCalculation(monster.transform.position, monster.MovementController.Astar.TargetTransform.position);
     }
 }

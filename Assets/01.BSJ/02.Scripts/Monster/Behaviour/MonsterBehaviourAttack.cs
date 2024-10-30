@@ -40,7 +40,7 @@ public class MonsterBehaviourAttack : MonsterBehaviour
 
     public override void OnBehaviourEnd(Monster monster)
     {
-        monster.MovementController.Astar.StartPathCalculation();
+        monster.MovementController.Astar.StartPathCalculation(monster.transform.position, monster.MovementController.Astar.TargetTransform.position);
         monster.MonsterStateMachineController.CurrentBasicAttackCooldownTime = 0;
 
         monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
