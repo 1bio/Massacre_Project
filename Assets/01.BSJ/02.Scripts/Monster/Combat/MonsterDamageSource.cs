@@ -7,6 +7,7 @@ public class MonsterDamageSource : MonoBehaviour
     private Health _playerHealth;
 
     private bool _canTakeDamage = true;
+    [SerializeField] private bool _shouldClear = false;
     [SerializeField] private float _damageInterval = 1.5f;
 
     public void SetMonster(Monster monster)
@@ -34,10 +35,16 @@ public class MonsterDamageSource : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()) && _canTakeDamage)
         {
-            Debug.LogWarning(other.name);
             if (_playerHealth != null)
             {
                 StartCoroutine(DealDamageOverTime(_playerHealth));
+
+                if (_shouldClear)
+                {
+                    ParticleSystem particleSystem = this.gameObject.GetComponent<ParticleSystem>();
+                    particleSystem.Stop();
+                    particleSystem.Clear();
+                }
             }
         }
     }

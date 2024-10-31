@@ -19,7 +19,7 @@ public class TrollChargeAttack : MonsterSkillData
 
     private void InitializeValues(Monster monster)
     {
-        _vfxTransform = monster.MonsterParticleController.VFX["SmokeCircle"].transform;
+        _vfxTransform = monster.MonsterParticleController.VFX["SmokeCircle"][0].transform;
 
         _swordObjectTransform = monster.transform.Find(_swordHierarchyPath);
 

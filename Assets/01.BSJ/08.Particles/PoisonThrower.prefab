@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3744495028093462796
 Transform:
   m_ObjectHideFlags: 0
@@ -56,7 +56,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 0.5
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2.23
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14969,7 +14969,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.64
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -19523,6 +19523,7 @@ GameObject:
   - component: {fileID: 7326950204805247985}
   - component: {fileID: 951056113200615583}
   - component: {fileID: 2652576756477941788}
+  - component: {fileID: 8580027839809649683}
   m_Layer: 0
   m_Name: PoisonThrower
   m_TagString: Untagged
@@ -19541,7 +19542,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3744495028093462796}
   - {fileID: 1896067739179998929}
@@ -24417,6 +24418,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8580027839809649683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2656757342246123783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dabba82d60e8d4940ab0f259f04b7548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shouldStop: 1
+  _damageInterval: 1.5
 --- !u!1 &3588051784713067265
 GameObject:
   m_ObjectHideFlags: 0
@@ -29534,7 +29549,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2.5
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2

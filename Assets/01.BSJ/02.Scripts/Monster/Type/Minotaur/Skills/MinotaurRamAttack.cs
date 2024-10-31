@@ -27,7 +27,7 @@ public class MinotaurRamAttack : MonsterSkillData
         _minotaur = (Minotaur)monster;
         
         // VFX √ ±‚»≠
-        _vfxTransform = monster.MonsterParticleController.VFX["SmokeCircle"].transform;
+        _vfxTransform = monster.MonsterParticleController.VFX["SmokeCircle"][0].transform;
         _vfxTransform.SetParent(monster.gameObject.transform);
         _vfxTransform.localPosition = Vector3.zero;
 

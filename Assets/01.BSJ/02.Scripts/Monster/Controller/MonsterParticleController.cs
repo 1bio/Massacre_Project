@@ -1,19 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class MonsterParticleController
 {
     private MonsterSkillData[] _skillDatas;
+    private Transform _parentTransform;
+    private Monster _monster;
+
     public MonsterParticleController(MonsterSkillData[] skillDatas, Transform parentTransform, Monster monster)
     {
         _skillDatas = skillDatas;
-        VFX = new Dictionary<string, ParticleSystem>();
+        VFX = new Dictionary<string, List<ParticleSystem>>();
         InstantiateVFX(parentTransform, monster);
+        _parentTransform = parentTransform;
+        _monster = monster;
     }
 
-    public Dictionary<string, ParticleSystem> VFX { get; private set; }
+    public Dictionary<string, List<ParticleSystem>> VFX { get; private set; }
+    public Dictionary<string, Transform> VFXTransform { get; private set; } = new Dictionary<string, Transform>();
+    public ParticleSystem CurrentParticleSystem { get; private set; }
 
     public void InstantiateVFX(Transform parentTransform, Monster monster)
     {
@@ -29,18 +39,18 @@ public class MonsterParticleController
                     vfxInstance.transform.localPosition = Vector3.zero;
 
                     ParticleSystem particleSystem = vfxInstance.GetComponent<ParticleSystem>();
+                    MonsterDamageSource damageSource = particleSystem.GetComponentInChildren<MonsterDamageSource>();
+                    damageSource?.SetMonster(monster);
 
-                    VFX.Add(vfxPrefab.name, particleSystem);
+                    particleSystem.Stop();
+                    particleSystem.Clear();
+
+                    if (!VFX.ContainsKey(vfxPrefab.name))
+                    {
+                        VFX[vfxPrefab.name] = new List<ParticleSystem>();
+                    }
+                    VFX[vfxPrefab.name].Add(particleSystem);
                 }
-                else
-                {
-                    VFX.Add(vfxPrefab.name, vfxPrefab.GetComponent<ParticleSystem>());
-                }
-
-                MonsterDamageSource damageSource = VFX[vfxPrefab.name].GetComponentInChildren<MonsterDamageSource>();
-                damageSource?.SetMonster(monster);
-
-                VFX[vfxPrefab.name].Stop();
             }
         }
     }
@@ -56,9 +66,11 @@ public class MonsterParticleController
 
         if (VFX.ContainsKey(vfxName))
         {
-            VFX[vfxName].Stop();
-            VFX[vfxName].Clear();
-            VFX[vfxName].Play();
+            ParticleSystem currentParticle = GetAvailableParticle(vfxName);
+            
+            currentParticle.Stop();
+            currentParticle.Clear();
+            currentParticle.Play();
         }
     }
 
@@ -73,18 +85,61 @@ public class MonsterParticleController
 
         if (VFX.ContainsKey(vfxName))
         {
-            VFX[vfxName].transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
-            VFX[vfxName].Stop();
-            VFX[vfxName].Clear();
-            VFX[vfxName].Play();
+            ParticleSystem currentParticle = GetAvailableParticle(vfxName);
+
+            currentParticle.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+
+            currentParticle.Stop();
+            currentParticle.Clear();
+            currentParticle.Play();
         }
     }
 
-    public void AllStopVFXs()
+    public void AllClearVFXs()  
     {
-        foreach (var vfx in VFX)
+        foreach (KeyValuePair<string, List<ParticleSystem>> vfxs in VFX)
         {
-            vfx.Value.Stop();
+            foreach (ParticleSystem vfx in VFX[vfxs.Key])
+            {
+                vfx.Stop();
+                vfx.Clear();
+            }
         }
+    }
+
+    public ParticleSystem GetAvailableParticle(string vfxName)
+    {
+        if (VFX.ContainsKey(vfxName))
+        {
+            ParticleSystem currentParticle = new ParticleSystem();
+            for (int i = 0; i < VFX[vfxName].Count; i++)
+            {
+                if (Mathf.Approximately(VFX[vfxName][i].time, 0))
+                {
+                    currentParticle = VFX[vfxName][i];
+
+                    return VFX[vfxName][i];
+                }
+            }
+
+            if (currentParticle == null)
+            {
+                GameObject vfxInstance = GameObject.Instantiate(VFX[vfxName][0].gameObject, _parentTransform);
+                vfxInstance.transform.position = VFXTransform.ContainsKey(vfxName) ? VFXTransform[vfxName].position : Vector3.zero;
+                vfxInstance.transform.rotation = VFXTransform.ContainsKey(vfxName) ? VFXTransform[vfxName].rotation : Quaternion.identity;
+                
+                ParticleSystem particleSystem = vfxInstance.GetComponent<ParticleSystem>();
+                MonsterDamageSource damageSource = particleSystem.GetComponentInChildren<MonsterDamageSource>();
+                damageSource?.SetMonster(_monster);
+
+                particleSystem.Stop();
+                particleSystem.Clear();
+
+                VFX[vfxName].Add(particleSystem);
+
+                return particleSystem;
+            }
+        }
+        return null;
     }
 }

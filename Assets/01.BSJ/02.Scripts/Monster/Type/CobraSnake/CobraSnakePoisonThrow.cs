@@ -12,8 +12,9 @@ public class CobraSnakePoisonThrow : MonsterSkillData
     {
         PoisonThrow
     }
+    private CobraSnake _cobraSnake;
 
-    private Dictionary<int, ParticleSystem> _vfx = new Dictionary<int, ParticleSystem>();
+    private Transform _vfxTransform;
 
     private PointGrid _grid;
     private PointNode _targetNode = null;
@@ -27,7 +28,15 @@ public class CobraSnakePoisonThrow : MonsterSkillData
 
     public override void ActiveSkillEnter(Monster monster)
     {
-        _vfx.Clear();
+        _cobraSnake = (CobraSnake) monster;
+
+        monster.MonsterParticleController.VFXTransform["PoisonThrower"] = _cobraSnake.FirePositionTransform;
+
+        _vfxTransform = monster.MonsterParticleController.GetAvailableParticle("PoisonThrower").transform;
+        _vfxTransform.SetParent(_cobraSnake.FirePositionTransform);
+        _vfxTransform.position = _cobraSnake.FirePositionTransform.position;
+        _vfxTransform.rotation = _cobraSnake.FirePositionTransform.rotation;
+
         _grid = monster.MovementController.PointGrid;
         _targetNode = null;
 
@@ -36,20 +45,13 @@ public class CobraSnakePoisonThrow : MonsterSkillData
         _hasAttacked = false;
         _hasMove = false;
         _isMoving = false;
-
-        int index = 0;
-        foreach (ParticleSystem particleSystem in monster.MonsterParticleController.VFX.Values)
-        {
-            _vfx.Add(index, particleSystem);
-            index++;
-        }
     }
 
     public override void ActiveSkillTick(Monster monster)
     {
         if (_targetNode == null)
         {
-            DFS(monster, monster.transform.position, 5);
+            BackDFS(monster, monster.transform.position, 5);
             monster.MovementController.Astar.StartPathCalculation(monster.transform.position, _targetNode.Position);
         }
 
@@ -114,7 +116,7 @@ public class CobraSnakePoisonThrow : MonsterSkillData
        monster.MovementController.Astar.StartPathCalculation(monster.transform.position, monster.MovementController.Astar.TargetTransform.position);
     }  
 
-    private void DFS(Monster monster, Vector3 monsterPosition, int max)
+    private void BackDFS(Monster monster, Vector3 monsterPosition, int max)
     {
         PointNode node = _grid.GetPointNodeFromGridByPosition(monsterPosition);
 
@@ -125,6 +127,34 @@ public class CobraSnakePoisonThrow : MonsterSkillData
 
         Vector3 backwardPosition = _targetNode.Position - monster.transform.forward;
 
-        DFS(monster, backwardPosition, max - 1);
+        BackDFS(monster, backwardPosition, max - 1);
+    }
+
+    private void LeftDFS(Monster monster, Vector3 monsterPosition, int max)
+    {
+        PointNode node = _grid.GetPointNodeFromGridByPosition(monsterPosition);
+
+        if (node == null || max <= 0)
+            return;
+
+        _targetNode = node;
+
+        Vector3 backwardPosition = _targetNode.Position - monster.transform.right;
+
+        LeftDFS(monster, backwardPosition, max - 1);
+    }
+
+    private void RightDFS(Monster monster, Vector3 monsterPosition, int max)
+    {
+        PointNode node = _grid.GetPointNodeFromGridByPosition(monsterPosition);
+
+        if (node == null || max <= 0)
+            return;
+
+        _targetNode = node;
+
+        Vector3 backwardPosition = _targetNode.Position + monster.transform.right;
+
+        RightDFS(monster, backwardPosition, max - 1);
     }
 }

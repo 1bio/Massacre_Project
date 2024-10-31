@@ -5030,6 +5030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabba82d60e8d4940ab0f259f04b7548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shouldClear: 0
   _damageInterval: 1
 --- !u!1 &7443529324241350733
 GameObject:
