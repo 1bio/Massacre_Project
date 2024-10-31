@@ -103,6 +103,7 @@ public class MonsterParticleController
             {
                 vfx.Stop();
                 vfx.Clear();
+                vfx.time = 0;
             }
         }
     }
