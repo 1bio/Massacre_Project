@@ -5,10 +5,21 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+
     public InventoryObject inventory;
     public InventoryObject equipment;
 
     public Attribute[] attributes;
+
+    private Transform boots;
+    private Transform chest;
+    private Transform helmet;
+    private Transform offhand;
+    private Transform sword;
+
+    public Transform weaponTransform;
+    public Transform offhandWristTransform;
+    public Transform offhandHandTransform;
 
     private void Start()
     {
@@ -18,12 +29,13 @@ public class Player : MonoBehaviour
         }
         for (int i = 0; i < equipment.GetSlots.Length; i++)
         {
-            equipment.GetSlots[i].OnBeforeUpdate += OnBeforeSlotUpdate;
-            equipment.GetSlots[i].OnAfterUpdate += OnAfterSlotUpdate;
+            equipment.GetSlots[i].OnBeforeUpdate += OnRemoveItem;
+            equipment.GetSlots[i].OnAfterUpdate += OnAddItem;
         }
     }
 
-    public void OnBeforeSlotUpdate(InventorySlot _slot)
+
+    public void OnRemoveItem(InventorySlot _slot)
     {
         if (_slot.ItemObject == null)
             return;
@@ -43,6 +55,28 @@ public class Player : MonoBehaviour
                     }
                 }
 
+                if (_slot.ItemObject.characterDisplay != null)
+                {
+                    switch (_slot.AllowedItems[0])
+                    {
+                        case ItemType.Helmet:
+                            Destroy(helmet.gameObject);
+                            break;
+                        case ItemType.Weapon:
+                            Destroy(sword.gameObject);
+                            break;
+                        case ItemType.Shield:
+                            Destroy(offhand.gameObject);
+                            break;
+                        case ItemType.Boots:
+                            Destroy(boots.gameObject);
+                            break;
+                        case ItemType.Chest:
+                            Destroy(chest.gameObject);
+                            break;
+                    }
+                }
+
                 break;
             case InterfaceType.Chest:
                 break;
@@ -50,7 +84,7 @@ public class Player : MonoBehaviour
                 break;
         }
     }
-    public void OnAfterSlotUpdate(InventorySlot _slot)
+    public void OnAddItem(InventorySlot _slot)
     {
         if (_slot.ItemObject == null)
             return;
@@ -69,7 +103,31 @@ public class Player : MonoBehaviour
                             attributes[j].value.AddModifier(_slot.item.buffs[i]);
                     }
                 }
-                
+
+                if (_slot.ItemObject.characterDisplay != null)
+                {
+                    switch (_slot.AllowedItems[0])
+                    {
+                        case ItemType.Weapon:
+                            sword = Instantiate(_slot.ItemObject.characterDisplay, weaponTransform).transform;
+                            break;
+                        case ItemType.Shield:
+                            switch (_slot.ItemObject.type)
+                            {
+                                case ItemType.Weapon:
+                                    offhand = Instantiate(_slot.ItemObject.characterDisplay, offhandHandTransform)
+                                        .transform;
+                                    break;
+                                case ItemType.Shield:
+                                    offhand = Instantiate(_slot.ItemObject.characterDisplay, offhandWristTransform)
+                                        .transform;
+                                    break;
+                            }
+
+                            break;
+                    }
+                }
+
                 break;
             case InterfaceType.Chest:
                 break;
@@ -78,7 +136,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    public void OnTriggerEnter(Collider other)
     {
         var groundItem = other.GetComponent<GroundItem>();
         if (groundItem)
@@ -90,25 +149,25 @@ public class Player : MonoBehaviour
             }
         }
     }
-
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.S))
-        //{
-        //    inventory.Save();
-        //    equipment.Save();
-        //}
-        //if (Input.GetKeyUp(KeyCode.L))
-        //{
-        //    inventory.Load();
-        //    equipment.Load();
-        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            inventory.Save();
+            equipment.Save();
+        }
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            inventory.Load();
+            equipment.Load();
+        }
     }
 
     public void AttributeModified(Attribute attribute)
     {
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
     }
+
 
     private void OnApplicationQuit()
     {
