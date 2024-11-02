@@ -27,7 +27,7 @@ public class MinotaurRamAttack : MonsterSkillData
         _minotaur = (Minotaur)monster;
         
         // VFX ÃÊ±âÈ­
-        _vfxTransform = monster.MonsterParticleController.VFX["SmokeCircle"][0].transform;
+        _vfxTransform = monster.ParticleController.VFX["SmokeCircle"][0].transform;
         _vfxTransform.SetParent(monster.gameObject.transform);
         _vfxTransform.localPosition = Vector3.zero;
 
@@ -82,7 +82,7 @@ public class MinotaurRamAttack : MonsterSkillData
         if (stateInfo.IsName(Minotaur.RamAttackAnimationName.RamStart.ToString()))
         {
             monster.MovementController.CharacterController.SimpleMove(Vector3.zero);
-            monster.MovementController.LookAtTarget(monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
+            monster.MovementController.LookAtTarget(monster.CombatController.MonsterCombatAbility.TurnSpeed);
         }
         else if (stateInfo.IsName(Minotaur.RamAttackAnimationName.RamRun.ToString()))
         {
@@ -94,7 +94,7 @@ public class MinotaurRamAttack : MonsterSkillData
             {
                 _hasHitObject = false;
             }
-            monster.MovementController.CharacterController.SimpleMove(monster.transform.forward * monster.MonsterCombatController.MonsterCombatAbility.MoveSpeed * 2f);
+            monster.MovementController.CharacterController.SimpleMove(monster.transform.forward * monster.CombatController.MonsterCombatAbility.MoveSpeed * 2f);
         }
         else if (stateInfo.IsName(Minotaur.RamAttackAnimationName.RamWall.ToString())
             && stateInfo.normalizedTime >= 0.8f)
@@ -134,7 +134,7 @@ public class MinotaurRamAttack : MonsterSkillData
                 monster.AnimationController.PlaySkillAnimation(Minotaur.RamAttackAnimationName.RamAttack.ToString());
                 _hasHitObject = true;
 
-                _hit.collider.gameObject.GetComponentInParent<Health>().TakeDamage(monster.MonsterSkillController.CurrentSkillData.Damage, true);
+                _hit.collider.gameObject.GetComponentInParent<Health>().TakeDamage(monster.SkillController.CurrentSkillData.Damage, true);
             }
         }
         else if (_hit.collider.gameObject.layer == LayerMask.NameToLayer(GameLayers.Obstacle.ToString()))

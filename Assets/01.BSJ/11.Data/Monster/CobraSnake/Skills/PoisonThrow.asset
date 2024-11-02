@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: 2656757342246123783, guid: 26cee66bae5866442a9ef752eaf7ec55, type: 3}
   _cooldownThreshold: 0
   _damage: 30
-  _range: 10
+  _range: 8
   _castTime: 0

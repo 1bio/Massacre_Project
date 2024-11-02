@@ -22,7 +22,7 @@ public class Medusa : Monster
 
     private void Update()
     {
-        if (MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth > 0)
+        if (CombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth > 0)
         {
             SkillAttackMove();
         }
@@ -57,5 +57,10 @@ public class Medusa : Monster
     public void StopSpinAttackMove()
     {
         _isSpinning = false;
+    }
+
+    public void PlayCrackVFX()
+    {
+        ParticleController.RePlayVFX("Crack", 120, 6);
     }
 }

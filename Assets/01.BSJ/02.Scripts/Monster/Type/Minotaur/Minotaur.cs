@@ -11,4 +11,9 @@ public class Minotaur : Monster
         RamAttack,
         RamWall
     }
+
+    public void PlayFireVFX()
+    {
+        ParticleController.RePlayVFX("FireThrower", 360, 18);
+    }
 }

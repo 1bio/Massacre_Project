@@ -29,7 +29,7 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
         monster.AnimationController.PlayWalkAnimation();
 
-        monster.MonsterCombatController.Health.ImpactEvent += OnImpact;
+        monster.CombatController.Health.ImpactEvent += OnImpact;
     }
 
     public override void OnBehaviourUpdate(Monster monster)
@@ -43,7 +43,7 @@ public class MonsterBehaviourMovement : MonsterBehaviour
 
         if (monster == null || monster.MovementController.Path == null)
         {
-            monster.MonsterStateMachineController.OnIdle();
+            monster.StateMachineController.OnIdle();
             monster.MovementController.Astar.StartPathCalculation(monster.transform.position, monster.MovementController.Astar.TargetTransform.position);
             return;
         }
@@ -69,12 +69,12 @@ public class MonsterBehaviourMovement : MonsterBehaviour
     public override void OnBehaviourEnd(Monster monster)
     {
         monster.AnimationController.PlayIdleAnimation();
-        monster.MonsterCombatController.Health.ImpactEvent -= OnImpact;
+        monster.CombatController.Health.ImpactEvent -= OnImpact;
     }
 
     private void OnImpact()
     {
-        _monster.MonsterStateMachineController.OnGotHit();
+        _monster.StateMachineController.OnGotHit();
     }
 
     

@@ -25,9 +25,9 @@ public class MonsterMovementController
         Vector3 startNode = monster.transform.position;
         Vector3 targetNode = Path[pathIndex].Position;
         Vector3 direction = (targetNode - startNode).normalized;
-        float speed = monster.MonsterCombatController.MonsterCombatAbility.MoveSpeed * monster.AnimationController.LocomotionBlendValue;
+        float speed = monster.CombatController.MonsterCombatAbility.MoveSpeed * monster.AnimationController.LocomotionBlendValue;
 
-        LookAtNode(targetNode, monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
+        LookAtNode(targetNode, monster.CombatController.MonsterCombatAbility.TurnSpeed);
 
         Vector3 newPosition = direction * speed;
         CharacterController.SimpleMove(newPosition);
