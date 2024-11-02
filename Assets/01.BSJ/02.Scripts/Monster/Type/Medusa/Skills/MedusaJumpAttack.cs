@@ -21,7 +21,7 @@ public class MedusaJumpAttack : MonsterSkillData
 
     private void InitializeValues(Monster monster)
     {
-        _vfxTransform = monster.MonsterParticleController.VFX["Crack"].transform;
+        _vfxTransform = monster.MonsterParticleController.VFX["Crack"][0].transform;
         
 
         _swordObjectTransform = monster.transform.Find(_swordHierarchyPath);

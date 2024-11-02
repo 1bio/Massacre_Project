@@ -11,7 +11,7 @@ public class MedusaSpinAttack : MonsterSkillData
 
     private void InitializeValues(Monster monster)
     {
-        _vfxTransform = monster.MonsterParticleController.VFX["SpinEffect"].transform;
+        _vfxTransform = monster.MonsterParticleController.VFX["SpinEffect"][0].transform;
         _vfxTransform.SetParent(monster.transform);
         _vfxTransform.localPosition = Vector3.up;
         _vfxTransform.localRotation = Quaternion.identity;

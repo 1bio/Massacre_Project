@@ -12,21 +12,18 @@ public class TrollFireBreath : MonsterSkillData
 
     private bool _hasAttacked = false;
 
-    private void InitializeValues(Monster monster)
+    public override void ActiveSkillEnter(Monster monster)
     {
-        _troll = (Troll) monster;
+        _troll = (Troll)monster;
 
-        _vfxTransform = monster.MonsterParticleController.VFX["RedFlameThrower"].transform;
+        monster.MonsterParticleController.VFXTransform["RedFlameThrower"] = _troll.FirePositionTransform;
+
+        _vfxTransform = monster.MonsterParticleController.GetAvailableParticle("RedFlameThrower").transform;
         _vfxTransform.SetParent(_troll.FirePositionTransform);
         _vfxTransform.position = _troll.FirePositionTransform.position;
         _vfxTransform.rotation = _troll.FirePositionTransform.rotation;
 
         _hasAttacked = false;
-    }
-
-    public override void ActiveSkillEnter(Monster monster)
-    {
-        InitializeValues(monster);
     }
 
     public override void ActiveSkillTick(Monster monster)
