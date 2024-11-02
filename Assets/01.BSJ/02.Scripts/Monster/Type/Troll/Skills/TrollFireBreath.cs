@@ -16,9 +16,9 @@ public class TrollFireBreath : MonsterSkillData
     {
         _troll = (Troll)monster;
 
-        monster.MonsterParticleController.VFXTransform["RedFlameThrower"] = _troll.FirePositionTransform;
+        monster.ParticleController.VFXTransform["RedFlameThrower"] = _troll.FirePositionTransform;
 
-        _vfxTransform = monster.MonsterParticleController.GetAvailableParticle("RedFlameThrower").transform;
+        _vfxTransform = monster.ParticleController.GetAvailableParticle("RedFlameThrower").transform;
         _vfxTransform.SetParent(_troll.FirePositionTransform);
         _vfxTransform.position = _troll.FirePositionTransform.position;
         _vfxTransform.rotation = _troll.FirePositionTransform.rotation;
@@ -28,10 +28,7 @@ public class TrollFireBreath : MonsterSkillData
 
     public override void ActiveSkillTick(Monster monster)
     {
-        if (!monster.AnimationController.AnimatorStateInfo.IsName(Troll.FireBreathAnimationName.FireBreath.ToString()))
-        {
-            monster.MovementController.LookAtTarget(monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
-        }
+        monster.MovementController.LookAtTarget(monster.CombatController.MonsterCombatAbility.TurnSpeed);
 
         if (!_hasAttacked)
         {

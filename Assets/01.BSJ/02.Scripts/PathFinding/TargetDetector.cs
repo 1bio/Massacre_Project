@@ -7,10 +7,9 @@ public class TargetDetector : MonoBehaviour
     private Monster _monster;
     // Raycast ฐüทร
     private RaycastHit _hit;
-    [SerializeField] private float _detectionDistance = 10f;
+    [SerializeField] private float _detectionDistance = 5f;
     private float _fanAngle = 50f;
     private float _fanCount = 10f;
-    private float _detectionRadius = 0.4f;
 
     public bool IsTargetDetected { get; set; } = false;
     public float DetectionDistance { get => _detectionDistance; }
@@ -30,8 +29,8 @@ public class TargetDetector : MonoBehaviour
         }
         else
         {
-            _monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsTargetWithinAttackRange =
-               IsInFanShapeDetection(_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Range);
+            _monster.CombatController.MonsterCombatAbility.MonsterAttack.IsTargetWithinAttackRange =
+               IsInFanShapeDetection(_monster.CombatController.MonsterCombatAbility.MonsterAttack.Range);
         }
     }
 
@@ -51,9 +50,13 @@ public class TargetDetector : MonoBehaviour
             }
             Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
 
-            if (Physics.SphereCast(startPos, _detectionRadius, direction, out _hit, detectionDistance, layerMask))
+            if (Physics.Raycast(startPos, direction, out _hit, detectionDistance, layerMask))
             {
-                Debug.DrawRay(startPos, direction * detectionDistance, Color.red, 0.1f);
+                Debug.DrawRay(startPos, direction * detectionDistance, Color.red);
+
+                if (_hit.distance > detectionDistance)
+                    return false;
+
                 if (_hit.collider.gameObject.layer == LayerMask.NameToLayer(GameLayers.Player.ToString()))
                 {
                     return true;
@@ -65,7 +68,7 @@ public class TargetDetector : MonoBehaviour
             }
             else
             {
-                Debug.DrawRay(startPos, direction * detectionDistance, Color.yellow, 0.1f);
+                Debug.DrawRay(startPos, direction * detectionDistance, Color.yellow);
             }
         }
         return false;

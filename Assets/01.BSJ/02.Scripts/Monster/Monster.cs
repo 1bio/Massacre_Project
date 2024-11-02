@@ -36,13 +36,13 @@ public class Monster : MonoBehaviour
     private TrailRenderer _objectTrail;
 
     public MonsterStateType MonsterStateType { get; set; }
-    public MonsterStateMachineController MonsterStateMachineController { get; private set; }
-    public MonsterSkillController MonsterSkillController { get; private set; }
-    public MonsterLootItemController MonsterLootItemController { get; private set; }
+    public MonsterStateMachineController StateMachineController { get; private set; }
+    public MonsterSkillController SkillController { get; private set; }
+    public MonsterLootItemController LootItemController { get; private set; }
     public MonsterMovementController MovementController { get; protected set; }
     public MonsterAnimationController AnimationController { get; protected set; }
-    public MonsterCombatController MonsterCombatController { get; protected set; }
-    public MonsterParticleController MonsterParticleController { get; protected set; }
+    public MonsterCombatController CombatController { get; protected set; }
+    public MonsterParticleController ParticleController { get; protected set; }
     public TrailRenderer ObjectTrail { get => _objectTrail; }
 
     // 넉백 처리
@@ -72,19 +72,19 @@ public class Monster : MonoBehaviour
             _objectTrail.gameObject.SetActive(false);
         }
 
-        MonsterStateMachineController = GetComponent<MonsterStateMachineController>();
-        MonsterSkillController = new MonsterSkillController(p_monsterSkillDatas);
-        MonsterLootItemController = new MonsterLootItemController(p_monsterLootItemData);
+        StateMachineController = GetComponent<MonsterStateMachineController>();
+        SkillController = new MonsterSkillController(p_monsterSkillDatas);
+        LootItemController = new MonsterLootItemController(p_monsterLootItemData);
         MovementController = new MonsterMovementController(GetComponent<TargetDetector>(), GetComponent<Astar>(), FindObjectOfType<PointGrid>(), GetComponent<CharacterController>());
         AnimationController = new MonsterAnimationController(GetComponent<Animator>(), GetComponent<ObjectFadeInOut>(),100f);
-        MonsterCombatController = new MonsterCombatController(p_monsterStatData, GetComponent<Health>());
+        CombatController = new MonsterCombatController(p_monsterStatData, GetComponent<Health>());
      
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
 
         if (p_monsterSkillDatas.Length > 0)
         {
-            MonsterParticleController = new MonsterParticleController(p_monsterSkillDatas, VFXContainerTransform, this);
+            ParticleController = new MonsterParticleController(p_monsterSkillDatas, VFXContainerTransform, this);
         }
     }
 
@@ -101,15 +101,54 @@ public class Monster : MonoBehaviour
     }*/
 
 
+    protected void LateUpdate()
+    {
+        if (MonsterStateType != MonsterStateType.Skill)
+        {
+            foreach (var vfxs in ParticleController.VFX)
+            {
+                List<ParticleSystem> vfxToRemove = new List<ParticleSystem>();
+
+                foreach (var vfx in vfxs.Value)
+                {
+                    if (!vfx.isPlaying)
+                    {
+                        vfx.Stop();
+                        vfx.Clear();
+                        vfx.time = 0;
+
+                        if (vfx.time == 0)
+                        {
+                            vfxToRemove.Add(vfx);
+                        }
+                    }
+                }
+
+                if (vfxs.Value.Count >= 10)
+                {
+                    foreach (var vfx in vfxToRemove)
+                    {
+                        vfxs.Value.Remove(vfx);
+                        Destroy(vfx.gameObject);
+
+                        if (vfxs.Value.Count < 10)
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
+
     // Animation Event
     public void EnableWeapon()
     {
-        MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon = true;
+        CombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon = true;
     }
 
     public void DisableWeapon()
     {
-        MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon = false;
+        CombatController.MonsterCombatAbility.MonsterAttack.IsEnableWeapon = false;
     }
 
     public void UnlockAnimationTransition()
@@ -125,11 +164,11 @@ public class Monster : MonoBehaviour
             string vfxName = parts[0];
             float scaleFactor = float.Parse(parts[1]);
 
-            MonsterParticleController.RePlayVFX(vfxName, scaleFactor);
+            ParticleController.RePlayVFX(vfxName, scaleFactor);
         }
         else
         {
-            MonsterParticleController.RePlayVFX(vfxNameWithScale);
+            ParticleController.RePlayVFX(vfxNameWithScale);
         }
     }
 }

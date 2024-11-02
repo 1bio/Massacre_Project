@@ -17,8 +17,11 @@ public class MonsterStateMachineController : MonsterStateMachine
     {
         base.Update();
 
-        CurrentBasicAttackCooldownTime += Time.deltaTime;
-        p_monster.MonsterSkillController.UpdateCooldowns();
+        if (p_monster.MovementController.TargetDetector.IsTargetDetected)
+        {
+            CurrentBasicAttackCooldownTime += Time.deltaTime;
+            p_monster.SkillController.UpdateCooldowns();
+        }
 
         // 살아있는지 확인
         if (!IsAlive())
@@ -44,18 +47,18 @@ public class MonsterStateMachineController : MonsterStateMachine
         if (!p_monster.AnimationController.IsLockedInAnimation)
         {
             if (p_monster.MonsterStateType != MonsterStateType.Skill
-                && p_monster.MonsterSkillController.GetAvailableSkills().Count > 0
-                && p_monster.MonsterSkillController.UpdateCurrentSkillData().Range >= Vector3.Distance(p_monster.MovementController.Astar.TargetTransform.position, this.transform.position))
+                && p_monster.SkillController.GetAvailableSkills().Count > 0
+                && p_monster.SkillController.UpdateCurrentSkillData().Range >= Vector3.Distance(p_monster.MovementController.Astar.TargetTransform.position, this.transform.position))
             {
 
                 OnSkill();
             }
-            else if (p_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.IsTargetWithinAttackRange &&
+            else if (p_monster.CombatController.MonsterCombatAbility.MonsterAttack.IsTargetWithinAttackRange &&
                     Vector3.Distance(p_monster.MovementController.Astar.TargetTransform.position, this.transform.position)
-                    <= p_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.Range)
+                    <= p_monster.CombatController.MonsterCombatAbility.MonsterAttack.Range)
             {
                 if (p_monster.MonsterStateType != MonsterStateType.Idle
-                    && p_monster.MonsterCombatController.MonsterCombatAbility.MonsterAttack.CooldownThreshold > CurrentBasicAttackCooldownTime)
+                    && p_monster.CombatController.MonsterCombatAbility.MonsterAttack.CooldownThreshold > CurrentBasicAttackCooldownTime)
                     OnIdle();
                 else
                 {
@@ -71,13 +74,13 @@ public class MonsterStateMachineController : MonsterStateMachine
 
     public bool IsAlive()
     {
-        if (p_monster.MonsterCombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth > 0)
+        if (p_monster.CombatController.MonsterCombatAbility.MonsterHealth.CurrentHealth > 0)
         {
             return true;
         }
         else
         {
-            p_monster.MonsterCombatController.MonsterCombatAbility.IsDead = true;
+            p_monster.CombatController.MonsterCombatAbility.IsDead = true;
             return false;
         }
     }

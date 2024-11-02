@@ -24,56 +24,65 @@ public class TransparencyController : MonoBehaviour
     {
         Vector3 direction = (_playerTransform.position - transform.position).normalized;
         float maxDistance = Vector3.Distance(transform.position, _playerTransform.position);
-        _hasHit = Physics.Raycast(transform.position, direction, out RaycastHit hitinfo, maxDistance, _layerMask);
 
-        if (_hasHit)
+        List<Collider> currentFrameHitColliders = new List<Collider>();
+
+        foreach (RaycastHit hit in Physics.RaycastAll(transform.position, direction, maxDistance, _layerMask))
         {
-            foreach (RaycastHit hit in Physics.RaycastAll(transform.position, direction, maxDistance, _layerMask))
+            if (hit.collider != null && hit.collider is MeshCollider)
             {
-                if (hit.collider != null && !_raycastHitColliders.Contains(hit.collider) && hit.collider is MeshCollider)
+                currentFrameHitColliders.Add(hit.collider);
+
+                if (!_raycastHitColliders.Contains(hit.collider))
                 {
                     _raycastHitColliders.Add(hit.collider);
                 }
             }
         }
+
+        foreach (Collider collider in _raycastHitColliders.ToList())
+        {
+            if (!currentFrameHitColliders.Contains(collider))
+            {
+                ResetTransparency(collider);
+                _raycastHitColliders.Remove(collider);
+            }
+        }
+    }
+
+    private void ResetTransparency(Collider collider)
+    {
+        Material material = collider.GetComponent<Renderer>().material;
+        ChangeWallTransparency(material, false);
     }
 
     private void LateUpdate()
     {
-        Material[] materials = new Material[_raycastHitColliders.Count];
-        Color[] colors = new Color[_raycastHitColliders.Count];
-
-        if (_raycastHitColliders?.Count > 0)
+        if (_raycastHitColliders.Count > 0)
         {
-            for (int i = 0; i < materials.Length; i++)
+            Material[] materials = new Material[_raycastHitColliders.Count];
+            for (int i = 0; i < _raycastHitColliders.Count; i++)
             {
-                materials[i] = _raycastHitColliders[i].gameObject.GetComponent<Renderer>().material;
+                materials[i] = _raycastHitColliders[i].GetComponent<Renderer>().material;
             }
-        }
-
-        if (_hasHit)
-        {
-            StartFadeOut(materials, colors);
-        }
-        else
-        {
-            StartFadeIn(materials, colors);
-            _raycastHitColliders.Clear();
+            StartFadeOut(materials);
         }
     }
 
-    public void StartFadeIn(Material[] materials, Color[] colors)
+    public void StartFadeIn(Material[] materials)
     {
-        FadeInOut(materials, colors, 0.5f, 1);
+        FadeInOut(materials, 0.5f, 1);
     }
 
-    public void StartFadeOut(Material[] materials, Color[] colors)
+    public void StartFadeOut(Material[] materials)
     {
-        FadeInOut(materials, colors, 1, 0.5f);
+        FadeInOut(materials, 1, 0.5f);
     }
 
-    private void FadeInOut(Material[] materials, Color[] colors, float startAlpha, float endAlpha)
+    private void FadeInOut(Material[] materials, float startAlpha, float endAlpha)
     {
+        Color[] colors = new Color[materials.Length];
+
         for (int i = 0; i < colors.Length; i++)
         {
             ChangeWallTransparency(materials[i], true);
@@ -89,10 +98,15 @@ public class TransparencyController : MonoBehaviour
             materials[i].color = colors[i];
         }
 
-        if (endAlpha >= 1)
+        for (int i = 0; i < materials.Length; i++)
         {
-            for (int i = 0; i < materials.Length; i++)
+            colors[i].a = endAlpha;
+            materials[i].color = colors[i];
+
+            if (endAlpha >= 1)
+            {
                 ChangeWallTransparency(materials[i], false);
+            }
         }
     }
 

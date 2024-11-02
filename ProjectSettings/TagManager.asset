@@ -23,9 +23,9 @@ TagManager:
   - UI
   - 
   - 
+  - MiniMap
   - 
-  - 
-  - 
+  - Monster
   - Ground
   - Player
   - Obstacle

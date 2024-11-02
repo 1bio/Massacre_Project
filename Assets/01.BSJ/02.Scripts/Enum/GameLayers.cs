@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum GameLayers
 {
+    Monster,
+    Ground,
     Player,
     Obstacle,
-    Ground
 }

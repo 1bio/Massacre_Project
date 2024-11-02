@@ -30,10 +30,9 @@ public class CobraSnakePoisonThrow : MonsterSkillData
     {
         _cobraSnake = (CobraSnake) monster;
 
-        monster.MonsterParticleController.VFXTransform["PoisonThrower"] = _cobraSnake.FirePositionTransform;
+        monster.ParticleController.VFXTransform["PoisonThrower"] = _cobraSnake.FirePositionTransform;
 
-        _vfxTransform = monster.MonsterParticleController.GetAvailableParticle("PoisonThrower").transform;
-        _vfxTransform.SetParent(_cobraSnake.FirePositionTransform);
+        _vfxTransform = monster.ParticleController.GetAvailableParticle("PoisonThrower").transform;
         _vfxTransform.position = _cobraSnake.FirePositionTransform.position;
         _vfxTransform.rotation = _cobraSnake.FirePositionTransform.rotation;
 
@@ -59,10 +58,13 @@ public class CobraSnakePoisonThrow : MonsterSkillData
         {
             if (!monster.AnimationController.AnimatorStateInfo.IsName(PoisonThrowAnimationName.PoisonThrow.ToString()))
             {
-                monster.MovementController.LookAtTarget(monster.MonsterCombatController.MonsterCombatAbility.TurnSpeed);
+                monster.MovementController.LookAtTarget(monster.CombatController.MonsterCombatAbility.TurnSpeed);
 
                 if (Vector3.Angle(monster.transform.forward, monster.MovementController.Direction) <= 3 && !_hasAttacked)
                 {
+                    _vfxTransform.position = _cobraSnake.FirePositionTransform.position;
+                    _vfxTransform.rotation = _cobraSnake.FirePositionTransform.rotation;
+
                     monster.AnimationController.PlaySkillAnimation(PoisonThrowAnimationName.PoisonThrow.ToString());
 
                     _hasAttacked = true;
@@ -71,7 +73,7 @@ public class CobraSnakePoisonThrow : MonsterSkillData
         }
         else
         {
-            if (monster.MonsterSkillController.CurrentSkillData.Range / 2 >=
+            if (monster.SkillController.CurrentSkillData.Range / 2 >=
             Vector3.Distance(monster.MovementController.Astar.TargetTransform.position, monster.transform.position))
             {
                 _isMoving = (_targetNode != _grid.GetPointNodeFromGridByPosition(monster.transform.position));
@@ -128,33 +130,5 @@ public class CobraSnakePoisonThrow : MonsterSkillData
         Vector3 backwardPosition = _targetNode.Position - monster.transform.forward;
 
         BackDFS(monster, backwardPosition, max - 1);
-    }
-
-    private void LeftDFS(Monster monster, Vector3 monsterPosition, int max)
-    {
-        PointNode node = _grid.GetPointNodeFromGridByPosition(monsterPosition);
-
-        if (node == null || max <= 0)
-            return;
-
-        _targetNode = node;
-
-        Vector3 backwardPosition = _targetNode.Position - monster.transform.right;
-
-        LeftDFS(monster, backwardPosition, max - 1);
-    }
-
-    private void RightDFS(Monster monster, Vector3 monsterPosition, int max)
-    {
-        PointNode node = _grid.GetPointNodeFromGridByPosition(monsterPosition);
-
-        if (node == null || max <= 0)
-            return;
-
-        _targetNode = node;
-
-        Vector3 backwardPosition = _targetNode.Position + monster.transform.right;
-
-        RightDFS(monster, backwardPosition, max - 1);
     }
 }

@@ -37,6 +37,6 @@ public class MonsterBehaviourSpawn : MonsterBehaviour
 
     private void OnImpact()
     {
-        _monster.MonsterStateMachineController.OnGotHit();
+        _monster.StateMachineController.OnGotHit();
     }
 }
