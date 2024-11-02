@@ -9,23 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b494a9d5bd6de94faced99e0f99eb98, type: 3}
+  m_Script: {fileID: 11500000, guid: e0efa0a4c06cdce429ae4bef81bef225, type: 3}
   m_Name: Chest
   m_EditorClassIdentifier: 
-  Id: 7
-  uiDisplay: {fileID: 21300000, guid: 1301813f273d3a04b9ccc40d147ab31f, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 0997b222910af594bafac8b6e15211f0, type: 3}
+  stackable: 0
   type: 5
   description: 
-  buffs:
-  - attribute: 0
-    value: 0
-    min: 1
-    max: 10
-  - attribute: 3
-    value: 0
-    min: 1
-    max: 10
-  - attribute: 2
-    value: 0
-    min: 1
-    max: 10
+  data:
+    Name: 
+    Id: 2
+    buffs:
+    - attribute: 3
+      value: 0
+      min: 1
+      max: 30
+    - attribute: 1
+      value: 0
+      min: 1
+      max: 21
